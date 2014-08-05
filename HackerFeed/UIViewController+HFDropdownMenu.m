@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Nealon Young. All rights reserved.
 //
 
-#import "UIViewController+ORNDropdownMenu.h"
+#import "UIViewController+HFDropdownMenu.h"
 
 #import <objc/runtime.h>
 
@@ -62,6 +62,14 @@ static void *dropdownMenuPropertyKey = &dropdownMenuPropertyKey;
         dropdownMenuFrame.origin = CGPointMake(0, -CGRectGetHeight(self.dropdownMenuController.dropdownMenu.frame));
         self.dropdownMenuController.dropdownMenu.frame = dropdownMenuFrame;
     }];
+}
+
+- (void)setDropdownMenuItem:(HFDropdownMenuItem *)dropdownMenuItem {
+    
+}
+
+- (HFDropdownMenuItem *)dropdownMenuItem {
+    return nil;
 }
 
 @end

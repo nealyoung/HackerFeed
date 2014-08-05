@@ -12,7 +12,7 @@
 
 @class HFLoginViewController;
 
-@protocol ORNLoginViewControllerDelegate <NSObject>
+@protocol HFLoginViewControllerDelegate <NSObject>
 
 - (void)loginViewController:(HFLoginViewController *)loginViewController didLoginWithUser:(HNUser *)user;
 
@@ -20,11 +20,11 @@
 
 @interface HFLoginViewController : UIViewController
 
-@property (weak) id <ORNLoginViewControllerDelegate> delegate;
+@property (weak) id <HFLoginViewControllerDelegate> delegate;
 
-@property IBOutlet UITextField *usernameTextField;
-@property IBOutlet UITextField *passwordTextField;
-@property IBOutlet UILabel *securityLabel;
-@property IBOutlet HFBorderedButton *submitButton;
+@property UITextField *usernameTextField;
+@property UITextField *passwordTextField;
+@property UILabel *securityLabel;
+@property HFBorderedButton *submitButton;
 
 @end

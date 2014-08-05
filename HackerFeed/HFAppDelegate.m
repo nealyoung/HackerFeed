@@ -17,46 +17,46 @@
 
 @implementation HFAppDelegate
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
-    HFPostListViewController *topStoriesViewController = [[UIStoryboard storyboardWithName:@"Main_iPhone"
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    NSString *storyboardName = [UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone ? @"Main_iPhone" : @"Main_iPad";
+    
+    HFPostListViewController *topStoriesViewController = [[UIStoryboard storyboardWithName:storyboardName
                                                                                      bundle:nil] instantiateViewControllerWithIdentifier:@"PostListViewController"];
     topStoriesViewController.dataSource = [[HFFilterPostDataSource alloc] initWithPostFilterType:PostFilterTypeTop];
     topStoriesViewController.title = NSLocalizedString(@"Top Stories", nil);
     
-    HFPostListViewController *newStoriesViewController = [[UIStoryboard storyboardWithName:@"Main_iPhone"
+    HFPostListViewController *newStoriesViewController = [[UIStoryboard storyboardWithName:storyboardName
                                                                                      bundle:nil] instantiateViewControllerWithIdentifier:@"PostListViewController"];
     newStoriesViewController.dataSource = [[HFFilterPostDataSource alloc] initWithPostFilterType:PostFilterTypeNew];
     newStoriesViewController.title = NSLocalizedString(@"New Stories", nil);
     
-    HFPostListViewController *askHNViewController = [[UIStoryboard storyboardWithName:@"Main_iPhone"
+    HFPostListViewController *askHNViewController = [[UIStoryboard storyboardWithName:storyboardName
                                                                                 bundle:nil] instantiateViewControllerWithIdentifier:@"PostListViewController"];
     askHNViewController.dataSource = [[HFFilterPostDataSource alloc] initWithPostFilterType:PostFilterTypeAsk];
     askHNViewController.title = NSLocalizedString(@"Ask HN", nil);
     
-    HFPostListViewController *showHNViewController = [[UIStoryboard storyboardWithName:@"Main_iPhone"
+    HFPostListViewController *showHNViewController = [[UIStoryboard storyboardWithName:storyboardName
                                                                                  bundle:nil] instantiateViewControllerWithIdentifier:@"PostListViewController"];
     showHNViewController.dataSource = [[HFFilterPostDataSource alloc] initWithPostFilterType:PostFilterTypeShowHN];
     showHNViewController.title = NSLocalizedString(@"Show HN", nil);
     
-    HFPostListViewController *jobsViewController = [[UIStoryboard storyboardWithName:@"Main_iPhone"
+    HFPostListViewController *jobsViewController = [[UIStoryboard storyboardWithName:storyboardName
                                                                                 bundle:nil] instantiateViewControllerWithIdentifier:@"PostListViewController"];
     jobsViewController.dataSource = [[HFFilterPostDataSource alloc] initWithPostFilterType:PostFilterTypeJobs];
     jobsViewController.title = NSLocalizedString(@"Jobs", nil);
     
-    HFUserProfileViewController *profileViewController = [[UIStoryboard storyboardWithName:@"Main_iPhone"
-                                                                                 bundle:nil] instantiateViewControllerWithIdentifier:@"UserProfileViewController"];
+    HFUserProfileViewController *profileViewController = [[HFUserProfileViewController alloc] initWithNibName:nil bundle:nil];
     profileViewController.showsLoggedInUser = YES;
     [profileViewController view];
     
-    HFDropdownMenuController *dropdownMenuViewController = [[HFDropdownMenuController alloc] initWithDropdownViewControllers:@[topStoriesViewController,
-                                                                                                                                 newStoriesViewController,
-                                                                                                                                 askHNViewController,
-                                                                                                                                 showHNViewController,
-                                                                                                                                 jobsViewController,
-                                                                                                                                 profileViewController]];
+    HFDropdownMenuController *dropdownMenuViewController = (HFDropdownMenuController *)self.window.rootViewController;
+    dropdownMenuViewController.dropdownViewControllers = @[topStoriesViewController,
+                                    newStoriesViewController,
+                                    askHNViewController,
+                                    showHNViewController,
+                                    jobsViewController,
+                                    profileViewController];
     dropdownMenuViewController.dropdownMenu.itemFont = [UIFont semiboldApplicationFontOfSize:17.0f];
-    
-    self.window.rootViewController = dropdownMenuViewController;
     
     UIView *navigationBarBorderView = [[UIView alloc] initWithFrame:CGRectMake(0,
                                                                                CGRectGetMaxY(dropdownMenuViewController.navigationBar.frame),
@@ -66,7 +66,6 @@
     [dropdownMenuViewController.navigationBar addSubview:navigationBarBorderView];
     
     [[HNManager sharedManager] startSession];
-    NSLog(@"%d", [[HNManager sharedManager] userIsLoggedIn]);
     
     [self customizeAppearance];
     return YES;

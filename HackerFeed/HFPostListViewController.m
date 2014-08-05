@@ -8,6 +8,9 @@
 
 #import "HFPostListViewController.h"
 
+#import "DMScaleTransition.h"
+#import "DMSlideTransition.h"
+#import "HFNewPostViewController.h"
 #import "HFPostTableViewCell.h"
 #import "HFPostViewController.h"
 #import "SVProgressHUD.h"
@@ -16,6 +19,8 @@
 #import "UIScrollView+SVInfiniteScrolling.h"
 
 @interface HFPostListViewController () <UITableViewDataSource, UITableViewDelegate>
+
+@property DMScaleTransition *scaleTransition;
 
 - (void)refresh;
 
@@ -30,6 +35,12 @@ static NSString * const kPostCommentsSegueIdentifier = @"PostCommentsSegue";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self.tableView registerClass:[HFPostTableViewCell class] forCellReuseIdentifier:kPostTableViewCellIdentifier];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose
+                                                                                           target:self
+                                                                                           action:@selector(newPostButtonPressed)];
     [self refresh];
 }
 
@@ -53,31 +64,6 @@ static NSString * const kPostCommentsSegueIdentifier = @"PostCommentsSegue";
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
 
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
-}
-
-- (void)refresh {
-    [self.dataSource refreshWithCompletion:^(BOOL completed) {
-        if (completed) {
-            [self.tableView reloadData];
-        } else {
-            [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Could not load posts", nil)];
-        }
-
-        [self.tableView.pullToRefreshView stopAnimating];
-    }];
-}
-
-- (void)loadMorePosts {
-    [self.dataSource loadMorePostsWithCompletion:^(BOOL completed) {
-        if (completed) {
-            [self.tableView reloadData];
-        } else {
-            [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Could not load posts", nil)];
-            self.tableView.showsInfiniteScrolling = NO;
-        }
-        
-        [self.tableView.infiniteScrollingView stopAnimating];
-    }];
 }
 
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
@@ -110,6 +96,49 @@ static NSString * const kPostCommentsSegueIdentifier = @"PostCommentsSegue";
     }
 }
 
+- (void)refresh {
+    [self.dataSource refreshWithCompletion:^(BOOL completed) {
+        if (completed) {
+            [self.tableView reloadData];
+        } else {
+            [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Could not load posts", nil)];
+        }
+
+        [self.tableView.pullToRefreshView stopAnimating];
+    }];
+}
+
+- (void)loadMorePosts {
+    [self.dataSource loadMorePostsWithCompletion:^(BOOL completed) {
+        if (completed) {
+            [self.tableView reloadData];
+        } else {
+            [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Could not load posts", nil)];
+            self.tableView.showsInfiniteScrolling = NO;
+        }
+        
+        [self.tableView.infiniteScrollingView stopAnimating];
+    }];
+}
+
+- (void)commentsButtonPressed:(id)sender {
+    HFPostViewController *postViewController = [[UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil] instantiateViewControllerWithIdentifier:@"PostViewController"];
+    HFCommentsButton *commentsButton = (HFCommentsButton *)sender;
+    postViewController.post = self.dataSource.posts[commentsButton.tag];
+    
+    [self.navigationController pushViewController:postViewController animated:YES];
+}
+
+- (void)newPostButtonPressed {
+    HFNewPostViewController *newPostViewController = [[UIStoryboard storyboardWithName:@"Main_iPhone"
+                                                                                bundle:nil] instantiateViewControllerWithIdentifier:@"NewPostViewController"];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:newPostViewController];
+    self.scaleTransition = [DMScaleTransition new];
+    navigationController.transitioningDelegate = self.scaleTransition;
+    
+    [self presentViewController:navigationController animated:YES completion:nil];
+}
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -131,22 +160,21 @@ static NSString * const kPostCommentsSegueIdentifier = @"PostCommentsSegue";
     
     [postTableViewCell.commentsButton setTitle:[NSString stringWithFormat:@"%d", post.CommentCount] forState:UIControlStateNormal];
     postTableViewCell.commentsButton.tag = indexPath.row;
+    [postTableViewCell.commentsButton addTarget:self action:@selector(commentsButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     
     return postTableViewCell;
 }
 
 #pragma mark - UITableViewDelegate
 
-static HFPostTableViewCell *postMetricsCell;
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static HFPostTableViewCell *postMetricsCell;
+
     if (!postMetricsCell) {
-        postMetricsCell = [tableView dequeueReusableCellWithIdentifier:kPostTableViewCellIdentifier];
+        postMetricsCell = [[HFPostTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
     }
     
-    CGRect frame = postMetricsCell.frame;
-    frame.size.width = self.tableView.bounds.size.width;
-    postMetricsCell.frame = frame;
+    postMetricsCell.bounds = CGRectMake(0.0f, 0.0f, self.tableView.bounds.size.width, 9999.0f);
     
     HNPost *post = self.dataSource.posts[indexPath.row];
     
@@ -157,10 +185,21 @@ static HFPostTableViewCell *postMetricsCell;
     [postMetricsCell setNeedsLayout];
     [postMetricsCell layoutIfNeeded];
     
-    CGSize size = [postMetricsCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    CGSize size = [postMetricsCell.contentView systemLayoutSizeFittingSize:UILayoutFittingExpandedSize];
     CGFloat cellHeight = size.height + 1;
     
     return cellHeight;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    HNPost *post = self.dataSource.posts[indexPath.row];
+    
+    if (post.Type == PostTypeJobs) {
+        return;
+    }
+    
+    SVWebViewController *webViewController = [[SVWebViewController alloc] initWithAddress:post.UrlString];
+    [self.navigationController pushViewController:webViewController animated:YES];
 }
 
 @end

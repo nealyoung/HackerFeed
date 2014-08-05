@@ -16,9 +16,12 @@
 		0E5C453B19838135001EE1CB /* HFFilterPostDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E5C453A19838135001EE1CB /* HFFilterPostDataSource.m */; };
 		0E6C30DF197F5DCB00C33A67 /* HFLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E6C30DE197F5DCB00C33A67 /* HFLoginViewController.m */; };
 		0E926CD219835AB30078E148 /* HFBorderedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E926CD119835AB30078E148 /* HFBorderedButton.m */; };
+		0E990E801990BA30002933C4 /* DMScaleTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E990E7F1990BA30002933C4 /* DMScaleTransition.m */; };
+		0E990E841990BA65002933C4 /* DMBaseTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E990E821990BA65002933C4 /* DMBaseTransition.m */; };
+		0E990E871990BCAF002933C4 /* DMSlideTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E990E851990BCAF002933C4 /* DMSlideTransition.m */; };
 		0EAC1B11197C54BD00393828 /* HFDropdownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EAC1B10197C54BD00393828 /* HFDropdownMenu.m */; };
 		0EAC1B14197C577800393828 /* HFDropdownMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EAC1B13197C577800393828 /* HFDropdownMenuButton.m */; };
-		0EAC1B18197C592200393828 /* UIViewController+ORNDropdownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EAC1B17197C592200393828 /* UIViewController+ORNDropdownMenu.m */; };
+		0EAC1B18197C592200393828 /* UIViewController+HFDropdownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EAC1B17197C592200393828 /* UIViewController+HFDropdownMenu.m */; };
 		0EC81421197C828A009F0D99 /* HFPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC81420197C828A009F0D99 /* HFPostViewController.m */; };
 		0EC81426197C8D1C009F0D99 /* HFCommentsButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC81425197C8D1C009F0D99 /* HFCommentsButton.m */; };
 		0EC8142A197C98B5009F0D99 /* SourceSansPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0EC81427197C98B5009F0D99 /* SourceSansPro-Bold.otf */; };
@@ -26,7 +29,9 @@
 		0EC8142C197C98B5009F0D99 /* SourceSansPro-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0EC81429197C98B5009F0D99 /* SourceSansPro-Semibold.otf */; };
 		0EC81432197C9C15009F0D99 /* UIFont+HFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC81431197C9C15009F0D99 /* UIFont+HFAdditions.m */; };
 		0EC81435197CA8FA009F0D99 /* HFCommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC81434197CA8FA009F0D99 /* HFCommentTableViewCell.m */; };
+		0ECF6056199171F60088C8E6 /* HFTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ECF6055199171F60088C8E6 /* HFTableViewCell.m */; };
 		0EDEBD64197E2ED00080D446 /* HFDropdownMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EDEBD63197E2ED00080D446 /* HFDropdownMenuController.m */; };
+		0EE17185198FED0700DBB6F9 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EE17183198FED0700DBB6F9 /* Main_iPad.storyboard */; };
 		0EE2838B198394BB00D3A3C6 /* HFUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE2838A198394BB00D3A3C6 /* HFUserProfileViewController.m */; };
 		0EE6CAE119845B37005AE100 /* HFCommentActionsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE6CAE019845B37005AE100 /* HFCommentActionsView.m */; };
 		0EE791BB1950318D00925E4F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EE791BA1950318D00925E4F /* Foundation.framework */; };
@@ -36,7 +41,6 @@
 		0EE791C71950318D00925E4F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE791C61950318D00925E4F /* main.m */; };
 		0EE791CB1950318D00925E4F /* HFAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE791CA1950318D00925E4F /* HFAppDelegate.m */; };
 		0EE791CE1950318D00925E4F /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EE791CC1950318D00925E4F /* Main_iPhone.storyboard */; };
-		0EE791D11950318D00925E4F /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EE791CF1950318D00925E4F /* Main_iPad.storyboard */; };
 		0EE791D41950318D00925E4F /* HFPostListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE791D31950318D00925E4F /* HFPostListViewController.m */; };
 		0EE791D61950318D00925E4F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0EE791D51950318D00925E4F /* Images.xcassets */; };
 		0EE791DD1950318D00925E4F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EE791DC1950318D00925E4F /* XCTest.framework */; };
@@ -84,12 +88,18 @@
 		0E6C30DE197F5DCB00C33A67 /* HFLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFLoginViewController.m; sourceTree = "<group>"; };
 		0E926CD019835AB30078E148 /* HFBorderedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFBorderedButton.h; sourceTree = "<group>"; };
 		0E926CD119835AB30078E148 /* HFBorderedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFBorderedButton.m; sourceTree = "<group>"; };
+		0E990E7E1990BA30002933C4 /* DMScaleTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMScaleTransition.h; sourceTree = "<group>"; };
+		0E990E7F1990BA30002933C4 /* DMScaleTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMScaleTransition.m; sourceTree = "<group>"; };
+		0E990E821990BA65002933C4 /* DMBaseTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMBaseTransition.m; sourceTree = "<group>"; };
+		0E990E831990BA65002933C4 /* DMBaseTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMBaseTransition.h; sourceTree = "<group>"; };
+		0E990E851990BCAF002933C4 /* DMSlideTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMSlideTransition.m; sourceTree = "<group>"; };
+		0E990E861990BCAF002933C4 /* DMSlideTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMSlideTransition.h; sourceTree = "<group>"; };
 		0EAC1B0F197C54BD00393828 /* HFDropdownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFDropdownMenu.h; sourceTree = "<group>"; };
 		0EAC1B10197C54BD00393828 /* HFDropdownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFDropdownMenu.m; sourceTree = "<group>"; };
 		0EAC1B12197C577800393828 /* HFDropdownMenuButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFDropdownMenuButton.h; sourceTree = "<group>"; };
 		0EAC1B13197C577800393828 /* HFDropdownMenuButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFDropdownMenuButton.m; sourceTree = "<group>"; };
-		0EAC1B16197C592200393828 /* UIViewController+ORNDropdownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ORNDropdownMenu.h"; sourceTree = "<group>"; };
-		0EAC1B17197C592200393828 /* UIViewController+ORNDropdownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ORNDropdownMenu.m"; sourceTree = "<group>"; };
+		0EAC1B16197C592200393828 /* UIViewController+HFDropdownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+HFDropdownMenu.h"; sourceTree = "<group>"; };
+		0EAC1B17197C592200393828 /* UIViewController+HFDropdownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+HFDropdownMenu.m"; sourceTree = "<group>"; };
 		0EC8141F197C828A009F0D99 /* HFPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFPostViewController.h; sourceTree = "<group>"; };
 		0EC81420197C828A009F0D99 /* HFPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFPostViewController.m; sourceTree = "<group>"; };
 		0EC81424197C8D1C009F0D99 /* HFCommentsButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFCommentsButton.h; sourceTree = "<group>"; };
@@ -101,8 +111,11 @@
 		0EC81431197C9C15009F0D99 /* UIFont+HFAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+HFAdditions.m"; sourceTree = "<group>"; };
 		0EC81433197CA8FA009F0D99 /* HFCommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFCommentTableViewCell.h; sourceTree = "<group>"; };
 		0EC81434197CA8FA009F0D99 /* HFCommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFCommentTableViewCell.m; sourceTree = "<group>"; };
+		0ECF6054199171F60088C8E6 /* HFTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFTableViewCell.h; sourceTree = "<group>"; };
+		0ECF6055199171F60088C8E6 /* HFTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFTableViewCell.m; sourceTree = "<group>"; };
 		0EDEBD62197E2ED00080D446 /* HFDropdownMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFDropdownMenuController.h; sourceTree = "<group>"; };
 		0EDEBD63197E2ED00080D446 /* HFDropdownMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFDropdownMenuController.m; sourceTree = "<group>"; };
+		0EE17184198FED0700DBB6F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		0EE28389198394BB00D3A3C6 /* HFUserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFUserProfileViewController.h; sourceTree = "<group>"; };
 		0EE2838A198394BB00D3A3C6 /* HFUserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFUserProfileViewController.m; sourceTree = "<group>"; };
 		0EE6CADF19845B37005AE100 /* HFCommentActionsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFCommentActionsView.h; sourceTree = "<group>"; };
@@ -118,7 +131,6 @@
 		0EE791C91950318D00925E4F /* HFAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HFAppDelegate.h; sourceTree = "<group>"; };
 		0EE791CA1950318D00925E4F /* HFAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HFAppDelegate.m; sourceTree = "<group>"; };
 		0EE791CD1950318D00925E4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
-		0EE791D01950318D00925E4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		0EE791D21950318D00925E4F /* HFPostListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HFPostListViewController.h; sourceTree = "<group>"; };
 		0EE791D31950318D00925E4F /* HFPostListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HFPostListViewController.m; sourceTree = "<group>"; };
 		0EE791D51950318D00925E4F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -175,6 +187,8 @@
 		0E520C54197C7B1F00E94DBD /* Table View Cells */ = {
 			isa = PBXGroup;
 			children = (
+				0ECF6054199171F60088C8E6 /* HFTableViewCell.h */,
+				0ECF6055199171F60088C8E6 /* HFTableViewCell.m */,
 				0E1FC633197C4B4700B41804 /* HFPostTableViewCell.h */,
 				0E1FC634197C4B4700B41804 /* HFPostTableViewCell.m */,
 				0EEBD373197DD52400D74AD6 /* HFPostInfoTableViewCell.h */,
@@ -221,6 +235,26 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		0E6BFD98198F31AC0052DDAF /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = iPad;
+			sourceTree = "<group>";
+		};
+		0E990E811990BA41002933C4 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				0E990E821990BA65002933C4 /* DMBaseTransition.m */,
+				0E990E831990BA65002933C4 /* DMBaseTransition.h */,
+				0E990E851990BCAF002933C4 /* DMSlideTransition.m */,
+				0E990E861990BCAF002933C4 /* DMSlideTransition.h */,
+				0E990E7E1990BA30002933C4 /* DMScaleTransition.h */,
+				0E990E7F1990BA30002933C4 /* DMScaleTransition.m */,
+			);
+			name = Vendor;
+			sourceTree = "<group>";
+		};
 		0EAC1B15197C577D00393828 /* Dropdown */ = {
 			isa = PBXGroup;
 			children = (
@@ -232,8 +266,8 @@
 				0E520C52197C73F900E94DBD /* HFDropdownMenuItem.m */,
 				0EAC1B12197C577800393828 /* HFDropdownMenuButton.h */,
 				0EAC1B13197C577800393828 /* HFDropdownMenuButton.m */,
-				0EAC1B16197C592200393828 /* UIViewController+ORNDropdownMenu.h */,
-				0EAC1B17197C592200393828 /* UIViewController+ORNDropdownMenu.m */,
+				0EAC1B16197C592200393828 /* UIViewController+HFDropdownMenu.h */,
+				0EAC1B17197C592200393828 /* UIViewController+HFDropdownMenu.m */,
 			);
 			name = Dropdown;
 			sourceTree = "<group>";
@@ -284,7 +318,6 @@
 			children = (
 				0EE791C01950318D00925E4F /* HackerFeed */,
 				0EE791E21950318D00925E4F /* HackerFeedTests */,
-				0EEBD390197DE3A400D74AD6 /* Vendor */,
 				0EE791B91950318D00925E4F /* Frameworks */,
 				0EE791B81950318D00925E4F /* Products */,
 				63E58BE6748342088838F989 /* Pods-HackerFeed.xcconfig */,
@@ -317,14 +350,15 @@
 		0EE791C01950318D00925E4F /* HackerFeed */ = {
 			isa = PBXGroup;
 			children = (
+				0E6BFD98198F31AC0052DDAF /* iPad */,
 				0EE791C91950318D00925E4F /* HFAppDelegate.h */,
 				0EE791CA1950318D00925E4F /* HFAppDelegate.m */,
-				0E5C453C19838142001EE1CB /* Models */,
 				0EDEBD61197E28F60080D446 /* Categories */,
-				0E520C55197C81B500E94DBD /* View Controllers */,
+				0E5C453C19838142001EE1CB /* Models */,
 				0EC81423197C8BD4009F0D99 /* Views */,
+				0E520C55197C81B500E94DBD /* View Controllers */,
 				0EE791CC1950318D00925E4F /* Main_iPhone.storyboard */,
-				0EE791CF1950318D00925E4F /* Main_iPad.storyboard */,
+				0EE17183198FED0700DBB6F9 /* Main_iPad.storyboard */,
 				0EE791D51950318D00925E4F /* Images.xcassets */,
 				0EE791C11950318D00925E4F /* Supporting Files */,
 			);
@@ -335,6 +369,7 @@
 			isa = PBXGroup;
 			children = (
 				0EC8142D197C9924009F0D99 /* Fonts */,
+				0E990E811990BA41002933C4 /* Vendor */,
 				0EE791C21950318D00925E4F /* HackerFeed-Info.plist */,
 				0EE791C31950318D00925E4F /* InfoPlist.strings */,
 				0EE791C61950318D00925E4F /* main.m */,
@@ -359,14 +394,6 @@
 				0EE791E51950318D00925E4F /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		0EEBD390197DE3A400D74AD6 /* Vendor */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Vendor;
-			path = Orange;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -415,10 +442,13 @@
 		0EE791AF1950318D00925E4F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				CLASSPREFIX = ORN;
+				CLASSPREFIX = HF;
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Nealon Young";
 				TargetAttributes = {
+					0EE791B61950318D00925E4F = {
+						DevelopmentTeam = 3KNK86UB96;
+					};
 					0EE791DA1950318D00925E4F = {
 						TestTargetID = 0EE791B61950318D00925E4F;
 					};
@@ -449,11 +479,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				0EC8142C197C98B5009F0D99 /* SourceSansPro-Semibold.otf in Resources */,
-				0EE791D11950318D00925E4F /* Main_iPad.storyboard in Resources */,
 				0E3C12CA19881D9700AAF072 /* SourceSansPro-Light.otf in Resources */,
 				0EE791D61950318D00925E4F /* Images.xcassets in Resources */,
 				0EC8142B197C98B5009F0D99 /* SourceSansPro-Regular.otf in Resources */,
 				0EC8142A197C98B5009F0D99 /* SourceSansPro-Bold.otf in Resources */,
+				0EE17185198FED0700DBB6F9 /* Main_iPad.storyboard in Resources */,
 				0EE791CE1950318D00925E4F /* Main_iPhone.storyboard in Resources */,
 				0EE791C51950318D00925E4F /* InfoPlist.strings in Resources */,
 			);
@@ -510,9 +540,11 @@
 				0E520C53197C73F900E94DBD /* HFDropdownMenuItem.m in Sources */,
 				0EDEBD64197E2ED00080D446 /* HFDropdownMenuController.m in Sources */,
 				0EC81432197C9C15009F0D99 /* UIFont+HFAdditions.m in Sources */,
+				0E990E801990BA30002933C4 /* DMScaleTransition.m in Sources */,
 				0EEBD378197DD74D00D74AD6 /* HFProfileViewController.m in Sources */,
 				0EC81421197C828A009F0D99 /* HFPostViewController.m in Sources */,
 				0EE791CB1950318D00925E4F /* HFAppDelegate.m in Sources */,
+				0E990E871990BCAF002933C4 /* DMSlideTransition.m in Sources */,
 				0E511CA3198C0B3300F94E9F /* HFTextFieldTableViewCell.m in Sources */,
 				0EE6CAE119845B37005AE100 /* HFCommentActionsView.m in Sources */,
 				0E2F35C0198B8BF700718E1A /* HFNewPostViewController.m in Sources */,
@@ -525,14 +557,16 @@
 				0EE791C71950318D00925E4F /* main.m in Sources */,
 				0EE791D41950318D00925E4F /* HFPostListViewController.m in Sources */,
 				0E6C30DF197F5DCB00C33A67 /* HFLoginViewController.m in Sources */,
-				0EAC1B18197C592200393828 /* UIViewController+ORNDropdownMenu.m in Sources */,
+				0EAC1B18197C592200393828 /* UIViewController+HFDropdownMenu.m in Sources */,
 				0EAC1B14197C577800393828 /* HFDropdownMenuButton.m in Sources */,
 				0EEBD396197E026300D74AD6 /* UIColor+HFAdditions.m in Sources */,
 				0EC81426197C8D1C009F0D99 /* HFCommentsButton.m in Sources */,
 				0E5C453B19838135001EE1CB /* HFFilterPostDataSource.m in Sources */,
+				0E990E841990BA65002933C4 /* DMBaseTransition.m in Sources */,
 				0E57B5B4198C2D6C0056CA54 /* HFTextViewTableViewCell.m in Sources */,
 				0EEBD375197DD52400D74AD6 /* HFPostInfoTableViewCell.m in Sources */,
 				0EFC253C1985D9D800A67412 /* HFCommentToolbar.m in Sources */,
+				0ECF6056199171F60088C8E6 /* HFTableViewCell.m in Sources */,
 				0EFC253F1986026500A67412 /* HFTextView.m in Sources */,
 				0E926CD219835AB30078E148 /* HFBorderedButton.m in Sources */,
 			);
@@ -557,6 +591,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		0EE17183198FED0700DBB6F9 /* Main_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0EE17184198FED0700DBB6F9 /* Base */,
+			);
+			name = Main_iPad.storyboard;
+			sourceTree = "<group>";
+		};
 		0EE791C31950318D00925E4F /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -571,14 +613,6 @@
 				0EE791CD1950318D00925E4F /* Base */,
 			);
 			name = Main_iPhone.storyboard;
-			sourceTree = "<group>";
-		};
-		0EE791CF1950318D00925E4F /* Main_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0EE791D01950318D00925E4F /* Base */,
-			);
-			name = Main_iPad.storyboard;
 			sourceTree = "<group>";
 		};
 		0EE791E51950318D00925E4F /* InfoPlist.strings */ = {
@@ -670,12 +704,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HackerFeed/HackerFeed-Prefix.pch";
 				INFOPLIST_FILE = "HackerFeed/HackerFeed-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = HackerFeed;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -686,12 +721,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HackerFeed/HackerFeed-Prefix.pch";
 				INFOPLIST_FILE = "HackerFeed/HackerFeed-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = HackerFeed;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

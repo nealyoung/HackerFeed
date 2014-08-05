@@ -12,15 +12,38 @@
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    
     if (self) {
-        // Initialization code
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        self.usernameLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        [self.usernameLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+        self.usernameLabel.font = [UIFont applicationFontOfSize:18.0f];
+        [self.contentView addSubview:self.usernameLabel];
+        
+        self.ageLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        [self.ageLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+        self.ageLabel.textColor = [UIColor darkGrayColor];
+        self.ageLabel.font = [UIFont smallCapsApplicationFontWithSize:16.0f];
+        [self.contentView addSubview:self.ageLabel];
+        
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-15-[_usernameLabel]-15-|"
+                                                                                 options:0
+                                                                                 metrics:nil
+                                                                                   views:NSDictionaryOfVariableBindings(_usernameLabel)]];
+        
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-15-[_ageLabel]-15-|"
+                                                                                 options:0
+                                                                                 metrics:nil
+                                                                                   views:NSDictionaryOfVariableBindings(_ageLabel)]];
+        
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-4-[_usernameLabel][_ageLabel]-4-|"
+                                                                                 options:0
+                                                                                 metrics:nil
+                                                                                   views:NSDictionaryOfVariableBindings(_usernameLabel, _ageLabel)]];
     }
+    
     return self;
-}
-
-- (void)awakeFromNib {
-    self.usernameLabel.font = [UIFont applicationFontOfSize:18.0f];
-    self.ageLabel.font = [UIFont smallCapsApplicationFontWithSize:self.ageLabel.font.pointSize];
 }
 
 @end

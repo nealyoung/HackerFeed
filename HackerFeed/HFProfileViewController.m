@@ -13,6 +13,7 @@
 #import "HFUserPostDataSource.h"
 #import "HFPostListViewController.h"
 #import "HFTextViewTableViewCell.h"
+#import "HFTableViewCell.h"
 
 @interface HFProfileViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -35,8 +36,40 @@ static NSString * const kUserSubmissionsTableViewCellIdentifier = @"UserSubmissi
     return self;
 }
 
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    
+    if (self) {
+        self.title = NSLocalizedString(@"Profile", nil);
+        
+        self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+        [self.tableView setTranslatesAutoresizingMaskIntoConstraints:NO];
+        self.tableView.dataSource = self;
+        self.tableView.delegate = self;
+        [self.view addSubview:self.tableView];
+        
+        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_tableView]|"
+                                                                          options:0
+                                                                          metrics:nil
+                                                                            views:NSDictionaryOfVariableBindings(_tableView)]];
+        
+        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_tableView]|"
+                                                                          options:0
+                                                                          metrics:nil
+                                                                            views:NSDictionaryOfVariableBindings(_tableView)]];
+    }
+    
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self.tableView registerClass:[HFUserInfoTableViewCell class] forCellReuseIdentifier:kUserInfoTableViewCellIdentifier];
+    [self.tableView registerClass:[HFTextViewTableViewCell class] forCellReuseIdentifier:kTextViewTableViewCellIdentifier];
+    [self.tableView registerClass:[HFTableViewCell class] forCellReuseIdentifier:kUserKarmaTableViewCellIdentifier];
+    [self.tableView registerClass:[HFTableViewCell class] forCellReuseIdentifier:kUserSubmissionsTableViewCellIdentifier];
+    
     self.tableView.rowHeight = UITableViewAutomaticDimension;
 }
 
@@ -84,10 +117,9 @@ static NSString * const kUserSubmissionsTableViewCellIdentifier = @"UserSubmissi
 
             return cell;
         } else if (indexPath.row == 1) {
-            UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:kUserKarmaTableViewCellIdentifier
+            HFTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:kUserKarmaTableViewCellIdentifier
                                                                          forIndexPath:indexPath];
-            cell.textLabel.font = [UIFont applicationFontOfSize:cell.textLabel.font.pointSize];
-            cell.detailTextLabel.font = [UIFont applicationFontOfSize:cell.detailTextLabel.font.pointSize];
+            cell.textLabel.text = NSLocalizedString(@"Karma", nil);
             cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", self.user.Karma];
             
             return cell;
@@ -99,9 +131,10 @@ static NSString * const kUserSubmissionsTableViewCellIdentifier = @"UserSubmissi
             return cell;
         }
     } else {
-        UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:kUserSubmissionsTableViewCellIdentifier
+        HFTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:kUserSubmissionsTableViewCellIdentifier
                                                                      forIndexPath:indexPath];
-        cell.textLabel.font = [UIFont applicationFontOfSize:cell.textLabel.font.pointSize];
+        cell.textLabel.text = NSLocalizedString(@"Submissions", nil);
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         
         return cell;
     }
@@ -119,16 +152,17 @@ static NSString * const kUserSubmissionsTableViewCellIdentifier = @"UserSubmissi
             static HFTextViewTableViewCell *textViewMetricsCell;
             
             if (!textViewMetricsCell) {
-                textViewMetricsCell = [tableView dequeueReusableCellWithIdentifier:kTextViewTableViewCellIdentifier];
+                textViewMetricsCell = [[HFTextViewTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
             }
             
             textViewMetricsCell.bounds = CGRectMake(0.0f, 0.0f, self.tableView.bounds.size.width, 9999.0f);
+            
             textViewMetricsCell.textView.text = self.user.AboutInfo;
             [textViewMetricsCell setNeedsLayout];
             [textViewMetricsCell layoutIfNeeded];
             
             // Get the actual height required for the cell
-            CGFloat height = [textViewMetricsCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+            CGFloat height = [textViewMetricsCell.contentView systemLayoutSizeFittingSize:UILayoutFittingExpandedSize].height;
             
             // Add an extra point to the height to account for the cell separator, which is added between the bottom of the cell's contentView and the bottom of the table view cell.
             height += 1;

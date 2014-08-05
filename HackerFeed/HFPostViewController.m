@@ -43,6 +43,8 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self.tableView registerClass:[HFPostInfoTableViewCell class] forCellReuseIdentifier:kPostInfoTableViewCellIdentifier];
+    
     self.commentCellHeightCache = [NSMutableDictionary dictionary];
     
     // Hide the upvote button if we're looking at a job post (that can't be voted on)
@@ -299,7 +301,7 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
         static HFPostInfoTableViewCell *postInfoMetricsCell;
 
         if (!postInfoMetricsCell) {
-            postInfoMetricsCell = [tableView dequeueReusableCellWithIdentifier:kPostInfoTableViewCellIdentifier];
+            postInfoMetricsCell = [[HFPostInfoTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
         }
         
         CGRect frame = postInfoMetricsCell.frame;
@@ -309,14 +311,13 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
         postInfoMetricsCell.titleLabel.text = self.post.Title;
         postInfoMetricsCell.infoLabel.text = [NSString stringWithFormat:@"%d points · %@", self.post.Points, self.post.TimeCreatedString];
         
-        // Force a layout.
+        [postInfoMetricsCell setNeedsLayout];
+        [postInfoMetricsCell layoutIfNeeded];
         [postInfoMetricsCell layoutSubviews];
         
-        // Get the layout size - we ignore the width - in the fact the width _could_ conceivably be zero.
-        // Note: Using content view is intentional.
-        CGSize theSize = [postInfoMetricsCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+        CGSize size = [postInfoMetricsCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
         
-        return (theSize.height + 1);
+        return (size.height + 1);
     } else if (indexPath.row == 1) {
         return 44.0f;
     } else {
@@ -331,9 +332,9 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
             commentMetricsCell = [tableView dequeueReusableCellWithIdentifier:kCommentTableViewCellIdentifier];
         }
         
-        CGRect theFrame = commentMetricsCell.frame;
-        theFrame.size.width = self.tableView.bounds.size.width;
-        //commentMetricsCell.frame = theFrame;
+        CGRect frame = commentMetricsCell.frame;
+        frame.size.width = self.tableView.bounds.size.width;
+        commentMetricsCell.frame = frame;
         
         HNComment *comment = self.comments[indexPath.row - 2];
         commentMetricsCell.textView.text = comment.Text;
@@ -353,11 +354,6 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
         [commentMetricsCell setNeedsLayout];
         [commentMetricsCell layoutIfNeeded];
         
-        // NSLog(@"%@", comment.Text);
-        // NSLog(@"%@", NSStringFromCGSize(commentMetricsCell.textView.intrinsicContentSize));
-        
-        // Get the layout size - we ignore the width - in the fact the width _could_ conceivably be zero.
-        // Note: Using content view is intentional.
         CGSize size = [commentMetricsCell.contentView systemLayoutSizeFittingSize:UILayoutFittingExpandedSize];
         CGFloat cellHeight = size.height + 1;
         
@@ -371,7 +367,18 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.row == 0) {
+        SVWebViewController *webViewController = [[SVWebViewController alloc] initWithAddress:self.post.UrlString];
+        [self.navigationController pushViewController:webViewController animated:YES];
+    } else if (indexPath.row == 1) {
+        HFProfileViewController *profileViewController = [[HFProfileViewController alloc] initWithNibName:nil bundle:nil];
+        [self.navigationController pushViewController:profileViewController animated:YES];
+        [[HNManager sharedManager] loadUserWithUsername:self.post.Username completion:^(HNUser *user) {
+            profileViewController.user = user;
+        }];
+    } else {
+        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    }
 }
 
 #pragma mark - UITextViewDelegate

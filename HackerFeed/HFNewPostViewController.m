@@ -25,9 +25,6 @@
 
 @end
 
-static const NSInteger kLinkSegmentIndex = 0;
-static const NSInteger kTextSegmentIndex = 1;
-
 static NSString * const kTextFieldTableViewCellIdentifier = @"TextFieldTableViewCell";
 static NSString * const kTextViewTableViewCellIdentifier = @"TextViewTableViewCell";
 
@@ -66,7 +63,7 @@ static NSString * const kTextViewTableViewCellIdentifier = @"TextViewTableViewCe
 }
 
 - (IBAction)submitButtonPressed:(id)sender {
-    if (self.segmentedControl.selectedSegmentIndex == kLinkSegmentIndex) {
+    if (self.segmentedControl.selectedSegmentIndex == 0) {
         [[HNManager sharedManager] submitPostWithTitle:self.titleTextField.text
                                                   link:self.urlTextField.text
                                                   text:nil
@@ -104,7 +101,7 @@ static NSString * const kTextViewTableViewCellIdentifier = @"TextViewTableViewCe
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.segmentedControl.selectedSegmentIndex == kLinkSegmentIndex) {
+    if (self.segmentedControl.selectedSegmentIndex == 0) {
         if (indexPath.row == 0) {
             HFTextFieldTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTextFieldTableViewCellIdentifier forIndexPath:indexPath];
             cell.titleLabel.text = NSLocalizedString(@"Title", nil);
@@ -122,6 +119,7 @@ static NSString * const kTextViewTableViewCellIdentifier = @"TextViewTableViewCe
         if (indexPath.row == 0) {
             HFTextFieldTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTextFieldTableViewCellIdentifier forIndexPath:indexPath];
             cell.titleLabel.text = NSLocalizedString(@"Title", nil);
+            
             return cell;
         } else {
             HFTextViewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTextViewTableViewCellIdentifier forIndexPath:indexPath];
@@ -137,7 +135,7 @@ static NSString * const kTextViewTableViewCellIdentifier = @"TextViewTableViewCe
 #pragma mark - UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.segmentedControl.selectedSegmentIndex == kLinkSegmentIndex) {
+    if (self.segmentedControl.selectedSegmentIndex == 0) {
         return 44.0f;
     } else {
         if (indexPath.row == 0) {

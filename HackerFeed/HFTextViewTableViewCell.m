@@ -12,14 +12,30 @@
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    
     if (self) {
-        // Initialization code
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        self.textView = [[HFTextView alloc] initWithFrame:CGRectZero];
+        [self.textView setTranslatesAutoresizingMaskIntoConstraints:NO];
+        self.textView.scrollEnabled = NO;
+        self.textView.editable = NO;
+        self.textView.textColor = [UIColor darkGrayColor];
+        self.textView.font = [UIFont applicationFontOfSize:15.0f];
+        [self.contentView addSubview:self.textView];
+        
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-10-[_textView]-10-|"
+                                                                                 options:0
+                                                                                 metrics:nil
+                                                                                   views:NSDictionaryOfVariableBindings(_textView)]];
+        
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-4-[_textView]-4-|"
+                                                                                 options:0
+                                                                                 metrics:nil
+                                                                                   views:NSDictionaryOfVariableBindings(_textView)]];
     }
+    
     return self;
-}
-
-- (void)awakeFromNib {
-    self.textView.font = [UIFont applicationFontOfSize:15.0f];
 }
 
 @end
