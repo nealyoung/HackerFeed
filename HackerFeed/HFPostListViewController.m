@@ -34,18 +34,33 @@ static NSString * const kPostCommentsSegueIdentifier = @"PostCommentsSegue";
 @implementation HFPostListViewController
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
+    if (self) {
+        self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+        [self.tableView setTranslatesAutoresizingMaskIntoConstraints:NO];
+        self.tableView.dataSource = self;
+        self.tableView.delegate = self;
+        self.tableView.rowHeight = 72.0f;
+        [self.tableView registerClass:[HFPostTableViewCell class] forCellReuseIdentifier:kPostTableViewCellIdentifier];
+        [self.view addSubview:self.tableView];
+        
+        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_tableView]|"
+                                                                          options:0
+                                                                          metrics:nil
+                                                                            views:NSDictionaryOfVariableBindings(_tableView)]];
+        
+        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_tableView]|"
+                                                                          options:0
+                                                                          metrics:nil
+                                                                            views:NSDictionaryOfVariableBindings(_tableView)]];
+        
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose
+                                                                                               target:self
+                                                                                               action:@selector(newPostButtonPressed)];
+    }
     
-    [self.tableView registerClass:[HFPostTableViewCell class] forCellReuseIdentifier:kPostTableViewCellIdentifier];
-    
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose
-                                                                                           target:self
-                                                                                           action:@selector(newPostButtonPressed)];
-    [self refresh];
+    return self;
 }
 
 - (void)viewDidLayoutSubviews {
@@ -86,18 +101,6 @@ static NSString * const kPostCommentsSegueIdentifier = @"PostCommentsSegue";
     }
     
     return YES;
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:kPostSegueIdentifier]) {
-        HNPost *post = self.dataSource.posts[[self.tableView indexPathForSelectedRow].row];
-        SVWebViewController *webViewController = (SVWebViewController *)segue.destinationViewController;
-        [webViewController loadURL:[NSURL URLWithString:post.UrlString]];
-    } else if ([segue.identifier isEqualToString:kPostCommentsSegueIdentifier]) {
-        HFPostViewController *postViewController = (HFPostViewController *)segue.destinationViewController;
-        HFCommentsButton *commentsButton = (HFCommentsButton *)sender;
-        postViewController.post = self.dataSource.posts[commentsButton.tag];
-    }
 }
 
 - (void)refresh {
@@ -141,6 +144,13 @@ static NSString * const kPostCommentsSegueIdentifier = @"PostCommentsSegue";
     navigationController.transitioningDelegate = self.scaleTransition;
     
     [self presentViewController:navigationController animated:YES completion:nil];
+}
+
+#pragma mark - Getters/Setters
+
+- (void)setDataSource:(id<HFPostDataSource>)dataSource {
+    _dataSource = dataSource;
+    [self refresh];
 }
 
 #pragma mark - UITableViewDataSource

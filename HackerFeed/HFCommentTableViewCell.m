@@ -121,13 +121,13 @@
             self.commentActionsView.layer.backgroundColor = [UIColor colorWithWhite:0.2f alpha:1.0f].CGColor;
             CATransform3D transform = CATransform3DMakeRotation(M_PI_2, 0, 0, 0);
             transform.m34 = -1.0f / 500.0f;
-            self.commentActionsView.layer.transform = transform;
+            //self.commentActionsView.layer.transform = transform;
         } else {
             self.contentView.backgroundColor = [UIColor whiteColor];
             self.commentActionsView.layer.backgroundColor = [UIColor blackColor].CGColor;
             CATransform3D transform = CATransform3DMakeRotation(M_PI_2, -1, 0, 0);
             transform.m34 = -1.0f / 500.0f;
-            self.commentActionsView.layer.transform = transform;
+            //self.commentActionsView.layer.transform = transform;
         }
     }];
 }

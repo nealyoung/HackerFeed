@@ -20,8 +20,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     NSString *storyboardName = [UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone ? @"Main_iPhone" : @"Main_iPad";
     
-    HFPostListViewController *topStoriesViewController = [[UIStoryboard storyboardWithName:storyboardName
-                                                                                     bundle:nil] instantiateViewControllerWithIdentifier:@"PostListViewController"];
+    HFPostListViewController *topStoriesViewController = [[HFPostListViewController alloc] initWithNibName:nil bundle:nil];
     topStoriesViewController.dataSource = [[HFFilterPostDataSource alloc] initWithPostFilterType:PostFilterTypeTop];
     topStoriesViewController.title = NSLocalizedString(@"Top Stories", nil);
     

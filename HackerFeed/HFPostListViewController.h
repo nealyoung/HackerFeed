@@ -20,7 +20,7 @@
 
 @interface HFPostListViewController : UIViewController
 
-@property IBOutlet UITableView *tableView;
+@property UITableView *tableView;
 
 @property (nonatomic) id <HFPostDataSource> dataSource;
 @property (nonatomic) PostFilterType postFilterType;
