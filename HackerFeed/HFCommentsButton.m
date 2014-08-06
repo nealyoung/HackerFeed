@@ -41,11 +41,11 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     
-    NSLog(@"laid out");
-    
     // Vertically center the label within the comment box
     self.titleLabel.center = CGPointMake(self.titleLabel.center.x,
                                          self.titleLabel.center.y - (0.05f * CGRectGetHeight(self.frame)));
+    
+    
 }
 
 - (void)drawRect:(CGRect)rect {

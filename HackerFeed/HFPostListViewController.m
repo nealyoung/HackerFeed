@@ -33,6 +33,10 @@ static NSString * const kPostCommentsSegueIdentifier = @"PostCommentsSegue";
 
 @implementation HFPostListViewController
 
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -122,7 +126,7 @@ static NSString * const kPostCommentsSegueIdentifier = @"PostCommentsSegue";
 }
 
 - (void)commentsButtonPressed:(id)sender {
-    HFPostViewController *postViewController = [[UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil] instantiateViewControllerWithIdentifier:@"PostViewController"];
+    HFPostViewController *postViewController = [[HFPostViewController alloc] initWithNibName:nil bundle:nil];
     HFCommentsButton *commentsButton = (HFCommentsButton *)sender;
     postViewController.post = self.dataSource.posts[commentsButton.tag];
     

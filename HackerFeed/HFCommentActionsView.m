@@ -48,7 +48,7 @@
         
         self.bottomBorderView = [[UIView alloc] initWithFrame:CGRectZero];
         [self.bottomBorderView setTranslatesAutoresizingMaskIntoConstraints:NO];
-        self.bottomBorderView.backgroundColor = self.tintColor;
+        self.bottomBorderView.backgroundColor = [UIColor magentaColor];
         
         [self addSubview:self.bottomBorderView];
         
@@ -106,6 +106,10 @@
     }
     
     return self;
+}
+
+- (void)tintColorDidChange {
+    self.bottomBorderView.tintColor = self.window.tintColor;
 }
 
 - (void)commonInit {

@@ -18,9 +18,10 @@
 
 @interface HFPostViewController () <HFCommentTableViewCellDelegate, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate>
 
-@property IBOutlet UITableView *tableView;
-@property IBOutlet UIBarButtonItem *upvoteButton;
-@property IBOutlet HFCommentToolbar *commentToolbar;
+@property UITableView *tableView;
+@property UIBarButtonItem *upvoteButton;
+@property HFCommentToolbar *commentToolbar;
+@property NSLayoutConstraint *commentToolbarHeightConstraint;
 
 @property NSIndexPath *expandedIndexPath;
 @property NSArray *comments;
@@ -28,7 +29,8 @@
 
 @property NSMutableDictionary *commentCellHeightCache;
 
-- (IBAction)upvoteButtonPressed:(id)sender;
+- (void)addKeyboardNotificationObservers;
+- (void)upvoteButtonPressed:(id)sender;
 
 @end
 
@@ -41,32 +43,117 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
 
 @implementation HFPostViewController
 
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    self = [super initWithNibName:nil bundle:nil];
+    
+    if (self) {
+        self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+        [self.tableView setTranslatesAutoresizingMaskIntoConstraints:NO];
+        self.tableView.dataSource = self;
+        self.tableView.delegate = self;
+        [self.tableView registerClass:[HFPostInfoTableViewCell class] forCellReuseIdentifier:kPostInfoTableViewCellIdentifier];
+        [self.tableView registerClass:[HFTableViewCell class] forCellReuseIdentifier:kUsernameTableViewCellIdentifier];
+        [self.tableView registerClass:[HFCommentTableViewCell class] forCellReuseIdentifier:kCommentTableViewCellIdentifier];
+        [self.view addSubview:self.tableView];
+        
+        self.commentToolbar = [[HFCommentToolbar alloc] initWithFrame:CGRectZero];
+        [self.commentToolbar setTranslatesAutoresizingMaskIntoConstraints:NO];
+        self.commentToolbar.textView.placeholder = NSLocalizedString(@"Comment", nil);
+        self.commentToolbar.textView.delegate = self;
+        [self.commentToolbar.cancelReplyButton addTarget:self
+                                                  action:@selector(cancelReplyButtonPressed:)
+                                        forControlEvents:UIControlEventTouchUpInside];
+        [self.commentToolbar.submitButton addTarget:self
+                                             action:@selector(submitCommentButtonPressed:)
+                                   forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:self.commentToolbar];
+        
+        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_tableView]|"
+                                                                          options:0
+                                                                          metrics:nil
+                                                                            views:NSDictionaryOfVariableBindings(_tableView)]];
+        
+        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_commentToolbar]|"
+                                                                          options:0
+                                                                          metrics:nil
+                                                                            views:NSDictionaryOfVariableBindings(_commentToolbar)]];
+        
+        
+        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_tableView][_commentToolbar]|"
+                                                                          options:0
+                                                                          metrics:nil
+                                                                            views:NSDictionaryOfVariableBindings(_tableView, _commentToolbar)]];
+        
+        self.commentToolbarHeightConstraint = [NSLayoutConstraint constraintWithItem:self.commentToolbar
+                                                                           attribute:NSLayoutAttributeHeight
+                                                                           relatedBy:NSLayoutRelationEqual
+                                                                              toItem:nil
+                                                                           attribute:NSLayoutAttributeNotAnAttribute
+                                                                          multiplier:1.0f
+                                                                            constant:44.0f];
+        
+        id <UILayoutSupport> topGuide = self.topLayoutGuide;
+        
+        // Ensure the comment toolbar doesn't expand under the navigation bar when the user is typing a long comment
+        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topGuide]-(>=0)-[_commentToolbar]"
+                                                                          options:0
+                                                                          metrics:nil
+                                                                            views:NSDictionaryOfVariableBindings(topGuide, _commentToolbar)]];
+        
+        [self addKeyboardNotificationObservers];
+    }
+    
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.tableView registerClass:[HFPostInfoTableViewCell class] forCellReuseIdentifier:kPostInfoTableViewCellIdentifier];
-    [self.tableView registerClass:[HFTableViewCell class] forCellReuseIdentifier:kUsernameTableViewCellIdentifier];
-    [self.tableView registerClass:[HFCommentTableViewCell class] forCellReuseIdentifier:kCommentTableViewCellIdentifier];
+    self.upvoteButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"UpvoteIcon"] style:UIBarButtonItemStyleBordered target:self action:@selector(upvoteButtonPressed:)];
+    self.navigationItem.rightBarButtonItem = self.upvoteButton;
     
     self.commentCellHeightCache = [NSMutableDictionary dictionary];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+}
+
+- (void)setPost:(HNPost *)post {
+    _post = post;
     
     // Hide the upvote button if we're looking at a job post (that can't be voted on)
-    if (self.post.Type == PostTypeJobs) {
+    if (post.Type == PostTypeJobs) {
         self.navigationItem.rightBarButtonItem = nil;
     } else {
-        self.upvoteButton.enabled = ![[HNManager sharedManager] hasVotedOnObject:self.post];
+        self.upvoteButton.enabled = ![[HNManager sharedManager] hasVotedOnObject:post];
     }
     
-    self.commentToolbar.textView.placeholder = NSLocalizedString(@"Comment", nil);
-    self.commentToolbar.textView.delegate = self;
+    // Clear the cell height cache
+    self.commentCellHeightCache = [NSMutableDictionary dictionary];
     
-    [self.commentToolbar.cancelReplyButton addTarget:self
-                                              action:@selector(cancelReplyButtonPressed:)
-                                    forControlEvents:UIControlEventTouchUpInside];
-    [self.commentToolbar.submitButton addTarget:self
-                                         action:@selector(submitCommentButtonPressed:)
-                               forControlEvents:UIControlEventTouchUpInside];
-    
+    [[HNManager sharedManager] loadCommentsFromPost:post completion:^(NSArray *comments) {
+        self.comments = comments;
+        [self.tableView reloadData];
+    }];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:kCommentsWebSegueIdentifier]) {
+        SVWebViewController *webViewController = (SVWebViewController *)segue.destinationViewController;
+        [webViewController loadURL:[NSURL URLWithString:self.post.UrlString]];
+    } else if ([segue.identifier isEqualToString:kCommentsProfileSegueIdentifier]) {
+        HFProfileViewController *profileViewController = (HFProfileViewController *)segue.destinationViewController;
+        [[HNManager sharedManager] loadUserWithUsername:self.post.Username completion:^(HNUser *user) {
+            profileViewController.user = user;
+        }];
+    } else if ([segue.identifier isEqualToString:kCommentsProfileSegueIdentifier] ) {
+        
+    };
+}
+
+- (void)addKeyboardNotificationObservers {
     [[NSNotificationCenter defaultCenter] addObserverForName:UIKeyboardWillShowNotification
                                                       object:nil
                                                        queue:[NSOperationQueue mainQueue]
@@ -93,54 +180,23 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
                                                        queue:[NSOperationQueue mainQueue]
                                                   usingBlock:^(NSNotification *note) {
                                                       // [self performIfVisible:^{
-                                                          CGRect keyboardFrame = [self.view convertRect:[(NSValue *)note.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue]
-                                                                                               fromView:nil];
-                                                          CGRect viewFrame = self.view.frame;
-                                                          viewFrame.size.height += keyboardFrame.size.height;
-                                                          
-                                                          UIViewAnimationCurve curve = [note.userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue];
-                                                          NSTimeInterval animationDuration = [note.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-                                                          
-                                                          [UIView animateWithDuration:animationDuration
-                                                                                delay:0
-                                                                              options:UIViewAnimationOptionBeginFromCurrentState | curve
-                                                                           animations:^{
-                                                                               self.view.frame = viewFrame;
-                                                                           }
-                                                                           completion:nil];
+                                                      CGRect keyboardFrame = [self.view convertRect:[(NSValue *)note.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue]
+                                                                                           fromView:nil];
+                                                      CGRect viewFrame = self.view.frame;
+                                                      viewFrame.size.height += keyboardFrame.size.height;
+                                                      
+                                                      UIViewAnimationCurve curve = [note.userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue];
+                                                      NSTimeInterval animationDuration = [note.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+                                                      
+                                                      [UIView animateWithDuration:animationDuration
+                                                                            delay:0
+                                                                          options:UIViewAnimationOptionBeginFromCurrentState | curve
+                                                                       animations:^{
+                                                                           self.view.frame = viewFrame;
+                                                                       }
+                                                                       completion:nil];
                                                       // }];
                                                   }];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
-}
-
-- (void)setPost:(HNPost *)post {
-    _post = post;
-    
-    // Clear the cell height cache
-    self.commentCellHeightCache = [NSMutableDictionary dictionary];
-    
-    [[HNManager sharedManager] loadCommentsFromPost:post completion:^(NSArray *comments) {
-        self.comments = comments;
-        [self.tableView reloadData];
-    }];
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:kCommentsWebSegueIdentifier]) {
-        SVWebViewController *webViewController = (SVWebViewController *)segue.destinationViewController;
-        [webViewController loadURL:[NSURL URLWithString:self.post.UrlString]];
-    } else if ([segue.identifier isEqualToString:kCommentsProfileSegueIdentifier]) {
-        HFProfileViewController *profileViewController = (HFProfileViewController *)segue.destinationViewController;
-        [[HNManager sharedManager] loadUserWithUsername:self.post.Username completion:^(HNUser *user) {
-            profileViewController.user = user;
-        }];
-    } else if ([segue.identifier isEqualToString:kCommentsProfileSegueIdentifier] ) {
-        
-    };
 }
 
 - (void)upvoteButtonPressed:(id)sender {
@@ -191,7 +247,7 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
 - (void)userButtonPressed:(UIButton *)sender {
     HNComment *comment = self.comments[sender.tag];
     
-    HFProfileViewController *profileViewController = [[UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil] instantiateViewControllerWithIdentifier:@"ProfileViewController"];
+    HFProfileViewController *profileViewController = [[HFProfileViewController alloc] initWithNibName:nil bundle:nil];
     [[HNManager sharedManager] loadUserWithUsername:comment.Username completion:^(HNUser *user) {
         profileViewController.user = user;
     }];
@@ -221,7 +277,7 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
     }];
 }
 
-#pragma mark - ORNCommentTableViewCellDelegate
+#pragma mark - HFCommentTableViewCellDelegate
 
 - (void)commentTableViewCellTapped:(HFCommentTableViewCell *)cell {
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
@@ -258,8 +314,7 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
-        HFPostInfoTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:kPostInfoTableViewCellIdentifier
-                                                                              forIndexPath:indexPath];
+        HFPostInfoTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:kPostInfoTableViewCellIdentifier forIndexPath:indexPath];
         cell.titleLabel.text = self.post.Title;
         cell.infoLabel.text = [NSString stringWithFormat:@"%d points · %@", self.post.Points, self.post.TimeCreatedString];
         return cell;
@@ -273,32 +328,39 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         
         return cell;
-    }
-
-    HFCommentTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:kCommentTableViewCellIdentifier forIndexPath:indexPath];
-    cell.delegate = self;
-    
-    HNComment *comment = self.comments[indexPath.row - 2];
-    cell.textView.text = comment.Text;
-    cell.textView.textContainerInset = UIEdgeInsetsZero;
-    cell.usernameLabel.text = comment.Username;
-    cell.usernameLabelLeadingConstraint.constant = 15.0f + (comment.Level * 15.0f);
-    cell.textViewLeadingConstraint.constant = 10.0f + (comment.Level * 15.0f);
-    cell.toolbarHeightConstraint.constant = 0.0f;
-    cell.commentActionsView.upvoteButton.tag = indexPath.row - 2;
-    cell.commentActionsView.upvoteButton.enabled = ![[HNManager sharedManager] hasVotedOnObject:comment];
-    cell.commentActionsView.replyButton.tag = indexPath.row - 2;
-    cell.commentActionsView.userButton.tag = indexPath.row - 2;
-    
-    if ([self.expandedIndexPath isEqual:indexPath]) {
-        [cell setExpanded:YES animated:NO];
     } else {
-        [cell setExpanded:NO animated:NO];
+        HFCommentTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:kCommentTableViewCellIdentifier forIndexPath:indexPath];
+        cell.delegate = self;
+        
+        HNComment *comment = self.comments[indexPath.row - 2];
+        cell.textView.text = comment.Text;
+        cell.textView.textContainerInset = UIEdgeInsetsZero;
+        cell.usernameLabel.text = comment.Username;
+        
+        cell.usernameLabelLeadingConstraint.constant = 15.0f + (comment.Level * 15.0f);
+        cell.textViewLeadingConstraint.constant = 10.0f + (comment.Level * 15.0f);
+        cell.toolbarHeightConstraint.constant = 0.0f;
+        
+        [cell.commentActionsView.upvoteButton addTarget:self action:@selector(upvoteCommentButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+        cell.commentActionsView.upvoteButton.tag = indexPath.row - 2;
+        cell.commentActionsView.upvoteButton.enabled = ![[HNManager sharedManager] hasVotedOnObject:comment];
+        
+        [cell.commentActionsView.replyButton addTarget:self action:@selector(commentReplyButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+        cell.commentActionsView.replyButton.tag = indexPath.row - 2;
+        
+        [cell.commentActionsView.userButton addTarget:self action:@selector(userButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+        cell.commentActionsView.userButton.tag = indexPath.row - 2;
+        
+        if ([self.expandedIndexPath isEqual:indexPath]) {
+            [cell setExpanded:YES animated:NO];
+        } else {
+            [cell setExpanded:NO animated:NO];
+        }
+        
+        cell.separatorInset = UIEdgeInsetsMake(0.0f, 15.0f + (comment.Level * 15.0f), 0.0f, 0.0f);
+        
+        return cell;
     }
-    
-    cell.separatorInset = UIEdgeInsetsMake(0.0f, 15.0f + (comment.Level * 15.0f), 0.0f, 0.0f);
-    
-    return cell;
 }
 
 #pragma mark - UITableViewDelegate
@@ -362,7 +424,7 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
         [commentMetricsCell layoutIfNeeded];
         
         CGSize size = [commentMetricsCell.contentView systemLayoutSizeFittingSize:UILayoutFittingExpandedSize];
-        CGFloat cellHeight = size.height + 1;
+        CGFloat cellHeight = size.height - 12;
         
         // If the cell isn't expanded, cache the row height
         if (![indexPath isEqual:self.expandedIndexPath]) {
