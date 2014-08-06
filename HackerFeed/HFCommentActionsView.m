@@ -8,6 +8,12 @@
 
 #import "HFCommentActionsView.h"
 
+@interface HFCommentActionsView ()
+
+@property UIView *bottomBorderView;
+
+@end
+
 @implementation HFCommentActionsView
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
@@ -20,9 +26,85 @@
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
+    
     if (self) {
-        [self commonInit];
+        self.clipsToBounds = YES;
+        self.backgroundColor = [UIColor darkGrayColor];
+        
+        self.upvoteButton = [UIButton buttonWithType:UIButtonTypeSystem];
+        [self.upvoteButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+        [self.upvoteButton setImage:[UIImage imageNamed:@"UpvoteIcon"] forState:UIControlStateNormal];
+        [self addSubview:self.upvoteButton];
+        
+        self.replyButton = [UIButton buttonWithType:UIButtonTypeSystem];
+        [self.replyButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+        [self.replyButton setImage:[UIImage imageNamed:@"ReplyIcon"] forState:UIControlStateNormal];
+        [self addSubview:self.replyButton];
+        
+        self.userButton = [UIButton buttonWithType:UIButtonTypeSystem];
+        [self.userButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+        [self.userButton setImage:[UIImage imageNamed:@"UserIcon"] forState:UIControlStateNormal];
+        [self addSubview:self.userButton];
+        
+        self.bottomBorderView = [[UIView alloc] initWithFrame:CGRectZero];
+        [self.bottomBorderView setTranslatesAutoresizingMaskIntoConstraints:NO];
+        self.bottomBorderView.backgroundColor = self.tintColor;
+        
+        [self addSubview:self.bottomBorderView];
+        
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-20-[_upvoteButton(34)]"
+                                                                     options:0
+                                                                     metrics:nil
+                                                                       views:NSDictionaryOfVariableBindings(_upvoteButton)]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.upvoteButton
+                                                         attribute:NSLayoutAttributeCenterY
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self
+                                                         attribute:NSLayoutAttributeCenterY
+                                                        multiplier:1.0f
+                                                          constant:0.0f]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.replyButton
+                                                         attribute:NSLayoutAttributeCenterX
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self
+                                                         attribute:NSLayoutAttributeCenterX
+                                                        multiplier:1.0f
+                                                          constant:0.0f]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.replyButton
+                                                         attribute:NSLayoutAttributeCenterY
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self
+                                                         attribute:NSLayoutAttributeCenterY
+                                                        multiplier:1.0f
+                                                          constant:0.0f]];
+        
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[_userButton(34)]-20-|"
+                                                                     options:0
+                                                                     metrics:nil
+                                                                       views:NSDictionaryOfVariableBindings(_userButton)]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.userButton
+                                                         attribute:NSLayoutAttributeCenterY
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self
+                                                         attribute:NSLayoutAttributeCenterY
+                                                        multiplier:1.0f
+                                                          constant:0.0f]];
+        
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_bottomBorderView]|"
+                                                                     options:0
+                                                                     metrics:nil
+                                                                       views:NSDictionaryOfVariableBindings(_bottomBorderView)]];
+        
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_bottomBorderView(1)]|"
+                                                                     options:0
+                                                                     metrics:nil
+                                                                       views:NSDictionaryOfVariableBindings(_bottomBorderView)]];
     }
+    
     return self;
 }
 

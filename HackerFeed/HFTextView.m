@@ -51,6 +51,7 @@
     
     if (!CGSizeEqualToSize(self.bounds.size, [self intrinsicContentSize])) {
         [self invalidateIntrinsicContentSize];
+        [self setNeedsUpdateConstraints];
     }
 }
 

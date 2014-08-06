@@ -12,6 +12,7 @@
 #import "HFCommentToolbar.h"
 #import "HFPostInfoTableViewCell.h"
 #import "HFProfileViewController.h"
+#import "HFTableViewCell.h"
 #import "SVProgressHUD.h"
 #import "SVWebViewController.h"
 
@@ -44,6 +45,8 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
     [super viewDidLoad];
     
     [self.tableView registerClass:[HFPostInfoTableViewCell class] forCellReuseIdentifier:kPostInfoTableViewCellIdentifier];
+    [self.tableView registerClass:[HFTableViewCell class] forCellReuseIdentifier:kUsernameTableViewCellIdentifier];
+    [self.tableView registerClass:[HFCommentTableViewCell class] forCellReuseIdentifier:kCommentTableViewCellIdentifier];
     
     self.commentCellHeightCache = [NSMutableDictionary dictionary];
     
@@ -140,7 +143,7 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
     };
 }
 
-- (IBAction)upvoteButtonPressed:(id)sender {
+- (void)upvoteButtonPressed:(id)sender {
     if (![HNManager sharedManager].SessionUser) {
         [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"You must be signed in to vote", nil)];
         return;
@@ -160,7 +163,7 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
     }];
 }
 
-- (IBAction)upvoteCommentButtonPressed:(UIButton *)sender {
+- (void)upvoteCommentButtonPressed:(UIButton *)sender {
     if (![HNManager sharedManager].SessionUser) {
         [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"You must be signed in to vote", nil)];
         return;
@@ -179,13 +182,13 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
     }];
 }
 
-- (IBAction)commentReplyButtonPressed:(UIButton *)sender {
+- (void)commentReplyButtonPressed:(UIButton *)sender {
     self.commentToReply = self.comments[sender.tag];
     self.commentToolbar.replyUsername = self.commentToReply.Username;
     [self.commentToolbar.textView becomeFirstResponder];
 }
 
-- (IBAction)userButtonPressed:(UIButton *)sender {
+- (void)userButtonPressed:(UIButton *)sender {
     HNComment *comment = self.comments[sender.tag];
     
     HFProfileViewController *profileViewController = [[UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil] instantiateViewControllerWithIdentifier:@"ProfileViewController"];
@@ -261,10 +264,14 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
         cell.infoLabel.text = [NSString stringWithFormat:@"%d points · %@", self.post.Points, self.post.TimeCreatedString];
         return cell;
     } else if (indexPath.row == 1) {
-        UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:kUsernameTableViewCellIdentifier forIndexPath:indexPath];
+        HFTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:kUsernameTableViewCellIdentifier forIndexPath:indexPath];
+        cell.textLabel.textColor = [UIColor darkGrayColor];
         cell.textLabel.font = [UIFont smallCapsApplicationFontWithSize:cell.textLabel.font.pointSize];
+        cell.textLabel.text = NSLocalizedString(@"submitted by", nil);
         cell.detailTextLabel.font = [UIFont applicationFontOfSize:16.0f];
         cell.detailTextLabel.text = self.post.Username;
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        
         return cell;
     }
 
@@ -278,10 +285,10 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
     cell.usernameLabelLeadingConstraint.constant = 15.0f + (comment.Level * 15.0f);
     cell.textViewLeadingConstraint.constant = 10.0f + (comment.Level * 15.0f);
     cell.toolbarHeightConstraint.constant = 0.0f;
-    cell.upvoteButton.tag = indexPath.row - 2;
-    cell.upvoteButton.enabled = ![[HNManager sharedManager] hasVotedOnObject:comment];
-    cell.replyButton.tag = indexPath.row - 2;
-    cell.userButton.tag = indexPath.row - 2;
+    cell.commentActionsView.upvoteButton.tag = indexPath.row - 2;
+    cell.commentActionsView.upvoteButton.enabled = ![[HNManager sharedManager] hasVotedOnObject:comment];
+    cell.commentActionsView.replyButton.tag = indexPath.row - 2;
+    cell.commentActionsView.userButton.tag = indexPath.row - 2;
     
     if ([self.expandedIndexPath isEqual:indexPath]) {
         [cell setExpanded:YES animated:NO];

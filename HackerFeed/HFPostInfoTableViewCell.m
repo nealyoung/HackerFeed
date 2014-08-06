@@ -38,7 +38,7 @@
                                                                                  metrics:nil
                                                                                    views:NSDictionaryOfVariableBindings(_infoLabel)]];
         
-        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-4-[_titleLabel][_infoLabel]-4-|"
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-8-[_titleLabel][_infoLabel]-4-|"
                                                                                  options:0
                                                                                  metrics:nil
                                                                                    views:NSDictionaryOfVariableBindings(_titleLabel, _infoLabel)]];

@@ -10,4 +10,8 @@
 
 @interface HFCommentActionsView : UIView
 
+@property IBOutlet UIButton *upvoteButton;
+@property IBOutlet UIButton *replyButton;
+@property IBOutlet UIButton *userButton;
+
 @end

@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6205" systemVersion="14A314h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="N75-vx-1RW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="N75-vx-1RW">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6198"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <mutableArray key="SourceSansPro-Regular.otf">
-            <string>SourceSansPro-Regular</string>
-        </mutableArray>
-    </customFonts>
     <scenes>
         <!--Post List View Controller-->
         <scene sceneID="y2N-ZP-HS5">
@@ -247,7 +242,6 @@
         <!--Post View Controller-->
         <scene sceneID="qBE-o4-7ls">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Awt-PK-blF" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="PostViewController" id="aOX-pe-HRA" customClass="HFPostViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9pa-bg-JvG"/>
@@ -297,7 +291,7 @@
                                             <outlet property="titleLabel" destination="ctl-kb-50D" id="JCP-Ne-Q8Q"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="UsernameTableViewCell" textLabel="gUt-pN-bzE" detailTextLabel="PPQ-b9-V0B" rowHeight="40" style="IBUITableViewCellStyleValue1" id="pmx-TK-Kht">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="UNUSED1" textLabel="gUt-pN-bzE" detailTextLabel="PPQ-b9-V0B" rowHeight="40" style="IBUITableViewCellStyleValue1" id="pmx-TK-Kht">
                                         <rect key="frame" x="0.0" y="179" width="320" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pmx-TK-Kht" id="KYg-Jb-tbg">
@@ -322,7 +316,7 @@
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CommentTableViewCell" rowHeight="145" id="Zh9-XV-emm" customClass="HFCommentTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="UNUSED2" rowHeight="145" id="Zh9-XV-emm" customClass="HFCommentTableViewCell">
                                         <rect key="frame" x="0.0" y="219" width="320" height="145"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Zh9-XV-emm" id="N7u-yk-hkP">
@@ -418,7 +412,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="actionsView" destination="D5M-Xw-pFE" id="6Wh-fq-OJE"/>
+                                            <outlet property="commentActionsView" destination="D5M-Xw-pFE" id="JFA-3T-HSS"/>
                                             <outlet property="replyButton" destination="Jni-Ay-7Jp" id="Vie-Tf-JCr"/>
                                             <outlet property="textView" destination="Fxy-Ms-VVS" id="6xx-6o-pLc"/>
                                             <outlet property="textViewLeadingConstraint" destination="kkI-LH-LzM" id="YBL-hj-GKU"/>
@@ -466,6 +460,7 @@
                         <outlet property="upvoteButton" destination="kgY-no-Be0" id="3UV-e2-Yc3"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Awt-PK-blF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1616" y="713"/>
         </scene>
@@ -490,13 +485,10 @@
         <image name="UpvoteIcon" width="24" height="24"/>
         <image name="UserIcon" width="24" height="24"/>
     </resources>
+    <color key="tintColor" red="1" green="0.4432380742" blue="0.16266845260000001" alpha="1" colorSpace="calibratedRGB"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4">
-            <size key="portraitSize" width="320" height="568"/>
-            <size key="landscapeSize" width="568" height="320"/>
-        </simulatedScreenMetrics>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
-    <color key="tintColor" red="1" green="0.4432380742" blue="0.16266845260000001" alpha="1" colorSpace="calibratedRGB"/>
 </document>

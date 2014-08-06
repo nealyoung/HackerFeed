@@ -8,6 +8,8 @@
 
 #import "HFPostTableViewCell.h"
 
+#import "HFLabel.h"
+
 @implementation HFPostTableViewCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
@@ -21,7 +23,7 @@
         self.infoLabel.font = [UIFont smallCapsApplicationFontWithSize:15.0f];
         [self.contentView addSubview:self.infoLabel];
         
-        self.titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        self.titleLabel = [[HFLabel alloc] initWithFrame:CGRectZero];
         [self.titleLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
         self.titleLabel.numberOfLines = 0;
         self.titleLabel.font = [UIFont applicationFontOfSize:17.0f];
@@ -81,6 +83,8 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
+    
+    [self.commentsButton setNeedsLayout];
     
     // Set the max layout width of the multi-line information label to the calculated width of the label after auto layout has run
     self.titleLabel.preferredMaxLayoutWidth = CGRectGetWidth(self.titleLabel.frame);

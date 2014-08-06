@@ -12,8 +12,82 @@
 
 @implementation HFCommentTableViewCell
 
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    
+    if (self) {
+        self.usernameLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        [self.usernameLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+        self.usernameLabel.textColor = [UIColor darkGrayColor];
+        self.usernameLabel.font = [UIFont applicationFontOfSize:16.0f];
+        [self.contentView addSubview:self.usernameLabel];
+        
+        self.textView = [[HFTextView alloc] initWithFrame:CGRectZero];
+        [self.textView setTranslatesAutoresizingMaskIntoConstraints:NO];
+        [self.textView setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
+        self.textView.editable = NO;
+        self.textView.userInteractionEnabled = NO;
+        self.textView.backgroundColor = [UIColor clearColor];
+        self.textView.font = [UIFont applicationFontOfSize:14.0f];
+        [self.contentView addSubview:self.textView];
+        
+        self.commentActionsView = [[HFCommentActionsView alloc] initWithFrame:CGRectZero];
+        [self.commentActionsView setTranslatesAutoresizingMaskIntoConstraints:NO];
+        [self.commentActionsView setContentCompressionResistancePriority:UILayoutPriorityDefaultLow forAxis:UILayoutConstraintAxisVertical];
+        [self.contentView addSubview:self.commentActionsView];
+        
+        self.usernameLabelLeadingConstraint = [NSLayoutConstraint constraintWithItem:self.usernameLabel
+                                                                           attribute:NSLayoutAttributeLeft
+                                                                           relatedBy:NSLayoutRelationEqual
+                                                                              toItem:self.contentView
+                                                                           attribute:NSLayoutAttributeLeft
+                                                                          multiplier:1.0f
+                                                                            constant:10.0f];
+        [self.contentView addConstraint:self.usernameLabelLeadingConstraint];
+        
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[_usernameLabel]-15-|"
+                                                                                 options:0
+                                                                                 metrics:nil
+                                                                                   views:NSDictionaryOfVariableBindings(_usernameLabel)]];
+        
+        self.textViewLeadingConstraint = [NSLayoutConstraint constraintWithItem:self.textView
+                                                                      attribute:NSLayoutAttributeLeft
+                                                                      relatedBy:NSLayoutRelationEqual
+                                                                         toItem:self.contentView
+                                                                      attribute:NSLayoutAttributeLeft
+                                                                     multiplier:1.0f
+                                                                       constant:10.0f];
+        [self.contentView addConstraint:self.textViewLeadingConstraint];
+        
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[_textView]-10-|"
+                                                                                 options:0
+                                                                                 metrics:nil
+                                                                                   views:NSDictionaryOfVariableBindings(_textView)]];
+        
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_commentActionsView]|"
+                                                                                 options:0
+                                                                                 metrics:nil
+                                                                                   views:NSDictionaryOfVariableBindings(_commentActionsView)]];
+        
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-4-[_usernameLabel][_textView]-8-[_commentActionsView]|"
+                                                                                 options:0
+                                                                                 metrics:nil
+                                                                                   views:NSDictionaryOfVariableBindings(_usernameLabel, _textView, _commentActionsView)]];
+        
+        self.toolbarHeightConstraint = [NSLayoutConstraint constraintWithItem:self.commentActionsView
+                                                                    attribute:NSLayoutAttributeHeight
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:nil
+                                                                    attribute:NSLayoutAttributeNotAnAttribute
+                                                                   multiplier:1.0f
+                                                                     constant:0.0f];
+        [self.contentView addConstraint:self.toolbarHeightConstraint];
+    }
+    
+    return self;
+}
+
 - (void)awakeFromNib {
-    self.usernameLabel.font = [UIFont applicationFontOfSize:16.0f];
     self.textView.font = [UIFont applicationFontOfSize:14.0f];
 }
 
@@ -22,6 +96,8 @@
 }
 
 - (void)setExpanded:(BOOL)expanded animated:(BOOL)animated {
+    _expanded = expanded;
+    
     if (expanded) {
         self.separatorInset = UIEdgeInsetsMake(0.0f, CGRectGetWidth(self.frame), 0.0f, 0.0f);
     } else {
@@ -39,16 +115,18 @@
     
     [UIView animateWithDuration:animationDuration animations:^{
         if (expanded) {
-            self.contentView.backgroundColor = [UIColor colorWithWhite:0.94f alpha:1.0f];
-            self.actionsView.layer.backgroundColor = [UIColor colorWithWhite:0.2f alpha:1.0f].CGColor;
-            CATransform3D transform = CATransform3DMakeRotation(M_PI_2, 0, 0, 0);
-            transform.m34 = -1.0f / 500.0f;
+            NSLog(@"expanding");
+            self.contentView.layer.backgroundColor = [UIColor redColor].CGColor;
+            self.commentActionsView.layer.backgroundColor = [UIColor colorWithWhite:0.2f alpha:1.0f].CGColor;
+            //CATransform3D transform = CATransform3DMakeRotation(M_PI_2, 0, 0, 0);
+            //transform.m34 = -1.0f / 500.0f;
             //self.actionsView.layer.transform = transform;
         } else {
+            NSLog(@"contracting");
             self.contentView.backgroundColor = [UIColor whiteColor];
-            self.actionsView.layer.backgroundColor = [UIColor blackColor].CGColor;
-            CATransform3D transform = CATransform3DMakeRotation(M_PI_2, -1, 0, 0);
-            transform.m34 = -1.0f / 500.0f;
+            self.commentActionsView.layer.backgroundColor = [UIColor blackColor].CGColor;
+            //CATransform3D transform = CATransform3DMakeRotation(M_PI_2, -1, 0, 0);
+            //transform.m34 = -1.0f / 500.0f;
             //self.actionsView.layer.transform = transform;
         }
     }];

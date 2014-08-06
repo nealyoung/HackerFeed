@@ -30,10 +30,7 @@
 @property IBOutlet NSLayoutConstraint *textViewLeadingConstraint;
 @property IBOutlet NSLayoutConstraint *toolbarHeightConstraint;
 
-@property IBOutlet HFCommentActionsView *actionsView;
-@property IBOutlet UIButton *upvoteButton;
-@property IBOutlet UIButton *replyButton;
-@property IBOutlet UIButton *userButton;
+@property IBOutlet HFCommentActionsView *commentActionsView;
 
 - (void)setExpanded:(BOOL)expanded animated:(BOOL)animated;
 
