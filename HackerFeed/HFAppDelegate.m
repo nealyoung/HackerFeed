@@ -67,6 +67,7 @@
         HFPostViewController *postViewController = [[HFPostViewController alloc] initWithNibName:nil bundle:nil];
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:postViewController];
         UISplitViewController *splitViewController = [[UISplitViewController alloc] init];
+        splitViewController.delegate = postViewController;
         splitViewController.viewControllers = @[dropdownMenuViewController, navigationController];
         
         self.window.rootViewController = splitViewController;

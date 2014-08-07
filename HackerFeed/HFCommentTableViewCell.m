@@ -100,16 +100,21 @@
 - (void)setExpanded:(BOOL)expanded animated:(BOOL)animated {
     _expanded = expanded;
     
+    NSTimeInterval animationDuration;
     if (expanded) {
         self.separatorInset = UIEdgeInsetsMake(0.0f, CGRectGetWidth(self.frame), 0.0f, 0.0f);
+        self.commentActionsView.hidden = NO;
+        self.toolbarHeightConstraint.constant = 40.0f;
+        animationDuration = 0.3f;
+
     } else {
-        self.separatorInset = UIEdgeInsetsMake(0.0f, 15.0f, 0.0f, 0.0f);;
+        self.separatorInset = UIEdgeInsetsMake(0.0f, 15.0f, 0.0f, 0.0f);
+        self.toolbarHeightConstraint.constant = 0.0f;
+        animationDuration = 0.0f;
     }
     
-    self.toolbarHeightConstraint.constant = expanded ? 40.0f : 0.0f;
     [self setNeedsUpdateConstraints];
     
-    NSTimeInterval animationDuration = animated ? 0.3f : 0.0f;
     
     [UIView animateWithDuration:animationDuration animations:^{
         [self layoutIfNeeded];
@@ -117,7 +122,7 @@
     
     [UIView animateWithDuration:animationDuration animations:^{
         if (expanded) {
-            self.contentView.layer.backgroundColor = [UIColor colorWithWhite:0.94f alpha:1.0f].CGColor;
+            self.contentView.layer.backgroundColor = [UIColor colorWithWhite:0.95f alpha:1.0f].CGColor;
             self.commentActionsView.layer.backgroundColor = [UIColor colorWithWhite:0.2f alpha:1.0f].CGColor;
             CATransform3D transform = CATransform3DMakeRotation(M_PI_2, 0, 0, 0);
             transform.m34 = -1.0f / 500.0f;
@@ -128,6 +133,10 @@
             CATransform3D transform = CATransform3DMakeRotation(M_PI_2, -1, 0, 0);
             transform.m34 = -1.0f / 500.0f;
             //self.commentActionsView.layer.transform = transform;
+        }
+    } completion:^(BOOL finished) {
+        if (!expanded) {
+            self.commentActionsView.hidden = YES;
         }
     }];
 }

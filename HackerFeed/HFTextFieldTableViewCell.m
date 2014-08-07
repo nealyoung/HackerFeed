@@ -14,6 +14,8 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     
     if (self) {
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
+        
         self.titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         [self.titleLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
         self.titleLabel.font = [UIFont applicationFontOfSize:16.0f];

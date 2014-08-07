@@ -235,10 +235,16 @@ static NSString * const kPostCommentsSegueIdentifier = @"PostCommentsSegue";
                                                                                                               action:@selector(closeWebViewButtonPressed)];
         self.scaleTransition = [DMScaleTransition new];
         navigationController.transitioningDelegate = self.scaleTransition;
-        [self.splitViewController presentViewController:navigationController animated:YES completion:nil];
+        //[self.splitViewController presentViewController:navigationController animated:YES completion:nil];
+        
+        UINavigationController *postNavigationController = [self.splitViewController.viewControllers lastObject];
+        HFPostViewController *postViewController = [postNavigationController.viewControllers firstObject];
+        postViewController.post = post;
     } else {
         [self.navigationController pushViewController:webViewController animated:YES];
     }
+    
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end

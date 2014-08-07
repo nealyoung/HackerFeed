@@ -16,7 +16,7 @@
 #import "SVProgressHUD.h"
 #import "SVWebViewController.h"
 
-@interface HFPostViewController () <HFCommentTableViewCellDelegate, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate>
+@interface HFPostViewController () <HFCommentTableViewCellDelegate, UISplitViewControllerDelegate, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate>
 
 @property UITableView *tableView;
 @property UIBarButtonItem *upvoteButton;
@@ -120,6 +120,10 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
 }
 
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    self.commentCellHeightCache = [NSMutableDictionary dictionary];
+}
+
 - (void)setPost:(HNPost *)post {
     _post = post;
     
@@ -137,20 +141,6 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
         self.comments = comments;
         [self.tableView reloadData];
     }];
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:kCommentsWebSegueIdentifier]) {
-        SVWebViewController *webViewController = (SVWebViewController *)segue.destinationViewController;
-        [webViewController loadURL:[NSURL URLWithString:self.post.UrlString]];
-    } else if ([segue.identifier isEqualToString:kCommentsProfileSegueIdentifier]) {
-        HFProfileViewController *profileViewController = (HFProfileViewController *)segue.destinationViewController;
-        [[HNManager sharedManager] loadUserWithUsername:self.post.Username completion:^(HNUser *user) {
-            profileViewController.user = user;
-        }];
-    } else if ([segue.identifier isEqualToString:kCommentsProfileSegueIdentifier] ) {
-        
-    };
 }
 
 - (void)addKeyboardNotificationObservers {
@@ -304,6 +294,12 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
         
         [self.tableView endUpdates];
     }
+}
+
+#pragma mark - UISplitViewControllerDelegate
+
+- (BOOL)splitViewController:(UISplitViewController *)svc shouldHideViewController:(UIViewController *)vc inOrientation:(UIInterfaceOrientation)orientation {
+    return NO;
 }
 
 #pragma mark - UITableViewDataSource
