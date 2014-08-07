@@ -30,9 +30,46 @@ static NSString * const kTextViewTableViewCellIdentifier = @"TextViewTableViewCe
 
 @implementation HFNewPostViewController
 
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    
+    if (self) {
+        self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+        [self.tableView setTranslatesAutoresizingMaskIntoConstraints:NO];
+        self.tableView.dataSource = self;
+        self.tableView.delegate = self;
+        [self.tableView registerClass:[HFTextFieldTableViewCell class] forCellReuseIdentifier:kTextFieldTableViewCellIdentifier];
+        [self.tableView registerClass:[HFTextViewTableViewCell class] forCellReuseIdentifier:kTextViewTableViewCellIdentifier];
+        [self.view addSubview:self.tableView];
+        
+        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_tableView]|"
+                                                                          options:0
+                                                                          metrics:nil
+                                                                            views:NSDictionaryOfVariableBindings(_tableView)]];
+        
+        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_tableView]|"
+                                                                          options:0
+                                                                          metrics:nil
+                                                                            views:NSDictionaryOfVariableBindings(_tableView)]];
+        
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+                                                                                              target:self
+                                                                                              action:@selector(cancelButtonPressed:)];
+        
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Submit", nil)
+                                                                                  style:UIBarButtonItemStyleDone
+                                                                                 target:self
+                                                                                 action:@selector(submitButtonPressed:)];
+    }
+    
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self.tableView registerClass:[HFTextFieldTableViewCell class] forCellReuseIdentifier:kTextFieldTableViewCellIdentifier];
+    [self.tableView registerClass:[HFTextViewTableViewCell class] forCellReuseIdentifier:kTextViewTableViewCellIdentifier];
+
     self.segmentedControl = [[NYSegmentedControl alloc] initWithItems:@[@"Link", @"Text"]];
     
     // Add desired targets/actions
@@ -53,16 +90,16 @@ static NSString * const kTextViewTableViewCellIdentifier = @"TextViewTableViewCe
     self.navigationItem.titleView = self.segmentedControl;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self.titleTextField becomeFirstResponder];
 }
 
-- (IBAction)cancelButtonPressed:(id)sender {
+- (void)cancelButtonPressed:(id)sender {
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (IBAction)submitButtonPressed:(id)sender {
+- (void)submitButtonPressed:(id)sender {
     if (self.segmentedControl.selectedSegmentIndex == 0) {
         [[HNManager sharedManager] submitPostWithTitle:self.titleTextField.text
                                                   link:self.urlTextField.text
@@ -124,6 +161,7 @@ static NSString * const kTextViewTableViewCellIdentifier = @"TextViewTableViewCe
         } else {
             HFTextViewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTextViewTableViewCellIdentifier forIndexPath:indexPath];
             cell.textView.delegate = self;
+            cell.textView.editable = YES;
             cell.textView.placeholder = NSLocalizedString(@"Post text", nil);
             self.postTextView = cell.textView;
             

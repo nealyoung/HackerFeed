@@ -24,8 +24,6 @@
 	<string>1.0</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSMainNibFile~ipad</key>
-	<string>Main_iPad</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>SourceSansPro-Regular.otf</string>
@@ -33,10 +31,6 @@
 		<string>SourceSansPro-Light.otf</string>
 		<string>SourceSansPro-Semibold.otf</string>
 	</array>
-	<key>UILaunchStoryboardName</key>
-	<string>Main_iPhone</string>
-	<key>UIMainStoryboardFile</key>
-	<string>Main_iPhone</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

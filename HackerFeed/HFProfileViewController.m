@@ -8,6 +8,7 @@
 
 #import "HFProfileViewController.h"
 
+#import "DMScaleTransition.h"
 #import "HFLoginViewController.h"
 #import "HFUserInfoTableViewCell.h"
 #import "HFUserPostDataSource.h"
@@ -16,6 +17,8 @@
 #import "HFTableViewCell.h"
 
 @interface HFProfileViewController () <UITableViewDataSource, UITableViewDelegate>
+
+@property DMScaleTransition *scaleTransition;
 
 @end
 
@@ -119,6 +122,7 @@ static NSString * const kUserSubmissionsTableViewCellIdentifier = @"UserSubmissi
         } else if (indexPath.row == 1) {
             HFTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:kUserKarmaTableViewCellIdentifier
                                                                          forIndexPath:indexPath];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.textLabel.text = NSLocalizedString(@"Karma", nil);
             cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", self.user.Karma];
             

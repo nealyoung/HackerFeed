@@ -32,7 +32,6 @@
 		0EC81435197CA8FA009F0D99 /* HFCommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC81434197CA8FA009F0D99 /* HFCommentTableViewCell.m */; };
 		0ECF6056199171F60088C8E6 /* HFTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ECF6055199171F60088C8E6 /* HFTableViewCell.m */; };
 		0EDEBD64197E2ED00080D446 /* HFDropdownMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EDEBD63197E2ED00080D446 /* HFDropdownMenuController.m */; };
-		0EE17185198FED0700DBB6F9 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EE17183198FED0700DBB6F9 /* Main_iPad.storyboard */; };
 		0EE2838B198394BB00D3A3C6 /* HFUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE2838A198394BB00D3A3C6 /* HFUserProfileViewController.m */; };
 		0EE6CAE119845B37005AE100 /* HFCommentActionsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE6CAE019845B37005AE100 /* HFCommentActionsView.m */; };
 		0EE791BB1950318D00925E4F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EE791BA1950318D00925E4F /* Foundation.framework */; };
@@ -41,7 +40,6 @@
 		0EE791C51950318D00925E4F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0EE791C31950318D00925E4F /* InfoPlist.strings */; };
 		0EE791C71950318D00925E4F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE791C61950318D00925E4F /* main.m */; };
 		0EE791CB1950318D00925E4F /* HFAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE791CA1950318D00925E4F /* HFAppDelegate.m */; };
-		0EE791CE1950318D00925E4F /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EE791CC1950318D00925E4F /* Main_iPhone.storyboard */; };
 		0EE791D41950318D00925E4F /* HFPostListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE791D31950318D00925E4F /* HFPostListViewController.m */; };
 		0EE791D61950318D00925E4F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0EE791D51950318D00925E4F /* Images.xcassets */; };
 		0EE791DD1950318D00925E4F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EE791DC1950318D00925E4F /* XCTest.framework */; };
@@ -118,7 +116,6 @@
 		0ECF6055199171F60088C8E6 /* HFTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFTableViewCell.m; sourceTree = "<group>"; };
 		0EDEBD62197E2ED00080D446 /* HFDropdownMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFDropdownMenuController.h; sourceTree = "<group>"; };
 		0EDEBD63197E2ED00080D446 /* HFDropdownMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFDropdownMenuController.m; sourceTree = "<group>"; };
-		0EE17184198FED0700DBB6F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		0EE28389198394BB00D3A3C6 /* HFUserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFUserProfileViewController.h; sourceTree = "<group>"; };
 		0EE2838A198394BB00D3A3C6 /* HFUserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFUserProfileViewController.m; sourceTree = "<group>"; };
 		0EE6CADF19845B37005AE100 /* HFCommentActionsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFCommentActionsView.h; sourceTree = "<group>"; };
@@ -133,7 +130,6 @@
 		0EE791C81950318D00925E4F /* HackerFeed-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HackerFeed-Prefix.pch"; sourceTree = "<group>"; };
 		0EE791C91950318D00925E4F /* HFAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HFAppDelegate.h; sourceTree = "<group>"; };
 		0EE791CA1950318D00925E4F /* HFAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HFAppDelegate.m; sourceTree = "<group>"; };
-		0EE791CD1950318D00925E4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		0EE791D21950318D00925E4F /* HFPostListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HFPostListViewController.h; sourceTree = "<group>"; };
 		0EE791D31950318D00925E4F /* HFPostListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HFPostListViewController.m; sourceTree = "<group>"; };
 		0EE791D51950318D00925E4F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -354,8 +350,6 @@
 				0E5C453C19838142001EE1CB /* Models */,
 				0EC81423197C8BD4009F0D99 /* Views */,
 				0E520C55197C81B500E94DBD /* View Controllers */,
-				0EE791CC1950318D00925E4F /* Main_iPhone.storyboard */,
-				0EE17183198FED0700DBB6F9 /* Main_iPad.storyboard */,
 				0EE791D51950318D00925E4F /* Images.xcassets */,
 				0EE791C11950318D00925E4F /* Supporting Files */,
 			);
@@ -480,8 +474,6 @@
 				0EE791D61950318D00925E4F /* Images.xcassets in Resources */,
 				0EC8142B197C98B5009F0D99 /* SourceSansPro-Regular.otf in Resources */,
 				0EC8142A197C98B5009F0D99 /* SourceSansPro-Bold.otf in Resources */,
-				0EE17185198FED0700DBB6F9 /* Main_iPad.storyboard in Resources */,
-				0EE791CE1950318D00925E4F /* Main_iPhone.storyboard in Resources */,
 				0EE791C51950318D00925E4F /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -589,28 +581,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		0EE17183198FED0700DBB6F9 /* Main_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0EE17184198FED0700DBB6F9 /* Base */,
-			);
-			name = Main_iPad.storyboard;
-			sourceTree = "<group>";
-		};
 		0EE791C31950318D00925E4F /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				0EE791C41950318D00925E4F /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		0EE791CC1950318D00925E4F /* Main_iPhone.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0EE791CD1950318D00925E4F /* Base */,
-			);
-			name = Main_iPhone.storyboard;
 			sourceTree = "<group>";
 		};
 		0EE791E51950318D00925E4F /* InfoPlist.strings */ = {

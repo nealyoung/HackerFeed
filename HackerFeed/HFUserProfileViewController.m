@@ -89,6 +89,9 @@ NSString * const kLoginViewControllerIdentifier = @"ORNLoginViewController";
     
     UINavigationController *loginNavigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
     
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        loginNavigationController.modalPresentationStyle = UIModalPresentationFormSheet;
+    }
     [self presentViewController:loginNavigationController animated:YES completion:nil];
 }
 

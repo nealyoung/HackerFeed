@@ -137,11 +137,14 @@ static NSString * const kPostCommentsSegueIdentifier = @"PostCommentsSegue";
 }
 
 - (void)newPostButtonPressed {
-    HFNewPostViewController *newPostViewController = [[UIStoryboard storyboardWithName:@"Main_iPhone"
-                                                                                bundle:nil] instantiateViewControllerWithIdentifier:@"NewPostViewController"];
+    HFNewPostViewController *newPostViewController = [[HFNewPostViewController alloc] initWithNibName:nil bundle:nil];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:newPostViewController];
     self.scaleTransition = [DMScaleTransition new];
-    navigationController.transitioningDelegate = self.scaleTransition;
+    //navigationController.transitioningDelegate = self.scaleTransition;
+    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        navigationController.modalPresentationStyle = UIModalPresentationFormSheet;
+    }
     
     [self presentViewController:navigationController animated:YES completion:nil];
 }
