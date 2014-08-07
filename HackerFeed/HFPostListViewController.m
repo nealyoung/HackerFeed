@@ -13,8 +13,8 @@
 #import "HFNewPostViewController.h"
 #import "HFPostTableViewCell.h"
 #import "HFPostViewController.h"
+#import "HFWebViewController.h"
 #import "SVProgressHUD.h"
-#import "SVWebViewController.h"
 #import "UIScrollView+SVPullToRefresh.h"
 #import "UIScrollView+SVInfiniteScrolling.h"
 
@@ -230,7 +230,7 @@ static NSString * const kPostCommentsSegueIdentifier = @"PostCommentsSegue";
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:webViewController];
-        webViewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+        webViewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                                                                                               target:self
                                                                                                               action:@selector(closeWebViewButtonPressed)];
         self.scaleTransition = [DMScaleTransition new];

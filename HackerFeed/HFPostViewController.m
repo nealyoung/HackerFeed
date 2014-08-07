@@ -8,16 +8,18 @@
 
 #import "HFPostViewController.h"
 
+#import "DMScaleTransition.h"
 #import "HFCommentTableViewCell.h"
 #import "HFCommentToolbar.h"
 #import "HFPostInfoTableViewCell.h"
 #import "HFProfileViewController.h"
 #import "HFTableViewCell.h"
+#import "HFWebViewController.h"
 #import "SVProgressHUD.h"
-#import "SVWebViewController.h"
 
-@interface HFPostViewController () <HFCommentTableViewCellDelegate, UISplitViewControllerDelegate, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate>
+@interface HFPostViewController () <HFCommentTableViewCellDelegate, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate>
 
+@property UILabel *selectPostLabel;
 @property UITableView *tableView;
 @property UIBarButtonItem *upvoteButton;
 @property HFCommentToolbar *commentToolbar;
@@ -26,6 +28,8 @@
 @property NSIndexPath *expandedIndexPath;
 @property NSArray *comments;
 @property HNComment *commentToReply;
+
+@property DMScaleTransition *scaleTransition;
 
 @property NSMutableDictionary *commentCellHeightCache;
 
@@ -51,6 +55,8 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
         [self.tableView setTranslatesAutoresizingMaskIntoConstraints:NO];
         self.tableView.dataSource = self;
         self.tableView.delegate = self;
+        // Hide the cell separators until a post is set
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         [self.tableView registerClass:[HFPostInfoTableViewCell class] forCellReuseIdentifier:kPostInfoTableViewCellIdentifier];
         [self.tableView registerClass:[HFTableViewCell class] forCellReuseIdentifier:kUsernameTableViewCellIdentifier];
         [self.tableView registerClass:[HFCommentTableViewCell class] forCellReuseIdentifier:kCommentTableViewCellIdentifier];
@@ -67,6 +73,29 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
                                              action:@selector(submitCommentButtonPressed:)
                                    forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:self.commentToolbar];
+        
+        self.selectPostLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        [self.selectPostLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+        self.selectPostLabel.font = [UIFont applicationFontOfSize:20.0f];
+        self.selectPostLabel.textColor = [UIColor darkGrayColor];
+        self.selectPostLabel.text = NSLocalizedString(@"Select a post", nil);
+        [self.view addSubview:self.selectPostLabel];
+        
+        [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.selectPostLabel
+                                                              attribute:NSLayoutAttributeCenterX
+                                                              relatedBy:NSLayoutRelationEqual
+                                                                 toItem:self.view
+                                                              attribute:NSLayoutAttributeCenterX
+                                                             multiplier:1.0f
+                                                               constant:0.0f]];
+        
+        [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.selectPostLabel
+                                                              attribute:NSLayoutAttributeCenterY
+                                                              relatedBy:NSLayoutRelationEqual
+                                                                 toItem:self.view
+                                                              attribute:NSLayoutAttributeCenterY
+                                                             multiplier:1.0f
+                                                               constant:0.0f]];
         
         [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_tableView]|"
                                                                           options:0
@@ -127,6 +156,14 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
 - (void)setPost:(HNPost *)post {
     _post = post;
     
+    if (post) {
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+        self.selectPostLabel.hidden = YES;
+    } else {
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        self.selectPostLabel.hidden = NO;
+    }
+    
     // Hide the upvote button if we're looking at a job post (that can't be voted on)
     if (post.Type == PostTypeJobs) {
         self.navigationItem.rightBarButtonItem = nil;
@@ -136,6 +173,11 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
     
     // Clear the cell height cache
     self.commentCellHeightCache = [NSMutableDictionary dictionary];
+    
+    self.expandedIndexPath = nil;
+    
+    // Scroll to the top of the table view
+    [self.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
     
     [[HNManager sharedManager] loadCommentsFromPost:post completion:^(NSArray *comments) {
         self.comments = comments;
@@ -433,8 +475,16 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
-        SVWebViewController *webViewController = [[SVWebViewController alloc] initWithAddress:self.post.UrlString];
-        [self.navigationController pushViewController:webViewController animated:YES];
+        HFWebViewController *webViewController = [[HFWebViewController alloc] initWithAddress:self.post.UrlString];
+        
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+            UINavigationController *webViewNavigationController = [[UINavigationController alloc] initWithRootViewController:webViewController];
+            self.scaleTransition = [DMScaleTransition new];
+            webViewNavigationController.transitioningDelegate = self.scaleTransition;
+            [self.splitViewController presentViewController:webViewNavigationController animated:YES completion:nil];
+        } else {
+            [self.navigationController pushViewController:webViewController animated:YES];
+        }
     } else if (indexPath.row == 1) {
         HFProfileViewController *profileViewController = [[HFProfileViewController alloc] initWithNibName:nil bundle:nil];
         [self.navigationController pushViewController:profileViewController animated:YES];

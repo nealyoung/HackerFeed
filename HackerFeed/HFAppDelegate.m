@@ -68,6 +68,7 @@
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:postViewController];
         UISplitViewController *splitViewController = [[UISplitViewController alloc] init];
         splitViewController.delegate = postViewController;
+        splitViewController.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
         splitViewController.viewControllers = @[dropdownMenuViewController, navigationController];
         
         self.window.rootViewController = splitViewController;

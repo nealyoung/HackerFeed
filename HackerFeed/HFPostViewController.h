@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "libHN.h"
 
-@interface HFPostViewController : UIViewController
+@interface HFPostViewController : UIViewController <UISplitViewControllerDelegate>
 
 @property (nonatomic) HNPost *post;
 
