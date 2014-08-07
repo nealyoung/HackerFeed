@@ -28,7 +28,8 @@
         [self.textView setTranslatesAutoresizingMaskIntoConstraints:NO];
         [self.textView setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
         self.textView.editable = NO;
-        self.textView.userInteractionEnabled = NO;
+        //self.textView.userInteractionEnabled = NO;
+        self.textView.dataDetectorTypes = UIDataDetectorTypeLink;
         self.textView.backgroundColor = [UIColor clearColor];
         self.textView.font = [UIFont applicationFontOfSize:14.0f];
         [self.contentView addSubview:self.textView];

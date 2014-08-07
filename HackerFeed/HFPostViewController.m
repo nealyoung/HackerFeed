@@ -372,6 +372,8 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
         
         HNComment *comment = self.comments[indexPath.row - 2];
         cell.textView.text = comment.Text;
+        // Set the delegate so we can open detected links
+        cell.textView.delegate = self;
         cell.textView.textContainerInset = UIEdgeInsetsZero;
         cell.usernameLabel.text = comment.Username;
         
@@ -497,6 +499,21 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
 }
 
 #pragma mark - UITextViewDelegate
+
+- (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange {
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        HFWebViewController *webViewController = [[HFWebViewController alloc] initWithURL:URL];
+        UINavigationController *webViewNavigationController = [[UINavigationController alloc] initWithRootViewController:webViewController];
+        self.scaleTransition = [DMScaleTransition new];
+        webViewNavigationController.transitioningDelegate = self.scaleTransition;
+        [self.splitViewController presentViewController:webViewNavigationController animated:YES completion:nil];
+    } else {
+        SVWebViewController *webViewController = [[SVWebViewController alloc] initWithURL:URL];
+        [self.navigationController pushViewController:webViewController animated:YES];
+    }
+    
+    return NO;
+}
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text; {
     // If the user hits the return key, dismiss the keyboard
