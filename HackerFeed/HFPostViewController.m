@@ -309,7 +309,7 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2 + [self.comments count];
+    return self.post ? 2 + [self.comments count] : 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

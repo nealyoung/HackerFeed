@@ -180,8 +180,7 @@ static NSString * const kUserSubmissionsTableViewCellIdentifier = @"UserSubmissi
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 1 && indexPath.row == 0) {
-        HFPostListViewController *postListViewController = [[UIStoryboard storyboardWithName:@"Main_iPhone"
-                                                                                       bundle:nil] instantiateViewControllerWithIdentifier:@"PostListViewController"];
+        HFPostListViewController *postListViewController = [[HFPostListViewController alloc] initWithNibName:nil bundle:nil];
         HFUserPostDataSource *postDataSource = [HFUserPostDataSource new];
         postDataSource.user = self.user;
         postListViewController.dataSource = postDataSource;

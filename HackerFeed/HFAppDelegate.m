@@ -12,6 +12,7 @@
 #import "HFDropdownMenuController.h"
 #import "HFFilterPostDataSource.h"
 #import "HFPostListViewController.h"
+#import "HFPostViewController.h"
 #import "HFUserProfileViewController.h"
 #import "SVProgressHUD.h"
 
@@ -61,7 +62,18 @@
     
     [[HNManager sharedManager] startSession];
     [self customizeAppearance];
-    self.window.rootViewController = dropdownMenuViewController;
+    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        HFPostViewController *postViewController = [[HFPostViewController alloc] initWithNibName:nil bundle:nil];
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:postViewController];
+        UISplitViewController *splitViewController = [[UISplitViewController alloc] init];
+        splitViewController.viewControllers = @[dropdownMenuViewController, navigationController];
+        
+        self.window.rootViewController = splitViewController;
+    } else {
+        self.window.rootViewController = dropdownMenuViewController;
+    }
+
     [self.window makeKeyAndVisible];
     
     return YES;

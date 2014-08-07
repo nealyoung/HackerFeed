@@ -128,25 +128,36 @@ static NSString * const kPostCommentsSegueIdentifier = @"PostCommentsSegue";
     }];
 }
 
-- (void)commentsButtonPressed:(id)sender {
-    HFPostViewController *postViewController = [[HFPostViewController alloc] initWithNibName:nil bundle:nil];
-    HFCommentsButton *commentsButton = (HFCommentsButton *)sender;
-    postViewController.post = self.dataSource.posts[commentsButton.tag];
-    
-    [self.navigationController pushViewController:postViewController animated:YES];
+- (void)commentsButtonPressed:(HFCommentsButton *)sender {
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        UINavigationController *postNavigationController = [self.splitViewController.viewControllers lastObject];
+        HFPostViewController *postViewController = [postNavigationController.viewControllers firstObject];
+        postViewController.post = self.dataSource.posts[sender.tag];
+    } else {
+        HFPostViewController *postViewController = [[HFPostViewController alloc] initWithNibName:nil bundle:nil];
+        HFCommentsButton *commentsButton = (HFCommentsButton *)sender;
+        postViewController.post = self.dataSource.posts[commentsButton.tag];
+        
+        [self.navigationController pushViewController:postViewController animated:YES];
+    }
 }
 
 - (void)newPostButtonPressed {
     HFNewPostViewController *newPostViewController = [[HFNewPostViewController alloc] initWithNibName:nil bundle:nil];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:newPostViewController];
     self.scaleTransition = [DMScaleTransition new];
-    //navigationController.transitioningDelegate = self.scaleTransition;
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         navigationController.modalPresentationStyle = UIModalPresentationFormSheet;
+        [self.splitViewController presentViewController:navigationController animated:YES completion:nil];
+    } else {
+        navigationController.transitioningDelegate = self.scaleTransition;
+        [self presentViewController:navigationController animated:YES completion:nil];
     }
-    
-    [self presentViewController:navigationController animated:YES completion:nil];
+}
+
+- (void)closeWebViewButtonPressed {
+    [self.splitViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - Getters/Setters
@@ -216,7 +227,18 @@ static NSString * const kPostCommentsSegueIdentifier = @"PostCommentsSegue";
     }
     
     SVWebViewController *webViewController = [[SVWebViewController alloc] initWithAddress:post.UrlString];
-    [self.navigationController pushViewController:webViewController animated:YES];
+    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:webViewController];
+        webViewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+                                                                                                              target:self
+                                                                                                              action:@selector(closeWebViewButtonPressed)];
+        self.scaleTransition = [DMScaleTransition new];
+        navigationController.transitioningDelegate = self.scaleTransition;
+        [self.splitViewController presentViewController:navigationController animated:YES completion:nil];
+    } else {
+        [self.navigationController pushViewController:webViewController animated:YES];
+    }
 }
 
 @end

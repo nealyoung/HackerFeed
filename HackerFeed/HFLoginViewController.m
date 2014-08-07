@@ -31,6 +31,7 @@
         self.usernameTextField.borderStyle = UITextBorderStyleRoundedRect;
         self.usernameTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
         self.usernameTextField.autocorrectionType = UITextAutocorrectionTypeNo;
+        self.usernameTextField.returnKeyType = UIReturnKeyNext;
         self.usernameTextField.font = [UIFont applicationFontOfSize:14.0f];
         self.usernameTextField.placeholder = NSLocalizedString(@"Username", nil);
         self.usernameTextField.delegate = self;
@@ -39,6 +40,7 @@
         self.passwordTextField = [[UITextField alloc] initWithFrame:CGRectZero];
         [self.passwordTextField setTranslatesAutoresizingMaskIntoConstraints:NO];
         self.passwordTextField.borderStyle = UITextBorderStyleRoundedRect;
+        self.passwordTextField.returnKeyType = UIReturnKeyDone;
         self.passwordTextField.font = [UIFont applicationFontOfSize:14.0f];
         self.passwordTextField.placeholder = NSLocalizedString(@"Password", nil);
         self.passwordTextField.secureTextEntry = YES;

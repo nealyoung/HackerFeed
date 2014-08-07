@@ -53,12 +53,12 @@
 - (void)drawRect:(CGRect)rect {
     [super drawRect:rect];
     
-    self.layer.borderColor = self.window.tintColor.CGColor;
+    self.layer.borderColor = self.tintColor.CGColor;
     self.layer.borderWidth = 1.0f;
     self.layer.cornerRadius = 5.0f;
     
     if (self.state == UIControlStateHighlighted) {
-        self.layer.backgroundColor = self.window.tintColor.CGColor;
+        self.layer.backgroundColor = self.tintColor.CGColor;
         self.titleLabel.textColor =  self.superview.backgroundColor;
     } else {
         self.layer.backgroundColor = nil;
