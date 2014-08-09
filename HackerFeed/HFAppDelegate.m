@@ -11,6 +11,7 @@
 #import "HNManager.h"
 #import "HFDropdownMenuController.h"
 #import "HFFilterPostDataSource.h"
+#import "HFNavigationBar.h"
 #import "HFPostListViewController.h"
 #import "HFPostViewController.h"
 #import "HFUserProfileViewController.h"
@@ -45,27 +46,24 @@
     profileViewController.showsLoggedInUser = YES;
     [profileViewController view];
     
-    HFDropdownMenuController *dropdownMenuViewController = [[HFDropdownMenuController alloc] initWithDropdownViewControllers:@[topStoriesViewController,
-                                                                                                                               newStoriesViewController,
-                                                                                                                               askHNViewController,
-                                                                                                                               showHNViewController,
-                                                                                                                               jobsViewController,
-                                                                                                                               profileViewController]];
+    HFDropdownMenuController *dropdownMenuViewController = [[HFDropdownMenuController alloc] initWithNavigationBarClass:[HFNavigationBar class]
+                                                                                                           toolbarClass:nil];
+    dropdownMenuViewController.dropdownViewControllers = @[topStoriesViewController,
+                                                           newStoriesViewController,
+                                                           askHNViewController,
+                                                           showHNViewController,
+                                                           jobsViewController,
+                                                           profileViewController];
     dropdownMenuViewController.dropdownMenu.itemFont = [UIFont semiboldApplicationFontOfSize:17.0f];
-    
-    UIView *navigationBarBorderView = [[UIView alloc] initWithFrame:CGRectMake(0,
-                                                                               CGRectGetMaxY(dropdownMenuViewController.navigationBar.frame),
-                                                                               CGRectGetWidth(dropdownMenuViewController.navigationBar.frame),
-                                                                               1.0f)];
-    navigationBarBorderView.backgroundColor = [UIColor applicationColor];
-    [dropdownMenuViewController.navigationBar addSubview:navigationBarBorderView];
     
     [[HNManager sharedManager] startSession];
     [self customizeAppearance];
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         HFPostViewController *postViewController = [[HFPostViewController alloc] initWithNibName:nil bundle:nil];
-        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:postViewController];
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithNavigationBarClass:[HFNavigationBar class]
+                                                                                                     toolbarClass:nil];
+        navigationController.viewControllers = @[postViewController];
         UISplitViewController *splitViewController = [[UISplitViewController alloc] init];
         splitViewController.delegate = postViewController;
         splitViewController.view.backgroundColor = [UIColor groupTableViewBackgroundColor];

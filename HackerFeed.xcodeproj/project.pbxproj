@@ -15,6 +15,7 @@
 		0E57B5B4198C2D6C0056CA54 /* HFTextViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E57B5B3198C2D6C0056CA54 /* HFTextViewTableViewCell.m */; };
 		0E5C453B19838135001EE1CB /* HFFilterPostDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E5C453A19838135001EE1CB /* HFFilterPostDataSource.m */; };
 		0E6C30DF197F5DCB00C33A67 /* HFLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E6C30DE197F5DCB00C33A67 /* HFLoginViewController.m */; };
+		0E7D19A21996034200C51E37 /* HFNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E7D19A11996034200C51E37 /* HFNavigationBar.m */; };
 		0E926CD219835AB30078E148 /* HFBorderedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E926CD119835AB30078E148 /* HFBorderedButton.m */; };
 		0E990E801990BA30002933C4 /* DMScaleTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E990E7F1990BA30002933C4 /* DMScaleTransition.m */; };
 		0E990E841990BA65002933C4 /* DMBaseTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E990E821990BA65002933C4 /* DMBaseTransition.m */; };
@@ -86,6 +87,8 @@
 		0E5C453A19838135001EE1CB /* HFFilterPostDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFFilterPostDataSource.m; sourceTree = "<group>"; };
 		0E6C30DD197F5DCB00C33A67 /* HFLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFLoginViewController.h; sourceTree = "<group>"; };
 		0E6C30DE197F5DCB00C33A67 /* HFLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFLoginViewController.m; sourceTree = "<group>"; };
+		0E7D19A01996034200C51E37 /* HFNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFNavigationBar.h; sourceTree = "<group>"; };
+		0E7D19A11996034200C51E37 /* HFNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFNavigationBar.m; sourceTree = "<group>"; };
 		0E926CD019835AB30078E148 /* HFBorderedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFBorderedButton.h; sourceTree = "<group>"; };
 		0E926CD119835AB30078E148 /* HFBorderedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFBorderedButton.m; sourceTree = "<group>"; };
 		0E990E7E1990BA30002933C4 /* DMScaleTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMScaleTransition.h; sourceTree = "<group>"; };
@@ -286,6 +289,8 @@
 				0EC3311F1992986400E1531A /* HFLabel.m */,
 				0E926CD019835AB30078E148 /* HFBorderedButton.h */,
 				0E926CD119835AB30078E148 /* HFBorderedButton.m */,
+				0E7D19A01996034200C51E37 /* HFNavigationBar.h */,
+				0E7D19A11996034200C51E37 /* HFNavigationBar.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -564,6 +569,7 @@
 				0EFC253C1985D9D800A67412 /* HFCommentToolbar.m in Sources */,
 				0ECF6056199171F60088C8E6 /* HFTableViewCell.m in Sources */,
 				0EFC253F1986026500A67412 /* HFTextView.m in Sources */,
+				0E7D19A21996034200C51E37 /* HFNavigationBar.m in Sources */,
 				0E926CD219835AB30078E148 /* HFBorderedButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

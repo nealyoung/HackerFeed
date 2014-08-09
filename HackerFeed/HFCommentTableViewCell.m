@@ -119,8 +119,6 @@
         [self layoutIfNeeded];
     }];
     
-    NSLog(@"%f", animationDuration);
-    
     [UIView animateWithDuration:animationDuration animations:^{
         if (expanded) {
             self.contentView.layer.backgroundColor = [UIColor colorWithWhite:0.95f alpha:1.0f].CGColor;

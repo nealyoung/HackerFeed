@@ -15,6 +15,7 @@
 #import "HFProfileViewController.h"
 #import "HFTableViewCell.h"
 #import "HFWebViewController.h"
+#import "SVModalWebViewController.h"
 #import "SVProgressHUD.h"
 
 @interface HFPostViewController () <HFCommentTableViewCellDelegate, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate>
@@ -480,14 +481,13 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
-        HFWebViewController *webViewController = [[HFWebViewController alloc] initWithAddress:self.post.UrlString];
-        
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-            UINavigationController *webViewNavigationController = [[UINavigationController alloc] initWithRootViewController:webViewController];
+            SVModalWebViewController *webViewController = [[SVModalWebViewController alloc] initWithAddress:self.post.UrlString];
             self.scaleTransition = [DMScaleTransition new];
-            webViewNavigationController.transitioningDelegate = self.scaleTransition;
-            [self.splitViewController presentViewController:webViewNavigationController animated:YES completion:nil];
+            webViewController.transitioningDelegate = self.scaleTransition;
+            [self.splitViewController presentViewController:webViewController animated:YES completion:nil];
         } else {
+            SVWebViewController *webViewController = [[SVWebViewController alloc] initWithAddress:self.post.UrlString];
             [self.navigationController pushViewController:webViewController animated:YES];
         }
     } else if (indexPath.row == 1) {

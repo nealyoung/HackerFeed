@@ -49,6 +49,9 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     
+    // Redraw the placeholder
+    [self setNeedsDisplay];
+    
     if (!CGSizeEqualToSize(self.bounds.size, [self intrinsicContentSize])) {
         [self invalidateIntrinsicContentSize];
         [self setNeedsUpdateConstraints];
