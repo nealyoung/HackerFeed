@@ -371,6 +371,9 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
         cell.delegate = self;
         
         HNComment *comment = self.comments[indexPath.row - 2];
+        
+        // Set to nil first as a workaround for iOS 7 bug with text view link detection (http://stackoverflow.com/questions/19121367/uitextviews-in-a-uitableview-link-detection-bug-in-ios-7)
+        cell.textView.text = nil;
         cell.textView.text = comment.Text;
         // Set the delegate so we can open detected links
         cell.textView.delegate = self;
