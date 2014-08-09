@@ -13,7 +13,8 @@
 #import "HFNewPostViewController.h"
 #import "HFPostTableViewCell.h"
 #import "HFPostViewController.h"
-#import "HFWebViewController.h"
+#import "SVModalWebViewController.h"
+#import "SVWebViewController.h"
 #import "SVProgressHUD.h"
 #import "UIScrollView+SVPullToRefresh.h"
 #import "UIScrollView+SVInfiniteScrolling.h"
@@ -226,21 +227,17 @@ static NSString * const kPostCommentsSegueIdentifier = @"PostCommentsSegue";
         return;
     }
     
-    SVWebViewController *webViewController = [[SVWebViewController alloc] initWithAddress:post.UrlString];
-    
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:webViewController];
-        webViewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
-                                                                                                              target:self
-                                                                                                              action:@selector(closeWebViewButtonPressed)];
+        SVModalWebViewController *webViewController = [[SVModalWebViewController alloc] initWithAddress:post.UrlString];
         self.scaleTransition = [DMScaleTransition new];
-        navigationController.transitioningDelegate = self.scaleTransition;
-        //[self.splitViewController presentViewController:navigationController animated:YES completion:nil];
+        webViewController.transitioningDelegate = self.scaleTransition;
+        [self.splitViewController presentViewController:webViewController animated:YES completion:nil];
         
-        UINavigationController *postNavigationController = [self.splitViewController.viewControllers lastObject];
-        HFPostViewController *postViewController = [postNavigationController.viewControllers firstObject];
-        postViewController.post = post;
+        //        UINavigationController *postNavigationController = [self.splitViewController.viewControllers lastObject];
+        //        HFPostViewController *postViewController = [postNavigationController.viewControllers firstObject];
+        //        postViewController.post = post;
     } else {
+        SVWebViewController *webViewController = [[SVWebViewController alloc] initWithAddress:post.UrlString];
         [self.navigationController pushViewController:webViewController animated:YES];
     }
     

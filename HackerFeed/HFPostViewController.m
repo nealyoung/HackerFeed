@@ -14,7 +14,7 @@
 #import "HFPostInfoTableViewCell.h"
 #import "HFProfileViewController.h"
 #import "HFTableViewCell.h"
-#import "HFWebViewController.h"
+#import "SVWebViewController.h"
 #import "SVModalWebViewController.h"
 #import "SVProgressHUD.h"
 
@@ -169,6 +169,7 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
     if (post.Type == PostTypeJobs) {
         self.navigationItem.rightBarButtonItem = nil;
     } else {
+        self.navigationItem.rightBarButtonItem = self.upvoteButton;
         self.upvoteButton.enabled = ![[HNManager sharedManager] hasVotedOnObject:post];
     }
     
@@ -505,11 +506,10 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
 
 - (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange {
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        HFWebViewController *webViewController = [[HFWebViewController alloc] initWithURL:URL];
-        UINavigationController *webViewNavigationController = [[UINavigationController alloc] initWithRootViewController:webViewController];
+        SVModalWebViewController *webViewController = [[SVModalWebViewController alloc] initWithURL:URL];
         self.scaleTransition = [DMScaleTransition new];
-        webViewNavigationController.transitioningDelegate = self.scaleTransition;
-        [self.splitViewController presentViewController:webViewNavigationController animated:YES completion:nil];
+        webViewController.transitioningDelegate = self.scaleTransition;
+        [self.splitViewController presentViewController:webViewController animated:YES completion:nil];
     } else {
         SVWebViewController *webViewController = [[SVWebViewController alloc] initWithURL:URL];
         [self.navigationController pushViewController:webViewController animated:YES];
