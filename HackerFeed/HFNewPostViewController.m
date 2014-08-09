@@ -67,15 +67,9 @@ static NSString * const kTextViewTableViewCellIdentifier = @"TextViewTableViewCe
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.tableView registerClass:[HFTextFieldTableViewCell class] forCellReuseIdentifier:kTextFieldTableViewCellIdentifier];
-    [self.tableView registerClass:[HFTextViewTableViewCell class] forCellReuseIdentifier:kTextViewTableViewCellIdentifier];
 
-    self.segmentedControl = [[NYSegmentedControl alloc] initWithItems:@[@"Link", @"Text"]];
-    
-    // Add desired targets/actions
+    self.segmentedControl = [[NYSegmentedControl alloc] initWithItems:@[NSLocalizedString(@"Link", nil), NSLocalizedString(@"Text", nil)]];
     [self.segmentedControl addTarget:self action:@selector(segmentSelected:) forControlEvents:UIControlEventValueChanged];
-    
-    // Customize and size the control
     self.segmentedControl.backgroundColor = [UIColor colorWithWhite:0.9f alpha:1.0f];
     self.segmentedControl.segmentIndicatorBackgroundColor = [UIColor whiteColor];
     self.segmentedControl.segmentIndicatorInset = 0.0f;
@@ -85,14 +79,7 @@ static NSString * const kTextViewTableViewCellIdentifier = @"TextViewTableViewCe
     self.segmentedControl.titleFont = [UIFont applicationFontOfSize:14.0f];
     [self.segmentedControl sizeToFit];
     self.segmentedControl.cornerRadius = CGRectGetHeight(self.segmentedControl.frame) / 2.0f;
-    
-    // Add the control to your view
     self.navigationItem.titleView = self.segmentedControl;
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    [self.titleTextField becomeFirstResponder];
 }
 
 - (void)cancelButtonPressed:(id)sender {
@@ -106,10 +93,10 @@ static NSString * const kTextViewTableViewCellIdentifier = @"TextViewTableViewCe
                                                   text:nil
                                             completion:^(BOOL success) {
                                                 if (success) {
-                                                    [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Post submitted", nil)];
+                                                    [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Link submitted", nil)];
                                                     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
                                                 } else {
-                                                    [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Error submitting post", nil)];
+                                                    [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Error submitting link", nil)];
                                                 }
                                             }];
     } else {

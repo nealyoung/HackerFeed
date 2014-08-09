@@ -183,7 +183,7 @@ static NSString * const kPostCommentsSegueIdentifier = @"PostCommentsSegue";
     if (post.Type == PostTypeJobs) {
         postTableViewCell.infoLabel.text = nil;
     } else {
-        postTableViewCell.infoLabel.text = [NSString stringWithFormat:@"%d points · %@", post.Points, [post.Username lowercaseString]];
+        postTableViewCell.infoLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%d points · %@", nil), post.Points, [post.Username lowercaseString]];
     }
     
     [postTableViewCell.commentsButton setTitle:[NSString stringWithFormat:@"%d", post.CommentCount] forState:UIControlStateNormal];
@@ -208,7 +208,7 @@ static NSString * const kPostCommentsSegueIdentifier = @"PostCommentsSegue";
     
     postMetricsCell.titleLabel.text = post.Title;
     postMetricsCell.domainLabel.text = post.UrlDomain;
-    postMetricsCell.infoLabel.text = [NSString stringWithFormat:@"%d points · %@", post.Points, post.Username];
+    postMetricsCell.infoLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%d points · %@", nil), post.Points, post.Username];
     
     [postMetricsCell setNeedsLayout];
     [postMetricsCell layoutIfNeeded];

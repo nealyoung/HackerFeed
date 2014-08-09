@@ -101,18 +101,16 @@
 - (void)setExpanded:(BOOL)expanded animated:(BOOL)animated {
     _expanded = expanded;
     
-    NSTimeInterval animationDuration;
     if (expanded) {
         self.separatorInset = UIEdgeInsetsMake(0.0f, CGRectGetWidth(self.frame), 0.0f, 0.0f);
         self.commentActionsView.hidden = NO;
         self.toolbarHeightConstraint.constant = 40.0f;
-        animationDuration = 0.3f;
-
     } else {
         self.separatorInset = UIEdgeInsetsMake(0.0f, 15.0f, 0.0f, 0.0f);
         self.toolbarHeightConstraint.constant = 0.0f;
-        animationDuration = 0.0f;
     }
+    
+    NSTimeInterval animationDuration = animated ? 0.3f : 0.0f;
     
     [self setNeedsUpdateConstraints];
     
@@ -120,6 +118,8 @@
     [UIView animateWithDuration:animationDuration animations:^{
         [self layoutIfNeeded];
     }];
+    
+    NSLog(@"%f", animationDuration);
     
     [UIView animateWithDuration:animationDuration animations:^{
         if (expanded) {
