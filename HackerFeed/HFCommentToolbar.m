@@ -40,6 +40,7 @@
 }
 
 - (void)commonInit {
+    self.backgroundColor = [UIColor whiteColor];
     self.replyToView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.replyToView setTranslatesAutoresizingMaskIntoConstraints:NO];
     self.replyToView.hidden = YES;
@@ -59,7 +60,7 @@
     
     self.topBorderView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.topBorderView setTranslatesAutoresizingMaskIntoConstraints:NO];
-    self.topBorderView.backgroundColor = [UIColor lightGrayColor];
+    self.topBorderView.backgroundColor = [UIColor clearColor];
     [self addSubview:self.topBorderView];
     
     self.textView = [[HFTextView alloc] initWithFrame:CGRectZero];
@@ -98,7 +99,7 @@
                                                                  metrics:nil
                                                                    views:NSDictionaryOfVariableBindings(_textView, _submitButton)]];
     
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_topBorderView(0.5)]-3.5-[_replyToView]-4-[_textView(>=32)]-8-|"
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_topBorderView(1)]-3.5-[_replyToView]-4-[_textView(>=32)]-8-|"
                                                                  options:0
                                                                  metrics:nil
                                                                    views:NSDictionaryOfVariableBindings(_topBorderView, _replyToView, _textView)]];

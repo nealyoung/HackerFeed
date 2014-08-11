@@ -10,6 +10,7 @@
 
 #import "DMScaleTransition.h"
 #import "DMSlideTransition.h"
+#import "HFNavigationBar.h"
 #import "HFNewPostViewController.h"
 #import "HFPostTableViewCell.h"
 #import "HFPostViewController.h"
@@ -145,13 +146,15 @@ static NSString * const kPostCommentsSegueIdentifier = @"PostCommentsSegue";
 
 - (void)newPostButtonPressed {
     HFNewPostViewController *newPostViewController = [[HFNewPostViewController alloc] initWithNibName:nil bundle:nil];
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:newPostViewController];
-    self.scaleTransition = [DMScaleTransition new];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithNavigationBarClass:[HFNavigationBar class]
+                                                                                                 toolbarClass:nil];
+    navigationController.viewControllers = @[newPostViewController];
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         navigationController.modalPresentationStyle = UIModalPresentationFormSheet;
         [self.splitViewController presentViewController:navigationController animated:YES completion:nil];
     } else {
+        self.scaleTransition = [DMScaleTransition new];
         navigationController.transitioningDelegate = self.scaleTransition;
         [self presentViewController:navigationController animated:YES completion:nil];
     }

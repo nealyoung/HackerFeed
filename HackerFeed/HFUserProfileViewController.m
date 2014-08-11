@@ -8,9 +8,13 @@
 
 #import "HFUserProfileViewController.h"
 
+#import "DMScaleTransition.h"
 #import "HFLoginViewController.h"
+#import "HFNavigationBar.h"
 
 @interface HFUserProfileViewController () <HFLoginViewControllerDelegate>
+
+@property DMScaleTransition *scaleTransition;
 
 @end
 
@@ -91,6 +95,9 @@ NSString * const kLoginViewControllerIdentifier = @"ORNLoginViewController";
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         loginNavigationController.modalPresentationStyle = UIModalPresentationFormSheet;
+    } else {
+        self.scaleTransition = [DMScaleTransition new];
+        loginNavigationController.transitioningDelegate = self.scaleTransition;
     }
     [self presentViewController:loginNavigationController animated:YES completion:nil];
 }

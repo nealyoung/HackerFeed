@@ -24,7 +24,6 @@
 @property UITableView *tableView;
 @property UIBarButtonItem *upvoteButton;
 @property HFCommentToolbar *commentToolbar;
-@property NSLayoutConstraint *commentToolbarHeightConstraint;
 
 @property NSIndexPath *expandedIndexPath;
 @property NSArray *comments;
@@ -49,9 +48,11 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
 @implementation HFPostViewController
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nil bundle:nil];
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     
     if (self) {
+        self.view.backgroundColor = [UIColor whiteColor];
+        
         self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
         [self.tableView setTranslatesAutoresizingMaskIntoConstraints:NO];
         self.tableView.dataSource = self;
@@ -114,14 +115,6 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
                                                                           metrics:nil
                                                                             views:NSDictionaryOfVariableBindings(_tableView, _commentToolbar)]];
         
-        self.commentToolbarHeightConstraint = [NSLayoutConstraint constraintWithItem:self.commentToolbar
-                                                                           attribute:NSLayoutAttributeHeight
-                                                                           relatedBy:NSLayoutRelationEqual
-                                                                              toItem:nil
-                                                                           attribute:NSLayoutAttributeNotAnAttribute
-                                                                          multiplier:1.0f
-                                                                            constant:44.0f];
-        
         id <UILayoutSupport> topGuide = self.topLayoutGuide;
         
         // Ensure the comment toolbar doesn't expand under the navigation bar when the user is typing a long comment
@@ -131,6 +124,8 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
                                                                             views:NSDictionaryOfVariableBindings(topGuide, _commentToolbar)]];
         
         [self addKeyboardNotificationObservers];
+        
+        self.post = nil;
     }
     
     return self;
@@ -160,18 +155,15 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
     if (post) {
         self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
         self.selectPostLabel.hidden = YES;
+        self.commentToolbar.hidden = NO;
     } else {
         self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.selectPostLabel.hidden = NO;
+        self.commentToolbar.hidden = YES;
     }
     
-    // Hide the upvote button if we're looking at a job post (that can't be voted on)
-    if (post.Type == PostTypeJobs) {
-        self.navigationItem.rightBarButtonItem = nil;
-    } else {
-        self.navigationItem.rightBarButtonItem = self.upvoteButton;
-        self.upvoteButton.enabled = ![[HNManager sharedManager] hasVotedOnObject:post];
-    }
+    // Disable the upvote button if the user has already voted, or if we're looking at a job post (that can't be voted on)
+    self.upvoteButton.enabled = !([[HNManager sharedManager] hasVotedOnObject:post] || post.Type == PostTypeJobs);
     
     // Clear the cell height cache
     self.commentCellHeightCache = [NSMutableDictionary dictionary];

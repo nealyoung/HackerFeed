@@ -39,6 +39,7 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
     if (self.urlAddition) {
         [[HNManager sharedManager] loadPostsWithUrlAddition:self.urlAddition completion:^(NSArray *posts) {
             [self.posts addObjectsFromArray:posts];
+            block(YES);
         }];
     } else {
         [self refreshWithCompletion:block];

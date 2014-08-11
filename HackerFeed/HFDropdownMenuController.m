@@ -57,6 +57,7 @@
 }
 
 - (void)commonInit {
+    NSLog(@"%@", NSStringFromCGRect(self.view.bounds));
     _dropdownMenu = [[HFDropdownMenu alloc] initWithFrame:self.view.bounds];
     _dropdownMenu.delegate = self;
     [self.view insertSubview:_dropdownMenu belowSubview:self.navigationBar];

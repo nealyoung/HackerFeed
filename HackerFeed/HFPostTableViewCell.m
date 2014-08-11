@@ -10,6 +10,12 @@
 
 #import "HFLabel.h"
 
+@interface HFPostTableViewCell ()
+
+@property UIView *commentButtonBackground;
+
+@end
+
 @implementation HFPostTableViewCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
@@ -35,17 +41,32 @@
         self.domainLabel.font = [UIFont smallCapsApplicationFontWithSize:15.0f];
         [self.contentView addSubview:self.domainLabel];
         
+        self.commentButtonBackground = [[UIView alloc] initWithFrame:CGRectZero];
+        [self.commentButtonBackground setTranslatesAutoresizingMaskIntoConstraints:NO];
+        self.commentButtonBackground.backgroundColor = [UIColor colorWithWhite:0.96f alpha:1.0f];
+        [self.contentView addSubview:self.commentButtonBackground];
+        
         self.commentsButton = [HFCommentsButton buttonWithType:UIButtonTypeCustom];
         [self.commentsButton setTranslatesAutoresizingMaskIntoConstraints:NO];
         [self.commentsButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
         [self.contentView addSubview:self.commentsButton];
+        
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_commentButtonBackground]|"
+                                                                                 options:0
+                                                                                 metrics:nil
+                                                                                   views:NSDictionaryOfVariableBindings(_commentButtonBackground)]];
+        
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[_commentButtonBackground(56)]|"
+                                                                                 options:0
+                                                                                 metrics:nil
+                                                                                   views:NSDictionaryOfVariableBindings(_commentButtonBackground)]];
         
         [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-15-[_infoLabel]-15-|"
                                                                                  options:0
                                                                                  metrics:nil
                                                                                    views:NSDictionaryOfVariableBindings(_infoLabel, _commentsButton)]];
         
-        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-15-[_titleLabel]-8-[_commentsButton(40)]-15-|"
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-15-[_titleLabel]-12-[_commentsButton(40)]-8-|"
                                                                                  options:0
                                                                                  metrics:nil
                                                                                    views:NSDictionaryOfVariableBindings(_titleLabel, _commentsButton)]];
