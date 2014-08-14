@@ -44,6 +44,7 @@ static NSString * const kPostCommentsSegueIdentifier = @"PostCommentsSegue";
         self.tableView.dataSource = self;
         self.tableView.delegate = self;
         self.tableView.rowHeight = 72.0f;
+        self.tableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
         [self.tableView registerClass:[HFPostTableViewCell class] forCellReuseIdentifier:kPostTableViewCellIdentifier];
         [self.view addSubview:self.tableView];
         
@@ -212,7 +213,12 @@ static NSString * const kPostCommentsSegueIdentifier = @"PostCommentsSegue";
     
     postMetricsCell.titleLabel.text = post.Title;
     postMetricsCell.domainLabel.text = post.UrlDomain;
-    postMetricsCell.infoLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%d points · %@", nil), post.Points, post.Username];
+
+    if (post.Type == PostTypeJobs) {
+        postMetricsCell.infoLabel.text = nil;
+    } else {
+        postMetricsCell.infoLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%d points · %@", nil), post.Points, [post.Username lowercaseString]];
+    }
     
     [postMetricsCell setNeedsLayout];
     [postMetricsCell layoutIfNeeded];
@@ -226,7 +232,11 @@ static NSString * const kPostCommentsSegueIdentifier = @"PostCommentsSegue";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     HNPost *post = self.dataSource.posts[indexPath.row];
     
-    if (post.Type == PostTypeJobs) {
+    // If the post is a jobs link pointing to a HN page with a relative URL (like 'item?id=8175089'), open the post in the app
+    if (post.Type == PostTypeJobs && [post.UrlString hasPrefix:@"item?"]) {
+        HFPostTableViewCell *cell = (HFPostTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+        [self commentsButtonPressed:cell.commentsButton];
+        
         return;
     }
     

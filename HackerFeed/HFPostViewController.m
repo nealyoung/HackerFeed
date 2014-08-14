@@ -184,10 +184,19 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
                                                       object:nil
                                                        queue:[NSOperationQueue mainQueue]
                                                   usingBlock:^(NSNotification *note) {
+                                                      // Only perform if visible
+                                                      if (!self.isViewLoaded || !self.view.window) {
+                                                          return;
+                                                      }
+                                                      
+                                                      NSLog(@"Show keyboard");
+                                                      
                                                       CGRect keyboardFrame = [self.view convertRect:[(NSValue *)note.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue]
                                                                                            fromView:nil];
                                                       CGRect viewFrame = self.view.frame;
                                                       viewFrame.size.height -= keyboardFrame.size.height;
+                                                      
+                                                      NSLog(@"view frame: %@\n", NSStringFromCGRect(viewFrame));
                                                       
                                                       UIViewAnimationCurve curve = [note.userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue];
                                                       NSTimeInterval animationDuration = [note.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
@@ -205,11 +214,19 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
                                                       object:nil
                                                        queue:[NSOperationQueue mainQueue]
                                                   usingBlock:^(NSNotification *note) {
-                                                      // [self performIfVisible:^{
+                                                      // Only perform if visible
+                                                      if (!self.isViewLoaded || !self.view.window) {
+                                                          return;
+                                                      }
+                                                      
+                                                      NSLog(@"Hide Keyboard");
+
                                                       CGRect keyboardFrame = [self.view convertRect:[(NSValue *)note.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue]
                                                                                            fromView:nil];
                                                       CGRect viewFrame = self.view.frame;
                                                       viewFrame.size.height += keyboardFrame.size.height;
+                                                      
+                                                      NSLog(@"view frame: %@\n", NSStringFromCGRect(viewFrame));
                                                       
                                                       UIViewAnimationCurve curve = [note.userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue];
                                                       NSTimeInterval animationDuration = [note.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
@@ -221,7 +238,6 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
                                                                            self.view.frame = viewFrame;
                                                                        }
                                                                        completion:nil];
-                                                      // }];
                                                   }];
 }
 

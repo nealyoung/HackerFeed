@@ -43,7 +43,7 @@ const CGFloat kNavigationBarHeight = 64.0f;
 }
 
 - (instancetype)initWithItems:(NSArray *)items {
-    self = [self initWithFrame:[UIScreen mainScreen].bounds];
+    self = [self initWithFrame:CGRectZero];
     
     if (self) {
         self.items = items;
@@ -53,6 +53,8 @@ const CGFloat kNavigationBarHeight = 64.0f;
 }
 
 - (void)layoutSubviews {
+    self.frame = self.superview.bounds;
+    
     CGFloat menuBackgroundHeight = kListTopMarginHeight + kNavigationBarHeight + self.itemHeight * [self.items count];
     self.listView.frame = CGRectMake(self.listView.frame.origin.x,
                                      -(menuBackgroundHeight + kListTopMarginHeight),

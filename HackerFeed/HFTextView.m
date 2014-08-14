@@ -62,6 +62,11 @@
     return CGSizeMake(self.frame.size.width, [self sizeThatFits:CGSizeMake(self.frame.size.width * 1.0f, CGFLOAT_MAX)].height);
 }
 
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    [super touchesEnded:touches withEvent:event];
+    NSLog(@"Touches");
+}
+
 - (void)drawRect:(CGRect)rect {
 	[super drawRect:rect];
     

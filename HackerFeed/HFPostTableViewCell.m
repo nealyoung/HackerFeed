@@ -23,6 +23,8 @@
     
     if (self) {
         self.contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        self.selectionStyle = UITableViewCellSelectionStyleDefault;
+        
         self.infoLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         [self.infoLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
         self.infoLabel.textColor = [UIColor darkGrayColor];
@@ -43,7 +45,7 @@
         
         self.commentButtonBackground = [[UIView alloc] initWithFrame:CGRectZero];
         [self.commentButtonBackground setTranslatesAutoresizingMaskIntoConstraints:NO];
-        self.commentButtonBackground.backgroundColor = [UIColor colorWithWhite:0.96f alpha:1.0f];
+        self.commentButtonBackground.backgroundColor = [UIColor colorWithWhite:0.97f alpha:1.0f];
         [self.contentView addSubview:self.commentButtonBackground];
         
         self.commentsButton = [HFCommentsButton buttonWithType:UIButtonTypeCustom];
