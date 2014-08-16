@@ -62,9 +62,15 @@
     return CGSizeMake(self.frame.size.width, [self sizeThatFits:CGSizeMake(self.frame.size.width * 1.0f, CGFLOAT_MAX)].height);
 }
 
+// In touchesBegan: and touchesEnded:, we need to pass up touch events to the next responder in the responder chain to enable both link tapping and cell expansion when tapping on comment cells
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [super touchesBegan:touches withEvent:event];
+    [self.nextResponder touchesBegan:touches withEvent:event];
+}
+
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     [super touchesEnded:touches withEvent:event];
-    NSLog(@"Touches");
+    [self.nextResponder touchesEnded:touches withEvent:event];
 }
 
 - (void)drawRect:(CGRect)rect {
