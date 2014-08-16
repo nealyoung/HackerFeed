@@ -9,7 +9,6 @@
 #import "HFPostListViewController.h"
 
 #import "DMScaleTransition.h"
-#import "DMSlideTransition.h"
 #import "HFNavigationBar.h"
 #import "HFNewPostViewController.h"
 #import "HFPostTableViewCell.h"

@@ -19,7 +19,6 @@
 		0E926CD219835AB30078E148 /* HFBorderedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E926CD119835AB30078E148 /* HFBorderedButton.m */; };
 		0E990E801990BA30002933C4 /* DMScaleTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E990E7F1990BA30002933C4 /* DMScaleTransition.m */; };
 		0E990E841990BA65002933C4 /* DMBaseTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E990E821990BA65002933C4 /* DMBaseTransition.m */; };
-		0E990E871990BCAF002933C4 /* DMSlideTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E990E851990BCAF002933C4 /* DMSlideTransition.m */; };
 		0EAC1B11197C54BD00393828 /* HFDropdownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EAC1B10197C54BD00393828 /* HFDropdownMenu.m */; };
 		0EAC1B14197C577800393828 /* HFDropdownMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EAC1B13197C577800393828 /* HFDropdownMenuButton.m */; };
 		0EAC1B18197C592200393828 /* UIViewController+HFDropdownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EAC1B17197C592200393828 /* UIViewController+HFDropdownMenu.m */; };
@@ -94,8 +93,6 @@
 		0E990E7F1990BA30002933C4 /* DMScaleTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMScaleTransition.m; sourceTree = "<group>"; };
 		0E990E821990BA65002933C4 /* DMBaseTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMBaseTransition.m; sourceTree = "<group>"; };
 		0E990E831990BA65002933C4 /* DMBaseTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMBaseTransition.h; sourceTree = "<group>"; };
-		0E990E851990BCAF002933C4 /* DMSlideTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMSlideTransition.m; sourceTree = "<group>"; };
-		0E990E861990BCAF002933C4 /* DMSlideTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMSlideTransition.h; sourceTree = "<group>"; };
 		0EAC1B0F197C54BD00393828 /* HFDropdownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFDropdownMenu.h; sourceTree = "<group>"; };
 		0EAC1B10197C54BD00393828 /* HFDropdownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFDropdownMenu.m; sourceTree = "<group>"; };
 		0EAC1B12197C577800393828 /* HFDropdownMenuButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFDropdownMenuButton.h; sourceTree = "<group>"; };
@@ -242,8 +239,6 @@
 			children = (
 				0E990E821990BA65002933C4 /* DMBaseTransition.m */,
 				0E990E831990BA65002933C4 /* DMBaseTransition.h */,
-				0E990E851990BCAF002933C4 /* DMSlideTransition.m */,
-				0E990E861990BCAF002933C4 /* DMSlideTransition.h */,
 				0E990E7E1990BA30002933C4 /* DMScaleTransition.h */,
 				0E990E7F1990BA30002933C4 /* DMScaleTransition.m */,
 			);
@@ -539,7 +534,6 @@
 				0EC81421197C828A009F0D99 /* HFPostViewController.m in Sources */,
 				0EE791CB1950318D00925E4F /* HFAppDelegate.m in Sources */,
 				0EC331201992986400E1531A /* HFLabel.m in Sources */,
-				0E990E871990BCAF002933C4 /* DMSlideTransition.m in Sources */,
 				0E511CA3198C0B3300F94E9F /* HFTextFieldTableViewCell.m in Sources */,
 				0EE6CAE119845B37005AE100 /* HFCommentActionsView.m in Sources */,
 				0E2F35C0198B8BF700718E1A /* HFNewPostViewController.m in Sources */,

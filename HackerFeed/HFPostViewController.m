@@ -357,7 +357,16 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.post ? 2 + [self.comments count] : 0;
+    if (self.post) {
+        // Jobs posts don't have a submitter username
+        if (self.post.Type == PostTypeJobs) {
+            return 1 + [self.comments count];
+        } else {
+            return 2 + [self.comments count];
+        }
+    } else {
+        return 0;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -366,7 +375,7 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
         cell.titleLabel.text = self.post.Title;
         cell.infoLabel.text = [NSString stringWithFormat:@"%d points · %@", self.post.Points, self.post.TimeCreatedString];
         return cell;
-    } else if (indexPath.row == 1) {
+    } else if (indexPath.row == 1 && self.post.Type != PostTypeJobs) {
         HFTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:kUsernameTableViewCellIdentifier forIndexPath:indexPath];
         cell.textLabel.textColor = [UIColor darkGrayColor];
         cell.textLabel.font = [UIFont smallCapsApplicationFontWithSize:cell.textLabel.font.pointSize];
@@ -380,7 +389,7 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
         HFCommentTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:kCommentTableViewCellIdentifier forIndexPath:indexPath];
         cell.delegate = self;
         
-        HNComment *comment = self.comments[indexPath.row - 2];
+        HNComment *comment = self.post.Type == PostTypeJobs ? self.comments[indexPath.row - 1] : self.comments[indexPath.row - 2];
         
         // Set to nil first as a workaround for iOS 7 bug with text view link detection (http://stackoverflow.com/questions/19121367/uitextviews-in-a-uitableview-link-detection-bug-in-ios-7)
         cell.textView.text = nil;
@@ -440,7 +449,7 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
         CGSize size = [postInfoMetricsCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
         
         return (size.height + 1);
-    } else if (indexPath.row == 1) {
+    } else if (indexPath.row == 1 && self.post.Type != PostTypeJobs) {
         return 44.0f;
     } else {
         NSNumber *cachedCellHeight = self.commentCellHeightCache[@(indexPath.row)];
@@ -458,7 +467,7 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
         frame.size.width = self.tableView.bounds.size.width;
         commentMetricsCell.frame = frame;
         
-        HNComment *comment = self.comments[indexPath.row - 2];
+        HNComment *comment = self.post.Type == PostTypeJobs ? self.comments[indexPath.row - 1] : self.comments[indexPath.row - 2];
         commentMetricsCell.textView.text = comment.Text;
         commentMetricsCell.usernameLabel.text = comment.Username;
         commentMetricsCell.usernameLabelLeadingConstraint.constant = 15.0f + (comment.Level * 15.0f);
@@ -499,7 +508,7 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
             SVWebViewController *webViewController = [[SVWebViewController alloc] initWithAddress:self.post.UrlString];
             [self.navigationController pushViewController:webViewController animated:YES];
         }
-    } else if (indexPath.row == 1) {
+    } else if (indexPath.row == 1 && self.post.Type != PostTypeJobs) {
         HFProfileViewController *profileViewController = [[HFProfileViewController alloc] initWithNibName:nil bundle:nil];
         [self.navigationController pushViewController:profileViewController animated:YES];
         [[HNManager sharedManager] loadUserWithUsername:self.post.Username completion:^(HNUser *user) {
