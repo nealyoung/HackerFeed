@@ -121,7 +121,7 @@
     
     [UIView animateWithDuration:animationDuration animations:^{
         if (expanded) {
-            self.contentView.layer.backgroundColor = [UIColor colorWithWhite:0.95f alpha:1.0f].CGColor;
+            self.contentView.layer.backgroundColor = [UIColor colorWithWhite:0.97f alpha:1.0f].CGColor;
             self.commentActionsView.layer.backgroundColor = [UIColor colorWithWhite:0.2f alpha:1.0f].CGColor;
             CATransform3D transform = CATransform3DMakeRotation(M_PI_2, 0, 0, 0);
             transform.m34 = -1.0f / 500.0f;
