@@ -104,6 +104,13 @@
     return self;
 }
 
+- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
+    // By default, setHighlighted:animated: makes the backgrounds subviews of the cell's contentView clear, we want to override this behavior so the comment button background does not disappear when the cell is highlighted
+    UIColor *commentBackgroundColor = self.commentButtonBackground.backgroundColor;
+    [super setHighlighted:highlighted animated:animated];
+    self.commentButtonBackground.backgroundColor = commentBackgroundColor;
+}
+
 - (void)layoutSubviews {
     [super layoutSubviews];
     
