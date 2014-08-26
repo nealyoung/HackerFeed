@@ -313,6 +313,12 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
         if (success) {
             [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Comment submitted", nil)];
             self.commentToolbar.textView.text = @"";
+            
+            // Reload the comments so the new comment is displayed
+            [[HNManager sharedManager] loadCommentsFromPost:self.post completion:^(NSArray *comments) {
+                self.comments = comments;
+                [self.tableView reloadData];
+            }];
         } else {
             [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Error submitting comment", nil)];
         }
