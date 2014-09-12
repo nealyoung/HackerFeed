@@ -26,10 +26,6 @@
 
 @implementation SVWebViewController
 
-- (void)loadURL:(NSURL *)url {
-    [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
-}
-
 #pragma mark - Initialization
 
 - (void)dealloc {

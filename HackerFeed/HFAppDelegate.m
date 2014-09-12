@@ -59,20 +59,16 @@
     [[HNManager sharedManager] startSession];
     [self customizeAppearance];
     
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        HFPostViewController *postViewController = [[HFPostViewController alloc] initWithNibName:nil bundle:nil];
-        UINavigationController *navigationController = [[UINavigationController alloc] initWithNavigationBarClass:[HFNavigationBar class]
-                                                                                                     toolbarClass:nil];
-        navigationController.viewControllers = @[postViewController];
-        UISplitViewController *splitViewController = [[UISplitViewController alloc] init];
-        splitViewController.delegate = postViewController;
-        splitViewController.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
-        splitViewController.viewControllers = @[dropdownMenuViewController, navigationController];
-        
-        self.window.rootViewController = splitViewController;
-    } else {
-        self.window.rootViewController = dropdownMenuViewController;
-    }
+    HFPostViewController *postViewController = [[HFPostViewController alloc] initWithNibName:nil bundle:nil];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithNavigationBarClass:[HFNavigationBar class]
+                                                                                                 toolbarClass:nil];
+    navigationController.viewControllers = @[postViewController];
+    UISplitViewController *splitViewController = [[UISplitViewController alloc] init];
+    splitViewController.delegate = postViewController;
+    splitViewController.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    splitViewController.viewControllers = @[dropdownMenuViewController, navigationController];
+    
+    self.window.rootViewController = splitViewController;
 
     [self.window makeKeyAndVisible];
     

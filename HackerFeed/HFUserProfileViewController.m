@@ -40,7 +40,7 @@ NSString * const kLoginViewControllerIdentifier = @"ORNLoginViewController";
                                                                  toItem:nil
                                                               attribute:NSLayoutAttributeNotAnAttribute
                                                              multiplier:1.0f
-                                                               constant:180.0f]];
+                                                               constant:200.0f]];
         
         [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.loginButton
                                                               attribute:NSLayoutAttributeHeight
@@ -93,7 +93,7 @@ NSString * const kLoginViewControllerIdentifier = @"ORNLoginViewController";
     
     UINavigationController *loginNavigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
     
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+    if (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular) {
         loginNavigationController.modalPresentationStyle = UIModalPresentationFormSheet;
     } else {
         self.scaleTransition = [DMScaleTransition new];

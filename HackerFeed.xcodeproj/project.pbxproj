@@ -51,6 +51,7 @@
 		0EEBD378197DD74D00D74AD6 /* HFProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EEBD377197DD74D00D74AD6 /* HFProfileViewController.m */; };
 		0EEBD393197DEB7E00D74AD6 /* HFUserInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EEBD392197DEB7E00D74AD6 /* HFUserInfoTableViewCell.m */; };
 		0EEBD396197E026300D74AD6 /* UIColor+HFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EEBD395197E026300D74AD6 /* UIColor+HFAdditions.m */; };
+		0EF4DAE619C255880007E186 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0EF4DAE519C255880007E186 /* LaunchScreen.xib */; };
 		0EFC25391985C22100A67412 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFC25381985C22100A67412 /* CoreText.framework */; };
 		0EFC253C1985D9D800A67412 /* HFCommentToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFC253B1985D9D800A67412 /* HFCommentToolbar.m */; };
 		0EFC253F1986026500A67412 /* HFTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFC253D1986026500A67412 /* HFTextView.m */; };
@@ -146,6 +147,7 @@
 		0EEBD392197DEB7E00D74AD6 /* HFUserInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFUserInfoTableViewCell.m; sourceTree = "<group>"; };
 		0EEBD394197E026300D74AD6 /* UIColor+HFAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HFAdditions.h"; sourceTree = "<group>"; };
 		0EEBD395197E026300D74AD6 /* UIColor+HFAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HFAdditions.m"; sourceTree = "<group>"; };
+		0EF4DAE519C255880007E186 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		0EFC25381985C22100A67412 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		0EFC253A1985D9D800A67412 /* HFCommentToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFCommentToolbar.h; sourceTree = "<group>"; };
 		0EFC253B1985D9D800A67412 /* HFCommentToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFCommentToolbar.m; sourceTree = "<group>"; };
@@ -310,6 +312,7 @@
 		0EE791AE1950318D00925E4F = {
 			isa = PBXGroup;
 			children = (
+				0EF4DAE519C255880007E186 /* LaunchScreen.xib */,
 				0EE791C01950318D00925E4F /* HackerFeed */,
 				0EE791E21950318D00925E4F /* HackerFeedTests */,
 				0EE791B91950318D00925E4F /* Frameworks */,
@@ -438,7 +441,7 @@
 				ORGANIZATIONNAME = "Nealon Young";
 				TargetAttributes = {
 					0EE791B61950318D00925E4F = {
-						DevelopmentTeam = 3KNK86UB96;
+						DevelopmentTeam = 4Z4Y9H22V8;
 					};
 					0EE791DA1950318D00925E4F = {
 						TestTargetID = 0EE791B61950318D00925E4F;
@@ -472,6 +475,7 @@
 				0EC8142C197C98B5009F0D99 /* SourceSansPro-Semibold.otf in Resources */,
 				0E3C12CA19881D9700AAF072 /* SourceSansPro-Light.otf in Resources */,
 				0EE791D61950318D00925E4F /* Images.xcassets in Resources */,
+				0EF4DAE619C255880007E186 /* LaunchScreen.xib in Resources */,
 				0EC8142B197C98B5009F0D99 /* SourceSansPro-Regular.otf in Resources */,
 				0EC8142A197C98B5009F0D99 /* SourceSansPro-Bold.otf in Resources */,
 				0EE791C51950318D00925E4F /* InfoPlist.strings in Resources */,
@@ -682,7 +686,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HackerFeed/HackerFeed-Prefix.pch";
 				INFOPLIST_FILE = "HackerFeed/HackerFeed-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = HackerFeed;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -699,7 +703,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HackerFeed/HackerFeed-Prefix.pch";
 				INFOPLIST_FILE = "HackerFeed/HackerFeed-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = HackerFeed;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;

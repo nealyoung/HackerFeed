@@ -12,6 +12,4 @@
 - (instancetype)initWithURL:(NSURL*)URL;
 - (instancetype)initWithURLRequest:(NSURLRequest *)request;
 
-- (void)loadURL:(NSURL *)url;
-
 @end

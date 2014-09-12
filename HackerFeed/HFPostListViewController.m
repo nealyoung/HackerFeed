@@ -131,7 +131,7 @@ static NSString * const kPostCommentsSegueIdentifier = @"PostCommentsSegue";
 }
 
 - (void)commentsButtonPressed:(HFCommentsButton *)sender {
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+    if (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular) {
         UINavigationController *postNavigationController = [self.splitViewController.viewControllers lastObject];
         HFPostViewController *postViewController = [postNavigationController.viewControllers firstObject];
         postViewController.post = self.dataSource.posts[sender.tag];

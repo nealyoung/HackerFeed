@@ -111,6 +111,12 @@
     self.commentButtonBackground.backgroundColor = commentBackgroundColor;
 }
 
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    UIColor *commentBackgroundColor = self.commentButtonBackground.backgroundColor;
+    [super setSelected:selected animated:animated];
+    self.commentButtonBackground.backgroundColor = commentBackgroundColor;
+}
+
 - (void)layoutSubviews {
     [super layoutSubviews];
     

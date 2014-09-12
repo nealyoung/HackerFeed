@@ -109,8 +109,6 @@
         NSString *upvoteString = @"";
         NSString *downvoteString = @"";
         
-        
-        
         // Get Comment Level
         [scanner scanBetweenString:@"height=\"1\" width=\"" andString:@">" intoString:&level];
         newComment.Level = [level intValue] / 40;

@@ -134,7 +134,7 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.upvoteButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"UpvoteIcon"] style:UIBarButtonItemStyleBordered target:self action:@selector(upvoteButtonPressed:)];
+    self.upvoteButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"UpvoteIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(upvoteButtonPressed:)];
     self.navigationItem.rightBarButtonItem = self.upvoteButton;
     
     self.commentCellHeightCache = [NSMutableDictionary dictionary];
