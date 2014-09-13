@@ -131,17 +131,14 @@ static NSString * const kPostCommentsSegueIdentifier = @"PostCommentsSegue";
 }
 
 - (void)commentsButtonPressed:(HFCommentsButton *)sender {
-    if (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular) {
-        UINavigationController *postNavigationController = [self.splitViewController.viewControllers lastObject];
-        HFPostViewController *postViewController = [postNavigationController.viewControllers firstObject];
-        postViewController.post = self.dataSource.posts[sender.tag];
-    } else {
-        HFPostViewController *postViewController = [[HFPostViewController alloc] initWithNibName:nil bundle:nil];
-        HFCommentsButton *commentsButton = (HFCommentsButton *)sender;
-        postViewController.post = self.dataSource.posts[commentsButton.tag];
-        
-        [self.navigationController pushViewController:postViewController animated:YES];
-    }
+    HFPostViewController *postViewController = [[HFPostViewController alloc] initWithNibName:nil bundle:nil];
+    UINavigationController *postNavigationController = [[UINavigationController alloc] initWithNavigationBarClass:[HFNavigationBar class]
+                                                                                                     toolbarClass:nil];
+    postNavigationController.viewControllers = @[postViewController];
+    HFCommentsButton *commentsButton = (HFCommentsButton *)sender;
+    postViewController.post = self.dataSource.posts[commentsButton.tag];
+    
+    [self showDetailViewController:postNavigationController sender:self];
 }
 
 - (void)newPostButtonPressed {
@@ -150,14 +147,14 @@ static NSString * const kPostCommentsSegueIdentifier = @"PostCommentsSegue";
                                                                                                  toolbarClass:nil];
     navigationController.viewControllers = @[newPostViewController];
     
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+    if (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular) {
         navigationController.modalPresentationStyle = UIModalPresentationFormSheet;
-        [self.splitViewController presentViewController:navigationController animated:YES completion:nil];
     } else {
         self.scaleTransition = [DMScaleTransition new];
         navigationController.transitioningDelegate = self.scaleTransition;
-        [self presentViewController:navigationController animated:YES completion:nil];
     }
+
+    [self.splitViewController presentViewController:navigationController animated:YES completion:nil];
 }
 
 - (void)closeWebViewButtonPressed {

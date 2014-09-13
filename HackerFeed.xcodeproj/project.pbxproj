@@ -12,6 +12,7 @@
 		0E3C12CA19881D9700AAF072 /* SourceSansPro-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0E3C12C919881D9300AAF072 /* SourceSansPro-Light.otf */; };
 		0E511CA3198C0B3300F94E9F /* HFTextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E511CA2198C0B3300F94E9F /* HFTextFieldTableViewCell.m */; };
 		0E520C53197C73F900E94DBD /* HFDropdownMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E520C52197C73F900E94DBD /* HFDropdownMenuItem.m */; };
+		0E5424E719C4C07D00FF24A7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E5424E619C4C07D00FF24A7 /* LaunchScreen.xib */; };
 		0E57B5B4198C2D6C0056CA54 /* HFTextViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E57B5B3198C2D6C0056CA54 /* HFTextViewTableViewCell.m */; };
 		0E5C453B19838135001EE1CB /* HFFilterPostDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E5C453A19838135001EE1CB /* HFFilterPostDataSource.m */; };
 		0E6C30DF197F5DCB00C33A67 /* HFLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E6C30DE197F5DCB00C33A67 /* HFLoginViewController.m */; };
@@ -51,7 +52,6 @@
 		0EEBD378197DD74D00D74AD6 /* HFProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EEBD377197DD74D00D74AD6 /* HFProfileViewController.m */; };
 		0EEBD393197DEB7E00D74AD6 /* HFUserInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EEBD392197DEB7E00D74AD6 /* HFUserInfoTableViewCell.m */; };
 		0EEBD396197E026300D74AD6 /* UIColor+HFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EEBD395197E026300D74AD6 /* UIColor+HFAdditions.m */; };
-		0EF4DAE619C255880007E186 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0EF4DAE519C255880007E186 /* LaunchScreen.xib */; };
 		0EFC25391985C22100A67412 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFC25381985C22100A67412 /* CoreText.framework */; };
 		0EFC253C1985D9D800A67412 /* HFCommentToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFC253B1985D9D800A67412 /* HFCommentToolbar.m */; };
 		0EFC253F1986026500A67412 /* HFTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFC253D1986026500A67412 /* HFTextView.m */; };
@@ -80,6 +80,7 @@
 		0E511CA2198C0B3300F94E9F /* HFTextFieldTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFTextFieldTableViewCell.m; sourceTree = "<group>"; };
 		0E520C51197C73F900E94DBD /* HFDropdownMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFDropdownMenuItem.h; sourceTree = "<group>"; };
 		0E520C52197C73F900E94DBD /* HFDropdownMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFDropdownMenuItem.m; sourceTree = "<group>"; };
+		0E5424E619C4C07D00FF24A7 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		0E57B5B2198C2D6C0056CA54 /* HFTextViewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFTextViewTableViewCell.h; sourceTree = "<group>"; };
 		0E57B5B3198C2D6C0056CA54 /* HFTextViewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFTextViewTableViewCell.m; sourceTree = "<group>"; };
 		0E5C453919838135001EE1CB /* HFFilterPostDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFFilterPostDataSource.h; sourceTree = "<group>"; };
@@ -147,7 +148,6 @@
 		0EEBD392197DEB7E00D74AD6 /* HFUserInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFUserInfoTableViewCell.m; sourceTree = "<group>"; };
 		0EEBD394197E026300D74AD6 /* UIColor+HFAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HFAdditions.h"; sourceTree = "<group>"; };
 		0EEBD395197E026300D74AD6 /* UIColor+HFAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HFAdditions.m"; sourceTree = "<group>"; };
-		0EF4DAE519C255880007E186 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		0EFC25381985C22100A67412 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		0EFC253A1985D9D800A67412 /* HFCommentToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFCommentToolbar.h; sourceTree = "<group>"; };
 		0EFC253B1985D9D800A67412 /* HFCommentToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFCommentToolbar.m; sourceTree = "<group>"; };
@@ -312,7 +312,6 @@
 		0EE791AE1950318D00925E4F = {
 			isa = PBXGroup;
 			children = (
-				0EF4DAE519C255880007E186 /* LaunchScreen.xib */,
 				0EE791C01950318D00925E4F /* HackerFeed */,
 				0EE791E21950318D00925E4F /* HackerFeedTests */,
 				0EE791B91950318D00925E4F /* Frameworks */,
@@ -368,6 +367,7 @@
 				0EE791C31950318D00925E4F /* InfoPlist.strings */,
 				0EE791C61950318D00925E4F /* main.m */,
 				0EE791C81950318D00925E4F /* HackerFeed-Prefix.pch */,
+				0E5424E619C4C07D00FF24A7 /* LaunchScreen.xib */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -475,7 +475,7 @@
 				0EC8142C197C98B5009F0D99 /* SourceSansPro-Semibold.otf in Resources */,
 				0E3C12CA19881D9700AAF072 /* SourceSansPro-Light.otf in Resources */,
 				0EE791D61950318D00925E4F /* Images.xcassets in Resources */,
-				0EF4DAE619C255880007E186 /* LaunchScreen.xib in Resources */,
+				0E5424E719C4C07D00FF24A7 /* LaunchScreen.xib in Resources */,
 				0EC8142B197C98B5009F0D99 /* SourceSansPro-Regular.otf in Resources */,
 				0EC8142A197C98B5009F0D99 /* SourceSansPro-Bold.otf in Resources */,
 				0EE791C51950318D00925E4F /* InfoPlist.strings in Resources */,
