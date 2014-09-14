@@ -11,11 +11,12 @@
 #import "DMScaleTransition.h"
 #import "HFCommentTableViewCell.h"
 #import "HFCommentToolbar.h"
+#import "HFModalWebViewController.h"
+#import "HFNavigationBar.h"
 #import "HFPostInfoTableViewCell.h"
 #import "HFProfileViewController.h"
 #import "HFTableViewCell.h"
-#import "SVWebViewController.h"
-#import "SVModalWebViewController.h"
+#import "PBWebViewController.h"
 #import "SVProgressHUD.h"
 
 @interface HFPostViewController () <HFCommentTableViewCellDelegate, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate>
@@ -505,14 +506,16 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
-        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-            SVModalWebViewController *webViewController = [[SVModalWebViewController alloc] initWithAddress:self.post.UrlString];
+        if (self.splitViewController.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular) {
+            HFModalWebViewController *webViewController = [[HFModalWebViewController alloc] initWithURL:[NSURL URLWithString:self.post.UrlString]];
             self.scaleTransition = [DMScaleTransition new];
             webViewController.transitioningDelegate = self.scaleTransition;
             [self.splitViewController presentViewController:webViewController animated:YES completion:nil];
         } else {
-            SVWebViewController *webViewController = [[SVWebViewController alloc] initWithAddress:self.post.UrlString];
-            [self.navigationController pushViewController:webViewController animated:YES];
+            PBWebViewController *webViewController = [[PBWebViewController alloc] init];
+            webViewController.URL = [NSURL URLWithString:self.post.UrlString];
+            
+            [self showViewController:webViewController sender:self];
         }
     } else if (indexPath.row == 1 && self.post.Type != PostTypeJobs) {
         HFProfileViewController *profileViewController = [[HFProfileViewController alloc] initWithNibName:nil bundle:nil];
@@ -528,14 +531,16 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
 #pragma mark - UITextViewDelegate
 
 - (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange {
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        SVModalWebViewController *webViewController = [[SVModalWebViewController alloc] initWithURL:URL];
+    if (self.splitViewController.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular) {
+        HFModalWebViewController *webViewController = [[HFModalWebViewController alloc] initWithURL:URL];
         self.scaleTransition = [DMScaleTransition new];
         webViewController.transitioningDelegate = self.scaleTransition;
         [self.splitViewController presentViewController:webViewController animated:YES completion:nil];
     } else {
-        SVWebViewController *webViewController = [[SVWebViewController alloc] initWithURL:URL];
-        [self.navigationController pushViewController:webViewController animated:YES];
+        PBWebViewController *webViewController = [[PBWebViewController alloc] init];
+        webViewController.URL = URL;
+        
+        [self showViewController:webViewController sender:self];
     }
     
     return NO;

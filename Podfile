@@ -5,9 +5,9 @@ target "HackerFeed" do
   pod 'libHN', :git => 'https://github.com/nealyoung/libHN.git'
   pod 'NYSegmentedControl'
   pod 'Reveal-iOS-SDK'
+  pod 'PBWebViewController'
   pod 'SVProgressHUD', :head
   pod 'SVPullToRefresh', :head
-  pod 'SVWebViewController', :head
 end
 
 target "HackerFeedTests" do

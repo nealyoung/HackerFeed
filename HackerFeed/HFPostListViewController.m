@@ -9,12 +9,12 @@
 #import "HFPostListViewController.h"
 
 #import "DMScaleTransition.h"
+#import "HFModalWebViewController.h"
 #import "HFNavigationBar.h"
 #import "HFNewPostViewController.h"
 #import "HFPostTableViewCell.h"
 #import "HFPostViewController.h"
-#import "SVModalWebViewController.h"
-#import "SVWebViewController.h"
+#import "PBWebViewController.h"
 #import "SVProgressHUD.h"
 #import "UIScrollView+SVPullToRefresh.h"
 #import "UIScrollView+SVInfiniteScrolling.h"
@@ -236,18 +236,16 @@ static NSString * const kPostCommentsSegueIdentifier = @"PostCommentsSegue";
         return;
     }
     
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        SVModalWebViewController *webViewController = [[SVModalWebViewController alloc] initWithAddress:post.UrlString];
+    if (self.splitViewController.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular) {
+        HFModalWebViewController *webViewController = [[HFModalWebViewController alloc] initWithURL:[NSURL URLWithString:post.UrlString]];
         self.scaleTransition = [DMScaleTransition new];
         webViewController.transitioningDelegate = self.scaleTransition;
         [self.splitViewController presentViewController:webViewController animated:YES completion:nil];
-        
-        //        UINavigationController *postNavigationController = [self.splitViewController.viewControllers lastObject];
-        //        HFPostViewController *postViewController = [postNavigationController.viewControllers firstObject];
-        //        postViewController.post = post;
     } else {
-        SVWebViewController *webViewController = [[SVWebViewController alloc] initWithAddress:post.UrlString];
-        [self.navigationController pushViewController:webViewController animated:YES];
+        PBWebViewController *webViewController = [[PBWebViewController alloc] init];
+        webViewController.URL = [NSURL URLWithString:post.UrlString];
+        
+        [self showViewController:webViewController sender:self];
     }
     
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];

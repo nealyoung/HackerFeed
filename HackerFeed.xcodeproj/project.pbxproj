@@ -13,6 +13,7 @@
 		0E511CA3198C0B3300F94E9F /* HFTextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E511CA2198C0B3300F94E9F /* HFTextFieldTableViewCell.m */; };
 		0E520C53197C73F900E94DBD /* HFDropdownMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E520C52197C73F900E94DBD /* HFDropdownMenuItem.m */; };
 		0E5424E719C4C07D00FF24A7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E5424E619C4C07D00FF24A7 /* LaunchScreen.xib */; };
+		0E5424EA19C4DA5F00FF24A7 /* HFModalWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E5424E919C4DA5F00FF24A7 /* HFModalWebViewController.m */; };
 		0E57B5B4198C2D6C0056CA54 /* HFTextViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E57B5B3198C2D6C0056CA54 /* HFTextViewTableViewCell.m */; };
 		0E5C453B19838135001EE1CB /* HFFilterPostDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E5C453A19838135001EE1CB /* HFFilterPostDataSource.m */; };
 		0E6C30DF197F5DCB00C33A67 /* HFLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E6C30DE197F5DCB00C33A67 /* HFLoginViewController.m */; };
@@ -81,6 +82,8 @@
 		0E520C51197C73F900E94DBD /* HFDropdownMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFDropdownMenuItem.h; sourceTree = "<group>"; };
 		0E520C52197C73F900E94DBD /* HFDropdownMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFDropdownMenuItem.m; sourceTree = "<group>"; };
 		0E5424E619C4C07D00FF24A7 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		0E5424E819C4DA5F00FF24A7 /* HFModalWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFModalWebViewController.h; sourceTree = "<group>"; };
+		0E5424E919C4DA5F00FF24A7 /* HFModalWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFModalWebViewController.m; sourceTree = "<group>"; };
 		0E57B5B2198C2D6C0056CA54 /* HFTextViewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFTextViewTableViewCell.h; sourceTree = "<group>"; };
 		0E57B5B3198C2D6C0056CA54 /* HFTextViewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFTextViewTableViewCell.m; sourceTree = "<group>"; };
 		0E5C453919838135001EE1CB /* HFFilterPostDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFFilterPostDataSource.h; sourceTree = "<group>"; };
@@ -221,6 +224,8 @@
 				0EE2838A198394BB00D3A3C6 /* HFUserProfileViewController.m */,
 				0E6C30DD197F5DCB00C33A67 /* HFLoginViewController.h */,
 				0E6C30DE197F5DCB00C33A67 /* HFLoginViewController.m */,
+				0E5424E819C4DA5F00FF24A7 /* HFModalWebViewController.h */,
+				0E5424E919C4DA5F00FF24A7 /* HFModalWebViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -547,6 +552,7 @@
 				0EFC2542198604A900A67412 /* HFUserPostDataSource.m in Sources */,
 				0EC81435197CA8FA009F0D99 /* HFCommentTableViewCell.m in Sources */,
 				0E1FC635197C4B4700B41804 /* HFPostTableViewCell.m in Sources */,
+				0E5424EA19C4DA5F00FF24A7 /* HFModalWebViewController.m in Sources */,
 				0EE791C71950318D00925E4F /* main.m in Sources */,
 				0EE791D41950318D00925E4F /* HFPostListViewController.m in Sources */,
 				0E6C30DF197F5DCB00C33A67 /* HFLoginViewController.m in Sources */,

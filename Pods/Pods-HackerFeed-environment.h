@@ -12,6 +12,12 @@
 #define COCOAPODS_VERSION_MINOR_NYSegmentedControl 0
 #define COCOAPODS_VERSION_PATCH_NYSegmentedControl 3
 
+// PBWebViewController
+#define COCOAPODS_POD_AVAILABLE_PBWebViewController
+#define COCOAPODS_VERSION_MAJOR_PBWebViewController 0
+#define COCOAPODS_VERSION_MINOR_PBWebViewController 3
+#define COCOAPODS_VERSION_PATCH_PBWebViewController 0
+
 // Reveal-iOS-SDK
 #define COCOAPODS_POD_AVAILABLE_Reveal_iOS_SDK
 #define COCOAPODS_VERSION_MAJOR_Reveal_iOS_SDK 1
