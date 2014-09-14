@@ -357,8 +357,8 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
 
 #pragma mark - UISplitViewControllerDelegate
 
-- (BOOL)splitViewController:(UISplitViewController *)svc shouldHideViewController:(UIViewController *)vc inOrientation:(UIInterfaceOrientation)orientation {
-    return NO;
+- (BOOL)splitViewController:(UISplitViewController *)splitViewController collapseSecondaryViewController:(UIViewController *)secondaryViewController ontoPrimaryViewController:(UIViewController *)primaryViewController {
+    return YES;
 }
 
 #pragma mark - UITableViewDataSource

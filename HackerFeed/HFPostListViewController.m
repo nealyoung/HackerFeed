@@ -42,7 +42,8 @@ static NSString * const kPostCommentsSegueIdentifier = @"PostCommentsSegue";
         [self.tableView setTranslatesAutoresizingMaskIntoConstraints:NO];
         self.tableView.dataSource = self;
         self.tableView.delegate = self;
-        self.tableView.rowHeight = 72.0f;
+        self.tableView.rowHeight = UITableViewAutomaticDimension;
+        self.tableView.estimatedRowHeight = 72.0f;
         self.tableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
         [self.tableView registerClass:[HFPostTableViewCell class] forCellReuseIdentifier:kPostTableViewCellIdentifier];
         [self.view addSubview:self.tableView];
@@ -147,7 +148,7 @@ static NSString * const kPostCommentsSegueIdentifier = @"PostCommentsSegue";
                                                                                                  toolbarClass:nil];
     navigationController.viewControllers = @[newPostViewController];
     
-    if (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular) {
+    if (self.splitViewController.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular) {
         navigationController.modalPresentationStyle = UIModalPresentationFormSheet;
     } else {
         self.scaleTransition = [DMScaleTransition new];
@@ -155,10 +156,6 @@ static NSString * const kPostCommentsSegueIdentifier = @"PostCommentsSegue";
     }
 
     [self.splitViewController presentViewController:navigationController animated:YES completion:nil];
-}
-
-- (void)closeWebViewButtonPressed {
-    [self.splitViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - Getters/Setters
@@ -196,34 +193,34 @@ static NSString * const kPostCommentsSegueIdentifier = @"PostCommentsSegue";
 
 #pragma mark - UITableViewDelegate
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static HFPostTableViewCell *postMetricsCell;
-
-    if (!postMetricsCell) {
-        postMetricsCell = [[HFPostTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
-    }
-    
-    postMetricsCell.bounds = CGRectMake(0.0f, 0.0f, self.tableView.bounds.size.width, 9999.0f);
-    
-    HNPost *post = self.dataSource.posts[indexPath.row];
-    
-    postMetricsCell.titleLabel.text = post.Title;
-    postMetricsCell.domainLabel.text = post.UrlDomain;
-
-    if (post.Type == PostTypeJobs) {
-        postMetricsCell.infoLabel.text = nil;
-    } else {
-        postMetricsCell.infoLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%d points · %@", nil), post.Points, [post.Username lowercaseString]];
-    }
-    
-    [postMetricsCell setNeedsLayout];
-    [postMetricsCell layoutIfNeeded];
-    
-    CGSize size = [postMetricsCell.contentView systemLayoutSizeFittingSize:UILayoutFittingExpandedSize];
-    CGFloat cellHeight = size.height + 1;
-    
-    return cellHeight;
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    static HFPostTableViewCell *postMetricsCell;
+//
+//    if (!postMetricsCell) {
+//        postMetricsCell = [[HFPostTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+//    }
+//    
+//    postMetricsCell.bounds = CGRectMake(0.0f, 0.0f, self.tableView.bounds.size.width, 9999.0f);
+//    
+//    HNPost *post = self.dataSource.posts[indexPath.row];
+//    
+//    postMetricsCell.titleLabel.text = post.Title;
+//    postMetricsCell.domainLabel.text = post.UrlDomain;
+//
+//    if (post.Type == PostTypeJobs) {
+//        postMetricsCell.infoLabel.text = nil;
+//    } else {
+//        postMetricsCell.infoLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%d points · %@", nil), post.Points, [post.Username lowercaseString]];
+//    }
+//    
+//    [postMetricsCell setNeedsLayout];
+//    [postMetricsCell layoutIfNeeded];
+//    
+//    CGSize size = [postMetricsCell.contentView systemLayoutSizeFittingSize:UILayoutFittingExpandedSize];
+//    CGFloat cellHeight = size.height + 1;
+//    
+//    return cellHeight;
+//}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     HNPost *post = self.dataSource.posts[indexPath.row];

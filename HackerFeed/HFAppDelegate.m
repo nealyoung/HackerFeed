@@ -63,8 +63,10 @@
     UINavigationController *navigationController = [[UINavigationController alloc] initWithNavigationBarClass:[HFNavigationBar class]
                                                                                                  toolbarClass:nil];
     navigationController.viewControllers = @[postViewController];
+    
     UISplitViewController *splitViewController = [[UISplitViewController alloc] init];
     splitViewController.delegate = postViewController;
+    splitViewController.preferredDisplayMode = UISplitViewControllerDisplayModeAllVisible;
     splitViewController.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
     splitViewController.viewControllers = @[dropdownMenuViewController, navigationController];
     
