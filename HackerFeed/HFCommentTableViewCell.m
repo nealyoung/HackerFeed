@@ -21,7 +21,8 @@
         self.usernameLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         [self.usernameLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
         self.usernameLabel.textColor = [UIColor darkGrayColor];
-        self.usernameLabel.font = [UIFont applicationFontOfSize:16.0f];
+        self.usernameLabel.font = [UIFont smallCapsApplicationFontWithSize:15.0f];
+        //self.usernameLabel.font = [UIFont applicationFontOfSize:16.0f];
         [self.contentView addSubview:self.usernameLabel];
         
         self.textView = [[HFTextView alloc] initWithFrame:CGRectZero];
@@ -45,7 +46,7 @@
                                                                               toItem:self.contentView
                                                                            attribute:NSLayoutAttributeLeft
                                                                           multiplier:1.0f
-                                                                            constant:10.0f];
+                                                                            constant:15.0f];
         [self.contentView addConstraint:self.usernameLabelLeadingConstraint];
         
         [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[_usernameLabel]-15-|"
@@ -113,7 +114,6 @@
     NSTimeInterval animationDuration = animated ? 0.3f : 0.0f;
     
     [self setNeedsUpdateConstraints];
-    
     
     [UIView animateWithDuration:animationDuration animations:^{
         [self layoutIfNeeded];

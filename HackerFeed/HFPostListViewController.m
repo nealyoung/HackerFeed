@@ -29,9 +29,6 @@
 
 static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
 
-static NSString * const kPostSegueIdentifier = @"PostSegue";
-static NSString * const kPostCommentsSegueIdentifier = @"PostCommentsSegue";
-
 @implementation HFPostListViewController
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -42,8 +39,9 @@ static NSString * const kPostCommentsSegueIdentifier = @"PostCommentsSegue";
         [self.tableView setTranslatesAutoresizingMaskIntoConstraints:NO];
         self.tableView.dataSource = self;
         self.tableView.delegate = self;
+        self.tableView.rowHeight = 72.0f;
         self.tableView.rowHeight = UITableViewAutomaticDimension;
-        self.tableView.estimatedRowHeight = 72.0f;
+        //self.tableView.estimatedRowHeight = 72.0f;
         self.tableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
         [self.tableView registerClass:[HFPostTableViewCell class] forCellReuseIdentifier:kPostTableViewCellIdentifier];
         [self.view addSubview:self.tableView];
@@ -86,24 +84,6 @@ static NSString * const kPostCommentsSegueIdentifier = @"PostCommentsSegue";
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
 
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
-}
-
-- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
-    NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
-    HNPost *post = self.dataSource.posts[selectedIndexPath.row];
-    
-    // Bring the user to the in-app comments page for Ask HN posts, instead of opening the comments page in a web view
-    if ([identifier isEqualToString:kPostSegueIdentifier] && post.Type == PostTypeAskHN) {
-        HFPostTableViewCell *cell = (HFPostTableViewCell *)[self.tableView cellForRowAtIndexPath:selectedIndexPath];
-        [self performSegueWithIdentifier:kPostCommentsSegueIdentifier sender:cell.commentsButton];
-        return NO;
-    } else if ([identifier isEqualToString:kPostSegueIdentifier] && post.Type == PostTypeJobs && !post.UrlString) {
-        HFPostTableViewCell *cell = (HFPostTableViewCell *)[self.tableView cellForRowAtIndexPath:selectedIndexPath];
-        [self performSegueWithIdentifier:kPostCommentsSegueIdentifier sender:cell.commentsButton];
-        return NO;
-    }
-    
-    return YES;
 }
 
 - (void)refresh {
@@ -193,34 +173,36 @@ static NSString * const kPostCommentsSegueIdentifier = @"PostCommentsSegue";
 
 #pragma mark - UITableViewDelegate
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    static HFPostTableViewCell *postMetricsCell;
-//
-//    if (!postMetricsCell) {
-//        postMetricsCell = [[HFPostTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
-//    }
-//    
-//    postMetricsCell.bounds = CGRectMake(0.0f, 0.0f, self.tableView.bounds.size.width, 9999.0f);
-//    
-//    HNPost *post = self.dataSource.posts[indexPath.row];
-//    
-//    postMetricsCell.titleLabel.text = post.Title;
-//    postMetricsCell.domainLabel.text = post.UrlDomain;
-//
-//    if (post.Type == PostTypeJobs) {
-//        postMetricsCell.infoLabel.text = nil;
-//    } else {
-//        postMetricsCell.infoLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%d points · %@", nil), post.Points, [post.Username lowercaseString]];
-//    }
-//    
-//    [postMetricsCell setNeedsLayout];
-//    [postMetricsCell layoutIfNeeded];
-//    
-//    CGSize size = [postMetricsCell.contentView systemLayoutSizeFittingSize:UILayoutFittingExpandedSize];
-//    CGFloat cellHeight = size.height + 1;
-//    
-//    return cellHeight;
-//}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static HFPostTableViewCell *postMetricsCell;
+    //NSLog(@"Height requested for index path: %@", indexPath);
+    //return UITableViewAutomaticDimension;
+    
+    if (!postMetricsCell) {
+        postMetricsCell = [[HFPostTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+    }
+    
+    postMetricsCell.bounds = CGRectMake(0.0f, 0.0f, self.tableView.bounds.size.width, 9999.0f);
+    
+    HNPost *post = self.dataSource.posts[indexPath.row];
+    
+    postMetricsCell.titleLabel.text = post.Title;
+    postMetricsCell.domainLabel.text = post.UrlDomain;
+
+    if (post.Type == PostTypeJobs) {
+        postMetricsCell.infoLabel.text = nil;
+    } else {
+        postMetricsCell.infoLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%d points · %@", nil), post.Points, [post.Username lowercaseString]];
+    }
+    
+    [postMetricsCell setNeedsLayout];
+    [postMetricsCell layoutIfNeeded];
+    
+    CGSize size = [postMetricsCell.contentView systemLayoutSizeFittingSize:UILayoutFittingExpandedSize];
+    CGFloat cellHeight = size.height + 1;
+    
+    return cellHeight;
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     HNPost *post = self.dataSource.posts[indexPath.row];

@@ -21,6 +21,9 @@
 
 @interface HFPostViewController () <HFCommentTableViewCellDelegate, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate>
 
+// Store the default frame of the view so we can restore it after the keyboard is hidden
+@property CGRect originalViewFrame;
+
 @property UILabel *selectPostLabel;
 @property UITableView *tableView;
 @property UIBarButtonItem *upvoteButton;
@@ -181,7 +184,7 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
 }
 
 - (void)addKeyboardNotificationObservers {
-    [[NSNotificationCenter defaultCenter] addObserverForName:UIKeyboardWillShowNotification
+    [[NSNotificationCenter defaultCenter] addObserverForName:UIKeyboardWillChangeFrameNotification
                                                       object:nil
                                                        queue:[NSOperationQueue mainQueue]
                                                   usingBlock:^(NSNotification *note) {
@@ -190,47 +193,18 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
                                                           return;
                                                       }
                                                       
-                                                      NSLog(@"Show keyboard");
-                                                      
                                                       CGRect keyboardFrame = [self.view convertRect:[(NSValue *)note.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue]
                                                                                            fromView:nil];
                                                       CGRect viewFrame = self.view.frame;
-                                                      viewFrame.size.height -= keyboardFrame.size.height;
-                                                      
-                                                      NSLog(@"view frame: %@\n", NSStringFromCGRect(viewFrame));
+                                                      viewFrame.size.height = CGRectGetMinY(keyboardFrame);
                                                       
                                                       UIViewAnimationCurve curve = [note.userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue];
                                                       NSTimeInterval animationDuration = [note.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
                                                       
-                                                      [UIView animateWithDuration:animationDuration
-                                                                            delay:0
-                                                                          options:UIViewAnimationOptionBeginFromCurrentState | curve
-                                                                       animations:^{
-                                                                           self.view.frame = viewFrame;
-                                                                       }
-                                                                       completion:nil];
-                                                  }];
-    
-    [[NSNotificationCenter defaultCenter] addObserverForName:UIKeyboardWillHideNotification
-                                                      object:nil
-                                                       queue:[NSOperationQueue mainQueue]
-                                                  usingBlock:^(NSNotification *note) {
-                                                      // Only perform if visible
-                                                      if (!self.isViewLoaded || !self.view.window) {
-                                                          return;
+                                                      // There is no animationDuration key when the user shows/hides the suggestions bar under iOS 8
+                                                      if (animationDuration == 0.0f) {
+                                                          animationDuration = 0.25f;
                                                       }
-                                                      
-                                                      NSLog(@"Hide Keyboard");
-
-                                                      CGRect keyboardFrame = [self.view convertRect:[(NSValue *)note.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue]
-                                                                                           fromView:nil];
-                                                      CGRect viewFrame = self.view.frame;
-                                                      viewFrame.size.height += keyboardFrame.size.height;
-                                                      
-                                                      NSLog(@"view frame: %@\n", NSStringFromCGRect(viewFrame));
-                                                      
-                                                      UIViewAnimationCurve curve = [note.userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue];
-                                                      NSTimeInterval animationDuration = [note.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
                                                       
                                                       [UIView animateWithDuration:animationDuration
                                                                             delay:0
@@ -404,9 +378,9 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
         // Set the delegate so we can open detected links
         cell.textView.delegate = self;
         cell.textView.textContainerInset = UIEdgeInsetsZero;
-        cell.usernameLabel.text = comment.Username;
+        cell.usernameLabel.text = [NSString stringWithFormat:@"%@ · %@", comment.Username, comment.TimeCreatedString];
         
-        cell.usernameLabelLeadingConstraint.constant = 15.0f + (comment.Level * 15.0f);
+        cell.usernameLabelLeadingConstraint.constant = tableView.separatorInset.left + (comment.Level * 15.0f);
         cell.textViewLeadingConstraint.constant = 10.0f + (comment.Level * 15.0f);
         cell.toolbarHeightConstraint.constant = 0.0f;
         
