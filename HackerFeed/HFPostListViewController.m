@@ -40,8 +40,8 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
         self.tableView.dataSource = self;
         self.tableView.delegate = self;
         self.tableView.rowHeight = 72.0f;
-        self.tableView.rowHeight = UITableViewAutomaticDimension;
-        //self.tableView.estimatedRowHeight = 72.0f;
+        //self.tableView.rowHeight = UITableViewAutomaticDimension;
+        //self.tableView.estimatedRowHeight = 80.0f;
         self.tableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
         [self.tableView registerClass:[HFPostTableViewCell class] forCellReuseIdentifier:kPostTableViewCellIdentifier];
         [self.view addSubview:self.tableView];
@@ -175,8 +175,6 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     static HFPostTableViewCell *postMetricsCell;
-    //NSLog(@"Height requested for index path: %@", indexPath);
-    //return UITableViewAutomaticDimension;
     
     if (!postMetricsCell) {
         postMetricsCell = [[HFPostTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
