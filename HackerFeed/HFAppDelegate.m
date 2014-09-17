@@ -23,23 +23,23 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
     HFPostListViewController *topStoriesViewController = [[HFPostListViewController alloc] initWithNibName:nil bundle:nil];
-    topStoriesViewController.dataSource = [[HFFilterPostDataSource alloc] initWithPostFilterType:PostFilterTypeTop];
+    topStoriesViewController.dataSource = [[HFFilterPostDataSource alloc] initWithPostFilterType:HNPostFilterTypeTop];
     topStoriesViewController.title = NSLocalizedString(@"Top Stories", nil);
     
     HFPostListViewController *newStoriesViewController = [[HFPostListViewController alloc] initWithNibName:nil bundle:nil];
-    newStoriesViewController.dataSource = [[HFFilterPostDataSource alloc] initWithPostFilterType:PostFilterTypeNew];
+    newStoriesViewController.dataSource = [[HFFilterPostDataSource alloc] initWithPostFilterType:HNPostFilterTypeNew];
     newStoriesViewController.title = NSLocalizedString(@"New Stories", nil);
     
     HFPostListViewController *askHNViewController = [[HFPostListViewController alloc] initWithNibName:nil bundle:nil];
-    askHNViewController.dataSource = [[HFFilterPostDataSource alloc] initWithPostFilterType:PostFilterTypeAsk];
+    askHNViewController.dataSource = [[HFFilterPostDataSource alloc] initWithPostFilterType:HNPostFilterTypeAsk];
     askHNViewController.title = NSLocalizedString(@"Ask HN", nil);
     
     HFPostListViewController *showHNViewController = [[HFPostListViewController alloc] initWithNibName:nil bundle:nil];
-    showHNViewController.dataSource = [[HFFilterPostDataSource alloc] initWithPostFilterType:PostFilterTypeShowHN];
+    showHNViewController.dataSource = [[HFFilterPostDataSource alloc] initWithPostFilterType:HNPostFilterTypeShowHN];
     showHNViewController.title = NSLocalizedString(@"Show HN", nil);
     
     HFPostListViewController *jobsViewController = [[HFPostListViewController alloc] initWithNibName:nil bundle:nil];
-    jobsViewController.dataSource = [[HFFilterPostDataSource alloc] initWithPostFilterType:PostFilterTypeJobs];
+    jobsViewController.dataSource = [[HFFilterPostDataSource alloc] initWithPostFilterType:HNPostFilterTypeJobs];
     jobsViewController.title = NSLocalizedString(@"Jobs", nil);
     
     HFUserProfileViewController *profileViewController = [[HFUserProfileViewController alloc] initWithNibName:nil bundle:nil];
@@ -66,9 +66,8 @@
     
     UISplitViewController *splitViewController = [[UISplitViewController alloc] init];
     splitViewController.delegate = postViewController;
-    splitViewController.preferredDisplayMode = UISplitViewControllerDisplayModeAllVisible;
-    splitViewController.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
     splitViewController.viewControllers = @[dropdownMenuViewController, navigationController];
+    splitViewController.preferredDisplayMode = UISplitViewControllerDisplayModeAllVisible;
     
     self.window.rootViewController = splitViewController;
 

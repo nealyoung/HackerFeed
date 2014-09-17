@@ -33,7 +33,7 @@
     NSString *trash = @"";
     NSArray *htmlComponents = [html componentsSeparatedByString:@"<td><img src=\"s.gif\""];
     
-    if (post.Type == PostTypeAskHN) {
+    if (post.type == HNPostTypeAskHN) {
         // Grab AskHN Post
         NSScanner *scanner = [NSScanner scannerWithString:htmlComponents[0]];
         NSString *text = @"", *user = @"", *timeAgo = @"", *commentId = @"", *upvoteUrl = @"";
@@ -65,18 +65,18 @@
         
         // Create special comment for it
         HNComment *newComment = [[HNComment alloc] init];
-        newComment.Level = 0;
-        newComment.Username = user;
-        newComment.TimeCreatedString = timeAgo;
-        newComment.Text = [HNUtilities stringByReplacingHTMLEntitiesInText:text];
-        newComment.Links = [HNCommentLink linksFromCommentText:newComment.Text];
+        newComment.level = 0;
+        newComment.username = user;
+        newComment.createdAtString = timeAgo;
+        newComment.text = [HNUtilities stringByReplacingHTMLEntitiesInText:text];
+        newComment.links = [HNCommentLink linksFromCommentText:newComment.text];
         newComment.Type = HNCommentTypeAskHN;
-        newComment.UpvoteURLAddition = upvoteUrl.length>0 ? upvoteUrl : nil;
-        newComment.CommentId = commentId;
+        newComment.upvoteURLAddition = upvoteUrl.length>0 ? upvoteUrl : nil;
+        newComment.commentId = commentId;
         [comments addObject:newComment];
     }
     
-    if (post.Type == PostTypeJobs) {
+    if (post.type == HNPostTypeJobs) {
         // Grab Jobs Post
         NSScanner *scanner = [NSScanner scannerWithString:htmlComponents[0]];
         NSString *text = @"";
@@ -84,9 +84,9 @@
         
         // Create special comment for it
         HNComment *newComment = [[HNComment alloc] init];
-        newComment.Level = 0;
-        newComment.Text = [HNUtilities stringByReplacingHTMLEntitiesInText:text];
-        newComment.Links = [HNCommentLink linksFromCommentText:newComment.Text];
+        newComment.level = 0;
+        newComment.text = [HNUtilities stringByReplacingHTMLEntitiesInText:text];
+        newComment.links = [HNCommentLink linksFromCommentText:newComment.text];
         newComment.Type = HNCommentTypeJobs;
         [comments addObject:newComment];
     }
@@ -111,44 +111,44 @@
         
         // Get Comment Level
         [scanner scanBetweenString:@"height=\"1\" width=\"" andString:@">" intoString:&level];
-        newComment.Level = [level intValue] / 40;
+        newComment.level = [level intValue] / 40;
         
         // If Logged In - Grab Voting Strings
         if ([htmlComponents[xx] rangeOfString:@"dir=up"].location != NSNotFound) {
             // Scan Upvote String
             [scanner scanBetweenString:@"href=\"" andString:@"whence" intoString:&upvoteString];
-            newComment.UpvoteURLAddition = [upvoteString stringByReplacingOccurrencesOfString:@"&amp;" withString:@"&"];
+            newComment.upvoteURLAddition = [upvoteString stringByReplacingOccurrencesOfString:@"&amp;" withString:@"&"];
             
             // Check for downvote String
             if ([htmlComponents[xx] rangeOfString:@"dir=down"].location != NSNotFound) {
                 [scanner scanBetweenString:@"href=\"" andString:@"whence" intoString:&downvoteString];
-                newComment.DownvoteURLAddition = [downvoteString stringByReplacingOccurrencesOfString:@"&amp;" withString:@"&"];
+                newComment.downvoteURLAddition = [downvoteString stringByReplacingOccurrencesOfString:@"&amp;" withString:@"&"];
             }
         }
         
         // Get Username
         [scanner scanBetweenString:@"<a href=\"user?id=" andString:@"\">" intoString:&user];
-        newComment.Username = user.length > 0 ? user : @"[deleted]";
+        newComment.username = user.length > 0 ? user : @"[deleted]";
         
         // Get Date/Time Label
         [scanner scanBetweenString:@"</a> " andString:@" |" intoString:&timeAgo];
-        newComment.TimeCreatedString = timeAgo;
+        newComment.createdAtString = timeAgo;
         
         // Get Comment Text
         [scanner scanBetweenString:@"<font color=" andString:@">" intoString:&trash];
         [scanner scanBetweenString:@">" andString:@"</font>" intoString:&text];
-        newComment.Text = [HNUtilities stringByReplacingHTMLEntitiesInText:text];
+        newComment.text = [HNUtilities stringByReplacingHTMLEntitiesInText:text];
         
         // Get CommentId
         [scanner scanBetweenString:@"reply?id=" andString:@"&" intoString:&commentId];
-        newComment.CommentId = commentId;
+        newComment.commentId = commentId;
         
         // Get Reply URL Addition
         [scanner scanBetweenString:@"<font size=1><u><a href=\"" andString:@"\">reply" intoString:&reply];
-        newComment.ReplyURLString = reply;
+        newComment.replyURLString = reply;
         
         // Get Links
-        newComment.Links = [HNCommentLink linksFromCommentText:newComment.Text];
+        newComment.links = [HNCommentLink linksFromCommentText:newComment.text];
         
         // Save Comment
         [comments addObject:newComment];

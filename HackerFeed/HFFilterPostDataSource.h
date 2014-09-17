@@ -12,9 +12,9 @@
 
 @interface HFFilterPostDataSource : NSObject <HFPostDataSource>
 
-@property PostFilterType postFilterType;
+@property HNPostFilterType postFilterType;
 @property NSMutableArray *posts;
 
-- (instancetype)initWithPostFilterType:(PostFilterType)postFilterType;
+- (instancetype)initWithPostFilterType:(HNPostFilterType)postFilterType;
 
 @end

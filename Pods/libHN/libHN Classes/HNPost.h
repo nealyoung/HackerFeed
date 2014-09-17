@@ -22,27 +22,25 @@
 
 #import <Foundation/Foundation.h>
 
-typedef NS_ENUM(NSInteger, PostType) {
-    PostTypeDefault,
-    PostTypeAskHN,
-    PostTypeJobs
+typedef NS_ENUM(NSInteger, HNPostType) {
+    HNPostTypeDefault,
+    HNPostTypeAskHN,
+    HNPostTypeJobs
 };
 
 @interface HNPost : NSObject
 
-#pragma mark - Properties
-@property (nonatomic, assign) PostType Type;
-@property (nonatomic,retain) NSString *Username;
-@property (nonatomic, retain) NSString *UrlString;
-@property (nonatomic, retain, readonly) NSString *UrlDomain;
-@property (nonatomic, retain) NSString *Title;
-@property (nonatomic, assign) int Points;
-@property (nonatomic, assign) int CommentCount;
-@property (nonatomic, retain) NSString *PostId;
+@property (nonatomic, assign) HNPostType type;
+@property (nonatomic, retain) NSString *title;
+@property (nonatomic, retain) NSString *username;
+@property (nonatomic, retain) NSString *urlString;
+@property (nonatomic, retain, readonly) NSString *urlDomain;
+@property (nonatomic, assign) int points;
+@property (nonatomic, assign) int commentCount;
+@property (nonatomic, retain) NSString *postId;
 @property (nonatomic, retain) NSString *TimeCreatedString;
-@property (nonatomic, retain) NSString *UpvoteURLAddition;
+@property (nonatomic, retain) NSString *upvoteURLAddition;
 
-#pragma mark - Methods
 + (NSArray *)parsedPostsFromHTML:(NSString *)html FNID:(NSString **)fnid;
 
 @end

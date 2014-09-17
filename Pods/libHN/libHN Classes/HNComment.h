@@ -31,21 +31,18 @@ typedef NS_ENUM(NSInteger, HNCommentType) {
 
 @interface HNComment : NSObject
 
-#pragma mark - Properties
 @property (nonatomic, assign) HNCommentType Type;
-@property (nonatomic, retain) NSString *Text;
-@property (nonatomic, retain) NSString *Username;
-@property (nonatomic, retain) NSString *CommentId;
-@property (nonatomic, retain) NSString *ParentID;
-@property (nonatomic, retain) NSString *TimeCreatedString;
-@property (nonatomic, retain) NSString *ReplyURLString;
-@property (nonatomic, assign) int Level;
-@property (nonatomic, retain) NSArray *Links;
-@property (nonatomic, retain) NSString *UpvoteURLAddition;
-@property (nonatomic, retain) NSString *DownvoteURLAddition;
+@property (nonatomic, retain) NSString *text;
+@property (nonatomic, retain) NSString *username;
+@property (nonatomic, retain) NSString *commentId;
+@property (nonatomic, retain) NSString *parentID;
+@property (nonatomic, retain) NSString *createdAtString;
+@property (nonatomic, retain) NSString *replyURLString;
+@property (nonatomic, assign) int level;
+@property (nonatomic, retain) NSArray *links;
+@property (nonatomic, retain) NSString *upvoteURLAddition;
+@property (nonatomic, retain) NSString *downvoteURLAddition;
 
-#pragma mark - Methods
 + (NSArray *)parsedCommentsFromHTML:(NSString *)html forPost:(HNPost *)post;
-
 
 @end

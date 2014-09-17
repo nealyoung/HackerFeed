@@ -104,7 +104,7 @@ static NSString * const kUserSubmissionsTableViewCellIdentifier = @"UserSubmissi
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0) {
         // Don't show a cell for the user's bio if they don't have one
-        return [self.user.AboutInfo length] > 0 ? 3 : 2;
+        return [self.user.about length] > 0 ? 3 : 2;
     } else {
         return 1;
     }
@@ -115,8 +115,8 @@ static NSString * const kUserSubmissionsTableViewCellIdentifier = @"UserSubmissi
         if (indexPath.row == 0) {
             HFUserInfoTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:kUserInfoTableViewCellIdentifier
                                                                                   forIndexPath:indexPath];
-            cell.usernameLabel.text = self.user.Username;
-            cell.ageLabel.text = [NSString stringWithFormat:@"user for %d days", self.user.Age];
+            cell.usernameLabel.text = self.user.username;
+            cell.ageLabel.text = [NSString stringWithFormat:@"user for %d days", self.user.age];
 
             return cell;
         } else if (indexPath.row == 1) {
@@ -124,13 +124,13 @@ static NSString * const kUserSubmissionsTableViewCellIdentifier = @"UserSubmissi
                                                                          forIndexPath:indexPath];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.textLabel.text = NSLocalizedString(@"Karma", nil);
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", self.user.Karma];
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", self.user.karma];
             
             return cell;
         } else {
             HFTextViewTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:kTextViewTableViewCellIdentifier
                                                                                   forIndexPath:indexPath];
-            cell.textView.text = self.user.AboutInfo;
+            cell.textView.text = self.user.about;
 
             return cell;
         }
@@ -161,7 +161,7 @@ static NSString * const kUserSubmissionsTableViewCellIdentifier = @"UserSubmissi
             
             textViewMetricsCell.bounds = CGRectMake(0.0f, 0.0f, self.tableView.bounds.size.width, 9999.0f);
             
-            textViewMetricsCell.textView.text = self.user.AboutInfo;
+            textViewMetricsCell.textView.text = self.user.about;
             [textViewMetricsCell setNeedsLayout];
             [textViewMetricsCell layoutIfNeeded];
             

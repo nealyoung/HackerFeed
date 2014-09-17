@@ -27,7 +27,6 @@
 #define kCookieDomain @"news.ycombinator.com"
 #define kMaxConcurrentConnections 15
 
-#pragma mark - HNWebService
 @implementation HNWebService
 
 - (instancetype)init {
@@ -38,7 +37,6 @@
     
     return self;
 }
-
 
 - (void)loadUserWithUsername:(NSString *)username completion:(GetUserCompletion)completion {
     // Build URL String
@@ -58,8 +56,8 @@
                 }
                 else {
                     hnUser = [[HNUser alloc] init];
-                    hnUser.Username = username;
-                    hnUser.Karma = 0;
+                    hnUser.username = username;
+                    hnUser.karma = 0;
                 }
                 
                 if (username) {
@@ -91,26 +89,26 @@
 }
 
 #pragma mark - Load Posts With Filter
-- (void)loadPostsWithFilter:(PostFilterType)filter completion:(GetPostsCompletion)completion {
+- (void)loadPostsWithFilter:(HNPostFilterType)filter completion:(GetPostsCompletion)completion {
     // Set the Path
     NSString *pathAddition = @"";
     switch (filter) {
-        case PostFilterTypeTop:
+        case HNPostFilterTypeTop:
             pathAddition = @"";
             break;
-        case PostFilterTypeAsk:
+        case HNPostFilterTypeAsk:
             pathAddition = @"ask";
             break;
-        case PostFilterTypeBest:
+        case HNPostFilterTypeBest:
             pathAddition = @"best";
             break;
-        case PostFilterTypeJobs:
+        case HNPostFilterTypeJobs:
             pathAddition = @"jobs";
             break;
-        case PostFilterTypeNew:
+        case HNPostFilterTypeNew:
             pathAddition = @"newest";
             break;
-        case PostFilterTypeShowHN:
+        case HNPostFilterTypeShowHN:
             pathAddition = @"show";
             break;
         default:
@@ -121,7 +119,7 @@
     // Load the Posts
     HNOperation *operation = [[HNOperation alloc] init];
     __block HNOperation *blockOperation = operation;
-    [operation setUrlPath:urlPath data:nil cookie:[HNManager sharedManager].SessionCookie completion:^{
+    [operation setUrlPath:urlPath data:nil cookie:[HNManager sharedManager].sessionCookie completion:^{
         if (blockOperation.responseData) {
             NSString *html = [[NSString alloc] initWithData:blockOperation.responseData encoding:NSUTF8StringEncoding];
             NSString *fnid = @"";
@@ -163,7 +161,7 @@
     // Load the Posts
     HNOperation *operation = [[HNOperation alloc] init];
     __block HNOperation *blockOperation = operation;
-    [operation setUrlPath:urlPath data:nil cookie:[HNManager sharedManager].SessionCookie completion:^{
+    [operation setUrlPath:urlPath data:nil cookie:[HNManager sharedManager].sessionCookie completion:^{
         if (blockOperation.responseData) {
             NSString *html = [[NSString alloc] initWithData:blockOperation.responseData encoding:NSUTF8StringEncoding];
             NSString *fnid = @"";
@@ -193,12 +191,12 @@
 #pragma mark - Load Comments from Post
 - (void)loadCommentsFromPost:(HNPost *)post completion:(GetCommentsCompletion)completion {
     // Create URL Path
-    NSString *urlPath = [NSString stringWithFormat:@"%@item?id=%@", kBaseURLAddress, post.PostId];
+    NSString *urlPath = [NSString stringWithFormat:@"%@item?id=%@", kBaseURLAddress, post.postId];
     
     // Load the Comments
     HNOperation *operation = [[HNOperation alloc] init];
     __block HNOperation *blockOperation = operation;
-    [operation setUrlPath:urlPath data:nil cookie:[HNManager sharedManager].SessionCookie completion:^{
+    [operation setUrlPath:urlPath data:nil cookie:[HNManager sharedManager].sessionCookie completion:^{
         if (blockOperation.responseData) {
             NSString *html = [[NSString alloc] initWithData:blockOperation.responseData encoding:NSUTF8StringEncoding];
             NSArray *comments = [HNComment parsedCommentsFromHTML:html forPost:post];
@@ -295,8 +293,8 @@
                 }
                 else {
                     hnUser = [[HNUser alloc] init];
-                    hnUser.Username = user;
-                    hnUser.Karma = karma ? karma : 0;
+                    hnUser.username = user;
+                    hnUser.karma = karma ? karma : 0;
                 }
                 
                 Cookie = [HNManager getHNCookie];
@@ -328,8 +326,8 @@
     [self.HNQueue addOperation:operation];
 }
 
-
 #pragma mark - Validate Session Cookie
+
 - (void)validateAndSetSessionWithCookie:(NSHTTPCookie *)cookie completion:(LoginCompletion)completion {
     // And finally we attempt to create the User
     // Build URL String
@@ -375,15 +373,15 @@
     [self.HNQueue addOperation:operation];
 }
 
-
 #pragma mark - Submit Post
+
 - (void)submitPostWithTitle:(NSString *)title link:(NSString *)link text:(NSString *)text completion:(BooleanSuccessBlock)completion {
     // Submitting a post is a two=part process
     // 1. Get the fnid of the Submission page
     // 2. Submit the link/text using the fnid
     
     // if no Cookie, we can't submit
-    if (![[HNManager sharedManager] SessionCookie]) {
+    if (![[HNManager sharedManager] sessionCookie]) {
         completion(NO);
         return;
     }
@@ -394,7 +392,7 @@
     // Start the Operation
     HNOperation *operation = [[HNOperation alloc] init];
     __block HNOperation *blockOperation = operation;
-    [operation setUrlPath:urlPath data:nil cookie:[[HNManager sharedManager] SessionCookie] completion:^{
+    [operation setUrlPath:urlPath data:nil cookie:[[HNManager sharedManager] sessionCookie] completion:^{
         if (blockOperation.responseData) {
             NSString *html = [[NSString alloc] initWithData:blockOperation.responseData encoding:NSUTF8StringEncoding];
             if ([html rangeOfString:@"login"].location == NSNotFound) {
@@ -448,7 +446,7 @@
     // 2. Submit the link/text using the fnid
     
     // if no Cookie, we can't submit
-    if (![[HNManager sharedManager] SessionCookie]) {
+    if (![[HNManager sharedManager] sessionCookie]) {
         completion(NO);
         return;
     }
@@ -456,10 +454,10 @@
     // Get itemId
     NSString *itemId;
     if ([hnObject isKindOfClass:[HNPost class]]) {
-        itemId = [(HNPost *)hnObject PostId];
+        itemId = [(HNPost *)hnObject postId];
     }
     else {
-        itemId = [(HNComment *)hnObject CommentId];
+        itemId = [(HNComment *)hnObject commentId];
     }
     
     // Make the url path
@@ -468,7 +466,7 @@
     // Start the Operation
     HNOperation *operation = [[HNOperation alloc] init];
     __block HNOperation *blockOperation = operation;
-    [operation setUrlPath:urlPath data:nil cookie:[[HNManager sharedManager] SessionCookie] completion:^{
+    [operation setUrlPath:urlPath data:nil cookie:[[HNManager sharedManager] sessionCookie] completion:^{
         if (blockOperation.responseData) {
             NSString *html = [[NSString alloc] initWithData:blockOperation.responseData encoding:NSUTF8StringEncoding];
             if ([html rangeOfString:@"textarea"].location != NSNotFound) {
@@ -509,8 +507,8 @@
     [self.HNQueue addOperation:operation];
 }
 
-
 #pragma mark - Part 2 of submitting a Comment/Post
+
 - (void)part2SubmitPostOrCommentWithData:(NSData *)bodyData completion:(BooleanSuccessBlock)completion {
     // Make the url path
     NSString *urlPath = [NSString stringWithFormat:@"%@r", kBaseURLAddress];
@@ -518,7 +516,7 @@
     // Start the Operation
     HNOperation *operation = [[HNOperation alloc] init];
     __block HNOperation *blockOperation = operation;
-    [operation setUrlPath:urlPath data:bodyData cookie:[[HNManager sharedManager] SessionCookie] completion:^{
+    [operation setUrlPath:urlPath data:bodyData cookie:[[HNManager sharedManager] sessionCookie] completion:^{
         if (blockOperation.responseData) {
             NSString *html = [[NSString alloc] initWithData:blockOperation.responseData encoding:NSUTF8StringEncoding];
             if ([html rangeOfString:@"logout?whence=%6e%65%77%65%73%74"].location != NSNotFound || [html rangeOfString:@"logout?whence=%6e%65%77%73"].location != NSNotFound) {
@@ -542,16 +540,15 @@
     [self.HNQueue addOperation:operation];
 }
 
-
-
 #pragma mark - Vote on Post/Comment
-- (void)voteOnHNObject:(id)hnObject direction:(VoteDirection)direction completion:(BooleanSuccessBlock)completion {
+
+- (void)voteOnHNObject:(id)hnObject direction:(HNVoteDirection)direction completion:(BooleanSuccessBlock)completion {
     // Voting is a two part process
     // 1. Grab the voting string associated with the direction (vote?for=6510488&amp;dir=up&amp;by=bennyg&amp;auth=69984d18a11d7f663259e6bd203791acd284978e)
     // 2. Call that HTML and check for errors
     
     // if no Cookie, we can't vote
-    if (![[HNManager sharedManager] SessionCookie]) {
+    if (![[HNManager sharedManager] sessionCookie]) {
         completion(NO);
         return;
     }
@@ -559,15 +556,15 @@
     // Get urlAddition
     NSString *urlAddition;
     if ([hnObject isKindOfClass:[HNPost class]]) {
-        if (direction == VoteDirectionDown) {
+        if (direction == HNVoteDirectionDown) {
             // You can't downvote a Post
             completion(NO);
             return;
         }
-        urlAddition = [(HNPost *)hnObject UpvoteURLAddition];
+        urlAddition = [(HNPost *)hnObject upvoteURLAddition];
     }
     else {
-        urlAddition = direction == VoteDirectionUp ? [(HNComment *)hnObject UpvoteURLAddition] : [(HNComment *)hnObject DownvoteURLAddition];
+        urlAddition = direction == HNVoteDirectionUp ? [(HNComment *)hnObject upvoteURLAddition] : [(HNComment *)hnObject downvoteURLAddition];
     }
     
     // if urlAddition is nil, return
@@ -582,7 +579,7 @@
     // Start the Operation
     HNOperation *operation = [[HNOperation alloc] init];
     __block HNOperation *blockOperation = operation;
-    [operation setUrlPath:urlPath data:nil cookie:[[HNManager sharedManager] SessionCookie] completion:^{
+    [operation setUrlPath:urlPath data:nil cookie:[[HNManager sharedManager] sessionCookie] completion:^{
         if (blockOperation.responseData) {
             NSString *html = [[NSString alloc] initWithData:blockOperation.responseData encoding:NSUTF8StringEncoding];
             if ([html rangeOfString:@"User mismatch"].location == NSNotFound) {
@@ -607,8 +604,8 @@
     [self.HNQueue addOperation:operation];
 }
 
-
 #pragma mark - Fetch Submissions
+
 - (void)fetchSubmissionsForUser:(NSString *)user completion:(GetPostsCompletion)completion {
     // Make the url path
     NSString *urlPath = [NSString stringWithFormat:@"%@submitted?id=%@", kBaseURLAddress, user];
@@ -616,7 +613,7 @@
     // Start the Operation
     HNOperation *operation = [[HNOperation alloc] init];
     __block HNOperation *blockOperation = operation;
-    [operation setUrlPath:urlPath data:nil cookie:[[HNManager sharedManager] SessionCookie] completion:^{
+    [operation setUrlPath:urlPath data:nil cookie:[[HNManager sharedManager] sessionCookie] completion:^{
         if (blockOperation.responseData) {
             NSString *html = [[NSString alloc] initWithData:blockOperation.responseData encoding:NSUTF8StringEncoding];
             if ([html rangeOfString:@"No such user."].location != NSNotFound && html.length == 13) {
@@ -650,19 +647,13 @@
     }
 }
 
-
 @end
 
-
-
-
-
-
-#pragma mark - HNOperation
 @implementation HNOperation
 
 #pragma mark - Set URL Path
--(void)setUrlPath:(NSString *)path data:(NSData *)data cookie:(NSHTTPCookie *)cookie completion:(void (^)(void))block {
+
+- (void)setUrlPath:(NSString *)path data:(NSData *)data cookie:(NSHTTPCookie *)cookie completion:(void (^)(void))block {
     if (data) {
         self.bodyData = data;
     }
@@ -677,15 +668,15 @@
     [self setCompletionBlock:block];
 }
 
-
 #pragma mark - Background
--(BOOL)isConcurrent {
+
+- (BOOL)isConcurrent {
     return YES;
 }
 
-
 #pragma mark - Main Run Loop
--(void)main {
+
+- (void)main {
     // Execute
     NSError *error;
     NSHTTPURLResponse *response = [[NSHTTPURLResponse alloc] init];
@@ -694,36 +685,37 @@
 }
 
 #pragma mark - URL Request Building
-+(NSMutableURLRequest *)newGetRequestForURL:(NSURL *)url cookie:(NSHTTPCookie *)cookie {
-    NSMutableURLRequest *Request = [[NSMutableURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:10];
-    [Request setHTTPShouldHandleCookies:NO];
-    [Request setHTTPMethod:@"GET"];
-    [Request setAllHTTPHeaderFields:@{}];
+
++ (NSMutableURLRequest *)newGetRequestForURL:(NSURL *)url cookie:(NSHTTPCookie *)cookie {
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:10];
+    [request setHTTPShouldHandleCookies:NO];
+    [request setHTTPMethod:@"GET"];
+    [request setAllHTTPHeaderFields:@{}];
     
     if (cookie) {
         NSDictionary *headers = [NSHTTPCookie requestHeaderFieldsWithCookies:@[cookie]];
-        [Request setAllHTTPHeaderFields:headers];
+        [request setAllHTTPHeaderFields:headers];
     }
     
-    return Request;
+    return request;
 }
 
-+(NSMutableURLRequest *)newJSONRequestWithURL:(NSURL *)url bodyData:(NSData *)bodyData cookie:(NSHTTPCookie *)cookie {
-    NSMutableURLRequest *Request = [[NSMutableURLRequest alloc] initWithURL:url];
-    [Request setHTTPMethod:@"POST"];
-    //[Request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-    //[Request setValue:@(bodyData.length) forKey:@"Content-Length"];
-    [Request setHTTPBody:bodyData];
-    [Request setHTTPShouldHandleCookies:YES];
-    [Request setCachePolicy:NSURLRequestReloadIgnoringCacheData];
-    [Request setAllHTTPHeaderFields:@{}];
++ (NSMutableURLRequest *)newJSONRequestWithURL:(NSURL *)url bodyData:(NSData *)bodyData cookie:(NSHTTPCookie *)cookie {
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+    [request setHTTPMethod:@"POST"];
+    //[request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    //[request setValue:@(bodyData.length) forKey:@"Content-Length"];
+    [request setHTTPBody:bodyData];
+    [request setHTTPShouldHandleCookies:YES];
+    [request setCachePolicy:NSURLRequestReloadIgnoringCacheData];
+    [request setAllHTTPHeaderFields:@{}];
     
     if (cookie) {
         NSDictionary *headers = [NSHTTPCookie requestHeaderFieldsWithCookies:@[cookie]];
-        [Request setAllHTTPHeaderFields:headers];
+        [request setAllHTTPHeaderFields:headers];
     }
     
-    return Request;
+    return request;
 }
 
 @end

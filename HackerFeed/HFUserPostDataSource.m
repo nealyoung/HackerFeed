@@ -23,7 +23,7 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
 
 - (void)refreshWithCompletion:(void (^)(BOOL completed))block {
     if (self.user) {
-        [[HNManager sharedManager] fetchSubmissionsForUser:self.user.Username completion:^(NSArray *posts) {
+        [[HNManager sharedManager] fetchSubmissionsForUser:self.user.username completion:^(NSArray *posts) {
             if (posts) {
                 self.urlAddition = [HNManager sharedManager].postUrlAddition;
                 self.posts = [NSMutableArray arrayWithArray:posts];

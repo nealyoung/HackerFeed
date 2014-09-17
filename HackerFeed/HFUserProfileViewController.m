@@ -71,7 +71,8 @@ NSString * const kLoginViewControllerIdentifier = @"ORNLoginViewController";
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    self.user = [HNManager sharedManager].SessionUser;
+    [super viewWillAppear:animated];
+    self.user = [HNManager sharedManager].sessionUser;
 }
 
 - (void)setUser:(HNUser *)user {

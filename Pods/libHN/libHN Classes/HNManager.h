@@ -30,15 +30,16 @@
 typedef void (^SuccessfulLoginBlock) (HNUser *user);
 
 #pragma mark - Properties
-@property (nonatomic, retain) HNWebService *Service;
+@property (nonatomic, retain) HNWebService *service;
 @property (nonatomic, retain) NSString *postUrlAddition;
 @property (nonatomic, retain) NSString *userSubmissionUrlAddition;
-@property (nonatomic, retain) NSHTTPCookie *SessionCookie;
-@property (nonatomic, retain) HNUser *SessionUser;
-@property (nonatomic, retain) NSMutableDictionary *MarkAsReadDictionary;
-@property (nonatomic, retain) NSMutableDictionary *VotedOnDictionary;
+@property (nonatomic, retain) NSHTTPCookie *sessionCookie;
+@property (nonatomic, retain) HNUser *sessionUser;
+@property (nonatomic, retain) NSMutableDictionary *markAsReadDictionary;
+@property (nonatomic, retain) NSMutableDictionary *votedOnDictionary;
 
 #pragma mark - Singleton Manager
+
 /**
  This is the singleton object that all of your HN API calls will go through. It also keeps track of what a user has voted on, and which posts a user has read.
  */
@@ -82,7 +83,7 @@ typedef void (^SuccessfulLoginBlock) (HNUser *user);
  @param filter   - PostFilterType for what you want
  @return    NSArray of HNPost objects
  */
-- (void)loadPostsWithFilter:(PostFilterType)filter completion:(GetPostsCompletion)completion;
+- (void)loadPostsWithFilter:(HNPostFilterType)filter completion:(GetPostsCompletion)completion;
 
 /**
  Loads posts from HN using a url addition. HN uses an fnid or /news2 to grab the next batch of posts. Use this method to grab posts 31 - n of whatever filter type you are on. The most common urlAddition is stored in the [[HNManager sharedManager] postUrlAddition] object.
@@ -121,7 +122,7 @@ typedef void (^SuccessfulLoginBlock) (HNUser *user);
  @param direction  - VoteDirection enum (required)
  @return    BOOL for success
  */
-- (void)voteOnPostOrComment:(id)hnObject direction:(VoteDirection)direction completion:(BooleanSuccessBlock)completion;
+- (void)voteOnPostOrComment:(id)hnObject direction:(HNVoteDirection)direction completion:(BooleanSuccessBlock)completion;
 
 /**
  Loads posts from HN for a given username. To get the next batch of posts for a user, use the [[HNManager sharedManager] userSubmissionUrlAddition] object and the - (void)loadPostsWithUrlAddition:(NSString *)urlAddition completion:(GetPostsCompletion)completion method.
@@ -159,7 +160,7 @@ typedef void (^SuccessfulLoginBlock) (HNUser *user);
  Adds an HNPost or HNComment to the Manager for knowing if a user has voted on  it or not. This is syncronized with the NSUserDefaults to keep track any time the app is used.
  @param hnObject   - HNPost or HNComment object
  */
-- (void)addHNObjectToVotedOnDictionary:(id)hnObject direction:(VoteDirection)direction;
+- (void)addHNObjectToVotedOnDictionary:(id)hnObject direction:(HNVoteDirection)direction;
 
 #pragma mark - Cancel All WebRequests
 - (void)cancelAllRequests;

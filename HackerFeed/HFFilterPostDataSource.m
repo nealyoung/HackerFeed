@@ -16,7 +16,7 @@
 
 @implementation HFFilterPostDataSource
 
-- (instancetype)initWithPostFilterType:(PostFilterType)postFilterType {
+- (instancetype)initWithPostFilterType:(HNPostFilterType)postFilterType {
     self = [super init];
     
     if (self) {

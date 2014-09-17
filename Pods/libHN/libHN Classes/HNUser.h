@@ -25,13 +25,14 @@
 @interface HNUser : NSObject
 
 #pragma mark - Properties
-@property (nonatomic, retain) NSString *Username;
-@property (nonatomic, assign) int Karma;
-@property (nonatomic, assign) int Age;
-@property (nonatomic, retain) NSString *AboutInfo;
 
+@property (nonatomic, retain) NSString *username;
+@property (nonatomic, assign) int karma;
+@property (nonatomic, assign) int age;
+@property (nonatomic, retain) NSString *about;
 
 #pragma mark - Methods
+
 +(HNUser *)userFromHTML:(NSString *)html;
 
 @end

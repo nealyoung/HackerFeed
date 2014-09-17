@@ -27,20 +27,19 @@
 #import "HNUser.h"
 
 #pragma mark - Enums
-typedef NS_ENUM(NSInteger, PostFilterType) {
-    PostFilterTypeTop,
-    PostFilterTypeAsk,
-    PostFilterTypeNew,
-    PostFilterTypeJobs,
-    PostFilterTypeBest,
-    PostFilterTypeShowHN
+typedef NS_ENUM(NSInteger, HNPostFilterType) {
+    HNPostFilterTypeTop,
+    HNPostFilterTypeAsk,
+    HNPostFilterTypeNew,
+    HNPostFilterTypeJobs,
+    HNPostFilterTypeBest,
+    HNPostFilterTypeShowHN
 };
 
-typedef NS_ENUM(NSInteger, VoteDirection) {
-    VoteDirectionUp,
-    VoteDirectionDown
+typedef NS_ENUM(NSInteger, HNVoteDirection) {
+    HNVoteDirectionUp,
+    HNVoteDirectionDown
 };
-
 
 #pragma mark - Blocks
 typedef void (^GetUserCompletion) (HNUser *user);
@@ -62,7 +61,7 @@ typedef void (^SubmitCommentSuccessBlock) (BOOL success);
 // Get User
 - (void)loadUserWithUsername:(NSString *)username completion:(GetUserCompletion)completion;
 // Get Posts
-- (void)loadPostsWithFilter:(PostFilterType)filter completion:(GetPostsCompletion)completion;
+- (void)loadPostsWithFilter:(HNPostFilterType)filter completion:(GetPostsCompletion)completion;
 - (void)loadPostsWithUrlAddition:(NSString *)urlAddition completion:(GetPostsCompletion)completion;
 // Get Comments
 - (void)loadCommentsFromPost:(HNPost *)post completion:(GetCommentsCompletion)completion;
@@ -74,7 +73,7 @@ typedef void (^SubmitCommentSuccessBlock) (BOOL success);
 // Commenting
 - (void)replyToHNObject:(id)hnObject withText:(NSString *)text completion:(BooleanSuccessBlock)completion;
 // Voting
-- (void)voteOnHNObject:(id)hnObject direction:(VoteDirection)direction completion:(BooleanSuccessBlock)completion;
+- (void)voteOnHNObject:(id)hnObject direction:(HNVoteDirection)direction completion:(BooleanSuccessBlock)completion;
 // Get Submissions for User
 - (void)fetchSubmissionsForUser:(NSString *)user completion:(GetPostsCompletion)completion;
 // Cancel Requests

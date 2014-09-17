@@ -59,10 +59,10 @@
     
     if (self.state == UIControlStateHighlighted) {
         self.layer.backgroundColor = self.tintColor.CGColor;
-        self.titleLabel.textColor =  self.superview.backgroundColor;
+        [self setTitleColor:self.superview.backgroundColor forState:UIControlStateNormal];
     } else {
         self.layer.backgroundColor = nil;
-        self.titleLabel.textColor = self.superview.tintColor;
+        [self setTitleColor:self.tintColor forState:UIControlStateNormal];
     }
 }
 

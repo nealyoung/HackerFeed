@@ -24,18 +24,15 @@
 
 @interface HNCommentLink : NSObject
 
-typedef NS_ENUM(NSInteger, LinkType) {
-    LinkTypeDefault,
-    LinkTypeHN
+typedef NS_ENUM(NSInteger, HNCommentLinkType) {
+    HNCommentLinkTypeDefault,
+    HNCommentLinkTypeHN
 };
 
-#pragma mark - Properties
-@property (nonatomic, retain) NSURL *Url;
-@property (nonatomic, assign) NSRange UrlRange;
-@property (nonatomic, assign) LinkType Type;
+@property (nonatomic, retain) NSURL *url;
+@property (nonatomic, assign) NSRange urlRange;
+@property (nonatomic, assign) HNCommentLinkType type;
 
-
-#pragma mark - Methods
 + (NSArray *)linksFromCommentText:(NSString *)commentText;
 
 @end
