@@ -10,6 +10,13 @@
 
 #import "HFTextView.h"
 
+@interface HFCommentTableViewCell ()
+
+// The state of the cell's separator needs to be saved before expanding the cell and hiding the separator so it can be restored once the cell is contracted
+@property UIEdgeInsets savedSeparatorInset;
+
+@end
+
 @implementation HFCommentTableViewCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
@@ -29,7 +36,6 @@
         [self.textView setTranslatesAutoresizingMaskIntoConstraints:NO];
         [self.textView setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
         self.textView.editable = NO;
-        //self.textView.userInteractionEnabled = NO;
         self.textView.dataDetectorTypes = UIDataDetectorTypeLink;
         self.textView.backgroundColor = [UIColor clearColor];
         self.textView.font = [UIFont applicationFontOfSize:14.0f];
@@ -103,11 +109,16 @@
     _expanded = expanded;
     
     if (expanded) {
+        if (UIEdgeInsetsEqualToEdgeInsets(self.savedSeparatorInset, UIEdgeInsetsZero)) {
+            self.savedSeparatorInset = self.separatorInset;
+        }
+        
         self.separatorInset = UIEdgeInsetsMake(0.0f, CGRectGetWidth(self.frame), 0.0f, 0.0f);
         self.commentActionsView.hidden = NO;
         self.toolbarHeightConstraint.constant = 40.0f;
     } else {
-        self.separatorInset = UIEdgeInsetsMake(0.0f, 15.0f, 0.0f, 0.0f);
+        self.separatorInset = self.savedSeparatorInset;
+        self.savedSeparatorInset = UIEdgeInsetsZero;
         self.toolbarHeightConstraint.constant = 0.0f;
     }
     

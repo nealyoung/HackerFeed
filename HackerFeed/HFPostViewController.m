@@ -18,6 +18,7 @@
 #import "HFTableViewCell.h"
 #import "PBWebViewController.h"
 #import "SVProgressHUD.h"
+#import "UIScrollView+SVPullToRefresh.h"
 
 @interface HFPostViewController () <HFCommentTableViewCellDelegate, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate>
 
@@ -39,6 +40,7 @@
 
 - (void)addKeyboardNotificationObservers;
 - (void)upvoteButtonPressed:(id)sender;
+- (void)refresh;
 
 @end
 
@@ -144,6 +146,17 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
     self.commentCellHeightCache = [NSMutableDictionary dictionary];
 }
 
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    
+    __weak typeof(self) welf = self;
+    [self.tableView addPullToRefreshWithActionHandler:^{
+        [welf refresh];
+    }];
+    
+    self.tableView.pullToRefreshView.titleLabel.font = [UIFont applicationFontOfSize:15.0f];
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
@@ -151,6 +164,15 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
     self.commentCellHeightCache = [NSMutableDictionary dictionary];
+}
+
+- (void)refresh {
+    [[HNManager sharedManager] loadCommentsFromPost:self.post completion:^(NSArray *comments) {
+        self.comments = comments;
+        [self.tableView reloadData];
+        
+        [self.tableView.pullToRefreshView stopAnimating];
+    }];
 }
 
 - (void)setPost:(HNPost *)post {
