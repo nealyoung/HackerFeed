@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E0214FB19CB518E00561912 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E0214FA19CB518E00561912 /* libz.dylib */; };
+		0E0214FE19CB53D300561912 /* HFWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E0214FD19CB53D300561912 /* HFWebViewController.m */; };
 		0E1FC635197C4B4700B41804 /* HFPostTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E1FC634197C4B4700B41804 /* HFPostTableViewCell.m */; };
 		0E2F35C0198B8BF700718E1A /* HFNewPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E2F35BF198B8BF700718E1A /* HFNewPostViewController.m */; };
 		0E3C12CA19881D9700AAF072 /* SourceSansPro-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0E3C12C919881D9300AAF072 /* SourceSansPro-Light.otf */; };
@@ -72,6 +74,9 @@
 
 /* Begin PBXFileReference section */
 		014806F2979C4ADBAA87257A /* libPods-HackerFeed.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HackerFeed.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0E0214FA19CB518E00561912 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		0E0214FC19CB53D300561912 /* HFWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFWebViewController.h; sourceTree = "<group>"; };
+		0E0214FD19CB53D300561912 /* HFWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFWebViewController.m; sourceTree = "<group>"; };
 		0E1FC633197C4B4700B41804 /* HFPostTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFPostTableViewCell.h; sourceTree = "<group>"; };
 		0E1FC634197C4B4700B41804 /* HFPostTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFPostTableViewCell.m; sourceTree = "<group>"; };
 		0E2F35BE198B8BF700718E1A /* HFNewPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFNewPostViewController.h; sourceTree = "<group>"; };
@@ -167,6 +172,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E0214FB19CB518E00561912 /* libz.dylib in Frameworks */,
 				0EFC25391985C22100A67412 /* CoreText.framework in Frameworks */,
 				0EE791BD1950318D00925E4F /* CoreGraphics.framework in Frameworks */,
 				0EE791BF1950318D00925E4F /* UIKit.framework in Frameworks */,
@@ -226,6 +232,8 @@
 				0E6C30DE197F5DCB00C33A67 /* HFLoginViewController.m */,
 				0E5424E819C4DA5F00FF24A7 /* HFModalWebViewController.h */,
 				0E5424E919C4DA5F00FF24A7 /* HFModalWebViewController.m */,
+				0E0214FC19CB53D300561912 /* HFWebViewController.h */,
+				0E0214FD19CB53D300561912 /* HFWebViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -337,6 +345,7 @@
 		0EE791B91950318D00925E4F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0E0214FA19CB518E00561912 /* libz.dylib */,
 				0EFC25381985C22100A67412 /* CoreText.framework */,
 				0EE791BA1950318D00925E4F /* Foundation.framework */,
 				0EE791BC1950318D00925E4F /* CoreGraphics.framework */,
@@ -561,6 +570,7 @@
 				0EEBD396197E026300D74AD6 /* UIColor+HFAdditions.m in Sources */,
 				0EC81426197C8D1C009F0D99 /* HFCommentsButton.m in Sources */,
 				0E5C453B19838135001EE1CB /* HFFilterPostDataSource.m in Sources */,
+				0E0214FE19CB53D300561912 /* HFWebViewController.m in Sources */,
 				0E990E841990BA65002933C4 /* DMBaseTransition.m in Sources */,
 				0E57B5B4198C2D6C0056CA54 /* HFTextViewTableViewCell.m in Sources */,
 				0EEBD375197DD52400D74AD6 /* HFPostInfoTableViewCell.m in Sources */,

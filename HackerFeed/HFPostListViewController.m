@@ -14,7 +14,7 @@
 #import "HFNewPostViewController.h"
 #import "HFPostTableViewCell.h"
 #import "HFPostViewController.h"
-#import "PBWebViewController.h"
+#import "HFWebViewController.h"
 #import "SVProgressHUD.h"
 #import "UIScrollView+SVPullToRefresh.h"
 #import "UIScrollView+SVInfiniteScrolling.h"
@@ -219,7 +219,7 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
         webViewController.transitioningDelegate = self.scaleTransition;
         [self.splitViewController presentViewController:webViewController animated:YES completion:nil];
     } else {
-        PBWebViewController *webViewController = [[PBWebViewController alloc] init];
+        HFWebViewController *webViewController = [[HFWebViewController alloc] init];
         webViewController.URL = [NSURL URLWithString:post.urlString];
         
         [self showViewController:webViewController sender:self];

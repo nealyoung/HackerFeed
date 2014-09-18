@@ -1,4 +1,5 @@
 PODS:
+  - FCUtilities (0.1.0)
   - libHN (2.0.1)
   - NYSegmentedControl (1.0.3)
   - PBWebViewController (0.3)
@@ -7,6 +8,7 @@ PODS:
   - SVPullToRefresh (HEAD based on 0.4.1)
 
 DEPENDENCIES:
+  - FCUtilities (from `https://github.com/marcoarment/FCUtilities.git`)
   - libHN (from `https://github.com/nealyoung/libHN.git`)
   - NYSegmentedControl
   - PBWebViewController
@@ -15,10 +17,13 @@ DEPENDENCIES:
   - SVPullToRefresh (HEAD)
 
 EXTERNAL SOURCES:
+  FCUtilities:
+    :git: https://github.com/marcoarment/FCUtilities.git
   libHN:
     :git: https://github.com/nealyoung/libHN.git
 
 SPEC CHECKSUMS:
+  FCUtilities: d0f0da2640a643bb319c3ef58e9c43530fcbc521
   libHN: c178f8a0cd7b435f45afc3ff5ab3423a3b923c4d
   NYSegmentedControl: 74094b886a80bfc4e9f6d415601e9b11797b22b7
   PBWebViewController: 0a36bbd0f82741d9457177c9c37f5ff747cba312

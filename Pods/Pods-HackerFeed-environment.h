@@ -6,6 +6,12 @@
 // project.
 
 
+// FCUtilities
+#define COCOAPODS_POD_AVAILABLE_FCUtilities
+#define COCOAPODS_VERSION_MAJOR_FCUtilities 0
+#define COCOAPODS_VERSION_MINOR_FCUtilities 1
+#define COCOAPODS_VERSION_PATCH_FCUtilities 0
+
 // NYSegmentedControl
 #define COCOAPODS_POD_AVAILABLE_NYSegmentedControl
 #define COCOAPODS_VERSION_MAJOR_NYSegmentedControl 1

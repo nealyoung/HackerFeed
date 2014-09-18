@@ -38,7 +38,7 @@
 }
 
 - (void)commonInit {
-    _webViewController = [[PBWebViewController alloc] init];
+    _webViewController = [[HFWebViewController alloc] init];
     self.viewControllers = @[_webViewController];
     
     _webViewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone

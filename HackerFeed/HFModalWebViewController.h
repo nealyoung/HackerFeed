@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PBWebViewController.h"
+#import "HFWebViewController.h"
 
 @interface HFModalWebViewController : UINavigationController
 
-@property (readonly) PBWebViewController *webViewController;
+@property (readonly) HFWebViewController *webViewController;
 
 - (instancetype)initWithURL:(NSURL *)url;
 
