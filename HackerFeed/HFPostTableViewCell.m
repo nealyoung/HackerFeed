@@ -22,7 +22,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     
     if (self) {
-        self.contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        //self.contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         self.selectionStyle = UITableViewCellSelectionStyleDefault;
         
         self.infoLabel = [[UILabel alloc] initWithFrame:CGRectZero];
@@ -124,6 +124,8 @@
     
     // Set the max layout width of the multi-line information label to the calculated width of the label after auto layout has run
     self.titleLabel.preferredMaxLayoutWidth = CGRectGetWidth(self.titleLabel.frame);
+    
+    [self layoutIfNeeded];
 }
 
 @end

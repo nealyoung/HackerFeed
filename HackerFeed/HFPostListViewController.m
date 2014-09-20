@@ -39,8 +39,8 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
         [self.tableView setTranslatesAutoresizingMaskIntoConstraints:NO];
         self.tableView.dataSource = self;
         self.tableView.delegate = self;
-        self.tableView.rowHeight = 72.0f;
-        //self.tableView.rowHeight = UITableViewAutomaticDimension;
+        //self.tableView.rowHeight = 72.0f;
+        self.tableView.rowHeight = UITableViewAutomaticDimension;
         //self.tableView.estimatedRowHeight = 80.0f;
         self.tableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
         [self.tableView registerClass:[HFPostTableViewCell class] forCellReuseIdentifier:kPostTableViewCellIdentifier];
@@ -173,34 +173,36 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
 
 #pragma mark - UITableViewDelegate
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static HFPostTableViewCell *postMetricsCell;
-    
-    if (!postMetricsCell) {
-        postMetricsCell = [[HFPostTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
-    }
-    
-    postMetricsCell.bounds = CGRectMake(0.0f, 0.0f, self.tableView.bounds.size.width, 9999.0f);
-    
-    HNPost *post = self.dataSource.posts[indexPath.row];
-    
-    postMetricsCell.titleLabel.text = post.title;
-    postMetricsCell.domainLabel.text = post.urlDomain;
-
-    if (post.type == HNPostTypeJobs) {
-        postMetricsCell.infoLabel.text = nil;
-    } else {
-        postMetricsCell.infoLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%d points · %@", nil), post.points, [post.username lowercaseString]];
-    }
-    
-    [postMetricsCell setNeedsLayout];
-    [postMetricsCell layoutIfNeeded];
-    
-    CGSize size = [postMetricsCell.contentView systemLayoutSizeFittingSize:UILayoutFittingExpandedSize];
-    CGFloat cellHeight = size.height + 1;
-    
-    return cellHeight;
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    return UITableViewAutomaticDimension;
+//    
+//    static HFPostTableViewCell *postMetricsCell;
+//    
+//    if (!postMetricsCell) {
+//        postMetricsCell = [[HFPostTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+//    }
+//    
+//    postMetricsCell.bounds = CGRectMake(0.0f, 0.0f, self.tableView.bounds.size.width, 9999.0f);
+//    
+//    HNPost *post = self.dataSource.posts[indexPath.row];
+//    
+//    postMetricsCell.titleLabel.text = post.title;
+//    postMetricsCell.domainLabel.text = post.urlDomain;
+//
+//    if (post.type == HNPostTypeJobs) {
+//        postMetricsCell.infoLabel.text = nil;
+//    } else {
+//        postMetricsCell.infoLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%d points · %@", nil), post.points, [post.username lowercaseString]];
+//    }
+//    
+//    [postMetricsCell setNeedsLayout];
+//    [postMetricsCell layoutIfNeeded];
+//    
+//    CGSize size = [postMetricsCell.contentView systemLayoutSizeFittingSize:UILayoutFittingExpandedSize];
+//    CGFloat cellHeight = size.height + 1;
+//    
+//    return cellHeight;
+//}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     HNPost *post = self.dataSource.posts[indexPath.row];

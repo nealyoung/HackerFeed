@@ -11,9 +11,9 @@
 
 @interface HFPostTableViewCell : UITableViewCell
 
-@property IBOutlet UILabel *infoLabel;
-@property IBOutlet UILabel *titleLabel;
-@property IBOutlet UILabel *domainLabel;
-@property IBOutlet HFCommentsButton *commentsButton;
+@property UILabel *infoLabel;
+@property UILabel *titleLabel;
+@property UILabel *domainLabel;
+@property HFCommentsButton *commentsButton;
 
 @end

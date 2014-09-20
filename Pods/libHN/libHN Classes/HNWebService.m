@@ -625,7 +625,7 @@
             else {
                 NSString *fnid = @"";
                 NSArray *posts = [HNPost parsedPostsFromHTML:html FNID:&fnid];
-                [[HNManager sharedManager] setUserSubmissionUrlAddition:fnid];
+                [[HNManager sharedManager] setUserSubmissionUrlAddition:[fnid stringByReplacingOccurrencesOfString:@"&amp;" withString:@"&"]];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     completion(posts);
                 });
