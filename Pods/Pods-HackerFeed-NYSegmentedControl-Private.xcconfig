@@ -1,5 +1,5 @@
 #include "Pods-HackerFeed-NYSegmentedControl.xcconfig"
 GCC_PREPROCESSOR_DEFINITIONS = COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/BuildHeaders" "${PODS_ROOT}/BuildHeaders/NYSegmentedControl" "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/FCUtilities" "${PODS_ROOT}/Headers/NYSegmentedControl" "${PODS_ROOT}/Headers/PBWebViewController" "${PODS_ROOT}/Headers/SVProgressHUD" "${PODS_ROOT}/Headers/SVPullToRefresh" "${PODS_ROOT}/Headers/libHN"
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/BuildHeaders" "${PODS_ROOT}/BuildHeaders/NYSegmentedControl" "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/FCUtilities" "${PODS_ROOT}/Headers/NYSegmentedControl" "${PODS_ROOT}/Headers/PBWebViewController" "${PODS_ROOT}/Headers/Reveal-iOS-SDK" "${PODS_ROOT}/Headers/SVProgressHUD" "${PODS_ROOT}/Headers/SVPullToRefresh" "${PODS_ROOT}/Headers/libHN"
 OTHER_LDFLAGS = -ObjC
 PODS_ROOT = ${SRCROOT}

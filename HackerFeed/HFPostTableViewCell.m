@@ -23,7 +23,6 @@
     
     if (self) {
         //self.contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        self.selectionStyle = UITableViewCellSelectionStyleDefault;
         
         self.infoLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         [self.infoLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -35,6 +34,7 @@
         [self.titleLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
         self.titleLabel.numberOfLines = 0;
         self.titleLabel.font = [UIFont applicationFontOfSize:17.0f];
+        [self.titleLabel setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
         [self.contentView addSubview:self.titleLabel];
         
         self.domainLabel = [[UILabel alloc] initWithFrame:CGRectZero];
@@ -119,8 +119,6 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    
-    [self.commentsButton setNeedsLayout];
     
     // Set the max layout width of the multi-line information label to the calculated width of the label after auto layout has run
     self.titleLabel.preferredMaxLayoutWidth = CGRectGetWidth(self.titleLabel.frame);
