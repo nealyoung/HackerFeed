@@ -20,12 +20,12 @@ static void *dropdownMenuPropertyKey = &dropdownMenuPropertyKey;
 //    [self.view insertSubview:self.dropdownMenu belowSubview:self.navigationController.navigationBar];
 //}
 
-- (HFDropdownMenuController *)dropdownMenuController {
+- (HFDropdownMenuNavigationController *)dropdownMenuController {
     UIViewController *viewController = self.parentViewController;
     
     while (viewController) {
-        if ([viewController isKindOfClass:[HFDropdownMenuController class]]) {
-            return (HFDropdownMenuController *)viewController;
+        if ([viewController isKindOfClass:[HFDropdownMenuNavigationController class]]) {
+            return (HFDropdownMenuNavigationController *)viewController;
         } else if (viewController.parentViewController && viewController.parentViewController != viewController) {
             viewController = viewController.parentViewController;
         } else {

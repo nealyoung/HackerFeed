@@ -30,8 +30,8 @@ const CGFloat kNavigationBarHeight = 64.0f;
         _animationDuration = 0.6f;
         _itemHeight = 44.0f;
 
-        _listView = [[UIView alloc] initWithFrame:CGRectZero];
-        _listView.backgroundColor = [UIColor darkGrayColor];
+        _listView = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleLight]];
+        //_listView.backgroundColor = [UIColor darkGrayColor];
         
         _listView.layer.cornerRadius = 0.0f;
         _listView.layer.masksToBounds = YES;
@@ -136,6 +136,7 @@ const CGFloat kNavigationBarHeight = 64.0f;
 
 - (void)hideMenu {
     self.showingMenu = NO;
+    [self.delegate dropdownMenuWillDismiss:self];
     
     [UIView animateWithDuration:self.animationDuration
                           delay:0.0f
@@ -147,11 +148,15 @@ const CGFloat kNavigationBarHeight = 64.0f;
                          listFrame.origin = CGPointMake(0.0f, -(CGRectGetHeight(listFrame) + kListTopMarginHeight));
                          self.listView.frame = listFrame;
                          self.backgroundColor = [UIColor clearColor];
-                     } completion:nil];
+                     }
+                     completion:^(BOOL finished) {
+                         [self.delegate dropdownMenuDidDismiss:self];
+                     }];
 }
 
 - (void)showMenu {
     self.showingMenu = YES;
+    [self.delegate dropdownMenuWillShow:self];
     
     [UIView animateWithDuration:self.animationDuration
                           delay:0.0f
@@ -163,7 +168,10 @@ const CGFloat kNavigationBarHeight = 64.0f;
                          listFrame.origin = CGPointMake(0.0f, -kListTopMarginHeight);
                          self.listView.frame = listFrame;
                          self.backgroundColor = [UIColor colorWithWhite:0.5f alpha:0.2];
-                     } completion:nil];
+                     }
+                     completion:^(BOOL finished) {
+                         [self.delegate dropdownMenuDidShow:self];
+                     }];
 }
 
 @end

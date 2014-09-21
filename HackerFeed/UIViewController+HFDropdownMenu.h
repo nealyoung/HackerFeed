@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "HFDropdownMenuController.h"
+#import "HFDropdownMenuNavigationController.h"
 
 @interface UIViewController (HFDropdownMenu)
 
-@property (nonatomic, readonly, strong) HFDropdownMenuController *dropdownMenuController;
+@property (nonatomic, readonly, strong) HFDropdownMenuNavigationController *dropdownMenuController;
 @property (nonatomic, retain) HFDropdownMenuItem *dropdownMenuItem;
 
 - (void)toggleDropdownMenu;

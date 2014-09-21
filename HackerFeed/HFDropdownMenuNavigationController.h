@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "HFDropdownMenu.h"
 
-@interface HFDropdownMenuController : UINavigationController
+@interface HFDropdownMenuNavigationController : UINavigationController
 
 @property (nonatomic, readonly) HFDropdownMenu *dropdownMenu;
 @property (nonatomic) NSArray *dropdownViewControllers;

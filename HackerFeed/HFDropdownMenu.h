@@ -16,6 +16,14 @@
 
 - (void)dropdownMenu:(HFDropdownMenu *)dropdownMenu didSelectItem:(HFDropdownMenuItem *)menuItem;
 
+@optional
+
+- (void)dropdownMenuWillShow:(HFDropdownMenu *)dropdownMenu;
+- (void)dropdownMenuDidShow:(HFDropdownMenu *)dropdownMenu;
+
+- (void)dropdownMenuWillDismiss:(HFDropdownMenu *)dropdownMenu;
+- (void)dropdownMenuDidDismiss:(HFDropdownMenu *)dropdownMenu;
+
 @end
 
 @interface HFDropdownMenu : UIView

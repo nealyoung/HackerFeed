@@ -9,7 +9,7 @@
 #import "HFAppDelegate.h"
 
 #import "HNManager.h"
-#import "HFDropdownMenuController.h"
+#import "HFDropdownMenuNavigationController.h"
 #import "HFFilterPostDataSource.h"
 #import "HFNavigationBar.h"
 #import "HFPostListViewController.h"
@@ -46,7 +46,7 @@
     profileViewController.showsLoggedInUser = YES;
     [profileViewController view];
     
-    HFDropdownMenuController *dropdownMenuViewController = [[HFDropdownMenuController alloc] initWithNavigationBarClass:[HFNavigationBar class]
+    HFDropdownMenuNavigationController *dropdownMenuViewController = [[HFDropdownMenuNavigationController alloc] initWithNavigationBarClass:[HFNavigationBar class]
                                                                                                            toolbarClass:nil];
     dropdownMenuViewController.dropdownViewControllers = @[topStoriesViewController,
                                                            newStoriesViewController,
