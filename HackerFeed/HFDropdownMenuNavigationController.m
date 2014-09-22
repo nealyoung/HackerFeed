@@ -120,7 +120,7 @@
     [self.dropdownMenu toggleMenu];
 }
 
-- (void)dropdownMenuWillDismiss:(HFDropdownMenu *)dropdownMenu {
+- (void)dropdownMenuWillHide:(HFDropdownMenu *)dropdownMenu {
     self.titleView.expanded = NO;
 }
 

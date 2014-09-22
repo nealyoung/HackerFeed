@@ -14,6 +14,7 @@
 
 @property (nonatomic) NSArray *buttons;
 @property UIView *listView;
+@property UIView *bottomBorderView;
 
 - (void)buttonPressed:(HFDropdownMenuButton *)sender;
 
@@ -30,13 +31,17 @@ const CGFloat kNavigationBarHeight = 64.0f;
         _animationDuration = 0.6f;
         _itemHeight = 44.0f;
 
-        _listView = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleLight]];
+        _listView = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight]];
         //_listView.backgroundColor = [UIColor darkGrayColor];
         
         _listView.layer.cornerRadius = 0.0f;
         _listView.layer.masksToBounds = YES;
+        [self addSubview:_listView];
+
         
-        [self addSubview:self.listView];
+        _bottomBorderView = [[UIView alloc] initWithFrame:CGRectZero];
+        _bottomBorderView.backgroundColor = [UIColor darkGrayColor];
+        [_listView addSubview:_bottomBorderView];
     }
     
     return self;
@@ -67,6 +72,11 @@ const CGFloat kNavigationBarHeight = 64.0f;
                                   CGRectGetWidth(self.listView.frame),
                                   self.itemHeight);
     }];
+    
+    self.bottomBorderView.frame = CGRectMake(0.0f,
+                                             CGRectGetMaxY(((UIButton *)[self.buttons lastObject]).frame) - 1.0f,
+                                             CGRectGetWidth(self.listView.frame),
+                                             1.0f);
 }
 
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {
@@ -119,14 +129,17 @@ const CGFloat kNavigationBarHeight = 64.0f;
 
 - (void)setItemFont:(UIFont *)itemFont {
     _itemFont = itemFont;
+    
     for (UIButton *button in self.buttons) {
         button.titleLabel.font = itemFont;
     }
 }
 
 - (void)buttonPressed:(HFDropdownMenuButton *)sender {
-    if (self.delegate) {
-        [self.delegate dropdownMenu:self didSelectItem:self.items[sender.tag]];
+    self.selectedItem = self.items[sender.tag];
+    
+    if ([self.delegate respondsToSelector:@selector(dropdownMenu:didSelectItem:)]) {
+        [self.delegate dropdownMenu:self didSelectItem:self.selectedItem];
     }
 }
 
@@ -136,7 +149,10 @@ const CGFloat kNavigationBarHeight = 64.0f;
 
 - (void)hideMenu {
     self.showingMenu = NO;
-    [self.delegate dropdownMenuWillDismiss:self];
+    
+    if ([self.delegate respondsToSelector:@selector(dropdownMenuWillHide:)]) {
+        [self.delegate dropdownMenuWillHide:self];
+    }
     
     [UIView animateWithDuration:self.animationDuration
                           delay:0.0f
@@ -150,13 +166,18 @@ const CGFloat kNavigationBarHeight = 64.0f;
                          self.backgroundColor = [UIColor clearColor];
                      }
                      completion:^(BOOL finished) {
-                         [self.delegate dropdownMenuDidDismiss:self];
+                         if ([self.delegate respondsToSelector:@selector(dropdownMenuDidHide:)]) {
+                             [self.delegate dropdownMenuDidHide:self];
+                         }
                      }];
 }
 
 - (void)showMenu {
     self.showingMenu = YES;
-    [self.delegate dropdownMenuWillShow:self];
+    
+    if ([self.delegate respondsToSelector:@selector(dropdownMenuWillShow:)]) {
+        [self.delegate dropdownMenuWillShow:self];
+    }
     
     [UIView animateWithDuration:self.animationDuration
                           delay:0.0f
@@ -167,10 +188,12 @@ const CGFloat kNavigationBarHeight = 64.0f;
                          CGRect listFrame = self.listView.frame;
                          listFrame.origin = CGPointMake(0.0f, -kListTopMarginHeight);
                          self.listView.frame = listFrame;
-                         self.backgroundColor = [UIColor colorWithWhite:0.5f alpha:0.2];
+                         self.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.3f];
                      }
                      completion:^(BOOL finished) {
-                         [self.delegate dropdownMenuDidShow:self];
+                         if ([self.delegate respondsToSelector:@selector(dropdownMenuDidShow:)]) {
+                             [self.delegate dropdownMenuDidShow:self];
+                         }
                      }];
 }
 

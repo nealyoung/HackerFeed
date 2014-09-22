@@ -21,14 +21,16 @@
 - (void)dropdownMenuWillShow:(HFDropdownMenu *)dropdownMenu;
 - (void)dropdownMenuDidShow:(HFDropdownMenu *)dropdownMenu;
 
-- (void)dropdownMenuWillDismiss:(HFDropdownMenu *)dropdownMenu;
-- (void)dropdownMenuDidDismiss:(HFDropdownMenu *)dropdownMenu;
+- (void)dropdownMenuWillHide:(HFDropdownMenu *)dropdownMenu;
+- (void)dropdownMenuDidHide:(HFDropdownMenu *)dropdownMenu;
 
 @end
+
 
 @interface HFDropdownMenu : UIView
 
 @property (nonatomic) NSArray *items;
+@property (nonatomic) HFDropdownMenuItem *selectedItem;
 @property (nonatomic) BOOL showingMenu;
 
 @property (nonatomic) CGFloat animationDuration;

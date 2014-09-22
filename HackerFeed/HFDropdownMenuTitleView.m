@@ -88,7 +88,7 @@
                                                           constant:0.0f]];
         
         // Vertically center and position the icon to the right of the label
-        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[_titleLabel]-4-[_indicator]"
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[_titleLabel]-6-[_indicator]"
                                                                      options:NSLayoutFormatAlignAllCenterY
                                                                      metrics:nil
                                                                        views:NSDictionaryOfVariableBindings(_titleLabel, _indicator)]];

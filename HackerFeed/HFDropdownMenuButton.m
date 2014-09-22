@@ -23,6 +23,8 @@
         self.bottomBorderView = [[UIView alloc] initWithFrame:CGRectZero];
         self.bottomBorderView.backgroundColor = [UIColor colorWithWhite:0.4f alpha:1.0f];
         [self addSubview:self.bottomBorderView];
+        
+        [self setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
     }
     
     return self;
@@ -42,7 +44,7 @@
     self.bottomBorderView.frame = CGRectMake(15.0f,
                                              CGRectGetHeight(self.frame),
                                              CGRectGetWidth(self.frame) - 30.0f,
-                                             1.0f);
+                                             1.0f / [UIScreen mainScreen].scale);
 }
 
 @end
