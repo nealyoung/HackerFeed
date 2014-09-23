@@ -6,6 +6,12 @@
 // project.
 
 
+// BMYCircularProgressPullToRefresh
+#define COCOAPODS_POD_AVAILABLE_BMYCircularProgressPullToRefresh
+#define COCOAPODS_VERSION_MAJOR_BMYCircularProgressPullToRefresh 1
+#define COCOAPODS_VERSION_MINOR_BMYCircularProgressPullToRefresh 1
+#define COCOAPODS_VERSION_PATCH_BMYCircularProgressPullToRefresh 1
+
 // FCUtilities
 #define COCOAPODS_POD_AVAILABLE_FCUtilities
 #define COCOAPODS_VERSION_MAJOR_FCUtilities 0

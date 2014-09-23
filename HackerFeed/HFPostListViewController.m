@@ -8,6 +8,7 @@
 
 #import "HFPostListViewController.h"
 
+#import "BMYCircularProgressPullToRefresh.h"
 #import "DMScaleTransition.h"
 #import "HFModalWebViewController.h"
 #import "HFNavigationBar.h"
@@ -16,7 +17,7 @@
 #import "HFPostViewController.h"
 #import "HFWebViewController.h"
 #import "SVProgressHUD.h"
-#import "UIScrollView+SVPullToRefresh.h"
+//#import "UIScrollView+SVPullToRefresh.h"
 #import "UIScrollView+SVInfiniteScrolling.h"
 
 @interface HFPostListViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -67,12 +68,22 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
     
+    UIImage *logoImage = [UIImage imageNamed:@"PullToRefreshIcon"];
+    UIImage *backCircleImage = [UIImage imageNamed:@"PullToRefreshGrayCircle"];
+    UIImage *frontCircleImage = [UIImage imageNamed:@"PullToRefreshOrangeCircle"];
+    
+    BMYCircularProgressView *progressView = [[BMYCircularProgressView alloc] initWithFrame:CGRectMake(0, 0, 25, 25)
+                                                                                      logo:logoImage
+                                                                           backCircleImage:backCircleImage
+                                                                          frontCircleImage:frontCircleImage];
     __weak typeof(self) welf = self;
-    [self.tableView addPullToRefreshWithActionHandler:^{
+
+    [self.tableView setPullToRefreshWithHeight:60.0f actionHandler:^(BMYPullToRefreshView *pullToRefreshView) {
         [welf refresh];
     }];
     
-    self.tableView.pullToRefreshView.titleLabel.font = [UIFont applicationFontOfSize:15.0f];
+    [self.tableView.pullToRefreshView setPreserveContentInset:NO];
+    [self.tableView.pullToRefreshView setProgressView:progressView];
     
     [self.tableView addInfiniteScrollingWithActionHandler:^{
         [welf loadMorePosts];
