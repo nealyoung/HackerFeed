@@ -120,10 +120,12 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     
+    [self.commentsButton setNeedsLayout];
+    
     // Set the max layout width of the multi-line information label to the calculated width of the label after auto layout has run
     self.titleLabel.preferredMaxLayoutWidth = CGRectGetWidth(self.titleLabel.frame);
     
-    [self layoutIfNeeded];
+    //[self layoutIfNeeded];
 }
 
 @end

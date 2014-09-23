@@ -22,7 +22,8 @@ Then open the `HackerFeed.xcworkspace` file to run the application and make chan
 
 ## Todos
 
-* Support for Dynamic Type sizing
+* Support for Dynamic Type font sizing
 
 ## License
+
 This project is released under the MIT License.
