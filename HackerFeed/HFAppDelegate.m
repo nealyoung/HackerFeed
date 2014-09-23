@@ -24,6 +24,7 @@
 
     HFPostListViewController *topStoriesViewController = [[HFPostListViewController alloc] initWithNibName:nil bundle:nil];
     topStoriesViewController.dataSource = [[HFFilterPostDataSource alloc] initWithPostFilterType:HNPostFilterTypeTop];
+    topStoriesViewController.dataSource.image = [UIImage imageNamed:@"TopStoriesIcon"];
     topStoriesViewController.title = NSLocalizedString(@"Top Stories", nil);
     
     HFPostListViewController *newStoriesViewController = [[HFPostListViewController alloc] initWithNibName:nil bundle:nil];

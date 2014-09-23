@@ -11,5 +11,6 @@
 @interface HFDropdownMenuItem : NSObject
 
 @property NSString *title;
+@property UIImage *image;
 
 @end

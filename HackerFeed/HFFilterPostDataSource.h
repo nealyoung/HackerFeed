@@ -7,13 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "HFBasePostDataSource.h"
 
-#import "HFPostListViewController.h"
-
-@interface HFFilterPostDataSource : NSObject <HFPostDataSource>
+@interface HFFilterPostDataSource : HFBasePostDataSource
 
 @property HNPostFilterType postFilterType;
-@property NSMutableArray *posts;
 
 - (instancetype)initWithPostFilterType:(HNPostFilterType)postFilterType;
 

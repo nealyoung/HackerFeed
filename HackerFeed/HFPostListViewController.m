@@ -142,6 +142,8 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
 
 - (void)setDataSource:(id<HFPostDataSource>)dataSource {
     _dataSource = dataSource;
+    self.dropdownMenuItem.image = dataSource.image;
+    
     [self refresh];
 }
 

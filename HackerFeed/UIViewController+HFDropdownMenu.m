@@ -70,6 +70,21 @@ static void *dropdownMenuPropertyKey = &dropdownMenuPropertyKey;
 
 - (HFDropdownMenuItem *)dropdownMenuItem {
     return nil;
+    
+    if (!self.dropdownMenuItem) {
+        self.dropdownMenuItem = [[HFDropdownMenuItem alloc] init];
+    }
+    
+    HFDropdownMenuNavigationController *controller = self.dropdownMenuController;
+    __block HFDropdownMenuItem *item = nil;
+    
+    [controller.dropdownViewControllers enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        if (obj == self) {
+            item = controller.dropdownMenu.items[idx];
+        }
+    }];
+    
+    return item;
 }
 
 @end

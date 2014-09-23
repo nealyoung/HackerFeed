@@ -20,6 +20,10 @@
     self = [super initWithFrame:frame];
     
     if (self) {
+        self.iconImageView = [[UIImageView alloc] initWithImage:nil];
+        self.iconImageView.contentMode = UIViewContentModeScaleAspectFit;
+        [self addSubview:self.iconImageView];
+        
         self.bottomBorderView = [[UIView alloc] initWithFrame:CGRectZero];
         self.bottomBorderView.backgroundColor = [UIColor colorWithWhite:0.4f alpha:1.0f];
         [self addSubview:self.bottomBorderView];
@@ -40,6 +44,8 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
+    
+    self.iconImageView.frame = CGRectMake(15.0f, 0, 32.0f, CGRectGetHeight(self.frame));
     
     self.bottomBorderView.frame = CGRectMake(15.0f,
                                              CGRectGetHeight(self.frame),

@@ -78,18 +78,12 @@
     
     UIViewController *firstVC = [dropdownViewControllers firstObject];
     
-    self.titleView = [[HFDropdownMenuTitleView alloc] initWithFrame:CGRectMake(0, 0, 140, 28)];
+    self.titleView = [[HFDropdownMenuTitleView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 140.0f, 28.0f)];
     self.titleView.titleLabel.text = firstVC.title;
     [self.titleView addTarget:self.dropdownMenu action:@selector(toggleMenu) forControlEvents:UIControlEventTouchUpInside];
     firstVC.navigationItem.titleView = self.titleView;
     
     for (UIViewController *viewController in dropdownViewControllers) {
-//        UIBarButtonItem *toggleBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ListIcon"]
-//                                                                                style:UIBarButtonItemStylePlain
-//                                                                               target:self.dropdownMenu
-//                                                                               action:@selector(toggleMenu)];
-//        viewController.navigationItem.leftBarButtonItem = toggleBarButtonItem;
-        
         viewController.navigationItem.titleView = self.titleView;
         
         HFDropdownMenuItem *menuItem = [[HFDropdownMenuItem alloc] init];

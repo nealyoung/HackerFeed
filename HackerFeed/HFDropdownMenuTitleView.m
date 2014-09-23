@@ -31,8 +31,8 @@
     [bezierPath addCurveToPoint: CGPointMake(7.5, 9) controlPoint1: CGPointMake(15, 2) controlPoint2: CGPointMake(7.5, 9)];
     [bezierPath addLineToPoint: CGPointMake(0, 2)];
     [bezierPath addLineToPoint: CGPointMake(1.5, 2)];
-    [bezierPath addCurveToPoint: CGPointMake(7.5, 7.6) controlPoint1: CGPointMake(3.69, 4.04) controlPoint2: CGPointMake(7.5, 7.6)];
-    [bezierPath addCurveToPoint: CGPointMake(13.5, 2) controlPoint1: CGPointMake(7.5, 7.6) controlPoint2: CGPointMake(11.31, 4.04)];
+    [bezierPath addCurveToPoint: CGPointMake(7.5, 7.6) controlPoint1: CGPointMake(3.7, 4) controlPoint2: CGPointMake(7.5, 7.6)];
+    [bezierPath addCurveToPoint: CGPointMake(13.5, 2) controlPoint1: CGPointMake(7.5, 7.6) controlPoint2: CGPointMake(11.3, 4)];
     [bezierPath addLineToPoint: CGPointMake(15, 2)];
     [bezierPath addLineToPoint: CGPointMake(15, 2)];
     [bezierPath closePath];
@@ -113,7 +113,7 @@
         transform = CATransform3DIdentity;
     }
     
-    [UIView animateWithDuration:0.25f
+    [UIView animateWithDuration:0.3f
                           delay:0.0f
                         options:UIViewAnimationOptionCurveEaseInOut
                      animations:^{

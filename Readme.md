@@ -20,5 +20,9 @@ $ pod install
 ```
 Then open the `HackerFeed.xcworkspace` file to run the application and make changes.
 
+## Todos
+
+* Support for Dynamic Type sizing
+
 ## License
 This project is released under the MIT License.

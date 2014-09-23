@@ -13,7 +13,7 @@
 @interface HFDropdownMenu ()
 
 @property (nonatomic) NSArray *buttons;
-@property UIView *listView;
+@property UIVisualEffectView *listView;
 @property UIView *bottomBorderView;
 
 - (void)buttonPressed:(HFDropdownMenuButton *)sender;
@@ -21,7 +21,6 @@
 @end
 
 const CGFloat kListTopMarginHeight = 80.0f;
-const CGFloat kNavigationBarHeight = 64.0f;
 
 @implementation HFDropdownMenu
 
@@ -30,9 +29,12 @@ const CGFloat kNavigationBarHeight = 64.0f;
     if (self) {
         _animationDuration = 0.6f;
         _itemHeight = 44.0f;
+        
+        _backgroundView = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleDark]];
+        _backgroundView.layer.opacity = 0.0f;
+        [self addSubview:_backgroundView];
 
         _listView = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight]];
-        //_listView.backgroundColor = [UIColor darkGrayColor];
         
         _listView.layer.cornerRadius = 0.0f;
         _listView.layer.masksToBounds = YES;
@@ -60,23 +62,29 @@ const CGFloat kNavigationBarHeight = 64.0f;
 - (void)layoutSubviews {
     self.frame = self.superview.bounds;
     
-    CGFloat menuBackgroundHeight = kListTopMarginHeight + kNavigationBarHeight + self.itemHeight * [self.items count];
+    self.backgroundView.frame = self.bounds;
+    
+    CGFloat menuBackgroundHeight = kListTopMarginHeight + [self navigationBarHeight] + self.itemHeight * [self.items count];
     self.listView.frame = CGRectMake(self.listView.frame.origin.x,
-                                     -(menuBackgroundHeight + kListTopMarginHeight),
+                                     self.showingMenu ? -kListTopMarginHeight : -(menuBackgroundHeight + kListTopMarginHeight),
                                      CGRectGetWidth(self.frame),
                                      menuBackgroundHeight);
     
     [self.buttons enumerateObjectsUsingBlock:^(HFDropdownMenuButton *button, NSUInteger idx, BOOL *stop) {
         button.frame = CGRectMake(CGRectGetMinX(self.listView.frame),
-                                  kListTopMarginHeight + kNavigationBarHeight + self.itemHeight * idx,
+                                  kListTopMarginHeight + [self navigationBarHeight] + self.itemHeight * idx,
                                   CGRectGetWidth(self.listView.frame),
                                   self.itemHeight);
     }];
     
     self.bottomBorderView.frame = CGRectMake(0.0f,
-                                             CGRectGetMaxY(((UIButton *)[self.buttons lastObject]).frame) - 1.0f,
+                                             CGRectGetMaxY(((UIButton *)[self.buttons lastObject]).frame) - (1.0f / [UIScreen mainScreen].scale),
                                              CGRectGetWidth(self.listView.frame),
-                                             1.0f);
+                                             1.0f / [UIScreen mainScreen].scale);
+}
+
+- (CGFloat)navigationBarHeight {
+    return [UIApplication sharedApplication].statusBarFrame.size.height + CGRectGetHeight(self.delegate.navigationBar.frame);
 }
 
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {
@@ -106,7 +114,7 @@ const CGFloat kNavigationBarHeight = 64.0f;
     [self.buttons enumerateObjectsUsingBlock:^(HFDropdownMenuButton *button, NSUInteger idx, BOOL *stop) {
         button.tag = idx;
         [button addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
-        [self.listView addSubview:button];
+        [self.listView.contentView addSubview:button];
     }];
     
     [self setNeedsLayout];
@@ -160,10 +168,11 @@ const CGFloat kNavigationBarHeight = 64.0f;
           initialSpringVelocity:1.0f
                         options:0
                      animations:^{
+                         self.backgroundView.layer.opacity = 0.0f;
+
                          CGRect listFrame = self.listView.frame;
                          listFrame.origin = CGPointMake(0.0f, -(CGRectGetHeight(listFrame) + kListTopMarginHeight));
                          self.listView.frame = listFrame;
-                         self.backgroundColor = [UIColor clearColor];
                      }
                      completion:^(BOOL finished) {
                          if ([self.delegate respondsToSelector:@selector(dropdownMenuDidHide:)]) {
@@ -181,14 +190,15 @@ const CGFloat kNavigationBarHeight = 64.0f;
     
     [UIView animateWithDuration:self.animationDuration
                           delay:0.0f
-         usingSpringWithDamping:0.6f
-          initialSpringVelocity:0.8f
+         usingSpringWithDamping:0.68f
+          initialSpringVelocity:0.6f
                         options:0
                      animations:^{
+                         self.backgroundView.layer.opacity = 0.98f;
+
                          CGRect listFrame = self.listView.frame;
                          listFrame.origin = CGPointMake(0.0f, -kListTopMarginHeight);
                          self.listView.frame = listFrame;
-                         self.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.3f];
                      }
                      completion:^(BOOL finished) {
                          if ([self.delegate respondsToSelector:@selector(dropdownMenuDidShow:)]) {

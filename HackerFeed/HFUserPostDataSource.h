@@ -7,12 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "HFBasePostDataSource.h"
 #import "HFPostListViewController.h"
 
-@interface HFUserPostDataSource : NSObject <HFPostDataSource>
+@interface HFUserPostDataSource : HFBasePostDataSource
 
 @property HNUser *user;
-@property NSMutableArray *posts;
 
 @end

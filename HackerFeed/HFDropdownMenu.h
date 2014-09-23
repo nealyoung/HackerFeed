@@ -29,6 +29,8 @@
 
 @interface HFDropdownMenu : UIView
 
+@property UIVisualEffectView *backgroundView;
+
 @property (nonatomic) NSArray *items;
 @property (nonatomic) HFDropdownMenuItem *selectedItem;
 @property (nonatomic) BOOL showingMenu;
@@ -37,7 +39,7 @@
 @property (nonatomic) CGFloat itemHeight;
 @property (nonatomic) UIFont *itemFont;
 
-@property (nonatomic) id <HFDropdownMenuDelegate> delegate;
+@property (nonatomic) UINavigationController <HFDropdownMenuDelegate> *delegate;
 
 - (instancetype)initWithItems:(NSArray *)items;
 

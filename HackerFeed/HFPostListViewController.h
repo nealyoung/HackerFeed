@@ -11,6 +11,7 @@
 
 @protocol HFPostDataSource <NSObject>
 
+@property UIImage *image;
 @property NSArray *posts;
 
 - (void)refreshWithCompletion:(void (^)(BOOL completed))block;

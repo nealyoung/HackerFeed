@@ -12,6 +12,8 @@
 
 @interface HFDropdownMenuButton : UIButton
 
+@property UIImageView *iconImageView;
+
 - (instancetype)initWithItem:(HFDropdownMenuItem *)item;
 
 @end
