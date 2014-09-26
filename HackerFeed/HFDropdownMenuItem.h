@@ -12,5 +12,6 @@
 
 @property NSString *title;
 @property UIImage *image;
+@property UIView *view;
 
 @end

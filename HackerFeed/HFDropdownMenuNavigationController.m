@@ -86,7 +86,7 @@
     for (UIViewController *viewController in dropdownViewControllers) {
         viewController.navigationItem.titleView = self.titleView;
         
-        HFDropdownMenuItem *menuItem = [[HFDropdownMenuItem alloc] init];
+        HFDropdownMenuItem *menuItem = viewController.dropdownMenuItem;
         menuItem.title = viewController.title;
         [items addObject:menuItem];
     }

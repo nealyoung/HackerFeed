@@ -16,11 +16,12 @@
 
 @implementation HFFilterPostDataSource
 
-- (instancetype)initWithPostFilterType:(HNPostFilterType)postFilterType {
+- (instancetype)initWithPostFilterType:(HNPostFilterType)postFilterType image:(UIImage *)image {
     self = [super init];
     
     if (self) {
-        self.postFilterType = postFilterType;
+        self.image = image;
+        _postFilterType = postFilterType;
     }
     
     return self;

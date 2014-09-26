@@ -74,6 +74,8 @@ static NSString * const kUserSubmissionsTableViewCellIdentifier = @"UserSubmissi
     [self.tableView registerClass:[HFTableViewCell class] forCellReuseIdentifier:kUserSubmissionsTableViewCellIdentifier];
     
     self.tableView.rowHeight = UITableViewAutomaticDimension;
+    
+    self.dropdownMenuItem.image = [UIImage imageNamed:@"ProfileIcon"];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

@@ -8,6 +8,17 @@
 
 #import "HFDropdownMenuItem.h"
 
+#import "HFDropdownMenuButton.h"
+
 @implementation HFDropdownMenuItem
+
+- (void)setImage:(UIImage *)image {
+    _image = image;
+    
+    if ([self.view isKindOfClass:[HFDropdownMenuButton class]]) {
+        HFDropdownMenuButton *button = (HFDropdownMenuButton *)self.view;
+        button.iconImageView.image = _image;
+    }
+}
 
 @end

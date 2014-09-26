@@ -10,15 +10,9 @@
 
 #import <objc/runtime.h>
 
-static void *dropdownMenuPropertyKey = &dropdownMenuPropertyKey;
+static void *DropdownMenuItemPropertyKey = &DropdownMenuItemPropertyKey;
 
 @implementation UIViewController (HFDropdownMenu)
-
-//- (void)addDropdownMenu:(ORNDropdownMenu *)dropdownMenu {
-//    self.dropdownMenu = dropdownMenu;
-//    
-//    [self.view insertSubview:self.dropdownMenu belowSubview:self.navigationController.navigationBar];
-//}
 
 - (HFDropdownMenuNavigationController *)dropdownMenuController {
     UIViewController *viewController = self.parentViewController;
@@ -65,24 +59,24 @@ static void *dropdownMenuPropertyKey = &dropdownMenuPropertyKey;
 }
 
 - (void)setDropdownMenuItem:(HFDropdownMenuItem *)dropdownMenuItem {
+    objc_setAssociatedObject(self, DropdownMenuItemPropertyKey, dropdownMenuItem, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     
+    NSMutableArray *controllerItems = [self.dropdownMenuController.dropdownMenu.items mutableCopy];
+    NSInteger index = [controllerItems indexOfObjectIdenticalTo:self.dropdownMenuItem];
+    controllerItems[index] = dropdownMenuItem;
+    
+    self.dropdownMenuController.dropdownMenu.items = controllerItems;
 }
 
 - (HFDropdownMenuItem *)dropdownMenuItem {
-    return nil;
+    HFDropdownMenuItem *item = objc_getAssociatedObject(self, DropdownMenuItemPropertyKey);
     
-    if (!self.dropdownMenuItem) {
-        self.dropdownMenuItem = [[HFDropdownMenuItem alloc] init];
+    if (!item) {
+        item = [[HFDropdownMenuItem alloc] init];
+        item.title = self.title;
+        
+        self.dropdownMenuItem = item;
     }
-    
-    HFDropdownMenuNavigationController *controller = self.dropdownMenuController;
-    __block HFDropdownMenuItem *item = nil;
-    
-    [controller.dropdownViewControllers enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        if (obj == self) {
-            item = controller.dropdownMenu.items[idx];
-        }
-    }];
     
     return item;
 }

@@ -13,6 +13,6 @@
 
 @property HNPostFilterType postFilterType;
 
-- (instancetype)initWithPostFilterType:(HNPostFilterType)postFilterType;
+- (instancetype)initWithPostFilterType:(HNPostFilterType)postFilterType image:(UIImage *)image;
 
 @end

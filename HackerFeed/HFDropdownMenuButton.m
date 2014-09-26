@@ -38,6 +38,7 @@
     self = [self initWithFrame:CGRectZero];
     if (self) {
         [self setTitle:item.title forState:UIControlStateNormal];
+        self.iconImageView.image = item.image;
     }
     return self;
 }
@@ -49,7 +50,7 @@
     
     self.bottomBorderView.frame = CGRectMake(15.0f,
                                              CGRectGetHeight(self.frame),
-                                             CGRectGetWidth(self.frame) - 30.0f,
+                                             CGRectGetWidth(self.frame) - 15.0f,
                                              1.0f / [UIScreen mainScreen].scale);
 }
 

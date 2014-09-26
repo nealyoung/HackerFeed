@@ -88,7 +88,7 @@ const CGFloat kListTopMarginHeight = 80.0f;
 }
 
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {
-    // Don't pick up touches unless the menu is showing and we want to dismiss it
+    // The dropdown menu view always appears over the content, so we don't pick up touches unless the menu is showing and we want to dismiss it
     if (self.showingMenu) {
         return YES;
     } else {
@@ -126,9 +126,12 @@ const CGFloat kListTopMarginHeight = 80.0f;
     NSMutableArray *buttons = [NSMutableArray array];
     for (HFDropdownMenuItem *item in items) {
         HFDropdownMenuButton *button = [[HFDropdownMenuButton alloc] initWithItem:item];
+        item.view = button;
+
         if (self.itemFont) {
             button.titleLabel.font = self.itemFont;
         }
+        
         [buttons addObject:button];
     }
     
