@@ -18,6 +18,12 @@
 
 @implementation HFDropdownMenuNavigationController
 
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+    [self.dropdownMenu setNeedsLayout];
+    [self.visibleViewController.view setNeedsLayout];
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+}
+
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     

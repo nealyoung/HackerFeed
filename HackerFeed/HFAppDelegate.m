@@ -21,7 +21,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-
+    
     HFPostListViewController *topStoriesViewController = [[HFPostListViewController alloc] initWithNibName:nil bundle:nil];
     topStoriesViewController.dataSource = [[HFFilterPostDataSource alloc] initWithPostFilterType:HNPostFilterTypeTop image:[UIImage imageNamed:@"TopStoriesIcon"]];
     topStoriesViewController.title = NSLocalizedString(@"Top Stories", nil);
@@ -47,7 +47,7 @@
     [profileViewController view];
     
     HFDropdownMenuNavigationController *dropdownMenuViewController = [[HFDropdownMenuNavigationController alloc] initWithNavigationBarClass:[HFNavigationBar class]
-                                                                                                           toolbarClass:nil];
+                                                                                                                               toolbarClass:nil];
     dropdownMenuViewController.dropdownViewControllers = @[topStoriesViewController,
                                                            newStoriesViewController,
                                                            askHNViewController,
@@ -70,7 +70,7 @@
     splitViewController.preferredDisplayMode = UISplitViewControllerDisplayModeAllVisible;
     
     self.window.rootViewController = splitViewController;
-
+    
     [self.window makeKeyAndVisible];
     
     return YES;

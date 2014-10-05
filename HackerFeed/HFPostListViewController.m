@@ -78,7 +78,7 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
                                                                           frontCircleImage:frontCircleImage];
     __weak typeof(self) welf = self;
 
-    [self.tableView setPullToRefreshWithHeight:60.0f actionHandler:^(BMYPullToRefreshView *pullToRefreshView) {
+    [self.tableView setPullToRefreshWithHeight:40.0f actionHandler:^(BMYPullToRefreshView *pullToRefreshView) {
         [welf refresh];
     }];
     

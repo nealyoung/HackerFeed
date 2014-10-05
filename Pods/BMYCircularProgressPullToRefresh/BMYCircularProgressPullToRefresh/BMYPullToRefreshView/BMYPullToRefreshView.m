@@ -145,6 +145,7 @@ static CGFloat const kPullToRefreshDragToTrigger = 80;
         [self layoutSubviews];
     }
     else if ([keyPath isEqualToString:@"contentInset"]) {
+        NSLog(@"%@", NSStringFromUIEdgeInsets(self.scrollView.contentInset));
         if (!_updatingScrollViewContentInset) {
             _externalContentInset = [[change valueForKey:NSKeyValueChangeNewKey] UIEdgeInsetsValue];
             [self _resetFrame];
