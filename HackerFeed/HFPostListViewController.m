@@ -187,8 +187,6 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
 #pragma mark - UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    //return UITableViewAutomaticDimension;
-    
     static HFPostTableViewCell *postMetricsCell;
     
     if (!postMetricsCell) {

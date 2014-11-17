@@ -230,6 +230,7 @@ static const CGFloat SVProgressHUDParallaxDepthPoints = 10;
     CGContextRef context = UIGraphicsGetCurrentContext();
     
     switch (self.maskType) {
+            
         case SVProgressHUDMaskTypeBlack: {
             [[UIColor colorWithWhite:0 alpha:0.5] set];
             CGContextFillRect(context, self.bounds);
@@ -254,9 +255,6 @@ static const CGFloat SVProgressHUDParallaxDepthPoints = 10;
             
             break;
         }
-        
-        default:
-            break;
     }
 }
 

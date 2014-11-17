@@ -18,6 +18,11 @@
 		0E5424E719C4C07D00FF24A7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E5424E619C4C07D00FF24A7 /* LaunchScreen.xib */; };
 		0E5424EA19C4DA5F00FF24A7 /* HFModalWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E5424E919C4DA5F00FF24A7 /* HFModalWebViewController.m */; };
 		0E57B5B4198C2D6C0056CA54 /* HFTextViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E57B5B3198C2D6C0056CA54 /* HFTextViewTableViewCell.m */; };
+		0E59357019F9CAF40081B28A /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E59356F19F9CAF40081B28A /* libicucore.dylib */; };
+		0E59357219F9CAFE0081B28A /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E59357119F9CAFE0081B28A /* libc++.dylib */; };
+		0E59357419F9CB040081B28A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E59357319F9CB040081B28A /* CFNetwork.framework */; };
+		0E59357619F9CC820081B28A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E59357519F9CC820081B28A /* Security.framework */; };
+		0E59357819F9CC8C0081B28A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E59357719F9CC8C0081B28A /* SystemConfiguration.framework */; };
 		0E5C453B19838135001EE1CB /* HFFilterPostDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E5C453A19838135001EE1CB /* HFFilterPostDataSource.m */; };
 		0E6C30DF197F5DCB00C33A67 /* HFLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E6C30DE197F5DCB00C33A67 /* HFLoginViewController.m */; };
 		0E796B8719CEAC930045B4E1 /* HFDropdownMenuTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E796B8619CEAC930045B4E1 /* HFDropdownMenuTitleView.m */; };
@@ -95,6 +100,11 @@
 		0E5424E919C4DA5F00FF24A7 /* HFModalWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFModalWebViewController.m; sourceTree = "<group>"; };
 		0E57B5B2198C2D6C0056CA54 /* HFTextViewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFTextViewTableViewCell.h; sourceTree = "<group>"; };
 		0E57B5B3198C2D6C0056CA54 /* HFTextViewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFTextViewTableViewCell.m; sourceTree = "<group>"; };
+		0E59356F19F9CAF40081B28A /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		0E59357119F9CAFE0081B28A /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		0E59357319F9CB040081B28A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		0E59357519F9CC820081B28A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		0E59357719F9CC8C0081B28A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0E5C453919838135001EE1CB /* HFFilterPostDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFFilterPostDataSource.h; sourceTree = "<group>"; };
 		0E5C453A19838135001EE1CB /* HFFilterPostDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFFilterPostDataSource.m; sourceTree = "<group>"; };
 		0E6C30DD197F5DCB00C33A67 /* HFLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFLoginViewController.h; sourceTree = "<group>"; };
@@ -178,7 +188,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E59357819F9CC8C0081B28A /* SystemConfiguration.framework in Frameworks */,
+				0E59357619F9CC820081B28A /* Security.framework in Frameworks */,
+				0E59357219F9CAFE0081B28A /* libc++.dylib in Frameworks */,
+				0E59357019F9CAF40081B28A /* libicucore.dylib in Frameworks */,
 				0E0214FB19CB518E00561912 /* libz.dylib in Frameworks */,
+				0E59357419F9CB040081B28A /* CFNetwork.framework in Frameworks */,
 				0EFC25391985C22100A67412 /* CoreText.framework in Frameworks */,
 				0EE791BD1950318D00925E4F /* CoreGraphics.framework in Frameworks */,
 				0EE791BF1950318D00925E4F /* UIKit.framework in Frameworks */,
@@ -355,6 +370,11 @@
 		0EE791B91950318D00925E4F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0E59357719F9CC8C0081B28A /* SystemConfiguration.framework */,
+				0E59357519F9CC820081B28A /* Security.framework */,
+				0E59357319F9CB040081B28A /* CFNetwork.framework */,
+				0E59357119F9CAFE0081B28A /* libc++.dylib */,
+				0E59356F19F9CAF40081B28A /* libicucore.dylib */,
 				0E0214FA19CB518E00561912 /* libz.dylib */,
 				0EFC25381985C22100A67412 /* CoreText.framework */,
 				0EE791BA1950318D00925E4F /* Foundation.framework */,

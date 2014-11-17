@@ -8,7 +8,6 @@
 
 #import "HFWebViewController.h"
 
-#import "FCAddToInstapaperActivity.h"
 #import "FCOpenInSafariActivity.h"
 
 @interface HFWebViewController ()
@@ -20,10 +19,9 @@
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        FCAddToInstapaperActivity *addToInstapaperActivity = [FCAddToInstapaperActivity new];
         FCOpenInSafariActivity *openInSafariActivity = [FCOpenInSafariActivity new];
         
-        self.applicationActivities = @[openInSafariActivity, addToInstapaperActivity];
+        self.applicationActivities = @[openInSafariActivity];
     }
     return self;
 }

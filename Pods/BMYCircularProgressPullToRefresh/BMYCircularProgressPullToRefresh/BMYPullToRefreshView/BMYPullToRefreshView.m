@@ -60,6 +60,8 @@ static CGFloat const kPullToRefreshDragToTrigger = 80;
     CGPoint origin = CGPointMake(roundf((CGRectGetWidth(self.bounds) - CGRectGetWidth(viewBounds)) / 2), roundf(( CGRectGetHeight(self.bounds) - CGRectGetHeight(viewBounds)) / 2));
     [_progressView setFrame:CGRectMake(origin.x, origin.y, CGRectGetWidth(viewBounds), CGRectGetHeight(viewBounds))];
     [_activityIndicatorView setFrame:CGRectMake(origin.x, origin.y, CGRectGetWidth(viewBounds), CGRectGetHeight(viewBounds))];
+    
+    //NSLog(@"SET FRAME TO %@", NSStringFromCGRect(_activityIndicatorView.frame));
 }
 
 #pragma mark - Public Methods
@@ -195,6 +197,7 @@ static CGFloat const kPullToRefreshDragToTrigger = 80;
 #pragma mark - Scroll View
 
 - (void)_resetScrollViewContentInset {
+    NSLog(@"reset called");
     [UIView animateWithDuration:kPullToRefreshResetContentInsetAnimationTime
                           delay:0
                         options:(UIViewAnimationOptionAllowUserInteraction | UIViewAnimationOptionBeginFromCurrentState)
@@ -211,6 +214,8 @@ static CGFloat const kPullToRefreshDragToTrigger = 80;
 }
 
 - (void)_setScrollViewContentInsetForLoadingAnimated:(BOOL)animated {
+    NSLog(@"for loading animated called");
+
     UIEdgeInsets loadingInset = _externalContentInset;
     loadingInset.top += CGRectGetHeight(self.bounds);
     void (^updateBlock)(void) = ^{

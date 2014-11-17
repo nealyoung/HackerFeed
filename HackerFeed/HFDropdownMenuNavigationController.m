@@ -114,9 +114,7 @@
 //    CGRect titleViewFrame = CGRectZero;
 //    titleViewFrame.size = [self.titleView intrinsicContentSize];
 //    self.titleView.frame = titleViewFrame;
-    
-    NSLog(@"%@", NSStringFromCGRect(self.titleView.frame));
-    
+        
     [self.dropdownMenu toggleMenu];
 }
 
