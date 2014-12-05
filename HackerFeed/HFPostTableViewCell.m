@@ -125,9 +125,6 @@
     // Set the max layout width of the multi-line information label to the calculated width of the label after auto layout has run
     self.titleLabel.preferredMaxLayoutWidth = CGRectGetWidth(self.titleLabel.frame);
     
-    NSLog(@"%d", [self hasAmbiguousLayout]);
-    [self exerciseAmbiguityInLayout];
-    
     //[self layoutIfNeeded];
 }
 

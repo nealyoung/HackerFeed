@@ -38,8 +38,6 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
     if (self) {
         self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
         [self.tableView setTranslatesAutoresizingMaskIntoConstraints:NO];
-        self.tableView.dataSource = self;
-        self.tableView.delegate = self;
         self.tableView.rowHeight = 72.0f;
         //self.tableView.rowHeight = UITableViewAutomaticDimension;
         //self.tableView.estimatedRowHeight = 80.0f;
@@ -67,6 +65,10 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
+    
+    // We set the table view's dataSource/delegate here to avoid auto layout errors - otherwise, the height calculation on cells is run even if a view hasn't been laid out yet (the non-default post lists in the dropdown menu). At that point, the width of the table view's frame is 0, so auto layout is unable to satisfy the metrics cell's constraints.
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
     
     UIImage *logoImage = [UIImage imageNamed:@"PullToRefreshIcon"];
     UIImage *backCircleImage = [UIImage imageNamed:@"PullToRefreshGrayCircle"];

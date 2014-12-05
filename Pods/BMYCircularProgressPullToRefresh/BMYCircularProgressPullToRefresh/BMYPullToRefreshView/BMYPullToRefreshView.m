@@ -60,8 +60,6 @@ static CGFloat const kPullToRefreshDragToTrigger = 80;
     CGPoint origin = CGPointMake(roundf((CGRectGetWidth(self.bounds) - CGRectGetWidth(viewBounds)) / 2), roundf(( CGRectGetHeight(self.bounds) - CGRectGetHeight(viewBounds)) / 2));
     [_progressView setFrame:CGRectMake(origin.x, origin.y, CGRectGetWidth(viewBounds), CGRectGetHeight(viewBounds))];
     [_activityIndicatorView setFrame:CGRectMake(origin.x, origin.y, CGRectGetWidth(viewBounds), CGRectGetHeight(viewBounds))];
-    
-    //NSLog(@"SET FRAME TO %@", NSStringFromCGRect(_activityIndicatorView.frame));
 }
 
 #pragma mark - Public Methods
@@ -147,7 +145,6 @@ static CGFloat const kPullToRefreshDragToTrigger = 80;
         [self layoutSubviews];
     }
     else if ([keyPath isEqualToString:@"contentInset"]) {
-        NSLog(@"%@", NSStringFromUIEdgeInsets(self.scrollView.contentInset));
         if (!_updatingScrollViewContentInset) {
             _externalContentInset = [[change valueForKey:NSKeyValueChangeNewKey] UIEdgeInsetsValue];
             [self _resetFrame];
@@ -249,20 +246,10 @@ static CGFloat const kPullToRefreshDragToTrigger = 80;
 - (void)_resetFrame {
     CGFloat height = CGRectGetHeight(self.bounds);
     
-    if (_preserveContentInset) {
-        self.frame = CGRectMake(0.0f,
-                                -height -_externalContentInset.top,
-                                CGRectGetWidth(_scrollView.bounds),
-                                height);
-        
-        NSLog(@"%@", NSStringFromCGRect(self.frame));
-    }
-    else {
-        self.frame = CGRectMake(-_externalContentInset.left,
-                                -height,
-                                CGRectGetWidth(_scrollView.bounds),
-                                height);
-    }
+    self.frame = CGRectMake(-_externalContentInset.left,
+                            -height,
+                            CGRectGetWidth(_scrollView.bounds),
+                            height);
 }
 
 @end

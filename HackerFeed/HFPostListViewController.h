@@ -24,6 +24,5 @@
 @property UITableView *tableView;
 
 @property (nonatomic) id <HFPostDataSource> dataSource;
-@property (nonatomic) HNPostFilterType postFilterType;
 
 @end

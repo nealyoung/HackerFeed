@@ -48,6 +48,8 @@
     self = [super initWithRootViewController:[viewControllers firstObject]];
     
     if (self) {
+        [self commonInit];
+        
         NSMutableArray *items = [NSMutableArray array];
         
         for (UIViewController *viewController in viewControllers) {
@@ -55,10 +57,6 @@
             menuItem.title = viewController.title;
             [items addObject:menuItem];
         }
-        
-        _dropdownMenu = [[HFDropdownMenu alloc] initWithItems:items];
-        _dropdownMenu.delegate = self;
-        [self.view insertSubview:_dropdownMenu belowSubview:self.navigationBar];
         
         self.dropdownViewControllers = viewControllers;
     }

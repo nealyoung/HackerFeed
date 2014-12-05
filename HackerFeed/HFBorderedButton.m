@@ -31,6 +31,8 @@
 }
 
 - (void)commonInit {
+    // Center the title vertically (small caps font is slightly lower than center)
+    self.titleEdgeInsets = UIEdgeInsetsMake(0.0f, 0.0f, 2.0f, 0.0f);
     self.titleLabel.font = [UIFont smallCapsApplicationFontWithSize:self.titleLabel.font.pointSize];
     [self setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
 }
