@@ -55,10 +55,10 @@
     }
     
     // Set properties
-    newUser.username = user;
-    newUser.age = [age intValue];
-    newUser.karma = [karma intValue];
-    newUser.about = [HNUtilities stringByReplacingHTMLEntitiesInText:about];
+    newUser.Username = user;
+    newUser.Age = [age intValue];
+    newUser.Karma = [karma intValue];
+    newUser.AboutInfo = [HNUtilities stringByReplacingHTMLEntitiesInText:about];
     
     return newUser;
 }

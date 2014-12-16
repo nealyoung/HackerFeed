@@ -189,7 +189,7 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
     }
     
     // Disable the upvote button if the user has already voted, or if we're looking at a job post (that can't be voted on)
-    self.upvoteButton.enabled = !([[HNManager sharedManager] hasVotedOnObject:post] || post.type == HNPostTypeJobs);
+    self.upvoteButton.enabled = !([[HNManager sharedManager] hasVotedOnObject:post] || post.Type == PostTypeJobs);
     
     // Clear the cell height cache
     self.commentCellHeightCache = [NSMutableDictionary dictionary];
@@ -239,7 +239,7 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
 }
 
 - (void)upvoteButtonPressed:(id)sender {
-    if (![HNManager sharedManager].sessionUser) {
+    if (![HNManager sharedManager].SessionUser) {
         [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"You must be signed in to vote", nil)];
         return;
     }
@@ -247,7 +247,7 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
     UIActivityIndicatorView *ai = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:ai];
     [ai startAnimating];
-    [[HNManager sharedManager] voteOnPostOrComment:self.post direction:HNVoteDirectionUp completion:^(BOOL success) {
+    [[HNManager sharedManager] voteOnPostOrComment:self.post direction:VoteDirectionUp completion:^(BOOL success) {
         self.navigationItem.rightBarButtonItem = self.upvoteButton;
 
         if (success) {
@@ -259,7 +259,7 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
 }
 
 - (void)upvoteCommentButtonPressed:(UIButton *)sender {
-    if (![HNManager sharedManager].sessionUser) {
+    if (![HNManager sharedManager].SessionUser) {
         [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"You must be signed in to vote", nil)];
         return;
     }
@@ -267,7 +267,7 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
     sender.enabled = NO;
 
     HNComment *comment = self.comments[sender.tag];
-    [[HNManager sharedManager] voteOnPostOrComment:comment direction:HNVoteDirectionUp completion:^(BOOL success) {
+    [[HNManager sharedManager] voteOnPostOrComment:comment direction:VoteDirectionUp completion:^(BOOL success) {
         if (success) {
 
         } else {
@@ -279,7 +279,7 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
 
 - (void)commentReplyButtonPressed:(UIButton *)sender {
     self.commentToReply = self.comments[sender.tag];
-    self.commentToolbar.replyUsername = self.commentToReply.username;
+    self.commentToolbar.replyUsername = self.commentToReply.Username;
     [self.commentToolbar.textView becomeFirstResponder];
 }
 
@@ -287,7 +287,7 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
     HNComment *comment = self.comments[sender.tag];
     
     HFProfileViewController *profileViewController = [[HFProfileViewController alloc] initWithNibName:nil bundle:nil];
-    [[HNManager sharedManager] loadUserWithUsername:comment.username completion:^(HNUser *user) {
+    [[HNManager sharedManager] loadUserWithUsername:comment.Username completion:^(HNUser *user) {
         profileViewController.user = user;
     }];
     
@@ -300,7 +300,7 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
 }
 
 - (void)submitCommentButtonPressed:(UIButton *)sender {
-    if (![HNManager sharedManager].sessionUser) {
+    if (![HNManager sharedManager].SessionUser) {
         [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"You must be signed in to comment", nil)];
         return;
     }
@@ -362,7 +362,7 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (self.post) {
         // Jobs posts don't have a submitter username
-        if (self.post.type == HNPostTypeJobs) {
+        if (self.post.Type == PostTypeJobs) {
             return 1 + [self.comments count];
         } else {
             return 2 + [self.comments count];
@@ -375,16 +375,16 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
         HFPostInfoTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:kPostInfoTableViewCellIdentifier forIndexPath:indexPath];
-        cell.titleLabel.text = self.post.title;
-        cell.infoLabel.text = [NSString stringWithFormat:@"%d points · %@", self.post.points, self.post.TimeCreatedString];
+        cell.titleLabel.text = self.post.Title;
+        cell.infoLabel.text = [NSString stringWithFormat:@"%d points · %@", self.post.Points, self.post.TimeCreatedString];
         return cell;
-    } else if (indexPath.row == 1 && self.post.type != HNPostTypeJobs) {
+    } else if (indexPath.row == 1 && self.post.Type != PostTypeJobs) {
         HFTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:kUsernameTableViewCellIdentifier forIndexPath:indexPath];
         cell.textLabel.textColor = [UIColor darkGrayColor];
         cell.textLabel.font = [UIFont smallCapsApplicationFontWithSize:cell.textLabel.font.pointSize];
         cell.textLabel.text = NSLocalizedString(@"submitted by", nil);
         cell.detailTextLabel.font = [UIFont applicationFontOfSize:16.0f];
-        cell.detailTextLabel.text = self.post.username;
+        cell.detailTextLabel.text = self.post.Username;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         
         return cell;
@@ -392,20 +392,20 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
         HFCommentTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:kCommentTableViewCellIdentifier forIndexPath:indexPath];
         cell.delegate = self;
         
-        HNComment *comment = self.post.type == HNPostTypeJobs ? self.comments[indexPath.row - 1] : self.comments[indexPath.row - 2];
+        HNComment *comment = self.post.Type == PostTypeJobs ? self.comments[indexPath.row - 1] : self.comments[indexPath.row - 2];
         
         // Set to nil first as a workaround for iOS 7 bug with text view link detection (http://stackoverflow.com/questions/19121367/uitextviews-in-a-uitableview-link-detection-bug-in-ios-7)
         cell.textView.text = nil;
-        cell.textView.text = comment.text;
+        cell.textView.text = comment.Text;
         // Set the delegate so we can open detected links
         cell.textView.delegate = self;
         cell.textView.textContainerInset = UIEdgeInsetsZero;
-        cell.usernameLabel.text = [NSString stringWithFormat:@"%@ · %@", comment.username, comment.createdAtString];
+        cell.usernameLabel.text = [NSString stringWithFormat:@"%@ · %@", comment.Username, comment.TimeCreatedString];
         
-        cell.usernameLabelLeadingConstraint.constant = tableView.separatorInset.left + (comment.level * tableView.separatorInset.left);
+        cell.usernameLabelLeadingConstraint.constant = tableView.separatorInset.left + (comment.Level * tableView.separatorInset.left);
         
         // UITextView has a 5pt content inset
-        cell.textViewLeadingConstraint.constant = tableView.separatorInset.left + (comment.level * tableView.separatorInset.left) - 5.0f;
+        cell.textViewLeadingConstraint.constant = tableView.separatorInset.left + (comment.Level * tableView.separatorInset.left) - 5.0f;
         cell.toolbarHeightConstraint.constant = 0.0f;
         
         [cell.commentActionsView.upvoteButton addTarget:self action:@selector(upvoteCommentButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
@@ -424,7 +424,7 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
             [cell setExpanded:NO animated:NO];
         }
         
-        cell.separatorInset = UIEdgeInsetsMake(0.0f, tableView.separatorInset.left + (comment.level * tableView.separatorInset.left), 0.0f, 0.0f);
+        cell.separatorInset = UIEdgeInsetsMake(0.0f, tableView.separatorInset.left + (comment.Level * tableView.separatorInset.left), 0.0f, 0.0f);
         
         return cell;
     }
@@ -444,8 +444,8 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
         frame.size.width = self.tableView.bounds.size.width;
         postInfoMetricsCell.frame = frame;
         
-        postInfoMetricsCell.titleLabel.text = self.post.title;
-        postInfoMetricsCell.infoLabel.text = [NSString stringWithFormat:@"%d points · %@", self.post.points, self.post.TimeCreatedString];
+        postInfoMetricsCell.titleLabel.text = self.post.Title;
+        postInfoMetricsCell.infoLabel.text = [NSString stringWithFormat:@"%d points · %@", self.post.Points, self.post.TimeCreatedString];
         
         [postInfoMetricsCell setNeedsLayout];
         [postInfoMetricsCell layoutIfNeeded];
@@ -454,7 +454,7 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
         CGSize size = [postInfoMetricsCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
         
         return (size.height + 1);
-    } else if (indexPath.row == 1 && self.post.type != HNPostTypeJobs) {
+    } else if (indexPath.row == 1 && self.post.Type != PostTypeJobs) {
         return 44.0f;
     } else {
         NSNumber *cachedCellHeight = self.commentCellHeightCache[@(indexPath.row)];
@@ -472,11 +472,11 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
         frame.size.width = self.tableView.bounds.size.width;
         commentMetricsCell.frame = frame;
         
-        HNComment *comment = self.post.type == HNPostTypeJobs ? self.comments[indexPath.row - 1] : self.comments[indexPath.row - 2];
-        commentMetricsCell.textView.text = comment.text;
-        commentMetricsCell.usernameLabel.text = comment.username;
-        commentMetricsCell.usernameLabelLeadingConstraint.constant = 15.0f + (comment.level * 15.0f);
-        commentMetricsCell.textViewLeadingConstraint.constant = 10.0f + (comment.level * 15.0f);
+        HNComment *comment = self.post.Type == PostTypeJobs ? self.comments[indexPath.row - 1] : self.comments[indexPath.row - 2];
+        commentMetricsCell.textView.text = comment.Text;
+        commentMetricsCell.usernameLabel.text = comment.Username;
+        commentMetricsCell.usernameLabelLeadingConstraint.constant = 15.0f + (comment.Level * 15.0f);
+        commentMetricsCell.textViewLeadingConstraint.constant = 10.0f + (comment.Level * 15.0f);
         commentMetricsCell.toolbarHeightConstraint.constant = 0.0f;
         
         if ([self.expandedIndexPath isEqual:indexPath]) {
@@ -505,20 +505,20 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
         if (self.splitViewController.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular) {
-            HFModalWebViewController *webViewController = [[HFModalWebViewController alloc] initWithURL:[NSURL URLWithString:self.post.urlString]];
+            HFModalWebViewController *webViewController = [[HFModalWebViewController alloc] initWithURL:[NSURL URLWithString:self.post.UrlString]];
             self.scaleTransition = [DMScaleTransition new];
             webViewController.transitioningDelegate = self.scaleTransition;
             [self.splitViewController presentViewController:webViewController animated:YES completion:nil];
         } else {
             PBWebViewController *webViewController = [[PBWebViewController alloc] init];
-            webViewController.URL = [NSURL URLWithString:self.post.urlString];
+            webViewController.URL = [NSURL URLWithString:self.post.UrlString];
             
             [self showViewController:webViewController sender:self];
         }
-    } else if (indexPath.row == 1 && self.post.type != HNPostTypeJobs) {
+    } else if (indexPath.row == 1 && self.post.Type != PostTypeJobs) {
         HFProfileViewController *profileViewController = [[HFProfileViewController alloc] initWithNibName:nil bundle:nil];
         [self.navigationController pushViewController:profileViewController animated:YES];
-        [[HNManager sharedManager] loadUserWithUsername:self.post.username completion:^(HNUser *user) {
+        [[HNManager sharedManager] loadUserWithUsername:self.post.Username completion:^(HNUser *user) {
             profileViewController.user = user;
         }];
     } else {

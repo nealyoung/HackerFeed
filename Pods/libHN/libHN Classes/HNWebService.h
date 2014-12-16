@@ -27,23 +27,24 @@
 #import "HNUser.h"
 
 #pragma mark - Enums
-typedef NS_ENUM(NSInteger, HNPostFilterType) {
-    HNPostFilterTypeTop,
-    HNPostFilterTypeAsk,
-    HNPostFilterTypeNew,
-    HNPostFilterTypeJobs,
-    HNPostFilterTypeBest,
-    HNPostFilterTypeShowHN
+typedef NS_ENUM(NSInteger, PostFilterType) {
+    PostFilterTypeTop,
+    PostFilterTypeAsk,
+    PostFilterTypeNew,
+    PostFilterTypeJobs,
+    PostFilterTypeBest,
+    PostFilterTypeShowHN
 };
 
-typedef NS_ENUM(NSInteger, HNVoteDirection) {
-    HNVoteDirectionUp,
-    HNVoteDirectionDown
+typedef NS_ENUM(NSInteger, VoteDirection) {
+    VoteDirectionUp,
+    VoteDirectionDown
 };
+
 
 #pragma mark - Blocks
 typedef void (^GetUserCompletion) (HNUser *user);
-typedef void (^GetPostsCompletion) (NSArray *posts);
+typedef void (^GetPostsCompletion) (NSArray *posts, NSString *nextPageIdentifier);
 typedef void (^GetCommentsCompletion) (NSArray *comments);
 typedef void (^LoginCompletion) (HNUser *user, NSHTTPCookie *cookie);
 typedef void (^BooleanSuccessBlock) (BOOL success);
@@ -61,7 +62,7 @@ typedef void (^SubmitCommentSuccessBlock) (BOOL success);
 // Get User
 - (void)loadUserWithUsername:(NSString *)username completion:(GetUserCompletion)completion;
 // Get Posts
-- (void)loadPostsWithFilter:(HNPostFilterType)filter completion:(GetPostsCompletion)completion;
+- (void)loadPostsWithFilter:(PostFilterType)filter completion:(GetPostsCompletion)completion;
 - (void)loadPostsWithUrlAddition:(NSString *)urlAddition completion:(GetPostsCompletion)completion;
 // Get Comments
 - (void)loadCommentsFromPost:(HNPost *)post completion:(GetCommentsCompletion)completion;
@@ -73,9 +74,9 @@ typedef void (^SubmitCommentSuccessBlock) (BOOL success);
 // Commenting
 - (void)replyToHNObject:(id)hnObject withText:(NSString *)text completion:(BooleanSuccessBlock)completion;
 // Voting
-- (void)voteOnHNObject:(id)hnObject direction:(HNVoteDirection)direction completion:(BooleanSuccessBlock)completion;
+- (void)voteOnHNObject:(id)hnObject direction:(VoteDirection)direction completion:(BooleanSuccessBlock)completion;
 // Get Submissions for User
-- (void)fetchSubmissionsForUser:(NSString *)user completion:(GetPostsCompletion)completion;
+- (void)fetchSubmissionsForUser:(NSString *)user urlAddition:(NSString *)urlAddition completion:(GetPostsCompletion)completion;
 // Cancel Requests
 - (void)cancelAllRequests;
 

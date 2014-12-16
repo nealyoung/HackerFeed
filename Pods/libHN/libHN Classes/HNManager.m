@@ -30,61 +30,57 @@ static HNManager * _sharedManager = nil;
 
 #pragma mark - Set Up HNManager's Singleton
 + (HNManager *)sharedManager {
-	@synchronized([HNManager class]) {
-		if (!_sharedManager)
+    @synchronized([HNManager class]) {
+        if (!_sharedManager)
             _sharedManager  = [[HNManager alloc] init];
-		return _sharedManager;
-	}
-	return nil;
+        return _sharedManager;
+    }
+    return nil;
 }
 
 + (id)alloc {
-	@synchronized([HNManager class]) {
-		NSAssert(_sharedManager == nil, @"Attempted to allocate a second instance of a singleton.");
-		_sharedManager = [super alloc];
-		return _sharedManager;
-	}
-	return nil;
+    @synchronized([HNManager class]) {
+        NSAssert(_sharedManager == nil, @"Attempted to allocate a second instance of a singleton.");
+        _sharedManager = [super alloc];
+        return _sharedManager;
+    }
+    return nil;
 }
 
 - (instancetype)init {
-	if (self = [super init]) {
+    if (self = [super init]) {
         // Set up Webservice
-        self.service = [[HNWebService alloc] init];
+        self.Service = [[HNWebService alloc] init];
         
         // Set up Voted On Dictionary
-        self.votedOnDictionary = [NSMutableDictionary dictionary];
+        self.VotedOnDictionary = [NSMutableDictionary dictionary];
         
         // Set Mark As Read
         if ([[NSUserDefaults standardUserDefaults] objectForKey:@"HN-MarkAsRead"]) {
-            self.markAsReadDictionary = [[[NSUserDefaults standardUserDefaults] objectForKey:@"HN-MarkAsRead"] mutableCopy];
+            self.MarkAsReadDictionary = [[[NSUserDefaults standardUserDefaults] objectForKey:@"HN-MarkAsRead"] mutableCopy];
         }
         else {
-            self.markAsReadDictionary = [NSMutableDictionary dictionary];
+            self.MarkAsReadDictionary = [NSMutableDictionary dictionary];
         }
-	}
-	return self;
+    }
+    return self;
 }
 
 #pragma mark - Start Session
 - (void)startSession {
     // Set Values from Defaults
-    self.sessionCookie = [HNManager getHNCookie];
+    self.SessionCookie = [HNManager getHNCookie];
     
     // Validate User/Cookie
+    __weak typeof(self) wSelf = self;
     [self validateAndSetCookieWithCompletion:^(HNUser *user, NSHTTPCookie *cookie) {
-        if (user) {
-            self.sessionUser = user;
+        if (!wSelf) {
+            return;
         }
-        else {
-            self.sessionUser = nil;
-        }
-        if (cookie) {
-            self.sessionCookie = cookie;
-        }
-        else {
-            self.sessionCookie = nil;
-        }
+        
+        __strong typeof(self) sSelf = wSelf;
+        sSelf.SessionUser = user ? user : nil;
+        sSelf.SessionCookie = cookie ? cookie : nil;
         
         // Post Notification
         [[NSNotificationCenter defaultCenter] postNotificationName:@"DidLoginOrOut" object:nil];
@@ -95,25 +91,29 @@ static HNManager * _sharedManager = nil;
 #pragma mark - Set Session Cookie & Username
 - (void)setCookie:(NSHTTPCookie *)cookie user:(HNUser *)user {
     // Set Session
-    self.sessionUser = user;
-    self.sessionCookie = cookie;
+    self.SessionUser = user;
+    self.SessionCookie = cookie;
 }
 
 #pragma mark - Check for Logged In User
 - (BOOL)userIsLoggedIn {
-    return self.sessionCookie && self.sessionUser;
+    return self.SessionCookie && self.SessionUser;
 }
+
 
 #pragma mark - WebService Methods
 - (void)loginWithUsername:(NSString *)user password:(NSString *)pass completion:(SuccessfulLoginBlock)completion {
-    [self.service loginWithUsername:user pass:pass completion:^(HNUser *user, NSHTTPCookie *cookie) {
-        if (user && cookie) {
+    __weak typeof(self) wSelf = self;
+    [self.Service loginWithUsername:user pass:pass completion:^(HNUser *user, NSHTTPCookie *cookie) {
+        if (user && cookie && wSelf) {
+            __strong typeof(wSelf) sSelf = wSelf;
+            
             // Set Cookie & User
-            [self setCookie:cookie user:user];
+            [sSelf setCookie:cookie user:user];
             
             // Post Notification
             [[NSNotificationCenter defaultCenter] postNotificationName:@"DidLoginOrOut" object:nil];
-
+            
             // Pass user on through
             completion(user);
         }
@@ -125,34 +125,34 @@ static HNManager * _sharedManager = nil;
 
 - (void)logout {
     // Delete cookie from Storage
-    [[NSHTTPCookieStorage sharedHTTPCookieStorage] deleteCookie:self.sessionCookie];
+    [[NSHTTPCookieStorage sharedHTTPCookieStorage] deleteCookie:self.SessionCookie];
     
     // Delete objects in memory
-    self.sessionCookie = nil;
-    self.sessionUser = nil;
+    self.SessionCookie = nil;
+    self.SessionUser = nil;
     
     // Post Notification
     [[NSNotificationCenter defaultCenter] postNotificationName:@"DidLoginOrOut" object:nil];
 }
 
 - (void)loadUserWithUsername:(NSString *)username completion:(GetUserCompletion)completion {
-    [self.service loadUserWithUsername:username completion:completion];
+    [self.Service loadUserWithUsername:username completion:completion];
 }
 
-- (void)loadPostsWithFilter:(HNPostFilterType)filter completion:(GetPostsCompletion)completion {
+- (void)loadPostsWithFilter:(PostFilterType)filter completion:(GetPostsCompletion)completion {
     // Reset PostUrlAddition
     self.postUrlAddition = nil;
     
     // Load post
-    [self.service loadPostsWithFilter:filter completion:completion];
+    [self.Service loadPostsWithFilter:filter completion:completion];
 }
 
 - (void)loadPostsWithUrlAddition:(NSString *)urlAddition completion:(GetPostsCompletion)completion {
-    [self.service loadPostsWithUrlAddition:urlAddition completion:completion];
+    [self.Service loadPostsWithUrlAddition:urlAddition completion:completion];
 }
 
 - (void)loadCommentsFromPost:(HNPost *)post completion:(GetCommentsCompletion)completion {
-    [self.service loadCommentsFromPost:post completion:completion];
+    [self.Service loadCommentsFromPost:post completion:completion];
 }
 
 - (void)submitPostWithTitle:(NSString *)title link:(NSString *)link text:(NSString *)text completion:(BooleanSuccessBlock)completion {
@@ -163,7 +163,7 @@ static HNManager * _sharedManager = nil;
     }
     
     // Make the Webservice Call
-    [self.service submitPostWithTitle:title link:link text:text completion:completion];
+    [self.Service submitPostWithTitle:title link:link text:text completion:completion];
 }
 
 - (void)replyToPostOrComment:(id)hnObject withText:(NSString *)text completion:(BooleanSuccessBlock)completion {
@@ -174,10 +174,10 @@ static HNManager * _sharedManager = nil;
     }
     
     // Make the Webservice call
-    [self.service replyToHNObject:hnObject withText:text completion:completion];
+    [self.Service replyToHNObject:hnObject withText:text completion:completion];
 }
 
-- (void)voteOnPostOrComment:(id)hnObject direction:(HNVoteDirection)direction completion:(BooleanSuccessBlock)completion {
+- (void)voteOnPostOrComment:(id)hnObject direction:(VoteDirection)direction completion:(BooleanSuccessBlock)completion {
     if (!(hnObject || direction)) {
         // Must be a Post/Comment and direction to vote!
         completion(NO);
@@ -185,18 +185,18 @@ static HNManager * _sharedManager = nil;
     }
     
     // Make the Webservice Call
-    [self.service voteOnHNObject:hnObject direction:direction completion:completion];
+    [self.Service voteOnHNObject:hnObject direction:direction completion:completion];
 }
 
-- (void)fetchSubmissionsForUser:(NSString *)user completion:(GetPostsCompletion)completion {
+- (void)fetchSubmissionsForUser:(NSString *)user urlAddition:(NSString *)urlAddition completion:(GetPostsCompletion)completion {
     if (!user) {
         // Need a username to get their submissions!
-        completion(nil);
+        completion(nil, nil);
         return;
     }
     
     // Make the webservice call
-    [self.service fetchSubmissionsForUser:user completion:completion];
+    [self.Service fetchSubmissionsForUser:user urlAddition:urlAddition completion:completion];
 }
 
 
@@ -204,7 +204,7 @@ static HNManager * _sharedManager = nil;
 - (void)validateAndSetCookieWithCompletion:(LoginCompletion)completion {
     NSHTTPCookie *cookie = [HNManager getHNCookie];
     if (cookie) {
-        [self.service validateAndSetSessionWithCookie:cookie completion:completion];
+        [self.Service validateAndSetSessionWithCookie:cookie completion:completion];
     }
 }
 
@@ -221,34 +221,34 @@ static HNManager * _sharedManager = nil;
 }
 
 - (BOOL)isUserLoggedIn {
-    return (self.sessionCookie != nil && self.sessionUser != nil);
+    return (self.SessionCookie != nil && self.SessionUser != nil);
 }
 
 
 #pragma mark - Mark As Read
 - (BOOL)hasUserReadPost:(HNPost *)post {
-    return self.markAsReadDictionary[post.postId] ? YES : NO;
+    return self.MarkAsReadDictionary[post.PostId] ? YES : NO;
 }
 
 - (void)setMarkAsReadForPost:(HNPost *)post {
-    [self.markAsReadDictionary setObject:@YES forKey:post.postId];
-    [[NSUserDefaults standardUserDefaults] setObject:self.markAsReadDictionary forKey:@"HN-MarkAsRead"];
+    [self.MarkAsReadDictionary setObject:@YES forKey:post.PostId];
+    [[NSUserDefaults standardUserDefaults] setObject:self.MarkAsReadDictionary forKey:@"HN-MarkAsRead"];
 }
 
 #pragma mark - Voted On Dictionary
 - (BOOL)hasVotedOnObject:(id)hnObject {
-    NSString *votedOnId = [hnObject isKindOfClass:[HNPost class]] ? [(HNPost *)hnObject postId] : [(HNComment *)hnObject commentId];
-    return [self.votedOnDictionary objectForKey:votedOnId] != nil ? YES : NO;
+    NSString *votedOnId = [hnObject isKindOfClass:[HNPost class]] ? [(HNPost *)hnObject PostId] : [(HNComment *)hnObject CommentId];
+    return [self.VotedOnDictionary objectForKey:votedOnId] != nil ? YES : NO;
 }
 
-- (void)addHNObjectToVotedOnDictionary:(id)hnObject direction:(HNVoteDirection)direction {
-    NSString *votedOnId = [hnObject isKindOfClass:[HNPost class]] ? [(HNPost *)hnObject postId] : [(HNComment *)hnObject commentId];
-    [self.votedOnDictionary setObject:@(direction) forKey:votedOnId];
+- (void)addHNObjectToVotedOnDictionary:(id)hnObject direction:(VoteDirection)direction {
+    NSString *votedOnId = [hnObject isKindOfClass:[HNPost class]] ? [(HNPost *)hnObject PostId] : [(HNComment *)hnObject CommentId];
+    [self.VotedOnDictionary setObject:@(direction) forKey:votedOnId];
 }
 
 #pragma mark - Cancel Requests
 - (void)cancelAllRequests {
-    [self.service cancelAllRequests];
+    [self.Service cancelAllRequests];
 }
 
 @end

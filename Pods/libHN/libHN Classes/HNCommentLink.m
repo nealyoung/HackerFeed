@@ -29,15 +29,15 @@
     NSDataDetector *detector = [[NSDataDetector alloc] initWithTypes:(NSTextCheckingTypes)NSTextCheckingTypeLink error:nil];
     [detector enumerateMatchesInString:commentText options:kNilOptions range:NSMakeRange(0, commentText.length) usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
         HNCommentLink *newLink = [[HNCommentLink alloc] init];
-        newLink.urlRange = result.range;
-        newLink.url = result.URL;
+        newLink.UrlRange = result.range;
+        newLink.Url = result.URL;
         
         // Find out if it's an HN contained link
-        if ([newLink.url.absoluteString rangeOfString:@"news.ycombinator.com/"  ].location != NSNotFound) {
-            newLink.type = HNCommentLinkTypeHN;
+        if ([newLink.Url.absoluteString rangeOfString:@"news.ycombinator.com/"  ].location != NSNotFound) {
+            newLink.Type = LinkTypeHN;
         }
         else {
-            newLink.type = HNCommentLinkTypeDefault;
+            newLink.Type = LinkTypeDefault;
         }
         
         // Add it

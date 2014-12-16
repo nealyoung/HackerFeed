@@ -56,25 +56,25 @@
         // Scan for Upvotes
         if ([htmlComponents[xx] rangeOfString:@"votearrow"].location != NSNotFound) {
             [scanner scanBetweenString:@"href=\"" andString:@"whence" intoString:&upvoteString];
-            newPost.upvoteURLAddition = upvoteString;
+            newPost.UpvoteURLAddition = upvoteString;
         }
         
         // Scan URL
         [scanner scanBetweenString:@"<a href=\"" andString:@"\"" intoString:&urlString];
-        newPost.urlString = urlString;
+        newPost.UrlString = urlString;
         
         // Scan Title
         [scanner scanBetweenString:@">" andString:@"</a>" intoString:&title];
-        newPost.title = title;
+        newPost.Title = title;
         
         // Scan Points
         [scanner scanBetweenString:@"<span id=\"score_" andString:@">" intoString:&trash];
         [scanner scanBetweenString:@">" andString:@" " intoString:&points];
-        newPost.points = [points intValue];
+        newPost.Points = [points intValue];
         
         // Scan Author
         [scanner scanBetweenString:@"<a href=\"user?id=" andString:@"\"" intoString:&author];
-        newPost.username = author;
+        newPost.Username = author;
         
         // Scan Time Ago
         [scanner scanBetweenString:@"</a> " andString:@"ago" intoString:&hoursAgo];
@@ -83,32 +83,35 @@
         // Scan Number of Comments
         [scanner scanBetweenString:@"<a href=\"item?id=" andString:@"\">" intoString:&postId];
         [scanner scanBetweenString:@"\">" andString:@"</a>" intoString:&comments];
-        newPost.postId = postId;
+        newPost.PostId = postId;
         if ([comments isEqualToString:@"discuss"]) {
-            newPost.commentCount = 0;
-        } else {
+            newPost.CommentCount = 0;
+        }
+        else {
             NSScanner *cScan = [[NSScanner alloc] initWithString:comments];
             NSString *cCount = @"";
             [cScan scanUpToString:@" " intoString:&cCount];
-            newPost.commentCount = [cCount intValue];
+            newPost.CommentCount = [cCount intValue];
         }
         
         // Check if Jobs Post
-        if (newPost.postId.length == 0 && newPost.points == 0 && newPost.username.length == 0) {
-            newPost.type = HNPostTypeJobs;
-            
+        if (newPost.PostId.length == 0 && newPost.Points == 0 && newPost.Username.length == 0) {
+            newPost.Type = PostTypeJobs;
             if ([urlString rangeOfString:@"http"].location == NSNotFound) {
-                newPost.postId = [urlString stringByReplacingOccurrencesOfString:@"item?id=" withString:@""];
-            }
-        } else {
-            // Check if AskHN
-            if ([urlString rangeOfString:@"http"].location == NSNotFound && newPost.postId.length > 0) {
-                newPost.type = HNPostTypeAskHN;
-                urlString = [@"https://news.ycombinator.com/" stringByAppendingString:urlString];
-            } else {
-                newPost.type = HNPostTypeDefault;
+                newPost.PostId = [urlString stringByReplacingOccurrencesOfString:@"item?id=" withString:@""];
             }
         }
+        else {
+            // Check if AskHN
+            if ([urlString rangeOfString:@"http"].location == NSNotFound && newPost.PostId.length > 0) {
+                newPost.Type = PostTypeAskHN;
+                urlString = [@"https://news.ycombinator.com/" stringByAppendingString:urlString];
+            }
+            else {
+                newPost.Type = PostTypeDefault;
+            }
+        }
+
         
         // Grab FNID if last
         if (xx == htmlComponents.count - 1) {
@@ -117,6 +120,7 @@
             [scanner scanString:@"<td class=\"title\"><a href=\"" intoString:&trash];
             [scanner scanUpToString:@"\"" intoString:&Fnid];
             *fnid = [Fnid stringByReplacingOccurrencesOfString:@"/" withString:@""];
+            *fnid = [*fnid stringByReplacingOccurrencesOfString:@"&amp;" withString:@"&"];
         }
         
         [postArray addObject:newPost];
@@ -125,13 +129,12 @@
     return postArray;
 }
 
-- (NSString *)urlDomain {
+- (NSString *)UrlDomain {
     NSString *urlDomain = nil;
     
-    if (self.urlString) {
-        NSURL *url = [NSURL URLWithString:self.urlString];
+    if (self.UrlString) {
+        NSURL *url = [NSURL URLWithString:self.UrlString];
         urlDomain = [url host];
-        
         if ([urlDomain hasPrefix:@"www."]) {
             urlDomain = [urlDomain substringFromIndex:4];
         }

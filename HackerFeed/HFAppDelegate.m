@@ -23,23 +23,23 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     HFPostListViewController *topStoriesViewController = [[HFPostListViewController alloc] initWithNibName:nil bundle:nil];
-    topStoriesViewController.dataSource = [[HFFilterPostDataSource alloc] initWithPostFilterType:HNPostFilterTypeTop image:[UIImage imageNamed:@"TopStoriesIcon"]];
+    topStoriesViewController.dataSource = [[HFFilterPostDataSource alloc] initWithPostFilterType:PostFilterTypeTop image:[UIImage imageNamed:@"TopStoriesIcon"]];
     topStoriesViewController.title = NSLocalizedString(@"Top Stories", nil);
     
     HFPostListViewController *newStoriesViewController = [[HFPostListViewController alloc] initWithNibName:nil bundle:nil];
-    newStoriesViewController.dataSource = [[HFFilterPostDataSource alloc] initWithPostFilterType:HNPostFilterTypeNew image:[UIImage imageNamed:@"NewStoriesIcon"]];
+    newStoriesViewController.dataSource = [[HFFilterPostDataSource alloc] initWithPostFilterType:PostFilterTypeNew image:[UIImage imageNamed:@"NewStoriesIcon"]];
     newStoriesViewController.title = NSLocalizedString(@"New Stories", nil);
     
     HFPostListViewController *askHNViewController = [[HFPostListViewController alloc] initWithNibName:nil bundle:nil];
-    askHNViewController.dataSource = [[HFFilterPostDataSource alloc] initWithPostFilterType:HNPostFilterTypeAsk image:[UIImage imageNamed:@"AskHNIcon"]];
+    askHNViewController.dataSource = [[HFFilterPostDataSource alloc] initWithPostFilterType:PostFilterTypeAsk image:[UIImage imageNamed:@"AskHNIcon"]];
     askHNViewController.title = NSLocalizedString(@"Ask HN", nil);
     
     HFPostListViewController *showHNViewController = [[HFPostListViewController alloc] initWithNibName:nil bundle:nil];
-    showHNViewController.dataSource = [[HFFilterPostDataSource alloc] initWithPostFilterType:HNPostFilterTypeShowHN image:[UIImage imageNamed:@"ShowHNIcon"]];
+    showHNViewController.dataSource = [[HFFilterPostDataSource alloc] initWithPostFilterType:PostFilterTypeShowHN image:[UIImage imageNamed:@"ShowHNIcon"]];
     showHNViewController.title = NSLocalizedString(@"Show HN", nil);
     
     HFPostListViewController *jobsViewController = [[HFPostListViewController alloc] initWithNibName:nil bundle:nil];
-    jobsViewController.dataSource = [[HFFilterPostDataSource alloc] initWithPostFilterType:HNPostFilterTypeJobs image:[UIImage imageNamed:@"JobsIcon"]];
+    jobsViewController.dataSource = [[HFFilterPostDataSource alloc] initWithPostFilterType:PostFilterTypeJobs image:[UIImage imageNamed:@"JobsIcon"]];
     jobsViewController.title = NSLocalizedString(@"Jobs", nil);
     
     HFUserProfileViewController *profileViewController = [[HFUserProfileViewController alloc] initWithNibName:nil bundle:nil];

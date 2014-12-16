@@ -11,8 +11,8 @@
 
 @interface HFFilterPostDataSource : HFBasePostDataSource
 
-@property HNPostFilterType postFilterType;
+@property PostFilterType postFilterType;
 
-- (instancetype)initWithPostFilterType:(HNPostFilterType)postFilterType image:(UIImage *)image;
+- (instancetype)initWithPostFilterType:(PostFilterType)postFilterType image:(UIImage *)image;
 
 @end

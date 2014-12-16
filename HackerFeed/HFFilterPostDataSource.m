@@ -16,7 +16,7 @@
 
 @implementation HFFilterPostDataSource
 
-- (instancetype)initWithPostFilterType:(HNPostFilterType)postFilterType image:(UIImage *)image {
+- (instancetype)initWithPostFilterType:(PostFilterType)postFilterType image:(UIImage *)image {
     self = [super init];
     
     if (self) {
@@ -28,7 +28,7 @@
 }
 
 - (void)refreshWithCompletion:(void (^)(BOOL completed))block {
-    [[HNManager sharedManager] loadPostsWithFilter:self.postFilterType completion:^(NSArray *posts) {
+    [[HNManager sharedManager] loadPostsWithFilter:self.postFilterType completion:^(NSArray *posts, NSString *nextPageIdentifier) {
         if (posts) {
             self.urlAddition = [HNManager sharedManager].postUrlAddition;
             self.posts = [NSMutableArray arrayWithArray:posts];
@@ -41,7 +41,7 @@
 
 - (void)loadMorePostsWithCompletion:(void (^)(BOOL completed))block {
     if (self.urlAddition) {
-        [[HNManager sharedManager] loadPostsWithUrlAddition:self.urlAddition completion:^(NSArray *posts) {
+        [[HNManager sharedManager] loadPostsWithUrlAddition:self.urlAddition completion:^(NSArray *posts, NSString *nextPageIdentifier) {
             [self.posts addObjectsFromArray:posts];
             block(YES);
         }];

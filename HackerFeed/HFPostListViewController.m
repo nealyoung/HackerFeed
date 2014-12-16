@@ -170,16 +170,16 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
     HFPostTableViewCell *postTableViewCell = [tableView dequeueReusableCellWithIdentifier:kPostTableViewCellIdentifier forIndexPath:indexPath];
     HNPost *post = self.dataSource.posts[indexPath.row];
     
-    postTableViewCell.titleLabel.text = post.title;
-    postTableViewCell.domainLabel.text = post.urlDomain;
+    postTableViewCell.titleLabel.text = post.Title;
+    postTableViewCell.domainLabel.text = post.UrlDomain;
     
-    if (post.type == HNPostTypeJobs) {
+    if (post.Type == PostTypeJobs) {
         postTableViewCell.infoLabel.text = nil;
     } else {
-        postTableViewCell.infoLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%d points · %@", nil), post.points, [post.username lowercaseString]];
+        postTableViewCell.infoLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%d points · %@", nil), post.Points, [post.Username lowercaseString]];
     }
     
-    [postTableViewCell.commentsButton setTitle:[NSString stringWithFormat:@"%d", post.commentCount] forState:UIControlStateNormal];
+    [postTableViewCell.commentsButton setTitle:[NSString stringWithFormat:@"%d", post.CommentCount] forState:UIControlStateNormal];
     postTableViewCell.commentsButton.tag = indexPath.row;
     [postTableViewCell.commentsButton addTarget:self action:@selector(commentsButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -199,13 +199,13 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
     
     HNPost *post = self.dataSource.posts[indexPath.row];
     
-    postMetricsCell.titleLabel.text = post.title;
-    postMetricsCell.domainLabel.text = post.urlDomain;
+    postMetricsCell.titleLabel.text = post.Title;
+    postMetricsCell.domainLabel.text = post.UrlDomain;
 
-    if (post.type == HNPostTypeJobs) {
+    if (post.Type == PostTypeJobs) {
         postMetricsCell.infoLabel.text = nil;
     } else {
-        postMetricsCell.infoLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%d points · %@", nil), post.points, [post.username lowercaseString]];
+        postMetricsCell.infoLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%d points · %@", nil), post.Points, [post.Username lowercaseString]];
     }
     
     [postMetricsCell setNeedsLayout];
@@ -221,7 +221,7 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
     HNPost *post = self.dataSource.posts[indexPath.row];
     
     // If the post is a link pointing to a HN page with a relative URL (like 'item?id=8175089'), open the post in the app
-    if ([post.urlString hasPrefix:@"item?"]) {
+    if ([post.UrlString hasPrefix:@"item?"]) {
         HFPostTableViewCell *cell = (HFPostTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
         [self commentsButtonPressed:cell.commentsButton];
         
@@ -229,13 +229,13 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
     }
     
     if (self.splitViewController.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular) {
-        HFModalWebViewController *webViewController = [[HFModalWebViewController alloc] initWithURL:[NSURL URLWithString:post.urlString]];
+        HFModalWebViewController *webViewController = [[HFModalWebViewController alloc] initWithURL:[NSURL URLWithString:post.UrlString]];
         self.scaleTransition = [DMScaleTransition new];
         webViewController.transitioningDelegate = self.scaleTransition;
         [self.splitViewController presentViewController:webViewController animated:YES completion:nil];
     } else {
         HFWebViewController *webViewController = [[HFWebViewController alloc] init];
-        webViewController.URL = [NSURL URLWithString:post.urlString];
+        webViewController.URL = [NSURL URLWithString:post.UrlString];
         
         [self showViewController:webViewController sender:self];
     }

@@ -1,0 +1,6 @@
+#include "Pods-HackerFeed-Reveal-iOS-SDK.xcconfig"
+FRAMEWORK_SEARCH_PATHS = ${PODS_HACKERFEED_REVEAL_IOS_SDK_FRAMEWORK_SEARCH_PATHS}
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Build" "${PODS_ROOT}/Headers/Build/Reveal-iOS-SDK" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/BMYCircularProgressPullToRefresh" "${PODS_ROOT}/Headers/Public/FCUtilities" "${PODS_ROOT}/Headers/Public/NYSegmentedControl" "${PODS_ROOT}/Headers/Public/PBWebViewController" "${PODS_ROOT}/Headers/Public/Reveal-iOS-SDK" "${PODS_ROOT}/Headers/Public/SVProgressHUD" "${PODS_ROOT}/Headers/Public/SVPullToRefresh" "${PODS_ROOT}/Headers/Public/libHN"
+OTHER_LDFLAGS = ${PODS_HACKERFEED_REVEAL_IOS_SDK_OTHER_LDFLAGS} -ObjC
+PODS_ROOT = ${SRCROOT}

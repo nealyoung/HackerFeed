@@ -23,22 +23,24 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
 
 - (void)refreshWithCompletion:(void (^)(BOOL completed))block {
     if (self.user) {
-        [[HNManager sharedManager] fetchSubmissionsForUser:self.user.username completion:^(NSArray *posts) {
-            if (posts) {
-                self.urlAddition = [HNManager sharedManager].userSubmissionUrlAddition;
-                self.posts = [NSMutableArray arrayWithArray:posts];
-
-                block(YES);
-            } else {
-                block(NO);
-            }
-        }];
+        [[HNManager sharedManager] fetchSubmissionsForUser:self.user.Username
+                                               urlAddition:nil
+                                                completion:^(NSArray *posts, NSString *nextPageIdentifier) {
+                                                    if (posts) {
+                                                        self.urlAddition = [HNManager sharedManager].userSubmissionUrlAddition;
+                                                        self.posts = [NSMutableArray arrayWithArray:posts];
+                                                        
+                                                        block(YES);
+                                                    } else {
+                                                        block(NO);
+                                                    }
+                                                }];
     }
 }
 
 - (void)loadMorePostsWithCompletion:(void (^)(BOOL completed))block {
     if (self.urlAddition) {
-        [[HNManager sharedManager] loadPostsWithUrlAddition:self.urlAddition completion:^(NSArray *posts) {
+        [[HNManager sharedManager] loadPostsWithUrlAddition:self.urlAddition completion:^(NSArray *posts, NSString *nextPageIdentifier) {
             [self.posts addObjectsFromArray:posts];
             block(YES);
         }];
