@@ -31,6 +31,7 @@ static UIImage *SVProgressHUDInfoImage;
 static UIImage *SVProgressHUDSuccessImage;
 static UIImage *SVProgressHUDErrorImage;
 static SVProgressHUDMaskType SVProgressHUDDefaultMaskType;
+static UIView *SVProgressHUDExtensionView;
 
 static const CGFloat SVProgressHUDRingRadius = 18;
 static const CGFloat SVProgressHUDRingNoTextRadius = 24;
@@ -127,6 +128,11 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
 + (void)setDefaultMaskType:(SVProgressHUDMaskType)maskType{
     [self sharedView];
     SVProgressHUDDefaultMaskType = maskType;
+}
+
++ (void)setViewForExtension:(UIView *)view{
+    [self sharedView];
+    SVProgressHUDExtensionView = view;
 }
 
 
@@ -456,7 +462,11 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
     
     self.frame = UIScreen.mainScreen.bounds;
     
+#if !defined(SV_APP_EXTENSIONS)
     UIInterfaceOrientation orientation = UIApplication.sharedApplication.statusBarOrientation;
+#else
+    UIInterfaceOrientation orientation = CGRectGetWidth(self.frame) > CGRectGetHeight(self.frame) ? UIInterfaceOrientationLandscapeLeft : UIInterfaceOrientationPortrait;
+#endif
     // no transforms applied to window in iOS 8, but only if compiled with iOS 8 sdk as base sdk, otherwise system supports old rotation logic.
     BOOL ignoreOrientation = NO;
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000
@@ -481,7 +491,11 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
     }
     
     CGRect orientationFrame = self.bounds;
+#if !defined(SV_APP_EXTENSIONS)
     CGRect statusBarFrame = UIApplication.sharedApplication.statusBarFrame;
+#else
+    CGRect statusBarFrame = CGRectZero;
+#endif
     
     if(!ignoreOrientation && UIInterfaceOrientationIsLandscape(orientation)) {
         float temp = CGRectGetWidth(orientationFrame);
@@ -535,11 +549,11 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
                             options:UIViewAnimationOptionAllowUserInteraction
                          animations:^{
                              [self moveToPoint:newCenter rotateAngle:rotateAngle];
-                             [self setNeedsDisplay];
+                             [self.hudView setNeedsDisplay];
                          } completion:NULL];
     } else {
         [self moveToPoint:newCenter rotateAngle:rotateAngle];
-        [self setNeedsDisplay];
+        [self.hudView setNeedsDisplay];
     }
     
 }
@@ -565,14 +579,23 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
 
 - (void)showProgress:(float)progress status:(NSString*)string maskType:(SVProgressHUDMaskType)hudMaskType {
     if(!self.overlayView.superview){
+#if !defined(SV_APP_EXTENSIONS)
         NSEnumerator *frontToBackWindows = [UIApplication.sharedApplication.windows reverseObjectEnumerator];
-        UIScreen *mainScreen = UIScreen.mainScreen;
-        
-        for (UIWindow *window in frontToBackWindows)
-            if (window.screen == mainScreen && window.windowLevel == UIWindowLevelNormal) {
+        for (UIWindow *window in frontToBackWindows){
+            BOOL windowOnMainScreen = window.screen == UIScreen.mainScreen;
+            BOOL windowIsVisible = !window.hidden && window.alpha > 0;
+            BOOL windowLevelNormal = window.windowLevel == UIWindowLevelNormal;
+            
+            if (windowOnMainScreen && windowIsVisible && windowLevelNormal) {
                 [window addSubview:self.overlayView];
                 break;
             }
+        }
+#else
+        if(SVProgressHUDExtensionView){
+            [SVProgressHUDExtensionView addSubview:self.overlayView];
+        }
+#endif
     } else {
         // Ensure that overlay will be exactly on top of rootViewController (which may be changed during runtime).
         [self.overlayView.superview bringSubviewToFront:self.overlayView];
@@ -744,10 +767,12 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
                                                                                userInfo:userInfo];
                              
                              // Tell the rootViewController to update the StatusBar appearance
+#if !defined(SV_APP_EXTENSIONS)
                              UIViewController *rootController = [[UIApplication sharedApplication] keyWindow].rootViewController;
                              if ([rootController respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)]) {
                                  [rootController setNeedsStatusBarAppearanceUpdate];
                              }
+#endif
                              // uncomment to make sure UIWindow is gone from app.windows
                              //NSLog(@"%@", [UIApplication sharedApplication].windows);
                              //NSLog(@"keyWindow = %@", [UIApplication sharedApplication].keyWindow);
@@ -919,6 +944,7 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
 
 
 - (CGFloat)visibleKeyboardHeight {
+#if !defined(SV_APP_EXTENSIONS)
     UIWindow *keyboardWindow = nil;
     for (UIWindow *testWindow in [[UIApplication sharedApplication] windows]) {
         if(![[testWindow class] isEqual:[UIWindow class]]) {
@@ -938,7 +964,7 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
             }
         }
     }
-    
+#endif
     return 0;
 }
 

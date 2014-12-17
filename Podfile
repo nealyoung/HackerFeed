@@ -7,7 +7,6 @@ target "HackerFeed" do
   pod 'libHN'
   pod 'NYSegmentedControl'
   pod 'PBWebViewController'
-  pod 'Reveal-iOS-SDK'
   pod 'SVProgressHUD', :head
   pod 'SVPullToRefresh', :head
 end

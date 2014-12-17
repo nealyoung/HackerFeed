@@ -1,2705 +1,848 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-	<key>archiveVersion</key>
-	<string>1</string>
-	<key>classes</key>
-	<dict/>
-	<key>objectVersion</key>
-	<string>46</string>
-	<key>objects</key>
-	<dict>
-		<key>014806F2979C4ADBAA87257A</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>archive.ar</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>libPods-HackerFeed.a</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>0E0214FA19CB518E00561912</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>compiled.mach-o.dylib</string>
-			<key>name</key>
-			<string>libz.dylib</string>
-			<key>path</key>
-			<string>usr/lib/libz.dylib</string>
-			<key>sourceTree</key>
-			<string>SDKROOT</string>
-		</dict>
-		<key>0E0214FB19CB518E00561912</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0E0214FA19CB518E00561912</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>0E0214FC19CB53D300561912</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>HFWebViewController.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0E0214FD19CB53D300561912</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>HFWebViewController.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0E0214FE19CB53D300561912</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0E0214FD19CB53D300561912</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>0E0C0BE619CFC0DD007EAE25</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>HFBasePostDataSource.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0E0C0BE719CFC0DD007EAE25</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>HFBasePostDataSource.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0E0C0BE819CFC0DD007EAE25</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0E0C0BE719CFC0DD007EAE25</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>0E1FC633197C4B4700B41804</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>HFPostTableViewCell.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0E1FC634197C4B4700B41804</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>HFPostTableViewCell.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0E1FC635197C4B4700B41804</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0E1FC634197C4B4700B41804</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>0E2F35BE198B8BF700718E1A</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>HFNewPostViewController.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0E2F35BF198B8BF700718E1A</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>HFNewPostViewController.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0E2F35C0198B8BF700718E1A</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0E2F35BF198B8BF700718E1A</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>0E3C12C919881D9300AAF072</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file</string>
-			<key>path</key>
-			<string>SourceSansPro-Light.otf</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0E3C12CA19881D9700AAF072</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0E3C12C919881D9300AAF072</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>0E511CA1198C0B3300F94E9F</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>HFTextFieldTableViewCell.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0E511CA2198C0B3300F94E9F</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>HFTextFieldTableViewCell.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0E511CA3198C0B3300F94E9F</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0E511CA2198C0B3300F94E9F</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>0E520C51197C73F900E94DBD</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>HFDropdownMenuItem.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0E520C52197C73F900E94DBD</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>HFDropdownMenuItem.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0E520C53197C73F900E94DBD</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0E520C52197C73F900E94DBD</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>0E520C54197C7B1F00E94DBD</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>0ECF6054199171F60088C8E6</string>
-				<string>0ECF6055199171F60088C8E6</string>
-				<string>0E1FC633197C4B4700B41804</string>
-				<string>0E1FC634197C4B4700B41804</string>
-				<string>0EEBD373197DD52400D74AD6</string>
-				<string>0EEBD374197DD52400D74AD6</string>
-				<string>0EC81433197CA8FA009F0D99</string>
-				<string>0EC81434197CA8FA009F0D99</string>
-				<string>0EEBD391197DEB7E00D74AD6</string>
-				<string>0EEBD392197DEB7E00D74AD6</string>
-				<string>0E511CA1198C0B3300F94E9F</string>
-				<string>0E511CA2198C0B3300F94E9F</string>
-				<string>0E57B5B2198C2D6C0056CA54</string>
-				<string>0E57B5B3198C2D6C0056CA54</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Table View Cells</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0E520C55197C81B500E94DBD</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>0E2F35BE198B8BF700718E1A</string>
-				<string>0E2F35BF198B8BF700718E1A</string>
-				<string>0EE791D21950318D00925E4F</string>
-				<string>0EE791D31950318D00925E4F</string>
-				<string>0EC8141F197C828A009F0D99</string>
-				<string>0EC81420197C828A009F0D99</string>
-				<string>0EEBD376197DD74D00D74AD6</string>
-				<string>0EEBD377197DD74D00D74AD6</string>
-				<string>0EE28389198394BB00D3A3C6</string>
-				<string>0EE2838A198394BB00D3A3C6</string>
-				<string>0E6C30DD197F5DCB00C33A67</string>
-				<string>0E6C30DE197F5DCB00C33A67</string>
-				<string>0E5424E819C4DA5F00FF24A7</string>
-				<string>0E5424E919C4DA5F00FF24A7</string>
-				<string>0E0214FC19CB53D300561912</string>
-				<string>0E0214FD19CB53D300561912</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>View Controllers</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0E5424E619C4C07D00FF24A7</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.xib</string>
-			<key>path</key>
-			<string>LaunchScreen.xib</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0E5424E719C4C07D00FF24A7</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0E5424E619C4C07D00FF24A7</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>0E5424E819C4DA5F00FF24A7</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>HFModalWebViewController.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0E5424E919C4DA5F00FF24A7</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>HFModalWebViewController.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0E5424EA19C4DA5F00FF24A7</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0E5424E919C4DA5F00FF24A7</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>0E57B5B2198C2D6C0056CA54</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>HFTextViewTableViewCell.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0E57B5B3198C2D6C0056CA54</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>HFTextViewTableViewCell.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0E57B5B4198C2D6C0056CA54</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0E57B5B3198C2D6C0056CA54</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>0E59356F19F9CAF40081B28A</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>compiled.mach-o.dylib</string>
-			<key>name</key>
-			<string>libicucore.dylib</string>
-			<key>path</key>
-			<string>usr/lib/libicucore.dylib</string>
-			<key>sourceTree</key>
-			<string>SDKROOT</string>
-		</dict>
-		<key>0E59357019F9CAF40081B28A</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0E59356F19F9CAF40081B28A</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>0E59357119F9CAFE0081B28A</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>compiled.mach-o.dylib</string>
-			<key>name</key>
-			<string>libc++.dylib</string>
-			<key>path</key>
-			<string>usr/lib/libc++.dylib</string>
-			<key>sourceTree</key>
-			<string>SDKROOT</string>
-		</dict>
-		<key>0E59357219F9CAFE0081B28A</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0E59357119F9CAFE0081B28A</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>0E59357319F9CB040081B28A</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>CFNetwork.framework</string>
-			<key>path</key>
-			<string>System/Library/Frameworks/CFNetwork.framework</string>
-			<key>sourceTree</key>
-			<string>SDKROOT</string>
-		</dict>
-		<key>0E59357419F9CB040081B28A</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0E59357319F9CB040081B28A</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>0E59357519F9CC820081B28A</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>Security.framework</string>
-			<key>path</key>
-			<string>System/Library/Frameworks/Security.framework</string>
-			<key>sourceTree</key>
-			<string>SDKROOT</string>
-		</dict>
-		<key>0E59357619F9CC820081B28A</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0E59357519F9CC820081B28A</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>0E59357719F9CC8C0081B28A</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>SystemConfiguration.framework</string>
-			<key>path</key>
-			<string>System/Library/Frameworks/SystemConfiguration.framework</string>
-			<key>sourceTree</key>
-			<string>SDKROOT</string>
-		</dict>
-		<key>0E59357819F9CC8C0081B28A</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0E59357719F9CC8C0081B28A</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>0E5C453919838135001EE1CB</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>HFFilterPostDataSource.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0E5C453A19838135001EE1CB</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>HFFilterPostDataSource.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0E5C453B19838135001EE1CB</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0E5C453A19838135001EE1CB</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>0E5C453C19838142001EE1CB</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>0E0C0BE619CFC0DD007EAE25</string>
-				<string>0E0C0BE719CFC0DD007EAE25</string>
-				<string>0E5C453919838135001EE1CB</string>
-				<string>0E5C453A19838135001EE1CB</string>
-				<string>0EFC2540198604A900A67412</string>
-				<string>0EFC2541198604A900A67412</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Models</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0E6C30DD197F5DCB00C33A67</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>HFLoginViewController.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0E6C30DE197F5DCB00C33A67</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>HFLoginViewController.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0E6C30DF197F5DCB00C33A67</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0E6C30DE197F5DCB00C33A67</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>0E796B8519CEAC930045B4E1</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>HFDropdownMenuTitleView.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0E796B8619CEAC930045B4E1</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>HFDropdownMenuTitleView.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0E796B8719CEAC930045B4E1</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0E796B8619CEAC930045B4E1</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>0E7D19A01996034200C51E37</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>HFNavigationBar.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0E7D19A11996034200C51E37</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>HFNavigationBar.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0E7D19A21996034200C51E37</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0E7D19A11996034200C51E37</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>0E926CD019835AB30078E148</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>HFBorderedButton.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0E926CD119835AB30078E148</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>HFBorderedButton.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0E926CD219835AB30078E148</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0E926CD119835AB30078E148</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>0E990E7E1990BA30002933C4</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>DMScaleTransition.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0E990E7F1990BA30002933C4</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>DMScaleTransition.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0E990E801990BA30002933C4</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0E990E7F1990BA30002933C4</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>0E990E811990BA41002933C4</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>0E990E821990BA65002933C4</string>
-				<string>0E990E831990BA65002933C4</string>
-				<string>0E990E7E1990BA30002933C4</string>
-				<string>0E990E7F1990BA30002933C4</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Vendor</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0E990E821990BA65002933C4</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>DMBaseTransition.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0E990E831990BA65002933C4</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>DMBaseTransition.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0E990E841990BA65002933C4</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0E990E821990BA65002933C4</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>0EAC1B0F197C54BD00393828</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>HFDropdownMenu.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EAC1B10197C54BD00393828</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>HFDropdownMenu.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EAC1B11197C54BD00393828</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0EAC1B10197C54BD00393828</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>0EAC1B12197C577800393828</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>HFDropdownMenuButton.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EAC1B13197C577800393828</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>HFDropdownMenuButton.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EAC1B14197C577800393828</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0EAC1B13197C577800393828</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>0EAC1B15197C577D00393828</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>0EDEBD62197E2ED00080D446</string>
-				<string>0EDEBD63197E2ED00080D446</string>
-				<string>0E796B8519CEAC930045B4E1</string>
-				<string>0E796B8619CEAC930045B4E1</string>
-				<string>0EAC1B0F197C54BD00393828</string>
-				<string>0EAC1B10197C54BD00393828</string>
-				<string>0E520C51197C73F900E94DBD</string>
-				<string>0E520C52197C73F900E94DBD</string>
-				<string>0EAC1B12197C577800393828</string>
-				<string>0EAC1B13197C577800393828</string>
-				<string>0EAC1B16197C592200393828</string>
-				<string>0EAC1B17197C592200393828</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Dropdown</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EAC1B16197C592200393828</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>UIViewController+HFDropdownMenu.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EAC1B17197C592200393828</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>UIViewController+HFDropdownMenu.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EAC1B18197C592200393828</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0EAC1B17197C592200393828</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>0EC3311E1992986400E1531A</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>HFLabel.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EC3311F1992986400E1531A</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>HFLabel.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EC331201992986400E1531A</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0EC3311F1992986400E1531A</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>0EC8141F197C828A009F0D99</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>HFPostViewController.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EC81420197C828A009F0D99</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>HFPostViewController.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EC81421197C828A009F0D99</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0EC81420197C828A009F0D99</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>0EC81423197C8BD4009F0D99</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>0EAC1B15197C577D00393828</string>
-				<string>0E520C54197C7B1F00E94DBD</string>
-				<string>0EE6CADF19845B37005AE100</string>
-				<string>0EE6CAE019845B37005AE100</string>
-				<string>0EC81424197C8D1C009F0D99</string>
-				<string>0EC81425197C8D1C009F0D99</string>
-				<string>0EFC253A1985D9D800A67412</string>
-				<string>0EFC253B1985D9D800A67412</string>
-				<string>0EFC253E1986026500A67412</string>
-				<string>0EFC253D1986026500A67412</string>
-				<string>0EC3311E1992986400E1531A</string>
-				<string>0EC3311F1992986400E1531A</string>
-				<string>0E926CD019835AB30078E148</string>
-				<string>0E926CD119835AB30078E148</string>
-				<string>0E7D19A01996034200C51E37</string>
-				<string>0E7D19A11996034200C51E37</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Views</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EC81424197C8D1C009F0D99</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>HFCommentsButton.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EC81425197C8D1C009F0D99</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>HFCommentsButton.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EC81426197C8D1C009F0D99</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0EC81425197C8D1C009F0D99</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>0EC81427197C98B5009F0D99</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file</string>
-			<key>path</key>
-			<string>SourceSansPro-Bold.otf</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EC81428197C98B5009F0D99</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file</string>
-			<key>path</key>
-			<string>SourceSansPro-Regular.otf</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EC81429197C98B5009F0D99</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file</string>
-			<key>path</key>
-			<string>SourceSansPro-Semibold.otf</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EC8142A197C98B5009F0D99</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0EC81427197C98B5009F0D99</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>0EC8142B197C98B5009F0D99</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0EC81428197C98B5009F0D99</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>0EC8142C197C98B5009F0D99</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0EC81429197C98B5009F0D99</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>0EC8142D197C9924009F0D99</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>0E3C12C919881D9300AAF072</string>
-				<string>0EC81427197C98B5009F0D99</string>
-				<string>0EC81428197C98B5009F0D99</string>
-				<string>0EC81429197C98B5009F0D99</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Fonts</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EC81430197C9C15009F0D99</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>UIFont+HFAdditions.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EC81431197C9C15009F0D99</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>UIFont+HFAdditions.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EC81432197C9C15009F0D99</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0EC81431197C9C15009F0D99</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>0EC81433197CA8FA009F0D99</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>HFCommentTableViewCell.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EC81434197CA8FA009F0D99</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>HFCommentTableViewCell.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EC81435197CA8FA009F0D99</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0EC81434197CA8FA009F0D99</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>0ECF6054199171F60088C8E6</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>HFTableViewCell.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0ECF6055199171F60088C8E6</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>HFTableViewCell.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0ECF6056199171F60088C8E6</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0ECF6055199171F60088C8E6</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>0EDEBD61197E28F60080D446</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>0EC81430197C9C15009F0D99</string>
-				<string>0EC81431197C9C15009F0D99</string>
-				<string>0EEBD394197E026300D74AD6</string>
-				<string>0EEBD395197E026300D74AD6</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Categories</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EDEBD62197E2ED00080D446</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>HFDropdownMenuNavigationController.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EDEBD63197E2ED00080D446</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>HFDropdownMenuNavigationController.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EDEBD64197E2ED00080D446</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0EDEBD63197E2ED00080D446</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>0EE28389198394BB00D3A3C6</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>HFUserProfileViewController.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EE2838A198394BB00D3A3C6</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>HFUserProfileViewController.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EE2838B198394BB00D3A3C6</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0EE2838A198394BB00D3A3C6</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>0EE6CADF19845B37005AE100</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>HFCommentActionsView.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EE6CAE019845B37005AE100</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>HFCommentActionsView.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EE6CAE119845B37005AE100</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0EE6CAE019845B37005AE100</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>0EE791AE1950318D00925E4F</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>0EE791C01950318D00925E4F</string>
-				<string>0EE791E21950318D00925E4F</string>
-				<string>0EE791B91950318D00925E4F</string>
-				<string>0EE791B81950318D00925E4F</string>
-				<string>8B2673557A94D2ACDA755023</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EE791AF1950318D00925E4F</key>
-		<dict>
-			<key>attributes</key>
-			<dict>
-				<key>CLASSPREFIX</key>
-				<string>HF</string>
-				<key>LastUpgradeCheck</key>
-				<string>0510</string>
-				<key>ORGANIZATIONNAME</key>
-				<string>Nealon Young</string>
-				<key>TargetAttributes</key>
-				<dict>
-					<key>0EE791B61950318D00925E4F</key>
-					<dict>
-						<key>DevelopmentTeam</key>
-						<string>HFG3GB6CJM</string>
-					</dict>
-					<key>0EE791DA1950318D00925E4F</key>
-					<dict>
-						<key>TestTargetID</key>
-						<string>0EE791B61950318D00925E4F</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>buildConfigurationList</key>
-			<string>0EE791B21950318D00925E4F</string>
-			<key>compatibilityVersion</key>
-			<string>Xcode 3.2</string>
-			<key>developmentRegion</key>
-			<string>English</string>
-			<key>hasScannedForEncodings</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXProject</string>
-			<key>knownRegions</key>
-			<array>
-				<string>en</string>
-				<string>Base</string>
-			</array>
-			<key>mainGroup</key>
-			<string>0EE791AE1950318D00925E4F</string>
-			<key>productRefGroup</key>
-			<string>0EE791B81950318D00925E4F</string>
-			<key>projectDirPath</key>
-			<string></string>
-			<key>projectReferences</key>
-			<array/>
-			<key>projectRoot</key>
-			<string></string>
-			<key>targets</key>
-			<array>
-				<string>0EE791B61950318D00925E4F</string>
-				<string>0EE791DA1950318D00925E4F</string>
-			</array>
-		</dict>
-		<key>0EE791B21950318D00925E4F</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>0EE791EA1950318D00925E4F</string>
-				<string>0EE791EB1950318D00925E4F</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>0EE791B31950318D00925E4F</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>0E520C53197C73F900E94DBD</string>
-				<string>0E796B8719CEAC930045B4E1</string>
-				<string>0EDEBD64197E2ED00080D446</string>
-				<string>0EC81432197C9C15009F0D99</string>
-				<string>0E0C0BE819CFC0DD007EAE25</string>
-				<string>0E990E801990BA30002933C4</string>
-				<string>0EEBD378197DD74D00D74AD6</string>
-				<string>0EC81421197C828A009F0D99</string>
-				<string>0EE791CB1950318D00925E4F</string>
-				<string>0EC331201992986400E1531A</string>
-				<string>0E511CA3198C0B3300F94E9F</string>
-				<string>0EE6CAE119845B37005AE100</string>
-				<string>0E2F35C0198B8BF700718E1A</string>
-				<string>0EAC1B11197C54BD00393828</string>
-				<string>0EE2838B198394BB00D3A3C6</string>
-				<string>0EEBD393197DEB7E00D74AD6</string>
-				<string>0EFC2542198604A900A67412</string>
-				<string>0EC81435197CA8FA009F0D99</string>
-				<string>0E1FC635197C4B4700B41804</string>
-				<string>0E5424EA19C4DA5F00FF24A7</string>
-				<string>0EE791C71950318D00925E4F</string>
-				<string>0EE791D41950318D00925E4F</string>
-				<string>0E6C30DF197F5DCB00C33A67</string>
-				<string>0EAC1B18197C592200393828</string>
-				<string>0EAC1B14197C577800393828</string>
-				<string>0EEBD396197E026300D74AD6</string>
-				<string>0EC81426197C8D1C009F0D99</string>
-				<string>0E5C453B19838135001EE1CB</string>
-				<string>0E0214FE19CB53D300561912</string>
-				<string>0E990E841990BA65002933C4</string>
-				<string>0E57B5B4198C2D6C0056CA54</string>
-				<string>0EEBD375197DD52400D74AD6</string>
-				<string>0EFC253C1985D9D800A67412</string>
-				<string>0ECF6056199171F60088C8E6</string>
-				<string>0EFC253F1986026500A67412</string>
-				<string>0E7D19A21996034200C51E37</string>
-				<string>0E926CD219835AB30078E148</string>
-			</array>
-			<key>isa</key>
-			<string>PBXSourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>0EE791B41950318D00925E4F</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>0E59357819F9CC8C0081B28A</string>
-				<string>0E59357619F9CC820081B28A</string>
-				<string>0E59357219F9CAFE0081B28A</string>
-				<string>0E59357019F9CAF40081B28A</string>
-				<string>0E0214FB19CB518E00561912</string>
-				<string>0E59357419F9CB040081B28A</string>
-				<string>0EFC25391985C22100A67412</string>
-				<string>0EE791BD1950318D00925E4F</string>
-				<string>0EE791BF1950318D00925E4F</string>
-				<string>0EE791BB1950318D00925E4F</string>
-				<string>E6BFDD396217447FAA89F718</string>
-			</array>
-			<key>isa</key>
-			<string>PBXFrameworksBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>0EE791B51950318D00925E4F</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>0EC8142C197C98B5009F0D99</string>
-				<string>0E3C12CA19881D9700AAF072</string>
-				<string>0EE791D61950318D00925E4F</string>
-				<string>0E5424E719C4C07D00FF24A7</string>
-				<string>0EC8142B197C98B5009F0D99</string>
-				<string>0EC8142A197C98B5009F0D99</string>
-				<string>0EE791C51950318D00925E4F</string>
-			</array>
-			<key>isa</key>
-			<string>PBXResourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>0EE791B61950318D00925E4F</key>
-		<dict>
-			<key>buildConfigurationList</key>
-			<string>0EE791EC1950318D00925E4F</string>
-			<key>buildPhases</key>
-			<array>
-				<string>F38442C377BD43B1961DE1AF</string>
-				<string>0EE791B31950318D00925E4F</string>
-				<string>0EE791B41950318D00925E4F</string>
-				<string>0EE791B51950318D00925E4F</string>
-				<string>41CEFFB62EAD4874A7824513</string>
-			</array>
-			<key>buildRules</key>
-			<array/>
-			<key>dependencies</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXNativeTarget</string>
-			<key>name</key>
-			<string>HackerFeed</string>
-			<key>productName</key>
-			<string>Orange</string>
-			<key>productReference</key>
-			<string>0EE791B71950318D00925E4F</string>
-			<key>productType</key>
-			<string>com.apple.product-type.application</string>
-		</dict>
-		<key>0EE791B71950318D00925E4F</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>wrapper.application</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>HackerFeed.app</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>0EE791B81950318D00925E4F</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>0EE791B71950318D00925E4F</string>
-				<string>0EE791DB1950318D00925E4F</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Products</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EE791B91950318D00925E4F</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>0E59357719F9CC8C0081B28A</string>
-				<string>0E59357519F9CC820081B28A</string>
-				<string>0E59357319F9CB040081B28A</string>
-				<string>0E59357119F9CAFE0081B28A</string>
-				<string>0E59356F19F9CAF40081B28A</string>
-				<string>0E0214FA19CB518E00561912</string>
-				<string>0EFC25381985C22100A67412</string>
-				<string>0EE791BA1950318D00925E4F</string>
-				<string>0EE791BC1950318D00925E4F</string>
-				<string>0EE791BE1950318D00925E4F</string>
-				<string>0EE791DC1950318D00925E4F</string>
-				<string>735C0062804D43E999E3B1F4</string>
-				<string>014806F2979C4ADBAA87257A</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Frameworks</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EE791BA1950318D00925E4F</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>Foundation.framework</string>
-			<key>path</key>
-			<string>System/Library/Frameworks/Foundation.framework</string>
-			<key>sourceTree</key>
-			<string>SDKROOT</string>
-		</dict>
-		<key>0EE791BB1950318D00925E4F</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0EE791BA1950318D00925E4F</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>0EE791BC1950318D00925E4F</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>CoreGraphics.framework</string>
-			<key>path</key>
-			<string>System/Library/Frameworks/CoreGraphics.framework</string>
-			<key>sourceTree</key>
-			<string>SDKROOT</string>
-		</dict>
-		<key>0EE791BD1950318D00925E4F</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0EE791BC1950318D00925E4F</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>0EE791BE1950318D00925E4F</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>UIKit.framework</string>
-			<key>path</key>
-			<string>System/Library/Frameworks/UIKit.framework</string>
-			<key>sourceTree</key>
-			<string>SDKROOT</string>
-		</dict>
-		<key>0EE791BF1950318D00925E4F</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0EE791BE1950318D00925E4F</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>0EE791C01950318D00925E4F</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>0EE791C91950318D00925E4F</string>
-				<string>0EE791CA1950318D00925E4F</string>
-				<string>0EDEBD61197E28F60080D446</string>
-				<string>0E5C453C19838142001EE1CB</string>
-				<string>0EC81423197C8BD4009F0D99</string>
-				<string>0E520C55197C81B500E94DBD</string>
-				<string>0EE791D51950318D00925E4F</string>
-				<string>0EE791C11950318D00925E4F</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>HackerFeed</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EE791C11950318D00925E4F</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>0EC8142D197C9924009F0D99</string>
-				<string>0E990E811990BA41002933C4</string>
-				<string>0EE791C21950318D00925E4F</string>
-				<string>0EE791C31950318D00925E4F</string>
-				<string>0EE791C61950318D00925E4F</string>
-				<string>0EE791C81950318D00925E4F</string>
-				<string>0E5424E619C4C07D00FF24A7</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Supporting Files</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EE791C21950318D00925E4F</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>HackerFeed-Info.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EE791C31950318D00925E4F</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>0EE791C41950318D00925E4F</string>
-			</array>
-			<key>isa</key>
-			<string>PBXVariantGroup</string>
-			<key>name</key>
-			<string>InfoPlist.strings</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EE791C41950318D00925E4F</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.strings</string>
-			<key>name</key>
-			<string>en</string>
-			<key>path</key>
-			<string>en.lproj/InfoPlist.strings</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EE791C51950318D00925E4F</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0EE791C31950318D00925E4F</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>0EE791C61950318D00925E4F</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>main.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EE791C71950318D00925E4F</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0EE791C61950318D00925E4F</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>0EE791C81950318D00925E4F</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>HackerFeed-Prefix.pch</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EE791C91950318D00925E4F</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>HFAppDelegate.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EE791CA1950318D00925E4F</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>HFAppDelegate.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EE791CB1950318D00925E4F</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0EE791CA1950318D00925E4F</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>0EE791D21950318D00925E4F</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>HFPostListViewController.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EE791D31950318D00925E4F</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>HFPostListViewController.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EE791D41950318D00925E4F</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0EE791D31950318D00925E4F</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>0EE791D51950318D00925E4F</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>folder.assetcatalog</string>
-			<key>path</key>
-			<string>Images.xcassets</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EE791D61950318D00925E4F</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0EE791D51950318D00925E4F</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>0EE791D71950318D00925E4F</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>0EE791E91950318D00925E4F</string>
-			</array>
-			<key>isa</key>
-			<string>PBXSourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>0EE791D81950318D00925E4F</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>0EE791DD1950318D00925E4F</string>
-				<string>0EE791DF1950318D00925E4F</string>
-				<string>0EE791DE1950318D00925E4F</string>
-			</array>
-			<key>isa</key>
-			<string>PBXFrameworksBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>0EE791D91950318D00925E4F</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>0EE791E71950318D00925E4F</string>
-			</array>
-			<key>isa</key>
-			<string>PBXResourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>0EE791DA1950318D00925E4F</key>
-		<dict>
-			<key>buildConfigurationList</key>
-			<string>0EE791EF1950318D00925E4F</string>
-			<key>buildPhases</key>
-			<array>
-				<string>0EE791D71950318D00925E4F</string>
-				<string>0EE791D81950318D00925E4F</string>
-				<string>0EE791D91950318D00925E4F</string>
-			</array>
-			<key>buildRules</key>
-			<array/>
-			<key>dependencies</key>
-			<array>
-				<string>0EE791E11950318D00925E4F</string>
-			</array>
-			<key>isa</key>
-			<string>PBXNativeTarget</string>
-			<key>name</key>
-			<string>HackerFeedTests</string>
-			<key>productName</key>
-			<string>OrangeTests</string>
-			<key>productReference</key>
-			<string>0EE791DB1950318D00925E4F</string>
-			<key>productType</key>
-			<string>com.apple.product-type.bundle.unit-test</string>
-		</dict>
-		<key>0EE791DB1950318D00925E4F</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>wrapper.cfbundle</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>HackerFeedTests.xctest</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>0EE791DC1950318D00925E4F</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>XCTest.framework</string>
-			<key>path</key>
-			<string>Library/Frameworks/XCTest.framework</string>
-			<key>sourceTree</key>
-			<string>DEVELOPER_DIR</string>
-		</dict>
-		<key>0EE791DD1950318D00925E4F</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0EE791DC1950318D00925E4F</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>0EE791DE1950318D00925E4F</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0EE791BA1950318D00925E4F</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>0EE791DF1950318D00925E4F</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0EE791BE1950318D00925E4F</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>0EE791E01950318D00925E4F</key>
-		<dict>
-			<key>containerPortal</key>
-			<string>0EE791AF1950318D00925E4F</string>
-			<key>isa</key>
-			<string>PBXContainerItemProxy</string>
-			<key>proxyType</key>
-			<string>1</string>
-			<key>remoteGlobalIDString</key>
-			<string>0EE791B61950318D00925E4F</string>
-			<key>remoteInfo</key>
-			<string>Orange</string>
-		</dict>
-		<key>0EE791E11950318D00925E4F</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXTargetDependency</string>
-			<key>target</key>
-			<string>0EE791B61950318D00925E4F</string>
-			<key>targetProxy</key>
-			<string>0EE791E01950318D00925E4F</string>
-		</dict>
-		<key>0EE791E21950318D00925E4F</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>0EE791E81950318D00925E4F</string>
-				<string>0EE791E31950318D00925E4F</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>HackerFeedTests</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EE791E31950318D00925E4F</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>0EE791E41950318D00925E4F</string>
-				<string>0EE791E51950318D00925E4F</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Supporting Files</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EE791E41950318D00925E4F</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>HackerFeedTests-Info.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EE791E51950318D00925E4F</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>0EE791E61950318D00925E4F</string>
-			</array>
-			<key>isa</key>
-			<string>PBXVariantGroup</string>
-			<key>name</key>
-			<string>InfoPlist.strings</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EE791E61950318D00925E4F</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.strings</string>
-			<key>name</key>
-			<string>en</string>
-			<key>path</key>
-			<string>en.lproj/InfoPlist.strings</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EE791E71950318D00925E4F</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0EE791E51950318D00925E4F</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>0EE791E81950318D00925E4F</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>HackerFeedTests.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EE791E91950318D00925E4F</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0EE791E81950318D00925E4F</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>0EE791EA1950318D00925E4F</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>ALWAYS_SEARCH_USER_PATHS</key>
-				<string>NO</string>
-				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
-				<string>gnu++0x</string>
-				<key>CLANG_CXX_LIBRARY</key>
-				<string>libc++</string>
-				<key>CLANG_ENABLE_MODULES</key>
-				<string>YES</string>
-				<key>CLANG_ENABLE_OBJC_ARC</key>
-				<string>YES</string>
-				<key>CLANG_WARN_BOOL_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
-				<string>YES_ERROR</string>
-				<key>CLANG_WARN_EMPTY_BODY</key>
-				<string>YES</string>
-				<key>CLANG_WARN_ENUM_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_INT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
-				<string>YES_ERROR</string>
-				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
-				<string>YES</string>
-				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
-				<string>iPhone Developer</string>
-				<key>COPY_PHASE_STRIP</key>
-				<string>NO</string>
-				<key>GCC_C_LANGUAGE_STANDARD</key>
-				<string>gnu99</string>
-				<key>GCC_DYNAMIC_NO_PIC</key>
-				<string>NO</string>
-				<key>GCC_OPTIMIZATION_LEVEL</key>
-				<string>0</string>
-				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
-				<array>
-					<string>DEBUG=1</string>
-					<string>$(inherited)</string>
-				</array>
-				<key>GCC_SYMBOLS_PRIVATE_EXTERN</key>
-				<string>NO</string>
-				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
-				<string>YES</string>
-				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
-				<string>YES_ERROR</string>
-				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
-				<string>YES_AGGRESSIVE</string>
-				<key>GCC_WARN_UNUSED_FUNCTION</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_VARIABLE</key>
-				<string>YES</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>7.1</string>
-				<key>ONLY_ACTIVE_ARCH</key>
-				<string>YES</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>TARGETED_DEVICE_FAMILY</key>
-				<string>1,2</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>0EE791EB1950318D00925E4F</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>ALWAYS_SEARCH_USER_PATHS</key>
-				<string>NO</string>
-				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
-				<string>gnu++0x</string>
-				<key>CLANG_CXX_LIBRARY</key>
-				<string>libc++</string>
-				<key>CLANG_ENABLE_MODULES</key>
-				<string>YES</string>
-				<key>CLANG_ENABLE_OBJC_ARC</key>
-				<string>YES</string>
-				<key>CLANG_WARN_BOOL_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
-				<string>YES_ERROR</string>
-				<key>CLANG_WARN_EMPTY_BODY</key>
-				<string>YES</string>
-				<key>CLANG_WARN_ENUM_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_INT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
-				<string>YES_ERROR</string>
-				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
-				<string>YES</string>
-				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
-				<string>iPhone Developer</string>
-				<key>COPY_PHASE_STRIP</key>
-				<string>YES</string>
-				<key>ENABLE_NS_ASSERTIONS</key>
-				<string>NO</string>
-				<key>GCC_C_LANGUAGE_STANDARD</key>
-				<string>gnu99</string>
-				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
-				<string>YES</string>
-				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
-				<string>YES_ERROR</string>
-				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
-				<string>YES_AGGRESSIVE</string>
-				<key>GCC_WARN_UNUSED_FUNCTION</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_VARIABLE</key>
-				<string>YES</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>7.1</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>TARGETED_DEVICE_FAMILY</key>
-				<string>1,2</string>
-				<key>VALIDATE_PRODUCT</key>
-				<string>YES</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>0EE791EC1950318D00925E4F</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>0EE791ED1950318D00925E4F</string>
-				<string>0EE791EE1950318D00925E4F</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>0EE791ED1950318D00925E4F</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>EF55B8CC3BFFDC02ECC4E139</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
-				<string>AppIcon</string>
-				<key>ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME</key>
-				<string>LaunchImage</string>
-				<key>CODE_SIGN_IDENTITY</key>
-				<string>iPhone Developer</string>
-				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
-				<string>iPhone Developer</string>
-				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
-				<string>YES</string>
-				<key>GCC_PREFIX_HEADER</key>
-				<string>HackerFeed/HackerFeed-Prefix.pch</string>
-				<key>INFOPLIST_FILE</key>
-				<string>HackerFeed/HackerFeed-Info.plist</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>8.0</string>
-				<key>PRODUCT_NAME</key>
-				<string>HackerFeed</string>
-				<key>PROVISIONING_PROFILE</key>
-				<string></string>
-				<key>TARGETED_DEVICE_FAMILY</key>
-				<string>1,2</string>
-				<key>WRAPPER_EXTENSION</key>
-				<string>app</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>0EE791EE1950318D00925E4F</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>ED545A3266AE771A528F6E8E</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
-				<string>AppIcon</string>
-				<key>ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME</key>
-				<string>LaunchImage</string>
-				<key>CODE_SIGN_IDENTITY</key>
-				<string>iPhone Developer</string>
-				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
-				<string>iPhone Developer</string>
-				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
-				<string>YES</string>
-				<key>GCC_PREFIX_HEADER</key>
-				<string>HackerFeed/HackerFeed-Prefix.pch</string>
-				<key>INFOPLIST_FILE</key>
-				<string>HackerFeed/HackerFeed-Info.plist</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>8.0</string>
-				<key>PRODUCT_NAME</key>
-				<string>HackerFeed</string>
-				<key>PROVISIONING_PROFILE</key>
-				<string></string>
-				<key>TARGETED_DEVICE_FAMILY</key>
-				<string>1,2</string>
-				<key>WRAPPER_EXTENSION</key>
-				<string>app</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>0EE791EF1950318D00925E4F</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>0EE791F01950318D00925E4F</string>
-				<string>0EE791F11950318D00925E4F</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>0EE791F01950318D00925E4F</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>BUNDLE_LOADER</key>
-				<string>$(BUILT_PRODUCTS_DIR)/HackerFeed.app/HackerFeed</string>
-				<key>FRAMEWORK_SEARCH_PATHS</key>
-				<array>
-					<string>$(SDKROOT)/Developer/Library/Frameworks</string>
-					<string>$(inherited)</string>
-					<string>$(DEVELOPER_FRAMEWORKS_DIR)</string>
-				</array>
-				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
-				<string>YES</string>
-				<key>GCC_PREFIX_HEADER</key>
-				<string>HackerFeed/HackerFeed-Prefix.pch</string>
-				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
-				<array>
-					<string>DEBUG=1</string>
-					<string>$(inherited)</string>
-				</array>
-				<key>INFOPLIST_FILE</key>
-				<string>HackerFeedTests/HackerFeedTests-Info.plist</string>
-				<key>PRODUCT_NAME</key>
-				<string>HackerFeedTests</string>
-				<key>TEST_HOST</key>
-				<string>$(BUNDLE_LOADER)</string>
-				<key>WRAPPER_EXTENSION</key>
-				<string>xctest</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>0EE791F11950318D00925E4F</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>BUNDLE_LOADER</key>
-				<string>$(BUILT_PRODUCTS_DIR)/HackerFeed.app/HackerFeed</string>
-				<key>FRAMEWORK_SEARCH_PATHS</key>
-				<array>
-					<string>$(SDKROOT)/Developer/Library/Frameworks</string>
-					<string>$(inherited)</string>
-					<string>$(DEVELOPER_FRAMEWORKS_DIR)</string>
-				</array>
-				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
-				<string>YES</string>
-				<key>GCC_PREFIX_HEADER</key>
-				<string>HackerFeed/HackerFeed-Prefix.pch</string>
-				<key>INFOPLIST_FILE</key>
-				<string>HackerFeedTests/HackerFeedTests-Info.plist</string>
-				<key>PRODUCT_NAME</key>
-				<string>HackerFeedTests</string>
-				<key>TEST_HOST</key>
-				<string>$(BUNDLE_LOADER)</string>
-				<key>WRAPPER_EXTENSION</key>
-				<string>xctest</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>0EEBD373197DD52400D74AD6</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>HFPostInfoTableViewCell.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EEBD374197DD52400D74AD6</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>HFPostInfoTableViewCell.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EEBD375197DD52400D74AD6</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0EEBD374197DD52400D74AD6</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>0EEBD376197DD74D00D74AD6</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>HFProfileViewController.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EEBD377197DD74D00D74AD6</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>HFProfileViewController.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EEBD378197DD74D00D74AD6</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0EEBD377197DD74D00D74AD6</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>0EEBD391197DEB7E00D74AD6</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>HFUserInfoTableViewCell.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EEBD392197DEB7E00D74AD6</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>HFUserInfoTableViewCell.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EEBD393197DEB7E00D74AD6</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0EEBD392197DEB7E00D74AD6</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>0EEBD394197E026300D74AD6</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>UIColor+HFAdditions.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EEBD395197E026300D74AD6</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>UIColor+HFAdditions.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EEBD396197E026300D74AD6</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0EEBD395197E026300D74AD6</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>0EFC25381985C22100A67412</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>CoreText.framework</string>
-			<key>path</key>
-			<string>System/Library/Frameworks/CoreText.framework</string>
-			<key>sourceTree</key>
-			<string>SDKROOT</string>
-		</dict>
-		<key>0EFC25391985C22100A67412</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0EFC25381985C22100A67412</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>0EFC253A1985D9D800A67412</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>HFCommentToolbar.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EFC253B1985D9D800A67412</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>HFCommentToolbar.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EFC253C1985D9D800A67412</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0EFC253B1985D9D800A67412</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>0EFC253D1986026500A67412</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>HFTextView.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EFC253E1986026500A67412</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>HFTextView.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EFC253F1986026500A67412</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0EFC253D1986026500A67412</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>0EFC2540198604A900A67412</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>HFUserPostDataSource.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EFC2541198604A900A67412</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>HFUserPostDataSource.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EFC2542198604A900A67412</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0EFC2541198604A900A67412</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>41CEFFB62EAD4874A7824513</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>inputPaths</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXShellScriptBuildPhase</string>
-			<key>name</key>
-			<string>Copy Pods Resources</string>
-			<key>outputPaths</key>
-			<array/>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-			<key>shellPath</key>
-			<string>/bin/sh</string>
-			<key>shellScript</key>
-			<string>"${SRCROOT}/Pods/Target Support Files/Pods-HackerFeed/Pods-HackerFeed-resources.sh"
-</string>
-			<key>showEnvVarsInLog</key>
-			<string>0</string>
-		</dict>
-		<key>735C0062804D43E999E3B1F4</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>archive.ar</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>libPods-Orange.a</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>8B2673557A94D2ACDA755023</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>EF55B8CC3BFFDC02ECC4E139</string>
-				<string>ED545A3266AE771A528F6E8E</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Pods</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>E6BFDD396217447FAA89F718</key>
-		<dict>
-			<key>fileRef</key>
-			<string>014806F2979C4ADBAA87257A</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>ED545A3266AE771A528F6E8E</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>name</key>
-			<string>Pods-HackerFeed.release.xcconfig</string>
-			<key>path</key>
-			<string>Pods/Target Support Files/Pods-HackerFeed/Pods-HackerFeed.release.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>EF55B8CC3BFFDC02ECC4E139</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>name</key>
-			<string>Pods-HackerFeed.debug.xcconfig</string>
-			<key>path</key>
-			<string>Pods/Target Support Files/Pods-HackerFeed/Pods-HackerFeed.debug.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F38442C377BD43B1961DE1AF</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>inputPaths</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXShellScriptBuildPhase</string>
-			<key>name</key>
-			<string>Check Pods Manifest.lock</string>
-			<key>outputPaths</key>
-			<array/>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-			<key>shellPath</key>
-			<string>/bin/sh</string>
-			<key>shellScript</key>
-			<string>diff "${PODS_ROOT}/../Podfile.lock" "${PODS_ROOT}/Manifest.lock" &gt; /dev/null
-if [[ $? != 0 ]] ; then
-    cat &lt;&lt; EOM
-error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.
-EOM
-    exit 1
-fi
-</string>
-			<key>showEnvVarsInLog</key>
-			<string>0</string>
-		</dict>
-	</dict>
-	<key>rootObject</key>
-	<string>0EE791AF1950318D00925E4F</string>
-</dict>
-</plist>
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0E0214FB19CB518E00561912 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E0214FA19CB518E00561912 /* libz.dylib */; };
+		0E0214FE19CB53D300561912 /* HFWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E0214FD19CB53D300561912 /* HFWebViewController.m */; };
+		0E0C0BE819CFC0DD007EAE25 /* HFBasePostDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E0C0BE719CFC0DD007EAE25 /* HFBasePostDataSource.m */; };
+		0E1FC635197C4B4700B41804 /* HFPostTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E1FC634197C4B4700B41804 /* HFPostTableViewCell.m */; };
+		0E2F35C0198B8BF700718E1A /* HFNewPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E2F35BF198B8BF700718E1A /* HFNewPostViewController.m */; };
+		0E3C12CA19881D9700AAF072 /* SourceSansPro-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0E3C12C919881D9300AAF072 /* SourceSansPro-Light.otf */; };
+		0E511CA3198C0B3300F94E9F /* HFTextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E511CA2198C0B3300F94E9F /* HFTextFieldTableViewCell.m */; };
+		0E520C53197C73F900E94DBD /* HFDropdownMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E520C52197C73F900E94DBD /* HFDropdownMenuItem.m */; };
+		0E5424E719C4C07D00FF24A7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E5424E619C4C07D00FF24A7 /* LaunchScreen.xib */; };
+		0E5424EA19C4DA5F00FF24A7 /* HFModalWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E5424E919C4DA5F00FF24A7 /* HFModalWebViewController.m */; };
+		0E57B5B4198C2D6C0056CA54 /* HFTextViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E57B5B3198C2D6C0056CA54 /* HFTextViewTableViewCell.m */; };
+		0E59357019F9CAF40081B28A /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E59356F19F9CAF40081B28A /* libicucore.dylib */; };
+		0E59357219F9CAFE0081B28A /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E59357119F9CAFE0081B28A /* libc++.dylib */; };
+		0E59357419F9CB040081B28A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E59357319F9CB040081B28A /* CFNetwork.framework */; };
+		0E59357619F9CC820081B28A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E59357519F9CC820081B28A /* Security.framework */; };
+		0E59357819F9CC8C0081B28A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E59357719F9CC8C0081B28A /* SystemConfiguration.framework */; };
+		0E5C453B19838135001EE1CB /* HFFilterPostDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E5C453A19838135001EE1CB /* HFFilterPostDataSource.m */; };
+		0E6C30DF197F5DCB00C33A67 /* HFLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E6C30DE197F5DCB00C33A67 /* HFLoginViewController.m */; };
+		0E796B8719CEAC930045B4E1 /* HFDropdownMenuTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E796B8619CEAC930045B4E1 /* HFDropdownMenuTitleView.m */; };
+		0E7D19A21996034200C51E37 /* HFNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E7D19A11996034200C51E37 /* HFNavigationBar.m */; };
+		0E926CD219835AB30078E148 /* HFBorderedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E926CD119835AB30078E148 /* HFBorderedButton.m */; };
+		0E990E801990BA30002933C4 /* DMScaleTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E990E7F1990BA30002933C4 /* DMScaleTransition.m */; };
+		0E990E841990BA65002933C4 /* DMBaseTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E990E821990BA65002933C4 /* DMBaseTransition.m */; };
+		0EAC1B11197C54BD00393828 /* HFDropdownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EAC1B10197C54BD00393828 /* HFDropdownMenu.m */; };
+		0EAC1B14197C577800393828 /* HFDropdownMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EAC1B13197C577800393828 /* HFDropdownMenuButton.m */; };
+		0EAC1B18197C592200393828 /* UIViewController+HFDropdownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EAC1B17197C592200393828 /* UIViewController+HFDropdownMenu.m */; };
+		0EC331201992986400E1531A /* HFLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC3311F1992986400E1531A /* HFLabel.m */; };
+		0EC81421197C828A009F0D99 /* HFPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC81420197C828A009F0D99 /* HFPostViewController.m */; };
+		0EC81426197C8D1C009F0D99 /* HFCommentsButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC81425197C8D1C009F0D99 /* HFCommentsButton.m */; };
+		0EC8142A197C98B5009F0D99 /* SourceSansPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0EC81427197C98B5009F0D99 /* SourceSansPro-Bold.otf */; };
+		0EC8142B197C98B5009F0D99 /* SourceSansPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0EC81428197C98B5009F0D99 /* SourceSansPro-Regular.otf */; };
+		0EC8142C197C98B5009F0D99 /* SourceSansPro-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0EC81429197C98B5009F0D99 /* SourceSansPro-Semibold.otf */; };
+		0EC81432197C9C15009F0D99 /* UIFont+HFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC81431197C9C15009F0D99 /* UIFont+HFAdditions.m */; };
+		0EC81435197CA8FA009F0D99 /* HFCommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC81434197CA8FA009F0D99 /* HFCommentTableViewCell.m */; };
+		0ECF6056199171F60088C8E6 /* HFTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ECF6055199171F60088C8E6 /* HFTableViewCell.m */; };
+		0EDEBD64197E2ED00080D446 /* HFDropdownMenuNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EDEBD63197E2ED00080D446 /* HFDropdownMenuNavigationController.m */; };
+		0EE2838B198394BB00D3A3C6 /* HFUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE2838A198394BB00D3A3C6 /* HFUserProfileViewController.m */; };
+		0EE6CAE119845B37005AE100 /* HFCommentActionsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE6CAE019845B37005AE100 /* HFCommentActionsView.m */; };
+		0EE791BB1950318D00925E4F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EE791BA1950318D00925E4F /* Foundation.framework */; };
+		0EE791BD1950318D00925E4F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EE791BC1950318D00925E4F /* CoreGraphics.framework */; };
+		0EE791BF1950318D00925E4F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EE791BE1950318D00925E4F /* UIKit.framework */; };
+		0EE791C51950318D00925E4F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0EE791C31950318D00925E4F /* InfoPlist.strings */; };
+		0EE791C71950318D00925E4F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE791C61950318D00925E4F /* main.m */; };
+		0EE791CB1950318D00925E4F /* HFAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE791CA1950318D00925E4F /* HFAppDelegate.m */; };
+		0EE791D41950318D00925E4F /* HFPostListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE791D31950318D00925E4F /* HFPostListViewController.m */; };
+		0EE791D61950318D00925E4F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0EE791D51950318D00925E4F /* Images.xcassets */; };
+		0EE791DD1950318D00925E4F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EE791DC1950318D00925E4F /* XCTest.framework */; };
+		0EE791DE1950318D00925E4F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EE791BA1950318D00925E4F /* Foundation.framework */; };
+		0EE791DF1950318D00925E4F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EE791BE1950318D00925E4F /* UIKit.framework */; };
+		0EE791E71950318D00925E4F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0EE791E51950318D00925E4F /* InfoPlist.strings */; };
+		0EE791E91950318D00925E4F /* HackerFeedTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE791E81950318D00925E4F /* HackerFeedTests.m */; };
+		0EEBD375197DD52400D74AD6 /* HFPostInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EEBD374197DD52400D74AD6 /* HFPostInfoTableViewCell.m */; };
+		0EEBD378197DD74D00D74AD6 /* HFProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EEBD377197DD74D00D74AD6 /* HFProfileViewController.m */; };
+		0EEBD393197DEB7E00D74AD6 /* HFUserInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EEBD392197DEB7E00D74AD6 /* HFUserInfoTableViewCell.m */; };
+		0EEBD396197E026300D74AD6 /* UIColor+HFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EEBD395197E026300D74AD6 /* UIColor+HFAdditions.m */; };
+		0EFC25391985C22100A67412 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFC25381985C22100A67412 /* CoreText.framework */; };
+		0EFC253C1985D9D800A67412 /* HFCommentToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFC253B1985D9D800A67412 /* HFCommentToolbar.m */; };
+		0EFC253F1986026500A67412 /* HFTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFC253D1986026500A67412 /* HFTextView.m */; };
+		0EFC2542198604A900A67412 /* HFUserPostDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFC2541198604A900A67412 /* HFUserPostDataSource.m */; };
+		E6BFDD396217447FAA89F718 /* libPods-HackerFeed.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 014806F2979C4ADBAA87257A /* libPods-HackerFeed.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0EE791E01950318D00925E4F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0EE791AF1950318D00925E4F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0EE791B61950318D00925E4F;
+			remoteInfo = Orange;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		014806F2979C4ADBAA87257A /* libPods-HackerFeed.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HackerFeed.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0E0214FA19CB518E00561912 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		0E0214FC19CB53D300561912 /* HFWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFWebViewController.h; sourceTree = "<group>"; };
+		0E0214FD19CB53D300561912 /* HFWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFWebViewController.m; sourceTree = "<group>"; };
+		0E0C0BE619CFC0DD007EAE25 /* HFBasePostDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFBasePostDataSource.h; sourceTree = "<group>"; };
+		0E0C0BE719CFC0DD007EAE25 /* HFBasePostDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFBasePostDataSource.m; sourceTree = "<group>"; };
+		0E1FC633197C4B4700B41804 /* HFPostTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFPostTableViewCell.h; sourceTree = "<group>"; };
+		0E1FC634197C4B4700B41804 /* HFPostTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFPostTableViewCell.m; sourceTree = "<group>"; };
+		0E2F35BE198B8BF700718E1A /* HFNewPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFNewPostViewController.h; sourceTree = "<group>"; };
+		0E2F35BF198B8BF700718E1A /* HFNewPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFNewPostViewController.m; sourceTree = "<group>"; };
+		0E3C12C919881D9300AAF072 /* SourceSansPro-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Light.otf"; sourceTree = "<group>"; };
+		0E511CA1198C0B3300F94E9F /* HFTextFieldTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFTextFieldTableViewCell.h; sourceTree = "<group>"; };
+		0E511CA2198C0B3300F94E9F /* HFTextFieldTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFTextFieldTableViewCell.m; sourceTree = "<group>"; };
+		0E520C51197C73F900E94DBD /* HFDropdownMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFDropdownMenuItem.h; sourceTree = "<group>"; };
+		0E520C52197C73F900E94DBD /* HFDropdownMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFDropdownMenuItem.m; sourceTree = "<group>"; };
+		0E5424E619C4C07D00FF24A7 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		0E5424E819C4DA5F00FF24A7 /* HFModalWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFModalWebViewController.h; sourceTree = "<group>"; };
+		0E5424E919C4DA5F00FF24A7 /* HFModalWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFModalWebViewController.m; sourceTree = "<group>"; };
+		0E57B5B2198C2D6C0056CA54 /* HFTextViewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFTextViewTableViewCell.h; sourceTree = "<group>"; };
+		0E57B5B3198C2D6C0056CA54 /* HFTextViewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFTextViewTableViewCell.m; sourceTree = "<group>"; };
+		0E59356F19F9CAF40081B28A /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		0E59357119F9CAFE0081B28A /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		0E59357319F9CB040081B28A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		0E59357519F9CC820081B28A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		0E59357719F9CC8C0081B28A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		0E5C453919838135001EE1CB /* HFFilterPostDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFFilterPostDataSource.h; sourceTree = "<group>"; };
+		0E5C453A19838135001EE1CB /* HFFilterPostDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFFilterPostDataSource.m; sourceTree = "<group>"; };
+		0E6C30DD197F5DCB00C33A67 /* HFLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFLoginViewController.h; sourceTree = "<group>"; };
+		0E6C30DE197F5DCB00C33A67 /* HFLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFLoginViewController.m; sourceTree = "<group>"; };
+		0E796B8519CEAC930045B4E1 /* HFDropdownMenuTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFDropdownMenuTitleView.h; sourceTree = "<group>"; };
+		0E796B8619CEAC930045B4E1 /* HFDropdownMenuTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFDropdownMenuTitleView.m; sourceTree = "<group>"; };
+		0E7D19A01996034200C51E37 /* HFNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFNavigationBar.h; sourceTree = "<group>"; };
+		0E7D19A11996034200C51E37 /* HFNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFNavigationBar.m; sourceTree = "<group>"; };
+		0E926CD019835AB30078E148 /* HFBorderedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFBorderedButton.h; sourceTree = "<group>"; };
+		0E926CD119835AB30078E148 /* HFBorderedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFBorderedButton.m; sourceTree = "<group>"; };
+		0E990E7E1990BA30002933C4 /* DMScaleTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMScaleTransition.h; sourceTree = "<group>"; };
+		0E990E7F1990BA30002933C4 /* DMScaleTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMScaleTransition.m; sourceTree = "<group>"; };
+		0E990E821990BA65002933C4 /* DMBaseTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMBaseTransition.m; sourceTree = "<group>"; };
+		0E990E831990BA65002933C4 /* DMBaseTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMBaseTransition.h; sourceTree = "<group>"; };
+		0EAC1B0F197C54BD00393828 /* HFDropdownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFDropdownMenu.h; sourceTree = "<group>"; };
+		0EAC1B10197C54BD00393828 /* HFDropdownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFDropdownMenu.m; sourceTree = "<group>"; };
+		0EAC1B12197C577800393828 /* HFDropdownMenuButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFDropdownMenuButton.h; sourceTree = "<group>"; };
+		0EAC1B13197C577800393828 /* HFDropdownMenuButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFDropdownMenuButton.m; sourceTree = "<group>"; };
+		0EAC1B16197C592200393828 /* UIViewController+HFDropdownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+HFDropdownMenu.h"; sourceTree = "<group>"; };
+		0EAC1B17197C592200393828 /* UIViewController+HFDropdownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+HFDropdownMenu.m"; sourceTree = "<group>"; };
+		0EC3311E1992986400E1531A /* HFLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFLabel.h; sourceTree = "<group>"; };
+		0EC3311F1992986400E1531A /* HFLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFLabel.m; sourceTree = "<group>"; };
+		0EC8141F197C828A009F0D99 /* HFPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFPostViewController.h; sourceTree = "<group>"; };
+		0EC81420197C828A009F0D99 /* HFPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFPostViewController.m; sourceTree = "<group>"; };
+		0EC81424197C8D1C009F0D99 /* HFCommentsButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFCommentsButton.h; sourceTree = "<group>"; };
+		0EC81425197C8D1C009F0D99 /* HFCommentsButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFCommentsButton.m; sourceTree = "<group>"; };
+		0EC81427197C98B5009F0D99 /* SourceSansPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Bold.otf"; sourceTree = "<group>"; };
+		0EC81428197C98B5009F0D99 /* SourceSansPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Regular.otf"; sourceTree = "<group>"; };
+		0EC81429197C98B5009F0D99 /* SourceSansPro-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Semibold.otf"; sourceTree = "<group>"; };
+		0EC81430197C9C15009F0D99 /* UIFont+HFAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+HFAdditions.h"; sourceTree = "<group>"; };
+		0EC81431197C9C15009F0D99 /* UIFont+HFAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+HFAdditions.m"; sourceTree = "<group>"; };
+		0EC81433197CA8FA009F0D99 /* HFCommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFCommentTableViewCell.h; sourceTree = "<group>"; };
+		0EC81434197CA8FA009F0D99 /* HFCommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFCommentTableViewCell.m; sourceTree = "<group>"; };
+		0ECF6054199171F60088C8E6 /* HFTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFTableViewCell.h; sourceTree = "<group>"; };
+		0ECF6055199171F60088C8E6 /* HFTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFTableViewCell.m; sourceTree = "<group>"; };
+		0EDEBD62197E2ED00080D446 /* HFDropdownMenuNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFDropdownMenuNavigationController.h; sourceTree = "<group>"; };
+		0EDEBD63197E2ED00080D446 /* HFDropdownMenuNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFDropdownMenuNavigationController.m; sourceTree = "<group>"; };
+		0EE28389198394BB00D3A3C6 /* HFUserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFUserProfileViewController.h; sourceTree = "<group>"; };
+		0EE2838A198394BB00D3A3C6 /* HFUserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFUserProfileViewController.m; sourceTree = "<group>"; };
+		0EE6CADF19845B37005AE100 /* HFCommentActionsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFCommentActionsView.h; sourceTree = "<group>"; };
+		0EE6CAE019845B37005AE100 /* HFCommentActionsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFCommentActionsView.m; sourceTree = "<group>"; };
+		0EE791B71950318D00925E4F /* HackerFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HackerFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0EE791BA1950318D00925E4F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		0EE791BC1950318D00925E4F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		0EE791BE1950318D00925E4F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		0EE791C21950318D00925E4F /* HackerFeed-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HackerFeed-Info.plist"; sourceTree = "<group>"; };
+		0EE791C41950318D00925E4F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0EE791C61950318D00925E4F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		0EE791C81950318D00925E4F /* HackerFeed-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HackerFeed-Prefix.pch"; sourceTree = "<group>"; };
+		0EE791C91950318D00925E4F /* HFAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HFAppDelegate.h; sourceTree = "<group>"; };
+		0EE791CA1950318D00925E4F /* HFAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HFAppDelegate.m; sourceTree = "<group>"; };
+		0EE791D21950318D00925E4F /* HFPostListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HFPostListViewController.h; sourceTree = "<group>"; };
+		0EE791D31950318D00925E4F /* HFPostListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HFPostListViewController.m; sourceTree = "<group>"; };
+		0EE791D51950318D00925E4F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		0EE791DB1950318D00925E4F /* HackerFeedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HackerFeedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0EE791DC1950318D00925E4F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		0EE791E41950318D00925E4F /* HackerFeedTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HackerFeedTests-Info.plist"; sourceTree = "<group>"; };
+		0EE791E61950318D00925E4F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0EE791E81950318D00925E4F /* HackerFeedTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HackerFeedTests.m; sourceTree = "<group>"; };
+		0EEBD373197DD52400D74AD6 /* HFPostInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFPostInfoTableViewCell.h; sourceTree = "<group>"; };
+		0EEBD374197DD52400D74AD6 /* HFPostInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFPostInfoTableViewCell.m; sourceTree = "<group>"; };
+		0EEBD376197DD74D00D74AD6 /* HFProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFProfileViewController.h; sourceTree = "<group>"; };
+		0EEBD377197DD74D00D74AD6 /* HFProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFProfileViewController.m; sourceTree = "<group>"; };
+		0EEBD391197DEB7E00D74AD6 /* HFUserInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFUserInfoTableViewCell.h; sourceTree = "<group>"; };
+		0EEBD392197DEB7E00D74AD6 /* HFUserInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFUserInfoTableViewCell.m; sourceTree = "<group>"; };
+		0EEBD394197E026300D74AD6 /* UIColor+HFAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HFAdditions.h"; sourceTree = "<group>"; };
+		0EEBD395197E026300D74AD6 /* UIColor+HFAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HFAdditions.m"; sourceTree = "<group>"; };
+		0EFC25381985C22100A67412 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		0EFC253A1985D9D800A67412 /* HFCommentToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFCommentToolbar.h; sourceTree = "<group>"; };
+		0EFC253B1985D9D800A67412 /* HFCommentToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFCommentToolbar.m; sourceTree = "<group>"; };
+		0EFC253D1986026500A67412 /* HFTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFTextView.m; sourceTree = "<group>"; };
+		0EFC253E1986026500A67412 /* HFTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFTextView.h; sourceTree = "<group>"; };
+		0EFC2540198604A900A67412 /* HFUserPostDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFUserPostDataSource.h; sourceTree = "<group>"; };
+		0EFC2541198604A900A67412 /* HFUserPostDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFUserPostDataSource.m; sourceTree = "<group>"; };
+		735C0062804D43E999E3B1F4 /* libPods-Orange.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Orange.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED545A3266AE771A528F6E8E /* Pods-HackerFeed.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HackerFeed.release.xcconfig"; path = "Pods/Target Support Files/Pods-HackerFeed/Pods-HackerFeed.release.xcconfig"; sourceTree = "<group>"; };
+		EF55B8CC3BFFDC02ECC4E139 /* Pods-HackerFeed.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HackerFeed.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HackerFeed/Pods-HackerFeed.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0EE791B41950318D00925E4F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0E59357819F9CC8C0081B28A /* SystemConfiguration.framework in Frameworks */,
+				0E59357619F9CC820081B28A /* Security.framework in Frameworks */,
+				0E59357219F9CAFE0081B28A /* libc++.dylib in Frameworks */,
+				0E59357019F9CAF40081B28A /* libicucore.dylib in Frameworks */,
+				0E0214FB19CB518E00561912 /* libz.dylib in Frameworks */,
+				0E59357419F9CB040081B28A /* CFNetwork.framework in Frameworks */,
+				0EFC25391985C22100A67412 /* CoreText.framework in Frameworks */,
+				0EE791BD1950318D00925E4F /* CoreGraphics.framework in Frameworks */,
+				0EE791BF1950318D00925E4F /* UIKit.framework in Frameworks */,
+				0EE791BB1950318D00925E4F /* Foundation.framework in Frameworks */,
+				E6BFDD396217447FAA89F718 /* libPods-HackerFeed.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0EE791D81950318D00925E4F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0EE791DD1950318D00925E4F /* XCTest.framework in Frameworks */,
+				0EE791DF1950318D00925E4F /* UIKit.framework in Frameworks */,
+				0EE791DE1950318D00925E4F /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0E520C54197C7B1F00E94DBD /* Table View Cells */ = {
+			isa = PBXGroup;
+			children = (
+				0ECF6054199171F60088C8E6 /* HFTableViewCell.h */,
+				0ECF6055199171F60088C8E6 /* HFTableViewCell.m */,
+				0E1FC633197C4B4700B41804 /* HFPostTableViewCell.h */,
+				0E1FC634197C4B4700B41804 /* HFPostTableViewCell.m */,
+				0EEBD373197DD52400D74AD6 /* HFPostInfoTableViewCell.h */,
+				0EEBD374197DD52400D74AD6 /* HFPostInfoTableViewCell.m */,
+				0EC81433197CA8FA009F0D99 /* HFCommentTableViewCell.h */,
+				0EC81434197CA8FA009F0D99 /* HFCommentTableViewCell.m */,
+				0EEBD391197DEB7E00D74AD6 /* HFUserInfoTableViewCell.h */,
+				0EEBD392197DEB7E00D74AD6 /* HFUserInfoTableViewCell.m */,
+				0E511CA1198C0B3300F94E9F /* HFTextFieldTableViewCell.h */,
+				0E511CA2198C0B3300F94E9F /* HFTextFieldTableViewCell.m */,
+				0E57B5B2198C2D6C0056CA54 /* HFTextViewTableViewCell.h */,
+				0E57B5B3198C2D6C0056CA54 /* HFTextViewTableViewCell.m */,
+			);
+			name = "Table View Cells";
+			sourceTree = "<group>";
+		};
+		0E520C55197C81B500E94DBD /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0E2F35BE198B8BF700718E1A /* HFNewPostViewController.h */,
+				0E2F35BF198B8BF700718E1A /* HFNewPostViewController.m */,
+				0EE791D21950318D00925E4F /* HFPostListViewController.h */,
+				0EE791D31950318D00925E4F /* HFPostListViewController.m */,
+				0EC8141F197C828A009F0D99 /* HFPostViewController.h */,
+				0EC81420197C828A009F0D99 /* HFPostViewController.m */,
+				0EEBD376197DD74D00D74AD6 /* HFProfileViewController.h */,
+				0EEBD377197DD74D00D74AD6 /* HFProfileViewController.m */,
+				0EE28389198394BB00D3A3C6 /* HFUserProfileViewController.h */,
+				0EE2838A198394BB00D3A3C6 /* HFUserProfileViewController.m */,
+				0E6C30DD197F5DCB00C33A67 /* HFLoginViewController.h */,
+				0E6C30DE197F5DCB00C33A67 /* HFLoginViewController.m */,
+				0E5424E819C4DA5F00FF24A7 /* HFModalWebViewController.h */,
+				0E5424E919C4DA5F00FF24A7 /* HFModalWebViewController.m */,
+				0E0214FC19CB53D300561912 /* HFWebViewController.h */,
+				0E0214FD19CB53D300561912 /* HFWebViewController.m */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		0E5C453C19838142001EE1CB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0E0C0BE619CFC0DD007EAE25 /* HFBasePostDataSource.h */,
+				0E0C0BE719CFC0DD007EAE25 /* HFBasePostDataSource.m */,
+				0E5C453919838135001EE1CB /* HFFilterPostDataSource.h */,
+				0E5C453A19838135001EE1CB /* HFFilterPostDataSource.m */,
+				0EFC2540198604A900A67412 /* HFUserPostDataSource.h */,
+				0EFC2541198604A900A67412 /* HFUserPostDataSource.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		0E990E811990BA41002933C4 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				0E990E821990BA65002933C4 /* DMBaseTransition.m */,
+				0E990E831990BA65002933C4 /* DMBaseTransition.h */,
+				0E990E7E1990BA30002933C4 /* DMScaleTransition.h */,
+				0E990E7F1990BA30002933C4 /* DMScaleTransition.m */,
+			);
+			name = Vendor;
+			sourceTree = "<group>";
+		};
+		0EAC1B15197C577D00393828 /* Dropdown */ = {
+			isa = PBXGroup;
+			children = (
+				0EDEBD62197E2ED00080D446 /* HFDropdownMenuNavigationController.h */,
+				0EDEBD63197E2ED00080D446 /* HFDropdownMenuNavigationController.m */,
+				0E796B8519CEAC930045B4E1 /* HFDropdownMenuTitleView.h */,
+				0E796B8619CEAC930045B4E1 /* HFDropdownMenuTitleView.m */,
+				0EAC1B0F197C54BD00393828 /* HFDropdownMenu.h */,
+				0EAC1B10197C54BD00393828 /* HFDropdownMenu.m */,
+				0E520C51197C73F900E94DBD /* HFDropdownMenuItem.h */,
+				0E520C52197C73F900E94DBD /* HFDropdownMenuItem.m */,
+				0EAC1B12197C577800393828 /* HFDropdownMenuButton.h */,
+				0EAC1B13197C577800393828 /* HFDropdownMenuButton.m */,
+				0EAC1B16197C592200393828 /* UIViewController+HFDropdownMenu.h */,
+				0EAC1B17197C592200393828 /* UIViewController+HFDropdownMenu.m */,
+			);
+			name = Dropdown;
+			sourceTree = "<group>";
+		};
+		0EC81423197C8BD4009F0D99 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0EAC1B15197C577D00393828 /* Dropdown */,
+				0E520C54197C7B1F00E94DBD /* Table View Cells */,
+				0EE6CADF19845B37005AE100 /* HFCommentActionsView.h */,
+				0EE6CAE019845B37005AE100 /* HFCommentActionsView.m */,
+				0EC81424197C8D1C009F0D99 /* HFCommentsButton.h */,
+				0EC81425197C8D1C009F0D99 /* HFCommentsButton.m */,
+				0EFC253A1985D9D800A67412 /* HFCommentToolbar.h */,
+				0EFC253B1985D9D800A67412 /* HFCommentToolbar.m */,
+				0EFC253E1986026500A67412 /* HFTextView.h */,
+				0EFC253D1986026500A67412 /* HFTextView.m */,
+				0EC3311E1992986400E1531A /* HFLabel.h */,
+				0EC3311F1992986400E1531A /* HFLabel.m */,
+				0E926CD019835AB30078E148 /* HFBorderedButton.h */,
+				0E926CD119835AB30078E148 /* HFBorderedButton.m */,
+				0E7D19A01996034200C51E37 /* HFNavigationBar.h */,
+				0E7D19A11996034200C51E37 /* HFNavigationBar.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		0EC8142D197C9924009F0D99 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				0E3C12C919881D9300AAF072 /* SourceSansPro-Light.otf */,
+				0EC81427197C98B5009F0D99 /* SourceSansPro-Bold.otf */,
+				0EC81428197C98B5009F0D99 /* SourceSansPro-Regular.otf */,
+				0EC81429197C98B5009F0D99 /* SourceSansPro-Semibold.otf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
+		0EDEBD61197E28F60080D446 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				0EC81430197C9C15009F0D99 /* UIFont+HFAdditions.h */,
+				0EC81431197C9C15009F0D99 /* UIFont+HFAdditions.m */,
+				0EEBD394197E026300D74AD6 /* UIColor+HFAdditions.h */,
+				0EEBD395197E026300D74AD6 /* UIColor+HFAdditions.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		0EE791AE1950318D00925E4F = {
+			isa = PBXGroup;
+			children = (
+				0EE791C01950318D00925E4F /* HackerFeed */,
+				0EE791E21950318D00925E4F /* HackerFeedTests */,
+				0EE791B91950318D00925E4F /* Frameworks */,
+				0EE791B81950318D00925E4F /* Products */,
+				8B2673557A94D2ACDA755023 /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		0EE791B81950318D00925E4F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0EE791B71950318D00925E4F /* HackerFeed.app */,
+				0EE791DB1950318D00925E4F /* HackerFeedTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0EE791B91950318D00925E4F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0E59357719F9CC8C0081B28A /* SystemConfiguration.framework */,
+				0E59357519F9CC820081B28A /* Security.framework */,
+				0E59357319F9CB040081B28A /* CFNetwork.framework */,
+				0E59357119F9CAFE0081B28A /* libc++.dylib */,
+				0E59356F19F9CAF40081B28A /* libicucore.dylib */,
+				0E0214FA19CB518E00561912 /* libz.dylib */,
+				0EFC25381985C22100A67412 /* CoreText.framework */,
+				0EE791BA1950318D00925E4F /* Foundation.framework */,
+				0EE791BC1950318D00925E4F /* CoreGraphics.framework */,
+				0EE791BE1950318D00925E4F /* UIKit.framework */,
+				0EE791DC1950318D00925E4F /* XCTest.framework */,
+				735C0062804D43E999E3B1F4 /* libPods-Orange.a */,
+				014806F2979C4ADBAA87257A /* libPods-HackerFeed.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0EE791C01950318D00925E4F /* HackerFeed */ = {
+			isa = PBXGroup;
+			children = (
+				0EE791C91950318D00925E4F /* HFAppDelegate.h */,
+				0EE791CA1950318D00925E4F /* HFAppDelegate.m */,
+				0EDEBD61197E28F60080D446 /* Categories */,
+				0E5C453C19838142001EE1CB /* Models */,
+				0EC81423197C8BD4009F0D99 /* Views */,
+				0E520C55197C81B500E94DBD /* View Controllers */,
+				0EE791D51950318D00925E4F /* Images.xcassets */,
+				0EE791C11950318D00925E4F /* Supporting Files */,
+			);
+			path = HackerFeed;
+			sourceTree = "<group>";
+		};
+		0EE791C11950318D00925E4F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0EC8142D197C9924009F0D99 /* Fonts */,
+				0E990E811990BA41002933C4 /* Vendor */,
+				0EE791C21950318D00925E4F /* HackerFeed-Info.plist */,
+				0EE791C31950318D00925E4F /* InfoPlist.strings */,
+				0EE791C61950318D00925E4F /* main.m */,
+				0EE791C81950318D00925E4F /* HackerFeed-Prefix.pch */,
+				0E5424E619C4C07D00FF24A7 /* LaunchScreen.xib */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0EE791E21950318D00925E4F /* HackerFeedTests */ = {
+			isa = PBXGroup;
+			children = (
+				0EE791E81950318D00925E4F /* HackerFeedTests.m */,
+				0EE791E31950318D00925E4F /* Supporting Files */,
+			);
+			path = HackerFeedTests;
+			sourceTree = "<group>";
+		};
+		0EE791E31950318D00925E4F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0EE791E41950318D00925E4F /* HackerFeedTests-Info.plist */,
+				0EE791E51950318D00925E4F /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8B2673557A94D2ACDA755023 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EF55B8CC3BFFDC02ECC4E139 /* Pods-HackerFeed.debug.xcconfig */,
+				ED545A3266AE771A528F6E8E /* Pods-HackerFeed.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0EE791B61950318D00925E4F /* HackerFeed */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0EE791EC1950318D00925E4F /* Build configuration list for PBXNativeTarget "HackerFeed" */;
+			buildPhases = (
+				F38442C377BD43B1961DE1AF /* Check Pods Manifest.lock */,
+				0EE791B31950318D00925E4F /* Sources */,
+				0EE791B41950318D00925E4F /* Frameworks */,
+				0EE791B51950318D00925E4F /* Resources */,
+				41CEFFB62EAD4874A7824513 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HackerFeed;
+			productName = Orange;
+			productReference = 0EE791B71950318D00925E4F /* HackerFeed.app */;
+			productType = "com.apple.product-type.application";
+		};
+		0EE791DA1950318D00925E4F /* HackerFeedTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0EE791EF1950318D00925E4F /* Build configuration list for PBXNativeTarget "HackerFeedTests" */;
+			buildPhases = (
+				0EE791D71950318D00925E4F /* Sources */,
+				0EE791D81950318D00925E4F /* Frameworks */,
+				0EE791D91950318D00925E4F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0EE791E11950318D00925E4F /* PBXTargetDependency */,
+			);
+			name = HackerFeedTests;
+			productName = OrangeTests;
+			productReference = 0EE791DB1950318D00925E4F /* HackerFeedTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0EE791AF1950318D00925E4F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = HF;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Nealon Young";
+				TargetAttributes = {
+					0EE791B61950318D00925E4F = {
+						DevelopmentTeam = HFG3GB6CJM;
+					};
+					0EE791DA1950318D00925E4F = {
+						TestTargetID = 0EE791B61950318D00925E4F;
+					};
+				};
+			};
+			buildConfigurationList = 0EE791B21950318D00925E4F /* Build configuration list for PBXProject "HackerFeed" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0EE791AE1950318D00925E4F;
+			productRefGroup = 0EE791B81950318D00925E4F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0EE791B61950318D00925E4F /* HackerFeed */,
+				0EE791DA1950318D00925E4F /* HackerFeedTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0EE791B51950318D00925E4F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0EC8142C197C98B5009F0D99 /* SourceSansPro-Semibold.otf in Resources */,
+				0E3C12CA19881D9700AAF072 /* SourceSansPro-Light.otf in Resources */,
+				0EE791D61950318D00925E4F /* Images.xcassets in Resources */,
+				0E5424E719C4C07D00FF24A7 /* LaunchScreen.xib in Resources */,
+				0EC8142B197C98B5009F0D99 /* SourceSansPro-Regular.otf in Resources */,
+				0EC8142A197C98B5009F0D99 /* SourceSansPro-Bold.otf in Resources */,
+				0EE791C51950318D00925E4F /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0EE791D91950318D00925E4F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0EE791E71950318D00925E4F /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		41CEFFB62EAD4874A7824513 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HackerFeed/Pods-HackerFeed-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F38442C377BD43B1961DE1AF /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0EE791B31950318D00925E4F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0E520C53197C73F900E94DBD /* HFDropdownMenuItem.m in Sources */,
+				0E796B8719CEAC930045B4E1 /* HFDropdownMenuTitleView.m in Sources */,
+				0EDEBD64197E2ED00080D446 /* HFDropdownMenuNavigationController.m in Sources */,
+				0EC81432197C9C15009F0D99 /* UIFont+HFAdditions.m in Sources */,
+				0E0C0BE819CFC0DD007EAE25 /* HFBasePostDataSource.m in Sources */,
+				0E990E801990BA30002933C4 /* DMScaleTransition.m in Sources */,
+				0EEBD378197DD74D00D74AD6 /* HFProfileViewController.m in Sources */,
+				0EC81421197C828A009F0D99 /* HFPostViewController.m in Sources */,
+				0EE791CB1950318D00925E4F /* HFAppDelegate.m in Sources */,
+				0EC331201992986400E1531A /* HFLabel.m in Sources */,
+				0E511CA3198C0B3300F94E9F /* HFTextFieldTableViewCell.m in Sources */,
+				0EE6CAE119845B37005AE100 /* HFCommentActionsView.m in Sources */,
+				0E2F35C0198B8BF700718E1A /* HFNewPostViewController.m in Sources */,
+				0EAC1B11197C54BD00393828 /* HFDropdownMenu.m in Sources */,
+				0EE2838B198394BB00D3A3C6 /* HFUserProfileViewController.m in Sources */,
+				0EEBD393197DEB7E00D74AD6 /* HFUserInfoTableViewCell.m in Sources */,
+				0EFC2542198604A900A67412 /* HFUserPostDataSource.m in Sources */,
+				0EC81435197CA8FA009F0D99 /* HFCommentTableViewCell.m in Sources */,
+				0E1FC635197C4B4700B41804 /* HFPostTableViewCell.m in Sources */,
+				0E5424EA19C4DA5F00FF24A7 /* HFModalWebViewController.m in Sources */,
+				0EE791C71950318D00925E4F /* main.m in Sources */,
+				0EE791D41950318D00925E4F /* HFPostListViewController.m in Sources */,
+				0E6C30DF197F5DCB00C33A67 /* HFLoginViewController.m in Sources */,
+				0EAC1B18197C592200393828 /* UIViewController+HFDropdownMenu.m in Sources */,
+				0EAC1B14197C577800393828 /* HFDropdownMenuButton.m in Sources */,
+				0EEBD396197E026300D74AD6 /* UIColor+HFAdditions.m in Sources */,
+				0EC81426197C8D1C009F0D99 /* HFCommentsButton.m in Sources */,
+				0E5C453B19838135001EE1CB /* HFFilterPostDataSource.m in Sources */,
+				0E0214FE19CB53D300561912 /* HFWebViewController.m in Sources */,
+				0E990E841990BA65002933C4 /* DMBaseTransition.m in Sources */,
+				0E57B5B4198C2D6C0056CA54 /* HFTextViewTableViewCell.m in Sources */,
+				0EEBD375197DD52400D74AD6 /* HFPostInfoTableViewCell.m in Sources */,
+				0EFC253C1985D9D800A67412 /* HFCommentToolbar.m in Sources */,
+				0ECF6056199171F60088C8E6 /* HFTableViewCell.m in Sources */,
+				0EFC253F1986026500A67412 /* HFTextView.m in Sources */,
+				0E7D19A21996034200C51E37 /* HFNavigationBar.m in Sources */,
+				0E926CD219835AB30078E148 /* HFBorderedButton.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0EE791D71950318D00925E4F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0EE791E91950318D00925E4F /* HackerFeedTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0EE791E11950318D00925E4F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0EE791B61950318D00925E4F /* HackerFeed */;
+			targetProxy = 0EE791E01950318D00925E4F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		0EE791C31950318D00925E4F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0EE791C41950318D00925E4F /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		0EE791E51950318D00925E4F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0EE791E61950318D00925E4F /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0EE791EA1950318D00925E4F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0EE791EB1950318D00925E4F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0EE791ED1950318D00925E4F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EF55B8CC3BFFDC02ECC4E139 /* Pods-HackerFeed.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HackerFeed/HackerFeed-Prefix.pch";
+				INFOPLIST_FILE = "HackerFeed/HackerFeed-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = HackerFeed;
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		0EE791EE1950318D00925E4F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = ED545A3266AE771A528F6E8E /* Pods-HackerFeed.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HackerFeed/HackerFeed-Prefix.pch";
+				INFOPLIST_FILE = "HackerFeed/HackerFeed-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = HackerFeed;
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		0EE791F01950318D00925E4F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/HackerFeed.app/HackerFeed";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HackerFeed/HackerFeed-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "HackerFeedTests/HackerFeedTests-Info.plist";
+				PRODUCT_NAME = HackerFeedTests;
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		0EE791F11950318D00925E4F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/HackerFeed.app/HackerFeed";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HackerFeed/HackerFeed-Prefix.pch";
+				INFOPLIST_FILE = "HackerFeedTests/HackerFeedTests-Info.plist";
+				PRODUCT_NAME = HackerFeedTests;
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0EE791B21950318D00925E4F /* Build configuration list for PBXProject "HackerFeed" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0EE791EA1950318D00925E4F /* Debug */,
+				0EE791EB1950318D00925E4F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0EE791EC1950318D00925E4F /* Build configuration list for PBXNativeTarget "HackerFeed" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0EE791ED1950318D00925E4F /* Debug */,
+				0EE791EE1950318D00925E4F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0EE791EF1950318D00925E4F /* Build configuration list for PBXNativeTarget "HackerFeedTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0EE791F01950318D00925E4F /* Debug */,
+				0EE791F11950318D00925E4F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0EE791AF1950318D00925E4F /* Project object */;
+}

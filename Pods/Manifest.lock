@@ -4,8 +4,7 @@ PODS:
   - libHN (3.0.0)
   - NYSegmentedControl (1.0.3)
   - PBWebViewController (0.3)
-  - Reveal-iOS-SDK (1.0.6)
-  - SVProgressHUD (HEAD based on 1.0)
+  - SVProgressHUD (HEAD based on 1.1.2)
   - SVPullToRefresh (HEAD based on 0.4.1)
 
 DEPENDENCIES:
@@ -14,7 +13,6 @@ DEPENDENCIES:
   - libHN
   - NYSegmentedControl
   - PBWebViewController
-  - Reveal-iOS-SDK
   - SVProgressHUD (HEAD)
   - SVPullToRefresh (HEAD)
 
@@ -33,8 +31,7 @@ SPEC CHECKSUMS:
   libHN: 6bca36c2d67f45bc4b14d7c66166a28f970206ea
   NYSegmentedControl: 74094b886a80bfc4e9f6d415601e9b11797b22b7
   PBWebViewController: 0a36bbd0f82741d9457177c9c37f5ff747cba312
-  Reveal-iOS-SDK: 74a39b426dbc915962704ed24f43ee32ae7797f9
-  SVProgressHUD: 5034c6e22b8c2ca3e09402e48d41ed0340aa1c50
+  SVProgressHUD: da7a49e789af645d9279ffbca62318945a832438
   SVPullToRefresh: d5161ebc833a38b465364412e5e307ca80bbb190
 
 COCOAPODS: 0.35.0
