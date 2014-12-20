@@ -17,7 +17,6 @@
 #import "HFPostViewController.h"
 #import "HFWebViewController.h"
 #import "SVProgressHUD.h"
-//#import "UIScrollView+SVPullToRefresh.h"
 #import "UIScrollView+SVInfiniteScrolling.h"
 
 @interface HFPostListViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -196,7 +195,6 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
     }
     
     postMetricsCell.bounds = CGRectMake(0.0f, 0.0f, self.tableView.bounds.size.width, 9999.0f);
-    
     HNPost *post = self.dataSource.posts[indexPath.row];
     
     postMetricsCell.titleLabel.text = post.Title;

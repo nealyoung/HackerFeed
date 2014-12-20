@@ -94,7 +94,7 @@ NSString * const kLoginViewControllerIdentifier = @"ORNLoginViewController";
     
     UINavigationController *loginNavigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
     
-    if (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular) {
+    if (self.splitViewController.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular) {
         loginNavigationController.modalPresentationStyle = UIModalPresentationFormSheet;
     } else {
         self.scaleTransition = [DMScaleTransition new];

@@ -194,7 +194,6 @@ static CGFloat const kPullToRefreshDragToTrigger = 80;
 #pragma mark - Scroll View
 
 - (void)_resetScrollViewContentInset {
-    NSLog(@"reset called");
     [UIView animateWithDuration:kPullToRefreshResetContentInsetAnimationTime
                           delay:0
                         options:(UIViewAnimationOptionAllowUserInteraction | UIViewAnimationOptionBeginFromCurrentState)
@@ -211,8 +210,6 @@ static CGFloat const kPullToRefreshDragToTrigger = 80;
 }
 
 - (void)_setScrollViewContentInsetForLoadingAnimated:(BOOL)animated {
-    NSLog(@"for loading animated called");
-
     UIEdgeInsets loadingInset = _externalContentInset;
     loadingInset.top += CGRectGetHeight(self.bounds);
     void (^updateBlock)(void) = ^{
