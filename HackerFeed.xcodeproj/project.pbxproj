@@ -11,8 +11,19 @@
 		0E0214FE19CB53D300561912 /* HFWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E0214FD19CB53D300561912 /* HFWebViewController.m */; };
 		0E0C0BE819CFC0DD007EAE25 /* HFBasePostDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E0C0BE719CFC0DD007EAE25 /* HFBasePostDataSource.m */; };
 		0E1FC635197C4B4700B41804 /* HFPostTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E1FC634197C4B4700B41804 /* HFPostTableViewCell.m */; };
+		0E25F3FC1A50802F00B869EE /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E0214FA19CB518E00561912 /* libz.dylib */; };
+		0E25F3FD1A50811900B869EE /* UIFont+HFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC81431197C9C15009F0D99 /* UIFont+HFAdditions.m */; };
+		0E25F4001A50861C00B869EE /* HFShareExtensionNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E25F3FF1A50861C00B869EE /* HFShareExtensionNavigationController.m */; };
+		0E25F4011A50868C00B869EE /* SourceSansPro-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0E3C12C919881D9300AAF072 /* SourceSansPro-Light.otf */; };
+		0E25F4021A50868F00B869EE /* SourceSansPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0EC81427197C98B5009F0D99 /* SourceSansPro-Bold.otf */; };
+		0E25F4031A50869200B869EE /* SourceSansPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0EC81428197C98B5009F0D99 /* SourceSansPro-Regular.otf */; };
+		0E25F4041A50869600B869EE /* SourceSansPro-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0EC81429197C98B5009F0D99 /* SourceSansPro-Semibold.otf */; };
 		0E2F35C0198B8BF700718E1A /* HFNewPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E2F35BF198B8BF700718E1A /* HFNewPostViewController.m */; };
+		0E3600661A50628F002B8EE7 /* HFTextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E511CA2198C0B3300F94E9F /* HFTextFieldTableViewCell.m */; };
+		0E3600671A50629C002B8EE7 /* HFTextViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E57B5B3198C2D6C0056CA54 /* HFTextViewTableViewCell.m */; };
+		0E3600681A506379002B8EE7 /* HFTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFC253D1986026500A67412 /* HFTextView.m */; };
 		0E3C12CA19881D9700AAF072 /* SourceSansPro-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0E3C12C919881D9300AAF072 /* SourceSansPro-Light.otf */; };
+		0E4283211A50682700A0CC1F /* libPods-HackerFeed.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E4283201A50682700A0CC1F /* libPods-HackerFeed.a */; };
 		0E511CA3198C0B3300F94E9F /* HFTextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E511CA2198C0B3300F94E9F /* HFTextFieldTableViewCell.m */; };
 		0E520C53197C73F900E94DBD /* HFDropdownMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E520C52197C73F900E94DBD /* HFDropdownMenuItem.m */; };
 		0E5424E719C4C07D00FF24A7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E5424E619C4C07D00FF24A7 /* LaunchScreen.xib */; };
@@ -62,6 +73,8 @@
 		0EEBD378197DD74D00D74AD6 /* HFProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EEBD377197DD74D00D74AD6 /* HFProfileViewController.m */; };
 		0EEBD393197DEB7E00D74AD6 /* HFUserInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EEBD392197DEB7E00D74AD6 /* HFUserInfoTableViewCell.m */; };
 		0EEBD396197E026300D74AD6 /* UIColor+HFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EEBD395197E026300D74AD6 /* UIColor+HFAdditions.m */; };
+		0EF06ECD1A487DC70072D766 /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EF06ECC1A487DC70072D766 /* ShareViewController.m */; };
+		0EF06ED21A487DC70072D766 /* Share Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0EF06EC71A487DC60072D766 /* Share Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		0EFC25391985C22100A67412 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFC25381985C22100A67412 /* CoreText.framework */; };
 		0EFC253C1985D9D800A67412 /* HFCommentToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFC253B1985D9D800A67412 /* HFCommentToolbar.m */; };
 		0EFC253F1986026500A67412 /* HFTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFC253D1986026500A67412 /* HFTextView.m */; };
@@ -77,20 +90,46 @@
 			remoteGlobalIDString = 0EE791B61950318D00925E4F;
 			remoteInfo = Orange;
 		};
+		0EF06ED01A487DC70072D766 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0EE791AF1950318D00925E4F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0EF06EC61A487DC60072D766;
+			remoteInfo = "Share Extension";
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		0EF06ED61A487DC70072D766 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				0EF06ED21A487DC70072D766 /* Share Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		014806F2979C4ADBAA87257A /* libPods-HackerFeed.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HackerFeed.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E0214FA19CB518E00561912 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		0E0214FC19CB53D300561912 /* HFWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFWebViewController.h; sourceTree = "<group>"; };
 		0E0214FD19CB53D300561912 /* HFWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFWebViewController.m; sourceTree = "<group>"; };
+		0E07A4DC1A5064F5004C0758 /* libPods-HackerFeed.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-HackerFeed.a"; path = "Pods/build/Debug-iphoneos/libPods-HackerFeed.a"; sourceTree = "<group>"; };
 		0E0C0BE619CFC0DD007EAE25 /* HFBasePostDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFBasePostDataSource.h; sourceTree = "<group>"; };
 		0E0C0BE719CFC0DD007EAE25 /* HFBasePostDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFBasePostDataSource.m; sourceTree = "<group>"; };
 		0E1FC633197C4B4700B41804 /* HFPostTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFPostTableViewCell.h; sourceTree = "<group>"; };
 		0E1FC634197C4B4700B41804 /* HFPostTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFPostTableViewCell.m; sourceTree = "<group>"; };
+		0E25F3FE1A50861C00B869EE /* HFShareExtensionNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFShareExtensionNavigationController.h; sourceTree = "<group>"; };
+		0E25F3FF1A50861C00B869EE /* HFShareExtensionNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFShareExtensionNavigationController.m; sourceTree = "<group>"; };
 		0E2F35BE198B8BF700718E1A /* HFNewPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFNewPostViewController.h; sourceTree = "<group>"; };
 		0E2F35BF198B8BF700718E1A /* HFNewPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFNewPostViewController.m; sourceTree = "<group>"; };
 		0E3C12C919881D9300AAF072 /* SourceSansPro-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Light.otf"; sourceTree = "<group>"; };
+		0E4283201A50682700A0CC1F /* libPods-HackerFeed.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-HackerFeed.a"; path = "Pods/build/Debug-iphoneos/libPods-HackerFeed.a"; sourceTree = "<group>"; };
+		0E4BEAE81A48961100BDA99B /* Share Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Share Extension.entitlements"; sourceTree = "<group>"; };
 		0E511CA1198C0B3300F94E9F /* HFTextFieldTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFTextFieldTableViewCell.h; sourceTree = "<group>"; };
 		0E511CA2198C0B3300F94E9F /* HFTextFieldTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFTextFieldTableViewCell.m; sourceTree = "<group>"; };
 		0E520C51197C73F900E94DBD /* HFDropdownMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFDropdownMenuItem.h; sourceTree = "<group>"; };
@@ -173,6 +212,10 @@
 		0EEBD392197DEB7E00D74AD6 /* HFUserInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFUserInfoTableViewCell.m; sourceTree = "<group>"; };
 		0EEBD394197E026300D74AD6 /* UIColor+HFAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HFAdditions.h"; sourceTree = "<group>"; };
 		0EEBD395197E026300D74AD6 /* UIColor+HFAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HFAdditions.m"; sourceTree = "<group>"; };
+		0EF06EC71A487DC60072D766 /* Share Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Share Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0EF06ECA1A487DC70072D766 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0EF06ECB1A487DC70072D766 /* ShareViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShareViewController.h; sourceTree = "<group>"; };
+		0EF06ECC1A487DC70072D766 /* ShareViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareViewController.m; sourceTree = "<group>"; };
 		0EFC25381985C22100A67412 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		0EFC253A1985D9D800A67412 /* HFCommentToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFCommentToolbar.h; sourceTree = "<group>"; };
 		0EFC253B1985D9D800A67412 /* HFCommentToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFCommentToolbar.m; sourceTree = "<group>"; };
@@ -211,6 +254,15 @@
 				0EE791DD1950318D00925E4F /* XCTest.framework in Frameworks */,
 				0EE791DF1950318D00925E4F /* UIKit.framework in Frameworks */,
 				0EE791DE1950318D00925E4F /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0EF06EC41A487DC60072D766 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0E25F3FC1A50802F00B869EE /* libz.dylib in Frameworks */,
+				0E4283211A50682700A0CC1F /* libPods-HackerFeed.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,6 +409,7 @@
 				0EE791B91950318D00925E4F /* Frameworks */,
 				0EE791B81950318D00925E4F /* Products */,
 				8B2673557A94D2ACDA755023 /* Pods */,
+				0EF06EC81A487DC70072D766 /* Share Extension */,
 			);
 			sourceTree = "<group>";
 		};
@@ -365,6 +418,7 @@
 			children = (
 				0EE791B71950318D00925E4F /* HackerFeed.app */,
 				0EE791DB1950318D00925E4F /* HackerFeedTests.xctest */,
+				0EF06EC71A487DC60072D766 /* Share Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -372,6 +426,8 @@
 		0EE791B91950318D00925E4F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0E4283201A50682700A0CC1F /* libPods-HackerFeed.a */,
+				0E07A4DC1A5064F5004C0758 /* libPods-HackerFeed.a */,
 				0E59357719F9CC8C0081B28A /* SystemConfiguration.framework */,
 				0E59357519F9CC820081B28A /* Security.framework */,
 				0E59357319F9CB040081B28A /* CFNetwork.framework */,
@@ -437,6 +493,27 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		0EF06EC81A487DC70072D766 /* Share Extension */ = {
+			isa = PBXGroup;
+			children = (
+				0E4BEAE81A48961100BDA99B /* Share Extension.entitlements */,
+				0E25F3FE1A50861C00B869EE /* HFShareExtensionNavigationController.h */,
+				0E25F3FF1A50861C00B869EE /* HFShareExtensionNavigationController.m */,
+				0EF06ECB1A487DC70072D766 /* ShareViewController.h */,
+				0EF06ECC1A487DC70072D766 /* ShareViewController.m */,
+				0EF06EC91A487DC70072D766 /* Supporting Files */,
+			);
+			path = "Share Extension";
+			sourceTree = "<group>";
+		};
+		0EF06EC91A487DC70072D766 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0EF06ECA1A487DC70072D766 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		8B2673557A94D2ACDA755023 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -458,10 +535,12 @@
 				0EE791B41950318D00925E4F /* Frameworks */,
 				0EE791B51950318D00925E4F /* Resources */,
 				41CEFFB62EAD4874A7824513 /* Copy Pods Resources */,
+				0EF06ED61A487DC70072D766 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				0EF06ED11A487DC70072D766 /* PBXTargetDependency */,
 			);
 			name = HackerFeed;
 			productName = Orange;
@@ -486,6 +565,23 @@
 			productReference = 0EE791DB1950318D00925E4F /* HackerFeedTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		0EF06EC61A487DC60072D766 /* Share Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0EF06ED51A487DC70072D766 /* Build configuration list for PBXNativeTarget "Share Extension" */;
+			buildPhases = (
+				0EF06EC31A487DC60072D766 /* Sources */,
+				0EF06EC41A487DC60072D766 /* Frameworks */,
+				0EF06EC51A487DC60072D766 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Share Extension";
+			productName = "Share Extension";
+			productReference = 0EF06EC71A487DC60072D766 /* Share Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -501,6 +597,15 @@
 					};
 					0EE791DA1950318D00925E4F = {
 						TestTargetID = 0EE791B61950318D00925E4F;
+					};
+					0EF06EC61A487DC60072D766 = {
+						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = HFG3GB6CJM;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -519,6 +624,7 @@
 			targets = (
 				0EE791B61950318D00925E4F /* HackerFeed */,
 				0EE791DA1950318D00925E4F /* HackerFeedTests */,
+				0EF06EC61A487DC60072D766 /* Share Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -543,6 +649,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				0EE791E71950318D00925E4F /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0EF06EC51A487DC60072D766 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0E25F4041A50869600B869EE /* SourceSansPro-Semibold.otf in Resources */,
+				0E25F4021A50868F00B869EE /* SourceSansPro-Bold.otf in Resources */,
+				0E25F4011A50868C00B869EE /* SourceSansPro-Light.otf in Resources */,
+				0E25F4031A50869200B869EE /* SourceSansPro-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -634,6 +751,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0EF06EC31A487DC60072D766 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0EF06ECD1A487DC70072D766 /* ShareViewController.m in Sources */,
+				0E25F4001A50861C00B869EE /* HFShareExtensionNavigationController.m in Sources */,
+				0E3600681A506379002B8EE7 /* HFTextView.m in Sources */,
+				0E3600671A50629C002B8EE7 /* HFTextViewTableViewCell.m in Sources */,
+				0E25F3FD1A50811900B869EE /* UIFont+HFAdditions.m in Sources */,
+				0E3600661A50628F002B8EE7 /* HFTextFieldTableViewCell.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -641,6 +771,11 @@
 			isa = PBXTargetDependency;
 			target = 0EE791B61950318D00925E4F /* HackerFeed */;
 			targetProxy = 0EE791E01950318D00925E4F /* PBXContainerItemProxy */;
+		};
+		0EF06ED11A487DC70072D766 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0EF06EC61A487DC60072D766 /* Share Extension */;
+			targetProxy = 0EF06ED01A487DC70072D766 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -666,6 +801,7 @@
 /* Begin XCBuildConfiguration section */
 		0EE791EA1950318D00925E4F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EF55B8CC3BFFDC02ECC4E139 /* Pods-HackerFeed.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -705,6 +841,7 @@
 		};
 		0EE791EB1950318D00925E4F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ED545A3266AE771A528F6E8E /* Pods-HackerFeed.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -752,22 +889,6 @@
 				GCC_PREFIX_HEADER = "HackerFeed/HackerFeed-Prefix.pch";
 				INFOPLIST_FILE = "HackerFeed/HackerFeed-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-l\"Pods-HackerFeed-BMYCircularProgressPullToRefresh\"",
-					"-l\"Pods-HackerFeed-FCUtilities\"",
-					"-l\"Pods-HackerFeed-NYSegmentedControl\"",
-					"-l\"Pods-HackerFeed-PBWebViewController\"",
-					"-l\"Pods-HackerFeed-SVProgressHUD\"",
-					"-l\"Pods-HackerFeed-SVPullToRefresh\"",
-					"-l\"Pods-HackerFeed-libHN\"",
-					"-framework",
-					"\"QuartzCore\"",
-					"-ObjC",
-					"-lz",
-					"-framework",
-					Reveal,
-				);
 				PRODUCT_NAME = HackerFeed;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -800,6 +921,7 @@
 		};
 		0EE791F01950318D00925E4F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EF55B8CC3BFFDC02ECC4E139 /* Pods-HackerFeed.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/HackerFeed.app/HackerFeed";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -822,6 +944,7 @@
 		};
 		0EE791F11950318D00925E4F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ED545A3266AE771A528F6E8E /* Pods-HackerFeed.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/HackerFeed.app/HackerFeed";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -835,6 +958,56 @@
 				PRODUCT_NAME = HackerFeedTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+		0EF06ED31A487DC70072D766 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EF55B8CC3BFFDC02ECC4E139 /* Pods-HackerFeed.debug.xcconfig */;
+			buildSettings = {
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_ENTITLEMENTS = "Share Extension/Share Extension.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Share Extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		0EF06ED41A487DC70072D766 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = ED545A3266AE771A528F6E8E /* Pods-HackerFeed.release.xcconfig */;
+			buildSettings = {
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_ENTITLEMENTS = "Share Extension/Share Extension.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = "Share Extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
@@ -864,6 +1037,15 @@
 			buildConfigurations = (
 				0EE791F01950318D00925E4F /* Debug */,
 				0EE791F11950318D00925E4F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0EF06ED51A487DC70072D766 /* Build configuration list for PBXNativeTarget "Share Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0EF06ED31A487DC70072D766 /* Debug */,
+				0EF06ED41A487DC70072D766 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

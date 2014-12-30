@@ -15,3 +15,6 @@ target "HackerFeedTests" do
 
 end
 
+target "Share Extension" do
+
+end

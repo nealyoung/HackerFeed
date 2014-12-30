@@ -7,6 +7,7 @@
 //
 
 #import "HFTextViewTableViewCell.h"
+#import "UIFont+HFAdditions.h"
 
 @implementation HFTextViewTableViewCell
 

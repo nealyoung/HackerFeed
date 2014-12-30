@@ -7,6 +7,7 @@
 //
 
 #import "HFTextView.h"
+#import "UIFont+HFAdditions.h"
 
 @interface HFTextView ()
 

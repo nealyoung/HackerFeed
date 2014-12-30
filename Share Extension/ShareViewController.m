@@ -1,20 +1,21 @@
 //
-//  HFNewPostViewController.m
-//  HackerFeed
+//  ShareViewController.m
+//  Share Extension
 //
-//  Created by Nealon Young on 8/1/14.
+//  Created by Nealon Young on 12/22/14.
 //  Copyright (c) 2014 Nealon Young. All rights reserved.
 //
 
-#import "HFNewPostViewController.h"
+#import "ShareViewController.h"
 
 #import "libHN.h"
 #import "NYSegmentedControl.h"
 #import "HFTextFieldTableViewCell.h"
 #import "HFTextViewTableViewCell.h"
 #import "SVProgressHUD.h"
+#import "UIFont+HFAdditions.h"
 
-@interface HFNewPostViewController () <UITableViewDataSource, UITableViewDelegate, UITextViewDelegate>
+@interface ShareViewController () <UITableViewDataSource, UITableViewDelegate, UITextViewDelegate>
 
 @property NYSegmentedControl *segmentedControl;
 @property UITableView *tableView;
@@ -28,7 +29,7 @@
 static NSString * const kTextFieldTableViewCellIdentifier = @"TextFieldTableViewCell";
 static NSString * const kTextViewTableViewCellIdentifier = @"TextViewTableViewCell";
 
-@implementation HFNewPostViewController
+@implementation ShareViewController
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -67,7 +68,7 @@ static NSString * const kTextViewTableViewCellIdentifier = @"TextViewTableViewCe
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     self.segmentedControl = [[NYSegmentedControl alloc] initWithItems:@[NSLocalizedString(@"Link", nil), NSLocalizedString(@"Text", nil)]];
     [self.segmentedControl addTarget:self action:@selector(segmentSelected:) forControlEvents:UIControlEventValueChanged];
     self.segmentedControl.backgroundColor = [UIColor colorWithWhite:0.9f alpha:1.0f];
@@ -83,7 +84,7 @@ static NSString * const kTextViewTableViewCellIdentifier = @"TextViewTableViewCe
 }
 
 - (void)cancelButtonPressed:(id)sender {
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)submitButtonPressed:(id)sender {
