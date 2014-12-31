@@ -54,9 +54,10 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
                                                                           metrics:nil
                                                                             views:NSDictionaryOfVariableBindings(_tableView)]];
         
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose
-                                                                                               target:self
-                                                                                               action:@selector(newPostButtonPressed)];
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"CreatePostIcon"]
+                                                                                  style:UIBarButtonItemStylePlain
+                                                                                 target:self
+                                                                                 action:@selector(newPostButtonPressed)];
     }
     
     return self;
