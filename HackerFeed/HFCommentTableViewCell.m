@@ -154,7 +154,7 @@
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     [super touchesEnded:touches withEvent:event];
     
-    if (self.delegate) {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(commentTableViewCellTapped:)]) {
         [self.delegate commentTableViewCellTapped:self];
     }
 }

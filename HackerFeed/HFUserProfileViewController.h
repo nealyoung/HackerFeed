@@ -12,7 +12,7 @@
 
 @interface HFUserProfileViewController : HFProfileViewController
 
-@property IBOutlet HFBorderedButton *loginButton;
-@property IBOutlet UIBarButtonItem *logoutItem;
+@property HFBorderedButton *loginButton;
+@property UIBarButtonItem *logoutItem;
 
 @end

@@ -11,7 +11,7 @@
 
 @interface HFProfileViewController : UIViewController
 
-@property IBOutlet UITableView *tableView;
+@property UITableView *tableView;
 
 @property BOOL showsLoggedInUser;
 @property (nonatomic) HNUser *user;

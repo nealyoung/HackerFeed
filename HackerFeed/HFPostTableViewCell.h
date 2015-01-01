@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "HFCommentsButton.h"
+#import "HFTableViewCell.h"
 
-@interface HFPostTableViewCell : UITableViewCell
+@interface HFPostTableViewCell : HFTableViewCell
 
 @property UILabel *infoLabel;
 @property UILabel *titleLabel;

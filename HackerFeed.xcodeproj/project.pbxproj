@@ -22,6 +22,7 @@
 		0E3600661A50628F002B8EE7 /* HFTextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E511CA2198C0B3300F94E9F /* HFTextFieldTableViewCell.m */; };
 		0E3600671A50629C002B8EE7 /* HFTextViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E57B5B3198C2D6C0056CA54 /* HFTextViewTableViewCell.m */; };
 		0E3600681A506379002B8EE7 /* HFTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFC253D1986026500A67412 /* HFTextView.m */; };
+		0E3653A91A54D1F5002FB22A /* HFSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E3653A81A54D1F5002FB22A /* HFSettingsViewController.m */; };
 		0E3C12CA19881D9700AAF072 /* SourceSansPro-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0E3C12C919881D9300AAF072 /* SourceSansPro-Light.otf */; };
 		0E4283211A50682700A0CC1F /* libPods-HackerFeed.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E4283201A50682700A0CC1F /* libPods-HackerFeed.a */; };
 		0E511CA3198C0B3300F94E9F /* HFTextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E511CA2198C0B3300F94E9F /* HFTextFieldTableViewCell.m */; };
@@ -127,6 +128,8 @@
 		0E25F3FF1A50861C00B869EE /* HFShareExtensionNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFShareExtensionNavigationController.m; sourceTree = "<group>"; };
 		0E2F35BE198B8BF700718E1A /* HFNewPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFNewPostViewController.h; sourceTree = "<group>"; };
 		0E2F35BF198B8BF700718E1A /* HFNewPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFNewPostViewController.m; sourceTree = "<group>"; };
+		0E3653A71A54D1F5002FB22A /* HFSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFSettingsViewController.h; sourceTree = "<group>"; };
+		0E3653A81A54D1F5002FB22A /* HFSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFSettingsViewController.m; sourceTree = "<group>"; };
 		0E3C12C919881D9300AAF072 /* SourceSansPro-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Light.otf"; sourceTree = "<group>"; };
 		0E4283201A50682700A0CC1F /* libPods-HackerFeed.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-HackerFeed.a"; path = "Pods/build/Debug-iphoneos/libPods-HackerFeed.a"; sourceTree = "<group>"; };
 		0E4BEAE81A48961100BDA99B /* Share Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Share Extension.entitlements"; sourceTree = "<group>"; };
@@ -305,6 +308,8 @@
 				0EE2838A198394BB00D3A3C6 /* HFUserProfileViewController.m */,
 				0E6C30DD197F5DCB00C33A67 /* HFLoginViewController.h */,
 				0E6C30DE197F5DCB00C33A67 /* HFLoginViewController.m */,
+				0E3653A71A54D1F5002FB22A /* HFSettingsViewController.h */,
+				0E3653A81A54D1F5002FB22A /* HFSettingsViewController.m */,
 				0E5424E819C4DA5F00FF24A7 /* HFModalWebViewController.h */,
 				0E5424E919C4DA5F00FF24A7 /* HFModalWebViewController.m */,
 				0E0214FC19CB53D300561912 /* HFWebViewController.h */,
@@ -714,6 +719,7 @@
 				0EE791CB1950318D00925E4F /* HFAppDelegate.m in Sources */,
 				0EC331201992986400E1531A /* HFLabel.m in Sources */,
 				0E511CA3198C0B3300F94E9F /* HFTextFieldTableViewCell.m in Sources */,
+				0E3653A91A54D1F5002FB22A /* HFSettingsViewController.m in Sources */,
 				0EE6CAE119845B37005AE100 /* HFCommentActionsView.m in Sources */,
 				0E2F35C0198B8BF700718E1A /* HFNewPostViewController.m in Sources */,
 				0EAC1B11197C54BD00393828 /* HFDropdownMenu.m in Sources */,

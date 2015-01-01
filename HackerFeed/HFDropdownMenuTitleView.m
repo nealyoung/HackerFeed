@@ -8,6 +8,9 @@
 
 #import "HFDropdownMenuTitleView.h"
 
+/**
+ Draws a arrow shape indicating the state of the dropdown menu
+ */
 @interface _HFDropdownMenuTitleViewIndicator : UIView
 
 @end
@@ -36,7 +39,7 @@
     [bezierPath addLineToPoint: CGPointMake(15, 2)];
     [bezierPath addLineToPoint: CGPointMake(15, 2)];
     [bezierPath closePath];
-    [[UIColor darkGrayColor] setFill];
+    [[UIColor hf_themedSecondaryTextColor] setFill];
     
     [bezierPath fill];
 }
@@ -62,7 +65,7 @@
         self.titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         [self.titleLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
         self.titleLabel.font = [UIFont applicationFontOfSize:18.0f];
-        self.titleLabel.textColor = [UIColor applicationColor];
+        self.titleLabel.textColor = [UIColor hf_themedAccentColor];
         self.titleLabel.textAlignment = NSTextAlignmentCenter;
         [self addSubview:self.titleLabel];
         

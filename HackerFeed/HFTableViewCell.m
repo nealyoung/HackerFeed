@@ -14,6 +14,8 @@
     self = [super initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuseIdentifier];
     
     if (self) {
+        self.contentView.backgroundColor = [UIColor hf_themedBackgroundColor];
+        
         self.textLabel.font = [UIFont applicationFontOfSize:16.0f];
         
         self.detailTextLabel.font = [UIFont applicationFontOfSize:16.0f];

@@ -28,7 +28,7 @@ const CGFloat kListTopMarginHeight = 80.0f;
     self = [super initWithFrame:frame];
     if (self) {
         _animationDuration = 0.6f;
-        _itemHeight = 44.0f;
+        _itemHeight = 40.0f;
         
         _backgroundView = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleDark]];
         _backgroundView.layer.opacity = 0.0f;

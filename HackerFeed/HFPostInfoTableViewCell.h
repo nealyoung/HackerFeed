@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HFTableViewCell.h"
 
-@interface HFPostInfoTableViewCell : UITableViewCell
+@interface HFPostInfoTableViewCell : HFTableViewCell
 
-@property IBOutlet UILabel *titleLabel;
-@property IBOutlet UILabel *infoLabel;
+@property UILabel *titleLabel;
+@property UILabel *infoLabel;
 
 @end

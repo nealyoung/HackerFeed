@@ -21,7 +21,7 @@
     
     if (self) {
         self.bottomBorderView = [[UIView alloc] initWithFrame:CGRectZero];
-        self.bottomBorderView.backgroundColor = [UIColor applicationColor];
+        self.bottomBorderView.backgroundColor = [UIColor hf_themedAccentColor];
         [self addSubview:self.bottomBorderView];
     }
     

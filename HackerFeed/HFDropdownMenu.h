@@ -31,12 +31,34 @@
 
 @property UIVisualEffectView *backgroundView;
 
+/**
+ Items displayed in the dropdown menu
+ */
 @property (nonatomic) NSArray *items;
+
+/**
+ The currently seelected item
+ */
 @property (nonatomic) HFDropdownMenuItem *selectedItem;
+
+/**
+ Whether the dropdown menu is being displayed or is hidden
+ */
 @property (nonatomic) BOOL showingMenu;
 
+/**
+ Length of the menu's show/hide animation
+ */
 @property (nonatomic) CGFloat animationDuration;
+
+/**
+ Height of each item in the menu
+ */
 @property (nonatomic) CGFloat itemHeight;
+
+/**
+ Font used in the display of buttons
+ */
 @property (nonatomic) UIFont *itemFont;
 
 @property (nonatomic) UINavigationController <HFDropdownMenuDelegate> *delegate;

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "HFCommentActionsView.h"
+#import "HFTableViewCell.h"
 #import "HFTextView.h"
 
 @class HFCommentTableViewCell;
@@ -18,7 +19,7 @@
 
 @end
 
-@interface HFCommentTableViewCell : UITableViewCell
+@interface HFCommentTableViewCell : HFTableViewCell
 
 @property (weak) id <HFCommentTableViewCellDelegate> delegate;
 

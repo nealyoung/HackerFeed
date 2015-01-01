@@ -380,7 +380,6 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
         return cell;
     } else if (indexPath.row == 1 && self.post.Type != PostTypeJobs) {
         HFTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:kUsernameTableViewCellIdentifier forIndexPath:indexPath];
-        cell.textLabel.textColor = [UIColor darkGrayColor];
         cell.textLabel.font = [UIFont smallCapsApplicationFontWithSize:cell.textLabel.font.pointSize];
         cell.textLabel.text = NSLocalizedString(@"submitted by", nil);
         cell.detailTextLabel.font = [UIFont applicationFontOfSize:16.0f];

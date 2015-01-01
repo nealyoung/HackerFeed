@@ -17,6 +17,7 @@
         self.titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         [self.titleLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
         self.titleLabel.numberOfLines = 0;
+        self.titleLabel.textColor = [UIColor hf_themedTextColor];
         self.titleLabel.textAlignment = NSTextAlignmentCenter;
         self.titleLabel.font = [UIFont applicationFontOfSize:18.0f];
         [self.contentView addSubview:self.titleLabel];
@@ -24,7 +25,7 @@
         self.infoLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         [self.infoLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
         self.infoLabel.textAlignment = NSTextAlignmentCenter;
-        self.infoLabel.textColor = [UIColor darkGrayColor];
+        self.infoLabel.textColor = [UIColor hf_themedSecondaryTextColor];
         self.infoLabel.font = [UIFont smallCapsApplicationFontWithSize:16.0f];
         [self.contentView addSubview:self.infoLabel];
         

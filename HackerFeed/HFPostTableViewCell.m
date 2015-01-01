@@ -26,31 +26,32 @@
         
         self.infoLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         [self.infoLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
-        self.infoLabel.textColor = [UIColor darkGrayColor];
+        self.infoLabel.textColor = [UIColor hf_themedSecondaryTextColor];
         self.infoLabel.font = [UIFont smallCapsApplicationFontWithSize:15.0f];
         [self.contentView addSubview:self.infoLabel];
         
         self.titleLabel = [[HFLabel alloc] initWithFrame:CGRectZero];
         [self.titleLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
         self.titleLabel.numberOfLines = 0;
+        self.titleLabel.textColor = [UIColor hf_themedTextColor];
         self.titleLabel.font = [UIFont applicationFontOfSize:17.0f];
         [self.titleLabel setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
         [self.contentView addSubview:self.titleLabel];
         
         self.domainLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         [self.domainLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
-        self.domainLabel.textColor = [UIColor darkGrayColor];
+        self.domainLabel.textColor = [UIColor hf_themedSecondaryTextColor];
         self.domainLabel.font = [UIFont smallCapsApplicationFontWithSize:15.0f];
         [self.contentView addSubview:self.domainLabel];
         
         self.commentButtonBackground = [[UIView alloc] initWithFrame:CGRectZero];
         [self.commentButtonBackground setTranslatesAutoresizingMaskIntoConstraints:NO];
-        self.commentButtonBackground.backgroundColor = [UIColor colorWithWhite:0.97f alpha:1.0f];
+        self.commentButtonBackground.backgroundColor = [[UIColor hf_themedBackgroundColor] hf_colorDarkenedByFactor:0.03f];
         [self.contentView addSubview:self.commentButtonBackground];
         
         self.commentsButton = [HFCommentsButton buttonWithType:UIButtonTypeCustom];
         [self.commentsButton setTranslatesAutoresizingMaskIntoConstraints:NO];
-        [self.commentsButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+        [self.commentsButton setTitleColor:[UIColor hf_themedSecondaryTextColor] forState:UIControlStateNormal];
         [self.contentView addSubview:self.commentsButton];
         
         [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_commentButtonBackground]|"
