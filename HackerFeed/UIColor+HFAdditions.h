@@ -10,6 +10,7 @@
 
 typedef NS_ENUM(NSInteger, HFColorTheme) {
     HFColorThemeDefault,
+    HFColorThemeBlue,
     HFColorThemeDark
 };
 
@@ -27,5 +28,6 @@ typedef NS_ENUM(NSInteger, HFColorTheme) {
 + (UIStatusBarStyle)hf_themedStatusBarStyle;
 
 - (UIColor *)hf_colorDarkenedByFactor:(CGFloat)factor;
+- (UIColor *)hf_colorLightenedByFactor:(CGFloat)factor;
 
 @end

@@ -23,6 +23,7 @@
 		0E3600671A50629C002B8EE7 /* HFTextViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E57B5B3198C2D6C0056CA54 /* HFTextViewTableViewCell.m */; };
 		0E3600681A506379002B8EE7 /* HFTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFC253D1986026500A67412 /* HFTextView.m */; };
 		0E3653A91A54D1F5002FB22A /* HFSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E3653A81A54D1F5002FB22A /* HFSettingsViewController.m */; };
+		0E3653AC1A55DB0D002FB22A /* HFInterfaceTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E3653AB1A55DB0D002FB22A /* HFInterfaceTheme.m */; };
 		0E3C12CA19881D9700AAF072 /* SourceSansPro-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0E3C12C919881D9300AAF072 /* SourceSansPro-Light.otf */; };
 		0E4283211A50682700A0CC1F /* libPods-HackerFeed.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E4283201A50682700A0CC1F /* libPods-HackerFeed.a */; };
 		0E511CA3198C0B3300F94E9F /* HFTextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E511CA2198C0B3300F94E9F /* HFTextFieldTableViewCell.m */; };
@@ -130,6 +131,8 @@
 		0E2F35BF198B8BF700718E1A /* HFNewPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFNewPostViewController.m; sourceTree = "<group>"; };
 		0E3653A71A54D1F5002FB22A /* HFSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFSettingsViewController.h; sourceTree = "<group>"; };
 		0E3653A81A54D1F5002FB22A /* HFSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFSettingsViewController.m; sourceTree = "<group>"; };
+		0E3653AA1A55DB0D002FB22A /* HFInterfaceTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFInterfaceTheme.h; sourceTree = "<group>"; };
+		0E3653AB1A55DB0D002FB22A /* HFInterfaceTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFInterfaceTheme.m; sourceTree = "<group>"; };
 		0E3C12C919881D9300AAF072 /* SourceSansPro-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Light.otf"; sourceTree = "<group>"; };
 		0E4283201A50682700A0CC1F /* libPods-HackerFeed.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-HackerFeed.a"; path = "Pods/build/Debug-iphoneos/libPods-HackerFeed.a"; sourceTree = "<group>"; };
 		0E4BEAE81A48961100BDA99B /* Share Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Share Extension.entitlements"; sourceTree = "<group>"; };
@@ -226,7 +229,6 @@
 		0EFC253E1986026500A67412 /* HFTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFTextView.h; sourceTree = "<group>"; };
 		0EFC2540198604A900A67412 /* HFUserPostDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFUserPostDataSource.h; sourceTree = "<group>"; };
 		0EFC2541198604A900A67412 /* HFUserPostDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFUserPostDataSource.m; sourceTree = "<group>"; };
-		735C0062804D43E999E3B1F4 /* libPods-Orange.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Orange.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED545A3266AE771A528F6E8E /* Pods-HackerFeed.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HackerFeed.release.xcconfig"; path = "Pods/Target Support Files/Pods-HackerFeed/Pods-HackerFeed.release.xcconfig"; sourceTree = "<group>"; };
 		EF55B8CC3BFFDC02ECC4E139 /* Pods-HackerFeed.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HackerFeed.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HackerFeed/Pods-HackerFeed.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -327,6 +329,8 @@
 				0E5C453A19838135001EE1CB /* HFFilterPostDataSource.m */,
 				0EFC2540198604A900A67412 /* HFUserPostDataSource.h */,
 				0EFC2541198604A900A67412 /* HFUserPostDataSource.m */,
+				0E3653AA1A55DB0D002FB22A /* HFInterfaceTheme.h */,
+				0E3653AB1A55DB0D002FB22A /* HFInterfaceTheme.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -445,7 +449,6 @@
 				0EE791BC1950318D00925E4F /* CoreGraphics.framework */,
 				0EE791BE1950318D00925E4F /* UIKit.framework */,
 				0EE791DC1950318D00925E4F /* XCTest.framework */,
-				735C0062804D43E999E3B1F4 /* libPods-Orange.a */,
 				014806F2979C4ADBAA87257A /* libPods-HackerFeed.a */,
 			);
 			name = Frameworks;
@@ -723,6 +726,7 @@
 				0EE6CAE119845B37005AE100 /* HFCommentActionsView.m in Sources */,
 				0E2F35C0198B8BF700718E1A /* HFNewPostViewController.m in Sources */,
 				0EAC1B11197C54BD00393828 /* HFDropdownMenu.m in Sources */,
+				0E3653AC1A55DB0D002FB22A /* HFInterfaceTheme.m in Sources */,
 				0EE2838B198394BB00D3A3C6 /* HFUserProfileViewController.m in Sources */,
 				0EEBD393197DEB7E00D74AD6 /* HFUserInfoTableViewCell.m in Sources */,
 				0EFC2542198604A900A67412 /* HFUserPostDataSource.m in Sources */,
@@ -895,6 +899,22 @@
 				GCC_PREFIX_HEADER = "HackerFeed/HackerFeed-Prefix.pch";
 				INFOPLIST_FILE = "HackerFeed/HackerFeed-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-l\"Pods-HackerFeed-BMYCircularProgressPullToRefresh\"",
+					"-l\"Pods-HackerFeed-FCUtilities\"",
+					"-l\"Pods-HackerFeed-NYSegmentedControl\"",
+					"-l\"Pods-HackerFeed-PBWebViewController\"",
+					"-l\"Pods-HackerFeed-SVProgressHUD\"",
+					"-l\"Pods-HackerFeed-SVPullToRefresh\"",
+					"-l\"Pods-HackerFeed-libHN\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-ObjC",
+					"-lz",
+					"-framework",
+					Reveal,
+				);
 				PRODUCT_NAME = HackerFeed;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -918,6 +938,18 @@
 				GCC_PREFIX_HEADER = "HackerFeed/HackerFeed-Prefix.pch";
 				INFOPLIST_FILE = "HackerFeed/HackerFeed-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-l\"Pods-HackerFeed-BMYCircularProgressPullToRefresh\"",
+					"-l\"Pods-HackerFeed-FCUtilities\"",
+					"-l\"Pods-HackerFeed-NYSegmentedControl\"",
+					"-l\"Pods-HackerFeed-PBWebViewController\"",
+					"-l\"Pods-HackerFeed-SVProgressHUD\"",
+					"-l\"Pods-HackerFeed-SVPullToRefresh\"",
+					"-l\"Pods-HackerFeed-libHN\"",
+					"-framework",
+					"\"QuartzCore\"",
+				);
 				PRODUCT_NAME = HackerFeed;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";

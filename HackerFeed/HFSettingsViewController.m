@@ -49,14 +49,62 @@ static NSString * const kTableViewCellIdentifier = @"TableViewCell";
 #pragma mark - UITableViewDataSource
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return NSLocalizedString(@"Theme", nil);
+    switch (section) {
+        case 0:
+            return NSLocalizedString(@"Font", nil);
+            break;
+            
+        case 1:
+            return NSLocalizedString(@"Theme", nil);
+            break;
+            
+        default:
+            return nil;
+            break;
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    switch (section) {
+        case 0:
+            return 2;
+            break;
+            
+        case 1:
+            return 3;
+            break;
+            
+        default:
+            return 0;
+            break;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    switch (indexPath.section) {
+        case 0: {
+            HFTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableViewCellIdentifier forIndexPath:indexPath];
+            
+            if (indexPath.row == 0) {
+                cell.textLabel.text = @"Source Sans Pro";
+            } else {
+                cell.textLabel.text = @"Avenir Next";
+            }
+            
+            return cell;
+        }
+            
+        case 1: {
+            HFTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableViewCellIdentifier forIndexPath:indexPath];
+            cell.textLabel.text = [NSString stringWithFormat:@"Theme %ld", (long)indexPath.row];
+            return cell;
+        }
+        
+        default:
+            return nil;
+            break;
+    }
+    
     HFTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableViewCellIdentifier forIndexPath:indexPath];
     cell.textLabel.text = [NSString stringWithFormat:@"Theme %ld", (long)indexPath.row];
     return cell;
@@ -65,7 +113,15 @@ static NSString * const kTableViewCellIdentifier = @"TableViewCell";
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [UIColor hf_setCurrentColorTheme:HFColorThemeDark];
+    switch (indexPath.section) {
+        case 0:
+            [UIColor hf_setCurrentColorTheme:indexPath.row];
+            break;
+            
+        case 1:
+            [UIColor hf_setCurrentColorTheme:indexPath.row];
+            break;
+    }
 }
 
 @end

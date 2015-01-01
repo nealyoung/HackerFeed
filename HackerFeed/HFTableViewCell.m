@@ -14,6 +14,7 @@
     self = [super initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuseIdentifier];
     
     if (self) {
+        self.backgroundColor = [UIColor hf_themedBackgroundColor];
         self.contentView.backgroundColor = [UIColor hf_themedBackgroundColor];
         
         self.textLabel.font = [UIFont applicationFontOfSize:16.0f];
@@ -23,6 +24,16 @@
     }
     
     return self;
+}
+
+- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
+    if (highlighted) {
+        self.backgroundColor = [[UIColor hf_themedBackgroundColor] hf_colorDarkenedByFactor:0.5f];
+        self.contentView.backgroundColor = [[UIColor hf_themedBackgroundColor] hf_colorDarkenedByFactor:0.5f];
+    } else {
+        self.backgroundColor = [UIColor hf_themedBackgroundColor];
+        self.contentView.backgroundColor = [UIColor hf_themedBackgroundColor];
+    }
 }
 
 @end

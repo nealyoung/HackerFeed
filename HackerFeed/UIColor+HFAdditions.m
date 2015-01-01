@@ -30,6 +30,10 @@ static NSString * const kColorThemeDefaultsKey = @"HFColorThemeSetting";
             return [UIColor colorWithRed:0.91f green:0.66f blue:0.44f alpha:1.0f];
             break;
             
+        case HFColorThemeBlue:
+            return [UIColor colorWithWhite:0.84f alpha:1.0f];
+            break;
+            
         default:
             return [UIColor colorWithRed:0.99f green:0.40f blue:0.13f alpha:1.0f];
             break;
@@ -40,6 +44,10 @@ static NSString * const kColorThemeDefaultsKey = @"HFColorThemeSetting";
     switch ([UIColor hf_currentColorTheme]) {
         case HFColorThemeDark:
             return [UIColor colorWithRed:0.91f green:0.66f blue:0.44f alpha:1.0f];
+            break;
+            
+        case HFColorThemeBlue:
+            return [UIColor colorWithWhite:0.84f alpha:1.0f];
             break;
             
         default:
@@ -54,6 +62,10 @@ static NSString * const kColorThemeDefaultsKey = @"HFColorThemeSetting";
             return [UIColor colorWithWhite:0.6f alpha:1.0f];
             break;
             
+        case HFColorThemeBlue:
+            return [UIColor colorWithWhite:0.78f alpha:1.0f];
+            break;
+            
         default:
             return [UIColor colorWithWhite:0.33f alpha:1.0f];
             break;
@@ -64,6 +76,10 @@ static NSString * const kColorThemeDefaultsKey = @"HFColorThemeSetting";
     switch ([UIColor hf_currentColorTheme]) {
         case HFColorThemeDark:
             return [UIColor colorWithWhite:0.12f alpha:1.0f];
+            break;
+            
+        case HFColorThemeBlue:
+            return [UIColor colorWithRed:0.14f green:0.19f blue:0.25f alpha:1.0f];
             break;
             
         default:
@@ -78,8 +94,12 @@ static NSString * const kColorThemeDefaultsKey = @"HFColorThemeSetting";
             return [UIColor colorWithWhite:0.13f alpha:1.0f];
             break;
             
+        case HFColorThemeBlue:
+            return [UIColor colorWithRed:0.16f green:0.22f blue:0.29f alpha:1.0f];
+            break;
+            
         default:
-            return nil;
+            return [UIColor colorWithWhite:0.98f alpha:1.0f];
             break;
     }
 }
@@ -87,6 +107,10 @@ static NSString * const kColorThemeDefaultsKey = @"HFColorThemeSetting";
 + (UIStatusBarStyle)hf_themedStatusBarStyle {
     switch ([UIColor hf_currentColorTheme]) {
         case HFColorThemeDark:
+            return UIStatusBarStyleLightContent;
+            break;
+            
+        case HFColorThemeBlue:
             return UIStatusBarStyleLightContent;
             break;
             
@@ -100,9 +124,22 @@ static NSString * const kColorThemeDefaultsKey = @"HFColorThemeSetting";
     CGFloat r, g, b, a;
     
     if ([self getRed:&r green:&g blue:&b alpha:&a]) {
-        return [UIColor colorWithRed:MAX(r - factor, 0.0)
-                               green:MAX(g - factor, 0.0)
-                                blue:MAX(b - factor, 0.0)
+        return [UIColor colorWithRed:MAX(r - factor, 0.0f)
+                               green:MAX(g - factor, 0.0f)
+                                blue:MAX(b - factor, 0.0f)
+                               alpha:a];
+    }
+    
+    return nil;
+}
+
+- (UIColor *)hf_colorLightenedByFactor:(CGFloat)factor {
+    CGFloat r, g, b, a;
+    
+    if ([self getRed:&r green:&g blue:&b alpha:&a]) {
+        return [UIColor colorWithRed:MIN(r + factor, 1.0f)
+                               green:MIN(g + factor, 1.0f)
+                                blue:MIN(b + factor, 1.0f)
                                alpha:a];
     }
     

@@ -27,7 +27,7 @@
         
         self.usernameLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         [self.usernameLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
-        self.usernameLabel.textColor = [UIColor darkGrayColor];
+        self.usernameLabel.textColor = [UIColor hf_themedTextColor];
         self.usernameLabel.font = [UIFont smallCapsApplicationFontWithSize:15.0f];
         //self.usernameLabel.font = [UIFont applicationFontOfSize:16.0f];
         [self.contentView addSubview:self.usernameLabel];
@@ -38,6 +38,7 @@
         self.textView.editable = NO;
         self.textView.dataDetectorTypes = UIDataDetectorTypeLink;
         self.textView.backgroundColor = [UIColor clearColor];
+        self.textView.textColor = [UIColor hf_themedSecondaryTextColor];
         self.textView.font = [UIFont applicationFontOfSize:14.0f];
         [self.contentView addSubview:self.textView];
         

@@ -69,7 +69,7 @@
                                                                                  metrics:nil
                                                                                    views:NSDictionaryOfVariableBindings(_infoLabel, _commentsButton)]];
         
-        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-15-[_titleLabel]-12-[_commentsButton(40)]-8-|"
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-15-[_titleLabel]-16-[_commentsButton(40)]-8-|"
                                                                                  options:0
                                                                                  metrics:nil
                                                                                    views:NSDictionaryOfVariableBindings(_titleLabel, _commentsButton)]];

@@ -57,7 +57,7 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     
     if (self) {
-        self.view.backgroundColor = [UIColor whiteColor];
+        //self.view.backgroundColor = [UIColor whiteColor];
         
         self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
         [self.tableView setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -65,6 +65,7 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
         self.tableView.delegate = self;
         // Hide the cell separators until a post is set
         self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        self.tableView.separatorColor = [[UIColor hf_themedBackgroundColor] hf_colorDarkenedByFactor:0.06f];
         [self.tableView registerClass:[HFPostInfoTableViewCell class] forCellReuseIdentifier:kPostInfoTableViewCellIdentifier];
         [self.tableView registerClass:[HFTableViewCell class] forCellReuseIdentifier:kUsernameTableViewCellIdentifier];
         [self.tableView registerClass:[HFCommentTableViewCell class] forCellReuseIdentifier:kCommentTableViewCellIdentifier];
