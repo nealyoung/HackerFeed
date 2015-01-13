@@ -20,11 +20,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     
     if (self) {
-        self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
-        
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
-                                                                                              target:self
-                                                                                              action:@selector(cancelButtonPressed:)];
+        self.view.backgroundColor = [[UIColor hf_themedBackgroundColor] hf_colorDarkenedByFactor:0.03f];
         
         self.usernameTextField = [[UITextField alloc] initWithFrame:CGRectZero];
         [self.usernameTextField setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -51,6 +47,7 @@
         [self.securityLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
         self.securityLabel.font = [UIFont smallCapsLightApplicationFontWithSize:14.0f];
         self.securityLabel.textAlignment = NSTextAlignmentCenter;
+        self.securityLabel.textColor = [UIColor hf_themedTextColor];
         self.securityLabel.text = NSLocalizedString(@"your information is sent securely", nil);
         [self.view addSubview:self.securityLabel];
         
@@ -97,10 +94,6 @@
     return self;
 }
 
-- (void)cancelButtonPressed:(id)sender {
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-}
-
 - (void)submitButtonPressed:(id)sender {
     [SVProgressHUD show];
     
@@ -109,8 +102,12 @@
                                       completion:^(HNUser *user) {
                                           if (user) {
                                               [SVProgressHUD dismiss];
-                                              [self.delegate loginViewController:self didLoginWithUser:user];
-                                              [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+                                              
+                                              if (self.delegate && [self.delegate respondsToSelector:@selector(loginViewController:didLoginWithUser:)]) {
+                                                  [self.delegate loginViewController:self didLoginWithUser:user];
+                                              }
+                                              
+                                              [self.navigationController popViewControllerAnimated:YES];
                                           } else {
                                               [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Incorrect username or password", nil)];
                                           }

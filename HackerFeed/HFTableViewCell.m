@@ -18,22 +18,45 @@
         self.contentView.backgroundColor = [UIColor hf_themedBackgroundColor];
         
         self.textLabel.font = [UIFont applicationFontOfSize:16.0f];
+        self.textLabel.textColor = [UIColor hf_themedSecondaryTextColor];
         
         self.detailTextLabel.font = [UIFont applicationFontOfSize:16.0f];
-        self.detailTextLabel.textColor = [UIColor darkGrayColor];
+        self.detailTextLabel.textColor = [UIColor hf_themedTextColor];
     }
     
     return self;
 }
 
 - (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
-    if (highlighted) {
-        self.backgroundColor = [[UIColor hf_themedBackgroundColor] hf_colorDarkenedByFactor:0.5f];
-        self.contentView.backgroundColor = [[UIColor hf_themedBackgroundColor] hf_colorDarkenedByFactor:0.5f];
-    } else {
-        self.backgroundColor = [UIColor hf_themedBackgroundColor];
-        self.contentView.backgroundColor = [UIColor hf_themedBackgroundColor];
-    }
+    NSTimeInterval animationDuration = animated ? 0.3f : 0.0f;
+    
+    [UIView animateWithDuration:animationDuration animations:^{
+        if (highlighted) {
+            self.textLabel.backgroundColor = [[UIColor hf_themedBackgroundColor] hf_colorDarkenedByFactor:0.25f];
+            self.backgroundColor = [[UIColor hf_themedBackgroundColor] hf_colorDarkenedByFactor:0.25f];
+            self.contentView.backgroundColor = [[UIColor hf_themedBackgroundColor] hf_colorDarkenedByFactor:0.25f];
+        } else {
+            self.textLabel.backgroundColor = [UIColor hf_themedBackgroundColor];
+            self.backgroundColor = [UIColor hf_themedBackgroundColor];
+            self.contentView.backgroundColor = [UIColor hf_themedBackgroundColor];
+        }
+    }];
+}
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    NSTimeInterval animationDuration = animated ? 0.3f : 0.0f;
+    
+    [UIView animateWithDuration:animationDuration animations:^{
+        if (selected) {
+            self.textLabel.backgroundColor = [[UIColor hf_themedBackgroundColor] hf_colorDarkenedByFactor:0.25f];
+            self.backgroundColor = [[UIColor hf_themedBackgroundColor] hf_colorDarkenedByFactor:0.25f];
+            self.contentView.backgroundColor = [[UIColor hf_themedBackgroundColor] hf_colorDarkenedByFactor:0.25f];
+        } else {
+            self.textLabel.backgroundColor = [UIColor hf_themedBackgroundColor];
+            self.backgroundColor = [UIColor hf_themedBackgroundColor];
+            self.contentView.backgroundColor = [UIColor hf_themedBackgroundColor];
+        }
+    }];
 }
 
 @end

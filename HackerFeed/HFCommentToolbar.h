@@ -10,7 +10,7 @@
 #import "HFBorderedButton.h"
 #import "HFTextView.h"
 
-@interface HFCommentToolbar : UIToolbar
+@interface HFCommentToolbar : UIView
 
 @property (nonatomic) NSString *replyUsername;
 @property (nonatomic) UIButton *cancelReplyButton;

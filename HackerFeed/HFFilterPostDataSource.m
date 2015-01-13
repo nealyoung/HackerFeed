@@ -28,7 +28,7 @@
 }
 
 - (void)refreshWithCompletion:(void (^)(BOOL completed))block {
-    [[HNManager sharedManager] loadPostsWithFilter:self.postFilterType completion:^(NSArray *posts, NSString *nextPageIdentifier) {
+    [[HNManager sharedManager] loadPostsWithFilter:self.postFilterType completion:^(NSArray *posts, NSString *nextPageIdentifier) {        
         if (posts) {
             self.urlAddition = [HNManager sharedManager].postUrlAddition;
             self.posts = [NSMutableArray arrayWithArray:posts];

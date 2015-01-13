@@ -47,20 +47,6 @@
 }
 
 - (void)drawRect:(CGRect)rect {
-    UIBezierPath* ovalPath = UIBezierPath.bezierPath;
-    [ovalPath moveToPoint: CGPointMake(20.5, 62.5)];
-    [ovalPath addCurveToPoint: CGPointMake(17.5, 75.5) controlPoint1: CGPointMake(21.15, 67.45) controlPoint2: CGPointMake(17.5, 75.5)];
-    [ovalPath addCurveToPoint: CGPointMake(39.52, 66.2) controlPoint1: CGPointMake(17.5, 75.5) controlPoint2: CGPointMake(32.99, 65.28)];
-    [ovalPath addCurveToPoint: CGPointMake(84.15, 57.17) controlPoint1: CGPointMake(55.14, 68.39) controlPoint2: CGPointMake(72.03, 65.38)];
-    [ovalPath addCurveToPoint: CGPointMake(84.15, 10.22) controlPoint1: CGPointMake(103.28, 44.2) controlPoint2: CGPointMake(103.28, 23.19)];
-    [ovalPath addCurveToPoint: CGPointMake(14.85, 10.22) controlPoint1: CGPointMake(65.01, -2.74) controlPoint2: CGPointMake(33.99, -2.74)];
-    [ovalPath addCurveToPoint: CGPointMake(14.85, 57.17) controlPoint1: CGPointMake(-4.28, 23.19) controlPoint2: CGPointMake(-4.28, 44.2)];
-    [ovalPath addCurveToPoint: CGPointMake(20.5, 62.5) controlPoint1: CGPointMake(15.61, 57.68) controlPoint2: CGPointMake(20.09, 59.35)];
-    [ovalPath closePath];
-    [UIColor.lightGrayColor setStroke];
-    ovalPath.lineWidth = 1;
-    [ovalPath stroke];
-
     CGContextRef ctx = UIGraphicsGetCurrentContext();
     CGMutablePathRef path = CGPathCreateMutable();
     

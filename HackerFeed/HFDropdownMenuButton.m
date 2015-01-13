@@ -28,7 +28,7 @@
         self.bottomBorderView.backgroundColor = [UIColor colorWithWhite:0.4f alpha:1.0f];
         [self addSubview:self.bottomBorderView];
         
-        [self setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+        [self setTitleColor:[UIColor hf_themedTextColor] forState:UIControlStateNormal];
     }
     
     return self;

@@ -13,7 +13,7 @@
 @implementation HFDropdownMenuItem
 
 - (void)setImage:(UIImage *)image {
-    _image = image;
+    _image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     
     if ([self.view isKindOfClass:[HFDropdownMenuButton class]]) {
         HFDropdownMenuButton *button = (HFDropdownMenuButton *)self.view;

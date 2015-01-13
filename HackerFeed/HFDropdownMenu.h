@@ -29,7 +29,7 @@
 
 @interface HFDropdownMenu : UIView
 
-@property UIVisualEffectView *backgroundView;
+@property UIView *backgroundView;
 
 /**
  Items displayed in the dropdown menu

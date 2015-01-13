@@ -13,7 +13,7 @@
 @interface HFDropdownMenu ()
 
 @property (nonatomic) NSArray *buttons;
-@property UIVisualEffectView *listView;
+@property UIView *listView;
 @property UIView *bottomBorderView;
 
 - (void)buttonPressed:(HFDropdownMenuButton *)sender;
@@ -30,12 +30,15 @@ const CGFloat kListTopMarginHeight = 80.0f;
         _animationDuration = 0.6f;
         _itemHeight = 40.0f;
         
-        _backgroundView = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleDark]];
+        //_backgroundView = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleDark]];
+        _backgroundView = [[UIView alloc] initWithFrame:CGRectZero];
+        _backgroundView.backgroundColor = [UIColor blackColor];
         _backgroundView.layer.opacity = 0.0f;
         [self addSubview:_backgroundView];
 
-        _listView = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight]];
-        
+        //_listView = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight]];
+        _listView = [[UIView alloc] initWithFrame:CGRectZero];
+        _listView.backgroundColor = [UIColor hf_themedBackgroundColor];
         _listView.layer.cornerRadius = 0.0f;
         _listView.layer.masksToBounds = YES;
         [self addSubview:_listView];
@@ -114,7 +117,7 @@ const CGFloat kListTopMarginHeight = 80.0f;
     [self.buttons enumerateObjectsUsingBlock:^(HFDropdownMenuButton *button, NSUInteger idx, BOOL *stop) {
         button.tag = idx;
         [button addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
-        [self.listView.contentView addSubview:button];
+        [self.listView addSubview:button];
     }];
     
     [self setNeedsLayout];
@@ -168,7 +171,7 @@ const CGFloat kListTopMarginHeight = 80.0f;
     [UIView animateWithDuration:self.animationDuration
                           delay:0.0f
          usingSpringWithDamping:1.0f
-          initialSpringVelocity:1.0f
+          initialSpringVelocity:0.8f
                         options:0
                      animations:^{
                          self.backgroundView.layer.opacity = 0.0f;
@@ -193,11 +196,11 @@ const CGFloat kListTopMarginHeight = 80.0f;
     
     [UIView animateWithDuration:self.animationDuration
                           delay:0.0f
-         usingSpringWithDamping:0.68f
-          initialSpringVelocity:0.6f
+         usingSpringWithDamping:1.0f
+          initialSpringVelocity:0.8f
                         options:0
                      animations:^{
-                         self.backgroundView.layer.opacity = 0.98f;
+                         self.backgroundView.layer.opacity = 0.8f;
 
                          CGRect listFrame = self.listView.frame;
                          listFrame.origin = CGPointMake(0.0f, -kListTopMarginHeight);

@@ -6,55 +6,91 @@
 //  Copyright (c) 2014 Nealon Young. All rights reserved.
 //
 
+#import "HFButtonTableViewCell.h"
+#import "HFLoginViewController.h"
+#import "HFProfileViewController.h"
 #import "HFSettingsViewController.h"
 #import "HFTableViewCell.h"
+#import "libHN.h"
 
 @interface HFSettingsViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property UITableView *tableView;
 
+- (void)logoutButtonPressed;
+
 @end
 
 static NSString * const kTableViewCellIdentifier = @"TableViewCell";
+static NSString * const kButtonTableViewCellIdentifier = @"ButtonTableViewCell";
+
+static NSInteger const kProfileSection = 0;
+static NSInteger const kFontSection = 1;
+static NSInteger const kThemeSection = 2;
 
 @implementation HFSettingsViewController
 
-- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+- (instancetype)initWithStyle:(UITableViewStyle)style {
+    self = [super initWithStyle:UITableViewStyleGrouped];
     
     if (self) {
         self.title = NSLocalizedString(@"Settings", nil);
         
-        self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
-        [self.tableView setTranslatesAutoresizingMaskIntoConstraints:NO];
+//        self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+//        [self.tableView setTranslatesAutoresizingMaskIntoConstraints:NO];
+        self.tableView.backgroundColor = [[UIColor hf_themedBackgroundColor] hf_colorDarkenedByFactor:0.03f];
+        self.tableView.separatorColor = [[UIColor hf_themedBackgroundColor] hf_colorDarkenedByFactor:0.06f];
         [self.tableView registerClass:[HFTableViewCell class] forCellReuseIdentifier:kTableViewCellIdentifier];
-        self.tableView.dataSource = self;
-        self.tableView.delegate = self;
-        [self.view addSubview:self.tableView];
-        
-        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_tableView]|"
-                                                                          options:0
-                                                                          metrics:nil
-                                                                            views:NSDictionaryOfVariableBindings(_tableView)]];
-        
-        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_tableView]|"
-                                                                          options:0
-                                                                          metrics:nil
-                                                                            views:NSDictionaryOfVariableBindings(_tableView)]];
+        [self.tableView registerClass:[HFButtonTableViewCell class] forCellReuseIdentifier:kButtonTableViewCellIdentifier];
+//        self.tableView.dataSource = self;
+//        self.tableView.delegate = self;
+//        [self.view addSubview:self.tableView];
+//        
+//        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_tableView]|"
+//                                                                          options:0
+//                                                                          metrics:nil
+//                                                                            views:NSDictionaryOfVariableBindings(_tableView)]];
+//        
+//        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_tableView]|"
+//                                                                          options:0
+//                                                                          metrics:nil
+//                                                                            views:NSDictionaryOfVariableBindings(_tableView)]];
     }
     
     return self;
+}
+
+- (void)viewDidLoad {
+    self.dropdownMenuItem.image = [UIImage imageNamed:@"SettingsIcon"];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self.tableView reloadData];
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+}
+
+- (void)logoutButtonPressed {
+    if ([HNManager sharedManager].SessionUser) {
+        [[HNManager sharedManager] logout];
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:kProfileSection] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
 }
 
 #pragma mark - UITableViewDataSource
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     switch (section) {
-        case 0:
+        case kProfileSection:
+            return NSLocalizedString(@"Profile", nil);
+            break;
+            
+        case kFontSection:
             return NSLocalizedString(@"Font", nil);
             break;
             
-        case 1:
+        case kThemeSection:
             return NSLocalizedString(@"Theme", nil);
             break;
             
@@ -64,13 +100,21 @@ static NSString * const kTableViewCellIdentifier = @"TableViewCell";
     }
 }
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 3;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     switch (section) {
-        case 0:
+        case kProfileSection:
+            return [HNManager sharedManager].SessionUser ? 2 : 1;
+            break;
+            
+        case kFontSection:
             return 2;
             break;
             
-        case 1:
+        case kThemeSection:
             return 3;
             break;
             
@@ -82,7 +126,34 @@ static NSString * const kTableViewCellIdentifier = @"TableViewCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     switch (indexPath.section) {
-        case 0: {
+        case kProfileSection: {
+            if ([HNManager sharedManager].SessionUser) {
+                if (indexPath.row == 0) {
+                    HFTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableViewCellIdentifier forIndexPath:indexPath];
+                    
+                    cell.textLabel.text = [HNManager sharedManager].SessionUser.Username;
+                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                    
+                    return cell;
+                } else {
+                    HFButtonTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kButtonTableViewCellIdentifier forIndexPath:indexPath];
+                    
+                    [cell.button setTitle:NSLocalizedString(@"Log Out", nil) forState:UIControlStateNormal];
+                    [cell.button addTarget:self action:@selector(logoutButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+                    
+                    return cell;
+                }
+            } else {
+                HFTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableViewCellIdentifier forIndexPath:indexPath];
+                
+                cell.textLabel.text = NSLocalizedString(@"Log In", nil);
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                
+                return cell;
+            }
+        }
+            
+        case kFontSection: {
             HFTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableViewCellIdentifier forIndexPath:indexPath];
             
             if (indexPath.row == 0) {
@@ -94,7 +165,7 @@ static NSString * const kTableViewCellIdentifier = @"TableViewCell";
             return cell;
         }
             
-        case 1: {
+        case kThemeSection: {
             HFTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableViewCellIdentifier forIndexPath:indexPath];
             cell.textLabel.text = [NSString stringWithFormat:@"Theme %ld", (long)indexPath.row];
             return cell;
@@ -104,21 +175,31 @@ static NSString * const kTableViewCellIdentifier = @"TableViewCell";
             return nil;
             break;
     }
-    
-    HFTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableViewCellIdentifier forIndexPath:indexPath];
-    cell.textLabel.text = [NSString stringWithFormat:@"Theme %ld", (long)indexPath.row];
-    return cell;
 }
 
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     switch (indexPath.section) {
-        case 0:
+        case kProfileSection:
+            if (indexPath.row == 0) {
+                if ([HNManager sharedManager].SessionUser) {
+                    HFProfileViewController *profileViewController = [[HFProfileViewController alloc] initWithNibName:nil bundle:nil];
+                    profileViewController.user = [HNManager sharedManager].SessionUser;
+                    [self.navigationController pushViewController:profileViewController animated:YES];
+                } else {
+                    HFLoginViewController *loginViewController = [[HFLoginViewController alloc] initWithNibName:nil bundle:nil];
+                    [self.navigationController pushViewController:loginViewController animated:YES];
+                }
+            }
+            
+            break;
+            
+        case kFontSection:
             [UIColor hf_setCurrentColorTheme:indexPath.row];
             break;
             
-        case 1:
+        case kThemeSection:
             [UIColor hf_setCurrentColorTheme:indexPath.row];
             break;
     }

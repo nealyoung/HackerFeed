@@ -15,7 +15,6 @@
 #import "HFPostListViewController.h"
 #import "HFPostViewController.h"
 #import "HFSettingsViewController.h"
-#import "HFUserProfileViewController.h"
 #import "SVProgressHUD.h"
 
 @implementation HFAppDelegate
@@ -43,11 +42,7 @@
     jobsViewController.dataSource = [[HFFilterPostDataSource alloc] initWithPostFilterType:PostFilterTypeJobs image:[UIImage imageNamed:@"JobsIcon"]];
     jobsViewController.title = NSLocalizedString(@"Jobs", nil);
     
-    HFUserProfileViewController *profileViewController = [[HFUserProfileViewController alloc] initWithNibName:nil bundle:nil];
-    profileViewController.showsLoggedInUser = YES;
-    [profileViewController view];
-    
-    HFSettingsViewController *settingsViewController = [[HFSettingsViewController alloc] initWithNibName:nil bundle:nil];
+    HFSettingsViewController *settingsViewController = [[HFSettingsViewController alloc] initWithStyle:UITableViewStyleGrouped];
     
     HFDropdownMenuNavigationController *dropdownMenuViewController = [[HFDropdownMenuNavigationController alloc] initWithNavigationBarClass:[HFNavigationBar class]
                                                                                                                                toolbarClass:nil];
@@ -56,7 +51,6 @@
                                                            askHNViewController,
                                                            showHNViewController,
                                                            jobsViewController,
-                                                           profileViewController,
                                                            settingsViewController];
     dropdownMenuViewController.dropdownMenu.itemFont = [UIFont semiboldApplicationFontOfSize:17.0f];
     
@@ -83,6 +77,8 @@
 - (void)customizeAppearance {
     [[UIApplication sharedApplication] setStatusBarStyle:[UIColor hf_themedStatusBarStyle]];
     
+    [[UILabel appearanceWhenContainedIn:[UITableViewHeaderFooterView class], nil] setFont:[UIFont applicationFontOfSize:15.0f]];
+    
     self.window.tintColor = [UIColor hf_themedAccentColor];
     self.window.backgroundColor = [UIColor whiteColor];
     
@@ -91,6 +87,9 @@
     [[UINavigationBar appearance] setTitleTextAttributes:navigationBarTitleTextAttributes];
     [[UINavigationBar appearance] setBarTintColor:[UIColor hf_themedNavigationBarColor]];
     [[UINavigationBar appearance] setTranslucent:NO];
+
+    [[UIToolbar appearance] setBarTintColor:[UIColor hf_themedNavigationBarColor]];
+    [[UIToolbar appearance] setTranslucent:NO];
     
     NSDictionary *barButtonItemTitleTextAttributes = @{NSForegroundColorAttributeName:self.window.tintColor,
                                                        NSFontAttributeName: [UIFont applicationFontOfSize:18.0f]};

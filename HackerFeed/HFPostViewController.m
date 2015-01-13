@@ -63,9 +63,12 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
         [self.tableView setTranslatesAutoresizingMaskIntoConstraints:NO];
         self.tableView.dataSource = self;
         self.tableView.delegate = self;
+        self.tableView.backgroundColor = [[UIColor hf_themedBackgroundColor] hf_colorDarkenedByFactor:0.03f];
+        self.tableView.separatorColor = [[UIColor hf_themedBackgroundColor] hf_colorDarkenedByFactor:0.06f];
+
         // Hide the cell separators until a post is set
         self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        self.tableView.separatorColor = [[UIColor hf_themedBackgroundColor] hf_colorDarkenedByFactor:0.06f];
+
         [self.tableView registerClass:[HFPostInfoTableViewCell class] forCellReuseIdentifier:kPostInfoTableViewCellIdentifier];
         [self.tableView registerClass:[HFTableViewCell class] forCellReuseIdentifier:kUsernameTableViewCellIdentifier];
         [self.tableView registerClass:[HFCommentTableViewCell class] forCellReuseIdentifier:kCommentTableViewCellIdentifier];
@@ -116,13 +119,12 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
                                                                           metrics:nil
                                                                             views:NSDictionaryOfVariableBindings(_commentToolbar)]];
         
-        
-        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_tableView][_commentToolbar]|"
+        id <UILayoutSupport> topGuide = self.topLayoutGuide;
+
+        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[topGuide][_tableView][_commentToolbar]|"
                                                                           options:0
                                                                           metrics:nil
-                                                                            views:NSDictionaryOfVariableBindings(_tableView, _commentToolbar)]];
-        
-        id <UILayoutSupport> topGuide = self.topLayoutGuide;
+                                                                            views:NSDictionaryOfVariableBindings(topGuide, _tableView, _commentToolbar)]];
         
         // Ensure the comment toolbar doesn't expand under the navigation bar when the user is typing a long comment
         [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topGuide]-(>=0)-[_commentToolbar]"

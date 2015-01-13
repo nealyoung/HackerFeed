@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HFTableViewCell.h"
 
-@interface HFUserInfoTableViewCell : UITableViewCell
+@interface HFUserInfoTableViewCell : HFTableViewCell
 
-@property IBOutlet UILabel *usernameLabel;
-@property IBOutlet UILabel *ageLabel;
+@property UILabel *usernameLabel;
+@property UILabel *ageLabel;
 
 @end

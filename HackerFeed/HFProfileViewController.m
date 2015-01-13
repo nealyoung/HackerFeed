@@ -47,6 +47,8 @@ static NSString * const kUserSubmissionsTableViewCellIdentifier = @"UserSubmissi
         
         self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
         [self.tableView setTranslatesAutoresizingMaskIntoConstraints:NO];
+        self.tableView.backgroundColor = [[UIColor hf_themedBackgroundColor] hf_colorDarkenedByFactor:0.03f];
+        self.tableView.separatorColor = [[UIColor hf_themedBackgroundColor] hf_colorDarkenedByFactor:0.06f];
         self.tableView.dataSource = self;
         self.tableView.delegate = self;
         [self.view addSubview:self.tableView];

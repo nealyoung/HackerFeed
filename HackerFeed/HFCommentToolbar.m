@@ -40,7 +40,8 @@
 }
 
 - (void)commonInit {
-    self.backgroundColor = [UIColor whiteColor];
+    self.backgroundColor = [UIColor hf_themedNavigationBarColor];
+    
     self.replyToView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.replyToView setTranslatesAutoresizingMaskIntoConstraints:NO];
     self.replyToView.hidden = YES;
@@ -65,10 +66,12 @@
     
     self.textView = [[HFTextView alloc] initWithFrame:CGRectZero];
     [self.textView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    self.textView.backgroundColor = [[UIColor hf_themedBackgroundColor] hf_colorLightenedByFactor:0.1f];
+    self.textView.textColor = [UIColor hf_themedSecondaryTextColor];
     self.textView.font = [UIFont applicationFontOfSize:14.0f];
     self.textView.layer.cornerRadius = 4.0f;
     self.textView.layer.borderWidth = 1.0f;
-    self.textView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    self.textView.layer.borderColor = [[UIColor hf_themedAccentColor] CGColor];
     self.textView.scrollEnabled = YES;
     self.textView.returnKeyType = UIReturnKeyDone;
     [self addSubview:self.textView];

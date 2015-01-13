@@ -10,7 +10,7 @@
 
 @interface HFTextFieldTableViewCell : UITableViewCell
 
-@property IBOutlet UILabel *titleLabel;
-@property IBOutlet UITextField *textField;
+@property UILabel *titleLabel;
+@property UITextField *textField;
 
 @end

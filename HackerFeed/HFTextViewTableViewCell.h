@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HFTableViewCell.h"
 #import "HFTextView.h"
 
-@interface HFTextViewTableViewCell : UITableViewCell
+@interface HFTextViewTableViewCell : HFTableViewCell
 
-@property IBOutlet HFTextView *textView;
+@property HFTextView *textView;
 
 @end

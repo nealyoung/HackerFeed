@@ -19,11 +19,12 @@
         self.usernameLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         [self.usernameLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
         self.usernameLabel.font = [UIFont applicationFontOfSize:18.0f];
+        self.usernameLabel.textColor = [UIColor hf_themedTextColor];
         [self.contentView addSubview:self.usernameLabel];
         
         self.ageLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         [self.ageLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
-        self.ageLabel.textColor = [UIColor darkGrayColor];
+        self.ageLabel.textColor = [UIColor hf_themedSecondaryTextColor];
         self.ageLabel.font = [UIFont smallCapsApplicationFontWithSize:16.0f];
         [self.contentView addSubview:self.ageLabel];
         

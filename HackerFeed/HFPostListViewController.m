@@ -39,7 +39,6 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
         [self.tableView setTranslatesAutoresizingMaskIntoConstraints:NO];
         self.tableView.rowHeight = 72.0f;
         self.tableView.backgroundColor = [[UIColor hf_themedBackgroundColor] hf_colorDarkenedByFactor:0.03f];
-        //self.tableView.separatorInset = UIEdgeInsetsMake(0.0f, 50.0f, 0.0f, 50.0f);
         self.tableView.separatorColor = [[UIColor hf_themedBackgroundColor] hf_colorDarkenedByFactor:0.06f];
         //self.tableView.rowHeight = UITableViewAutomaticDimension;
         //self.tableView.estimatedRowHeight = 80.0f;
@@ -94,10 +93,18 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
     }];
 }
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    
+    if (!self.dataSource.posts) {
+        [self refresh];
+    }
 
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
 }
 
@@ -159,7 +166,7 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
     _dataSource = dataSource;
     self.dropdownMenuItem.image = dataSource.image;
     
-    [self refresh];
+    //[self refresh];
 }
 
 #pragma mark - UITableViewDataSource
