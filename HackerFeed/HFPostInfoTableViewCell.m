@@ -17,7 +17,7 @@
         self.titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         [self.titleLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
         self.titleLabel.numberOfLines = 0;
-        self.titleLabel.textColor = [UIColor hf_themedTextColor];
+        self.titleLabel.textColor = [HFInterfaceTheme activeTheme].textColor;
         self.titleLabel.textAlignment = NSTextAlignmentCenter;
         self.titleLabel.font = [UIFont applicationFontOfSize:18.0f];
         [self.contentView addSubview:self.titleLabel];

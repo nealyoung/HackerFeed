@@ -8,20 +8,30 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSInteger, HFInterfaceThemeType) {
+    HFInterfaceThemeTypeDefault,
+    HFInterfaceThemeTypeBlue,
+    HFInterfaceThemeTypeDark
+};
+
 @interface HFInterfaceTheme : NSObject
 
-
+@property HFInterfaceThemeType themeType;
+@property NSString *title;
 
 @property UIColor *accentColor;
 @property UIColor *textColor;
 @property UIColor *secondaryTextColor;
 @property UIColor *backgroundColor;
 @property UIColor *navigationBarColor;
+@property UIColor *cellSeparatorColor;
 
-@property UIStatusBarStyle *statusBarStyle;
+@property UIStatusBarStyle statusBarStyle;
 
 + (HFInterfaceTheme *)activeTheme;
 + (void)setActiveTheme:(HFInterfaceTheme *)theme;
+
++ (HFInterfaceTheme *)themeWithType:(HFInterfaceThemeType)type;
 + (NSArray *)allThemes;
 
 @end

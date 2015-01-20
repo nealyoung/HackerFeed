@@ -61,7 +61,7 @@
     
     if (self.state == UIControlStateHighlighted) {
         self.layer.backgroundColor = self.tintColor.CGColor;
-        [self setTitleColor:self.superview.backgroundColor forState:UIControlStateNormal];
+        [self setTitleColor:self.superview.backgroundColor forState:UIControlStateHighlighted];
     } else {
         self.layer.backgroundColor = nil;
         [self setTitleColor:self.tintColor forState:UIControlStateNormal];

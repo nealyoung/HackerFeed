@@ -27,7 +27,7 @@
         
         self.usernameLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         [self.usernameLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
-        self.usernameLabel.textColor = [UIColor hf_themedTextColor];
+        self.usernameLabel.textColor = [HFInterfaceTheme activeTheme].textColor;
         self.usernameLabel.font = [UIFont smallCapsApplicationFontWithSize:15.0f];
         //self.usernameLabel.font = [UIFont applicationFontOfSize:16.0f];
         [self.contentView addSubview:self.usernameLabel];
@@ -138,9 +138,9 @@
         [self layoutIfNeeded];
 
         if (expanded) {
-            self.contentView.backgroundColor = [[UIColor hf_themedBackgroundColor] hf_colorDarkenedByFactor:0.03f];
+            self.contentView.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.03f];
         } else {
-            self.contentView.backgroundColor = [UIColor hf_themedBackgroundColor];
+            self.contentView.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
         }
     } completion:^(BOOL finished) {
         if (!expanded) {

@@ -93,7 +93,7 @@ const CGFloat kListTopMarginHeight = 80.0f;
 
 - (void)applyTheme {
     _backgroundView.backgroundColor = [UIColor blackColor];
-    _listView.backgroundColor = [UIColor hf_themedBackgroundColor];
+    _listView.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
     _bottomBorderView.backgroundColor = [UIColor darkGrayColor];
 }
 

@@ -27,12 +27,7 @@
         
         [self applyTheme];
         
-        [[NSNotificationCenter defaultCenter] addObserverForName:kThemeChangedNotificationName
-                                                          object:nil
-                                                           queue:nil
-                                                      usingBlock:^(NSNotification *note) {
-                                                          [self applyTheme];
-                                                      }];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applyTheme) name:kThemeChangedNotificationName object:nil];
     }
     
     return self;
@@ -52,8 +47,8 @@
 }
 
 - (void)applyTheme {
-    self.barTintColor = [UIColor hf_themedNavigationBarColor];
-    self.bottomBorderView.backgroundColor = [UIColor hf_themedAccentColor];
+    self.barTintColor = [[HFInterfaceTheme activeTheme] navigationBarColor];
+    self.bottomBorderView.backgroundColor = [[HFInterfaceTheme activeTheme] accentColor];
 }
 
 @end

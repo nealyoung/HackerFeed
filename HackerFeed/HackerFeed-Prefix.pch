@@ -13,6 +13,7 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
+    #import "HFInterfaceTheme.h"
     #import "UIColor+HFAdditions.h"
     #import "UIFont+HFAdditions.h"
     #import "UIViewController+HFDropdownMenu.h"

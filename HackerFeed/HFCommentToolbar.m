@@ -15,6 +15,8 @@
 @property (nonatomic) UILabel *replyToLabel;
 @property (nonatomic) NSLayoutConstraint *replyToViewHeightConstraint;
 
+- (void)applyTheme;
+
 @end
 
 @implementation HFCommentToolbar
@@ -40,7 +42,7 @@
 }
 
 - (void)commonInit {
-    self.backgroundColor = [UIColor hf_themedNavigationBarColor];
+    self.backgroundColor = [[HFInterfaceTheme activeTheme] navigationBarColor];
     
     self.replyToView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.replyToView setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -55,23 +57,17 @@
     self.replyToLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     [self.replyToLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
     self.replyToLabel.text = @"in reply to tptacek";
-    self.replyToLabel.font = [UIFont smallCapsApplicationFontWithSize:15.0f];
-    self.replyToLabel.textColor = [UIColor darkGrayColor];
     [self.replyToView addSubview:self.replyToLabel];
     
     self.topBorderView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.topBorderView setTranslatesAutoresizingMaskIntoConstraints:NO];
-    self.topBorderView.backgroundColor = [UIColor hf_themedAccentColor];
+    self.topBorderView.backgroundColor = [[HFInterfaceTheme activeTheme] accentColor];
     [self addSubview:self.topBorderView];
     
     self.textView = [[HFTextView alloc] initWithFrame:CGRectZero];
     [self.textView setTranslatesAutoresizingMaskIntoConstraints:NO];
-    self.textView.backgroundColor = [[UIColor hf_themedBackgroundColor] hf_colorLightenedByFactor:0.1f];
-    self.textView.textColor = [UIColor hf_themedSecondaryTextColor];
-    self.textView.font = [UIFont applicationFontOfSize:14.0f];
     self.textView.layer.cornerRadius = 4.0f;
     self.textView.layer.borderWidth = 1.0f;
-    self.textView.layer.borderColor = [[UIColor hf_themedAccentColor] CGColor];
     self.textView.scrollEnabled = YES;
     self.textView.returnKeyType = UIReturnKeyDone;
     [self addSubview:self.textView];
@@ -137,6 +133,19 @@
                                                                  options:0
                                                                  metrics:nil
                                                                    views:NSDictionaryOfVariableBindings(_topBorderView, _submitButton)]];
+    
+    [self applyTheme];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applyTheme) name:kThemeChangedNotificationName object:nil];
+}
+
+- (void)applyTheme {
+    self.replyToLabel.font = [UIFont smallCapsApplicationFontWithSize:15.0f];
+    self.replyToLabel.textColor = [UIColor darkGrayColor];
+    
+    self.textView.font = [UIFont applicationFontOfSize:14.0f];
+    self.textView.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorLightenedByFactor:0.1f];
+    self.textView.textColor = [UIColor hf_themedSecondaryTextColor];
+    self.textView.layer.borderColor = [[[HFInterfaceTheme activeTheme] accentColor] CGColor];
 }
 
 // If set to nil, the 'reply to' indicator will be hidden
@@ -158,6 +167,10 @@
             [self.superview layoutIfNeeded];
         }];
     }
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kThemeChangedNotificationName object:nil];
 }
 
 @end

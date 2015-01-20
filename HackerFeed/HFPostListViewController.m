@@ -146,8 +146,8 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
 }
 
 - (void)applyTheme {
-    self.tableView.backgroundColor = [[UIColor hf_themedBackgroundColor] hf_colorDarkenedByFactor:0.03f];
-    self.tableView.separatorColor = [[UIColor hf_themedBackgroundColor] hf_colorDarkenedByFactor:0.06f];
+    self.tableView.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.03f];
+    self.tableView.separatorColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.06f];
 }
 
 - (void)commentsButtonPressed:(HFCommentsButton *)sender {

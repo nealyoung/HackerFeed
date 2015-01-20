@@ -29,8 +29,6 @@
         self.bottomBorderView = [[UIView alloc] initWithFrame:CGRectZero];
         [self addSubview:self.bottomBorderView];
         
-        [self setTitleColor:[UIColor hf_themedTextColor] forState:UIControlStateNormal];
-        
         [self applyTheme];
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applyTheme) name:kThemeChangedNotificationName object:nil];
@@ -60,9 +58,11 @@
 }
 
 - (void)applyTheme {
-    self.iconImageView.tintColor = [UIColor hf_themedAccentColor];
+    self.iconImageView.tintColor = [[HFInterfaceTheme activeTheme] accentColor];
     self.bottomBorderView.backgroundColor = [UIColor colorWithWhite:0.3f alpha:1.0f];
-    [self setTitleColor:[UIColor hf_themedTextColor] forState:UIControlStateNormal];
+    self.bottomBorderView.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.06f];
+    [self setTitleColor:[HFInterfaceTheme activeTheme].textColor forState:UIControlStateNormal];
+    self.titleLabel.font = [UIFont semiboldApplicationFontOfSize:16.0f];
 }
 
 - (void)dealloc {

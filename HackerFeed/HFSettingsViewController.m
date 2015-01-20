@@ -7,6 +7,7 @@
 //
 
 #import "HFButtonTableViewCell.h"
+#import "HFInterfaceTheme.h"
 #import "HFLoginViewController.h"
 #import "HFProfileViewController.h"
 #import "HFSettingsViewController.h"
@@ -81,8 +82,8 @@ static NSInteger const kThemeSection = 2;
 }
 
 - (void)applyTheme {
-    self.tableView.backgroundColor = [[UIColor hf_themedBackgroundColor] hf_colorDarkenedByFactor:0.03f];
-    self.tableView.separatorColor = [[UIColor hf_themedBackgroundColor] hf_colorDarkenedByFactor:0.06f];
+    self.tableView.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.03f];
+    self.tableView.separatorColor = [HFInterfaceTheme activeTheme].cellSeparatorColor;
 }
 
 #pragma mark - UITableViewDataSource
@@ -122,7 +123,7 @@ static NSInteger const kThemeSection = 2;
             break;
             
         case kThemeSection:
-            return 3;
+            return [[HFInterfaceTheme allThemes] count];
             break;
             
         default:
@@ -174,7 +175,9 @@ static NSInteger const kThemeSection = 2;
             
         case kThemeSection: {
             HFTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableViewCellIdentifier forIndexPath:indexPath];
-            cell.textLabel.text = [NSString stringWithFormat:@"Theme %ld", (long)indexPath.row];
+            HFInterfaceTheme *theme = [HFInterfaceTheme allThemes][indexPath.row];
+            cell.textLabel.text = theme.title;
+            
             return cell;
         }
         

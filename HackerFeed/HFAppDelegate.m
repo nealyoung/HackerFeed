@@ -75,20 +75,20 @@
 }
 
 - (void)customizeAppearance {
-    [[UIApplication sharedApplication] setStatusBarStyle:[UIColor hf_themedStatusBarStyle]];
+    [[UIApplication sharedApplication] setStatusBarStyle:[HFInterfaceTheme activeTheme].statusBarStyle];
     
     [[UILabel appearanceWhenContainedIn:[UITableViewHeaderFooterView class], nil] setFont:[UIFont applicationFontOfSize:15.0f]];
     
-    self.window.tintColor = [UIColor hf_themedAccentColor];
+    self.window.tintColor = [[HFInterfaceTheme activeTheme] accentColor];
     self.window.backgroundColor = [UIColor whiteColor];
     
     NSDictionary *navigationBarTitleTextAttributes = @{NSForegroundColorAttributeName:self.window.tintColor,
                                                        NSFontAttributeName: [UIFont applicationFontOfSize:19.0f]};
     [[UINavigationBar appearance] setTitleTextAttributes:navigationBarTitleTextAttributes];
-    [[UINavigationBar appearance] setBarTintColor:[UIColor hf_themedNavigationBarColor]];
+    [[UINavigationBar appearance] setBarTintColor:[[HFInterfaceTheme activeTheme] navigationBarColor]];
     [[UINavigationBar appearance] setTranslucent:NO];
 
-    [[UIToolbar appearance] setBarTintColor:[UIColor hf_themedNavigationBarColor]];
+    [[UIToolbar appearance] setBarTintColor:[[HFInterfaceTheme activeTheme] navigationBarColor]];
     [[UIToolbar appearance] setTranslucent:NO];
     
     NSDictionary *barButtonItemTitleTextAttributes = @{NSForegroundColorAttributeName:self.window.tintColor,

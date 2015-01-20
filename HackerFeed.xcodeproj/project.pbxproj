@@ -26,6 +26,7 @@
 		0E2BE1311A6E25E200F81396 /* SourceSansPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0E2BE12A1A6E25E200F81396 /* SourceSansPro-Regular.otf */; };
 		0E2BE1321A6E25E200F81396 /* SourceSansPro-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0E2BE12B1A6E25E200F81396 /* SourceSansPro-Semibold.otf */; };
 		0E2BE1331A6E25E200F81396 /* SourceSansPro-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0E2BE12B1A6E25E200F81396 /* SourceSansPro-Semibold.otf */; };
+		0E2BE1341A6EBC3600F81396 /* HFInterfaceTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E3653AB1A55DB0D002FB22A /* HFInterfaceTheme.m */; };
 		0E2F35C0198B8BF700718E1A /* HFNewPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E2F35BF198B8BF700718E1A /* HFNewPostViewController.m */; };
 		0E3600661A50628F002B8EE7 /* HFTextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E511CA2198C0B3300F94E9F /* HFTextFieldTableViewCell.m */; };
 		0E3600671A50629C002B8EE7 /* HFTextViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E57B5B3198C2D6C0056CA54 /* HFTextViewTableViewCell.m */; };
@@ -785,6 +786,7 @@
 				0EE27FEF1A65B21B001B01EC /* HFTableViewCell.m in Sources */,
 				0EF06ECD1A487DC70072D766 /* ShareViewController.m in Sources */,
 				0E2BE1261A6E1A8300F81396 /* HFNewPostViewController.m in Sources */,
+				0E2BE1341A6EBC3600F81396 /* HFInterfaceTheme.m in Sources */,
 				0E25F4001A50861C00B869EE /* HFShareExtensionNavigationController.m in Sources */,
 				0E2BE1251A6E173100F81396 /* HFNavigationBar.m in Sources */,
 				0E2BE1241A6E164000F81396 /* HFShareExtensionContainerViewController.m in Sources */,
@@ -1039,7 +1041,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
-					"HF_SHARE_EXTENSION=1",
+					"HF_SHARE_EXTENSION_TARGET=1",
 				);
 				INFOPLIST_FILE = "Share Extension/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;

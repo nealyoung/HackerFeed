@@ -19,17 +19,12 @@ static NSString * const kColorThemeDefaultsKey = @"HFColorThemeSetting";
 + (void)hf_setCurrentColorTheme:(HFColorTheme)theme {
     [[NSUserDefaults standardUserDefaults] setInteger:theme forKey:kColorThemeDefaultsKey];
     
-#ifndef HF_SHARE_EXTENSION
-    [[UIApplication sharedApplication] setStatusBarStyle:[UIColor hf_themedStatusBarStyle] animated:NO];
-    [UIApplication sharedApplication].keyWindow.tintColor = [UIColor hf_themedAccentColor];
+#ifndef HF_SHARE_EXTENSION_TARGET
+    [[UIApplication sharedApplication] setStatusBarStyle:[HFInterfaceTheme activeTheme].statusBarStyle animated:NO];
+    [UIApplication sharedApplication].keyWindow.tintColor = [[HFInterfaceTheme activeTheme] accentColor];
 #endif
     
     [[NSNotificationCenter defaultCenter] postNotificationName:kThemeChangedNotificationName object:nil];
-
-}
-
-+ (UIColor *)applicationColor {
-    return [UIColor colorWithRed:0.99f green:0.40f blue:0.13f alpha:1.0f];
 }
 
 + (UIColor *)hf_themedAccentColor {

@@ -20,7 +20,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     
     if (self) {
-        self.view.backgroundColor = [[UIColor hf_themedBackgroundColor] hf_colorDarkenedByFactor:0.03f];
+        self.view.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.03f];
         
         self.usernameTextField = [[UITextField alloc] initWithFrame:CGRectZero];
         [self.usernameTextField setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -47,7 +47,7 @@
         [self.securityLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
         self.securityLabel.font = [UIFont smallCapsLightApplicationFontWithSize:14.0f];
         self.securityLabel.textAlignment = NSTextAlignmentCenter;
-        self.securityLabel.textColor = [UIColor hf_themedTextColor];
+        self.securityLabel.textColor = [HFInterfaceTheme activeTheme].textColor;
         self.securityLabel.text = NSLocalizedString(@"your information is sent securely", nil);
         [self.view addSubview:self.securityLabel];
         

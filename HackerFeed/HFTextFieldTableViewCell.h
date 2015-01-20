@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HFTableViewCell.h"
 
-@interface HFTextFieldTableViewCell : UITableViewCell
+@interface HFTextFieldTableViewCell : HFTableViewCell
 
 @property UILabel *titleLabel;
 @property UITextField *textField;

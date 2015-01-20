@@ -19,13 +19,11 @@
         
         self.titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         [self.titleLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
-        self.titleLabel.font = [UIFont applicationFontOfSize:16.0f];
         [self.contentView addSubview:self.titleLabel];
         
         self.textField = [[UITextField alloc] initWithFrame:CGRectZero];
         [self.textField setTranslatesAutoresizingMaskIntoConstraints:NO];
         self.textField.textAlignment = NSTextAlignmentRight;
-        self.textField.font = [UIFont applicationFontOfSize:15.0f];
         [self.contentView addSubview:self.textField];
         
         [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-15-[_titleLabel]-4-[_textField(>=160)]-15-|"
@@ -48,6 +46,10 @@
                                                                      attribute:NSLayoutAttributeCenterY
                                                                     multiplier:1.0f
                                                                       constant:0.0f]];
+        
+        [self applyTheme];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applyTheme) name:kThemeChangedNotificationName object:nil];
     }
     
     return self;
@@ -58,10 +60,18 @@
     self.textField.font = [UIFont applicationFontOfSize:15.0f];
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
+- (void)applyTheme {
+    [super applyTheme];
+    
+    self.titleLabel.font = [UIFont applicationFontOfSize:16.0f];
+    self.titleLabel.textColor = [HFInterfaceTheme activeTheme].textColor;
 
-    // Configure the view for the selected state
+    self.textField.font = [UIFont applicationFontOfSize:15.0f];
+    self.textField.textColor = [HFInterfaceTheme activeTheme].secondaryTextColor;
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kThemeChangedNotificationName object:nil];
 }
 
 @end

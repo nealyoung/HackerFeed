@@ -14,14 +14,16 @@
 #import "HFTextViewTableViewCell.h"
 #import "SVProgressHUD.h"
 
-@interface HFNewPostViewController () <UITableViewDataSource, UITableViewDelegate, UITextViewDelegate>
+@interface HFNewPostViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, UITextViewDelegate>
 
 @property NYSegmentedControl *segmentedControl;
 @property UITableView *tableView;
 
-@property UITextField *titleTextField;
-@property UITextField *urlTextField;
-@property UITextView *postTextView;
+@property (nonatomic) UITextField *titleTextField;
+@property (nonatomic) UITextField *urlTextField;
+@property (nonatomic) UITextView *postTextView;
+
+- (void)applyTheme;
 
 @end
 
@@ -42,6 +44,32 @@ static NSString * const kTextViewTableViewCellIdentifier = @"TextViewTableViewCe
         [self.tableView registerClass:[HFTextViewTableViewCell class] forCellReuseIdentifier:kTextViewTableViewCellIdentifier];
         [self.view addSubview:self.tableView];
         
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"CloseIcon"]
+                                                                                 style:UIBarButtonItemStylePlain
+                                                                                target:self
+                                                                                action:@selector(cancelButtonPressed:)];
+        
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Submit", nil)
+                                                                                  style:UIBarButtonItemStyleDone
+                                                                                 target:self
+                                                                                 action:@selector(submitButtonPressed:)];
+        
+        self.segmentedControl = [[NYSegmentedControl alloc] initWithItems:@[NSLocalizedString(@"Link", nil), NSLocalizedString(@"Text", nil)]];
+        [self.segmentedControl addTarget:self action:@selector(segmentSelected:) forControlEvents:UIControlEventValueChanged];
+        self.segmentedControl.backgroundColor = [[[HFInterfaceTheme activeTheme] backgroundColor] hf_colorDarkenedByFactor:0.08f];
+        //self.segmentedControl.borderColor = [[[HFInterfaceTheme activeTheme] backgroundColor] hf_colorDarkenedByFactor:0.15f];
+        self.segmentedControl.borderWidth = 0.0f;
+        self.segmentedControl.segmentIndicatorBackgroundColor = [[[HFInterfaceTheme activeTheme] backgroundColor] hf_colorLightenedByFactor:0.04f];
+        self.segmentedControl.segmentIndicatorInset = 1.0f;
+        self.segmentedControl.segmentIndicatorBorderWidth = 0.0f;
+        self.segmentedControl.titleTextColor = [HFInterfaceTheme activeTheme].secondaryTextColor;
+        self.segmentedControl.selectedTitleTextColor = [HFInterfaceTheme activeTheme].accentColor;
+        self.segmentedControl.selectedTitleFont = [UIFont semiboldApplicationFontOfSize:14.0f];
+        self.segmentedControl.titleFont = [UIFont applicationFontOfSize:14.0f];
+        [self.segmentedControl sizeToFit];
+        self.segmentedControl.cornerRadius = CGRectGetHeight(self.segmentedControl.frame) / 2.0f;
+        self.navigationItem.titleView = self.segmentedControl;
+        
         [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_tableView]|"
                                                                           options:0
                                                                           metrics:nil
@@ -51,36 +79,23 @@ static NSString * const kTextViewTableViewCellIdentifier = @"TextViewTableViewCe
                                                                           options:0
                                                                           metrics:nil
                                                                             views:NSDictionaryOfVariableBindings(_tableView)]];
+        
+        [self applyTheme];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applyTheme) name:kThemeChangedNotificationName object:nil];
     }
     
     return self;
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"CloseIcon"]
-                                                                             style:UIBarButtonItemStylePlain
-                                                                            target:self
-                                                                            action:@selector(cancelButtonPressed:)];
-    
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Submit", nil)
-                                                                              style:UIBarButtonItemStyleDone
-                                                                             target:self
-                                                                             action:@selector(submitButtonPressed:)];
-    
-    self.segmentedControl = [[NYSegmentedControl alloc] initWithItems:@[NSLocalizedString(@"Link", nil), NSLocalizedString(@"Text", nil)]];
-    [self.segmentedControl addTarget:self action:@selector(segmentSelected:) forControlEvents:UIControlEventValueChanged];
-    self.segmentedControl.backgroundColor = [UIColor colorWithWhite:0.9f alpha:1.0f];
-    self.segmentedControl.segmentIndicatorBackgroundColor = [UIColor whiteColor];
-    self.segmentedControl.segmentIndicatorInset = 0.0f;
-    self.segmentedControl.titleTextColor = [UIColor lightGrayColor];
-    self.segmentedControl.selectedTitleTextColor = [UIColor darkGrayColor];
-    self.segmentedControl.selectedTitleFont = [UIFont semiboldApplicationFontOfSize:14.0f];
-    self.segmentedControl.titleFont = [UIFont applicationFontOfSize:14.0f];
-    [self.segmentedControl sizeToFit];
-    self.segmentedControl.cornerRadius = CGRectGetHeight(self.segmentedControl.frame) / 2.0f;
-    self.navigationItem.titleView = self.segmentedControl;
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    HFTextFieldTableViewCell *titleCell = (HFTextFieldTableViewCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    [titleCell.textField becomeFirstResponder];
+}
+
+- (void)applyTheme {
+    self.tableView.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.03f];
+    self.tableView.separatorColor = [HFInterfaceTheme activeTheme].cellSeparatorColor;
 }
 
 - (void)cancelButtonPressed:(id)sender {
@@ -119,6 +134,16 @@ static NSString * const kTextViewTableViewCellIdentifier = @"TextViewTableViewCe
     [self.tableView reloadData];
 }
 
+- (UITextField *)titleTextField {
+    HFTextFieldTableViewCell *titleCell = (HFTextFieldTableViewCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    return titleCell.textField;
+}
+
+- (UITextField *)urlTextField {
+    HFTextFieldTableViewCell *urlCell = (HFTextFieldTableViewCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
+    return urlCell.textField;
+}
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -131,12 +156,14 @@ static NSString * const kTextViewTableViewCellIdentifier = @"TextViewTableViewCe
             HFTextFieldTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTextFieldTableViewCellIdentifier forIndexPath:indexPath];
             cell.titleLabel.text = NSLocalizedString(@"Title", nil);
             cell.textField.placeholder = NSLocalizedString(@"Show HN: My App", nil);
+            cell.textField.returnKeyType = UIReturnKeyNext;
             self.titleTextField = cell.textField;
             return cell;
         } else {
             HFTextFieldTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTextFieldTableViewCellIdentifier forIndexPath:indexPath];
             cell.titleLabel.text = NSLocalizedString(@"URL", nil);
             cell.textField.placeholder = NSLocalizedString(@"http://example.com", nil);
+            cell.textField.returnKeyType = UIReturnKeyDone;
             self.urlTextField = cell.textField;
             return cell;
         }
@@ -189,7 +216,24 @@ static NSString * const kTextViewTableViewCellIdentifier = @"TextViewTableViewCe
     }
 }
 
-# pragma mark - UITextViewDelegate
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if (self.segmentedControl.selectedSegmentIndex == 0) {
+        if (textField == self.titleTextField) {
+            [self.titleTextField resignFirstResponder];
+            [self.urlTextField becomeFirstResponder];
+        } else if (textField == self.urlTextField) {
+            [self.urlTextField resignFirstResponder];
+        }
+    } else {
+        
+    }
+    
+    return YES;
+}
+
+#pragma mark - UITextViewDelegate
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
     // Trigger an update of cell heights so the text view can add a new line if needed

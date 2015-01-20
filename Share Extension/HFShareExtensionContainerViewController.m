@@ -42,12 +42,12 @@
 }
 
 - (void)customizeAppearance {
-    self.view.tintColor = [UIColor hf_themedAccentColor];
+    self.view.tintColor = [[HFInterfaceTheme activeTheme] accentColor];
 
     NSDictionary *navigationBarTitleTextAttributes = @{NSForegroundColorAttributeName: self.view.tintColor,
                                                        NSFontAttributeName: [UIFont applicationFontOfSize:19.0f]};
     [[UINavigationBar appearance] setTitleTextAttributes:navigationBarTitleTextAttributes];
-    [[UINavigationBar appearance] setBarTintColor:[UIColor hf_themedNavigationBarColor]];
+    [[UINavigationBar appearance] setBarTintColor:[[HFInterfaceTheme activeTheme] navigationBarColor]];
     [[UINavigationBar appearance] setTranslucent:NO];
     
     NSDictionary *barButtonItemTitleTextAttributes = @{NSForegroundColorAttributeName:self.view.tintColor,

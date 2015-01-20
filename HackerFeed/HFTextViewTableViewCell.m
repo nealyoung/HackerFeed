@@ -21,7 +21,7 @@
         [self.textView setTranslatesAutoresizingMaskIntoConstraints:NO];
         self.textView.scrollEnabled = NO;
         self.textView.editable = NO;
-        self.textView.backgroundColor = [UIColor hf_themedBackgroundColor];
+        self.textView.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
         self.textView.textColor = [UIColor hf_themedSecondaryTextColor];
         self.textView.font = [UIFont applicationFontOfSize:15.0f];
         [self.contentView addSubview:self.textView];

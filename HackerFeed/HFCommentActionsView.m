@@ -29,7 +29,7 @@
     
     if (self) {
         self.clipsToBounds = YES;
-        self.backgroundColor = [[UIColor hf_themedBackgroundColor] hf_colorDarkenedByFactor:0.13f];
+        self.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.13f];
         
         self.upvoteButton = [UIButton buttonWithType:UIButtonTypeSystem];
         [self.upvoteButton setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -48,7 +48,7 @@
         
         self.bottomBorderView = [[UIView alloc] initWithFrame:CGRectZero];
         [self.bottomBorderView setTranslatesAutoresizingMaskIntoConstraints:NO];
-        self.bottomBorderView.backgroundColor = [UIColor hf_themedAccentColor];
+        self.bottomBorderView.backgroundColor = [[HFInterfaceTheme activeTheme] accentColor];
         
         [self addSubview:self.bottomBorderView];
         

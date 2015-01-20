@@ -21,7 +21,6 @@ static NSString * const kThemeChangedNotificationName = @"ThemeChangedNotificati
 + (HFColorTheme)hf_currentColorTheme;
 + (void)hf_setCurrentColorTheme:(HFColorTheme)theme;
 
-+ (UIColor *)applicationColor;
 + (UIColor *)hf_themedAccentColor;
 + (UIColor *)hf_themedTextColor;
 + (UIColor *)hf_themedSecondaryTextColor;
