@@ -38,7 +38,7 @@
         self.textView.editable = NO;
         self.textView.dataDetectorTypes = UIDataDetectorTypeLink;
         self.textView.backgroundColor = [UIColor clearColor];
-        self.textView.textColor = [UIColor hf_themedSecondaryTextColor];
+        self.textView.textColor = [HFInterfaceTheme activeTheme].secondaryTextColor;
         self.textView.font = [UIFont applicationFontOfSize:14.0f];
         [self.contentView addSubview:self.textView];
         

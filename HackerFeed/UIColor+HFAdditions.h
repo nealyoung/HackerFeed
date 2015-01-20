@@ -18,16 +18,6 @@ static NSString * const kThemeChangedNotificationName = @"ThemeChangedNotificati
 
 @interface UIColor (HFAdditions)
 
-+ (HFColorTheme)hf_currentColorTheme;
-+ (void)hf_setCurrentColorTheme:(HFColorTheme)theme;
-
-+ (UIColor *)hf_themedAccentColor;
-+ (UIColor *)hf_themedTextColor;
-+ (UIColor *)hf_themedSecondaryTextColor;
-+ (UIColor *)hf_themedBackgroundColor;
-+ (UIColor *)hf_themedNavigationBarColor;
-+ (UIStatusBarStyle)hf_themedStatusBarStyle;
-
 - (UIColor *)hf_colorDarkenedByFactor:(CGFloat)factor;
 - (UIColor *)hf_colorLightenedByFactor:(CGFloat)factor;
 

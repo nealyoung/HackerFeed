@@ -39,7 +39,7 @@
     [bezierPath addLineToPoint: CGPointMake(15, 2)];
     [bezierPath addLineToPoint: CGPointMake(15, 2)];
     [bezierPath closePath];
-    [[UIColor hf_themedSecondaryTextColor] setFill];
+    [[HFInterfaceTheme activeTheme].secondaryTextColor setFill];
     
     [bezierPath fill];
 }

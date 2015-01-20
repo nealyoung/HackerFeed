@@ -24,7 +24,7 @@
         
         self.ageLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         [self.ageLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
-        self.ageLabel.textColor = [UIColor hf_themedSecondaryTextColor];
+        self.ageLabel.textColor = [HFInterfaceTheme activeTheme].secondaryTextColor;
         self.ageLabel.font = [UIFont smallCapsApplicationFontWithSize:16.0f];
         [self.contentView addSubview:self.ageLabel];
         

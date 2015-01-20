@@ -42,8 +42,6 @@
 }
 
 - (void)commonInit {
-    self.backgroundColor = [[HFInterfaceTheme activeTheme] navigationBarColor];
-    
     self.replyToView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.replyToView setTranslatesAutoresizingMaskIntoConstraints:NO];
     self.replyToView.hidden = YES;
@@ -61,7 +59,6 @@
     
     self.topBorderView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.topBorderView setTranslatesAutoresizingMaskIntoConstraints:NO];
-    self.topBorderView.backgroundColor = [[HFInterfaceTheme activeTheme] accentColor];
     [self addSubview:self.topBorderView];
     
     self.textView = [[HFTextView alloc] initWithFrame:CGRectZero];
@@ -75,7 +72,6 @@
     self.submitButton = [HFBorderedButton buttonWithType:UIButtonTypeCustom];
     [self.submitButton setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.submitButton setTitle:NSLocalizedString(@"submit", nil) forState:UIControlStateNormal];
-    self.submitButton.titleLabel.font = [UIFont smallCapsApplicationFontWithSize:15.0f];
     [self addSubview:self.submitButton];
     
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_topBorderView]|"
@@ -139,13 +135,19 @@
 }
 
 - (void)applyTheme {
+    self.backgroundColor = [[HFInterfaceTheme activeTheme] navigationBarColor];
+
+    self.topBorderView.backgroundColor = [[HFInterfaceTheme activeTheme] accentColor];
+
     self.replyToLabel.font = [UIFont smallCapsApplicationFontWithSize:15.0f];
-    self.replyToLabel.textColor = [UIColor darkGrayColor];
+    self.replyToLabel.textColor = [HFInterfaceTheme activeTheme].secondaryTextColor;
     
     self.textView.font = [UIFont applicationFontOfSize:14.0f];
     self.textView.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorLightenedByFactor:0.1f];
-    self.textView.textColor = [UIColor hf_themedSecondaryTextColor];
+    self.textView.textColor = [HFInterfaceTheme activeTheme].secondaryTextColor;
     self.textView.layer.borderColor = [[[HFInterfaceTheme activeTheme] accentColor] CGColor];
+    
+    self.submitButton.titleLabel.font = [UIFont smallCapsApplicationFontWithSize:15.0f];
 }
 
 // If set to nil, the 'reply to' indicator will be hidden

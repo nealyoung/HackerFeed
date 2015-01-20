@@ -25,7 +25,7 @@
         self.infoLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         [self.infoLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
         self.infoLabel.textAlignment = NSTextAlignmentCenter;
-        self.infoLabel.textColor = [UIColor hf_themedSecondaryTextColor];
+        self.infoLabel.textColor = [HFInterfaceTheme activeTheme].secondaryTextColor;
         self.infoLabel.font = [UIFont smallCapsApplicationFontWithSize:16.0f];
         [self.contentView addSubview:self.infoLabel];
         

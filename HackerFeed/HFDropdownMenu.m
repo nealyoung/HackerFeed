@@ -94,7 +94,7 @@ const CGFloat kListTopMarginHeight = 80.0f;
 - (void)applyTheme {
     _backgroundView.backgroundColor = [UIColor blackColor];
     _listView.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
-    _bottomBorderView.backgroundColor = [UIColor darkGrayColor];
+    _bottomBorderView.backgroundColor = [HFInterfaceTheme activeTheme].cellSeparatorColor;
 }
 
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {

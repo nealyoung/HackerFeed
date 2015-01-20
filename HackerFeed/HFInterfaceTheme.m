@@ -7,11 +7,37 @@
 //
 
 #import "HFInterfaceTheme.h"
+#import "SVProgressHUD.h"
 
 static NSString * const kColorThemeDefaultsKey = @"HFColorThemeSetting";
 static HFInterfaceTheme *_activeTheme;
 
 @implementation HFInterfaceTheme
+
++ (void)setupAppearanceForActiveTheme {
+    [[UILabel appearanceWhenContainedIn:[UITableViewHeaderFooterView class], nil] setFont:[UIFont applicationFontOfSize:15.0f]];
+    
+    NSDictionary *barButtonItemTitleTextAttributes = @{NSForegroundColorAttributeName:[[HFInterfaceTheme activeTheme] accentColor],
+                                                       NSFontAttributeName: [UIFont applicationFontOfSize:18.0f]};
+    [[UIBarButtonItem appearance] setTitleTextAttributes:barButtonItemTitleTextAttributes forState:UIControlStateNormal];
+    
+    [SVProgressHUD setFont:[UIFont applicationFontOfSize:15.0f]];
+    
+    NSDictionary *navigationBarTitleTextAttributes = @{NSForegroundColorAttributeName:[[HFInterfaceTheme activeTheme] accentColor],
+                                                       NSFontAttributeName: [UIFont applicationFontOfSize:19.0f]};
+    [[UINavigationBar appearance] setTitleTextAttributes:navigationBarTitleTextAttributes];
+    [[UINavigationBar appearance] setBarTintColor:[[HFInterfaceTheme activeTheme] navigationBarColor]];
+    [[UINavigationBar appearance] setTranslucent:NO];
+    
+    [[UIToolbar appearance] setBarTintColor:[[HFInterfaceTheme activeTheme] navigationBarColor]];
+    [[UIToolbar appearance] setTranslucent:NO];
+    
+#ifndef HF_SHARE_EXTENSION_TARGET
+    [UIApplication sharedApplication].keyWindow.tintColor = [[HFInterfaceTheme activeTheme] accentColor];
+    [UIApplication sharedApplication].keyWindow.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
+    [[UIApplication sharedApplication] setStatusBarStyle:[HFInterfaceTheme activeTheme].statusBarStyle];
+#endif
+}
 
 + (HFInterfaceTheme *)activeTheme {
     if (!_activeTheme || _activeTheme.themeType != [[NSUserDefaults standardUserDefaults] integerForKey:kColorThemeDefaultsKey]) {
@@ -24,11 +50,7 @@ static HFInterfaceTheme *_activeTheme;
 + (void)setActiveTheme:(HFInterfaceTheme *)theme {
     [[NSUserDefaults standardUserDefaults] setInteger:theme.themeType forKey:kColorThemeDefaultsKey];
     
-#ifndef HF_SHARE_EXTENSION_TARGET
-    [[UIApplication sharedApplication] setStatusBarStyle:[HFInterfaceTheme activeTheme].statusBarStyle animated:NO];
-    [UIApplication sharedApplication].keyWindow.tintColor = [[HFInterfaceTheme activeTheme] accentColor];
-#endif
-    
+    [HFInterfaceTheme setupAppearanceForActiveTheme];
     [[NSNotificationCenter defaultCenter] postNotificationName:kThemeChangedNotificationName object:nil];
 }
 

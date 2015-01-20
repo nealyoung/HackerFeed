@@ -55,7 +55,9 @@
     dropdownMenuViewController.dropdownMenu.itemFont = [UIFont semiboldApplicationFontOfSize:17.0f];
     
     [[HNManager sharedManager] startSession];
-    [self customizeAppearance];
+//    [self customizeAppearance];
+    [HFInterfaceTheme setupAppearanceForActiveTheme];
+    NSLog(@"%@", self.window);
     
     HFPostViewController *postViewController = [[HFPostViewController alloc] initWithNibName:nil bundle:nil];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithNavigationBarClass:[HFNavigationBar class]
@@ -70,6 +72,9 @@
     self.window.rootViewController = splitViewController;
     
     [self.window makeKeyAndVisible];
+    
+    [HFInterfaceTheme setupAppearanceForActiveTheme];
+
     
     return YES;
 }

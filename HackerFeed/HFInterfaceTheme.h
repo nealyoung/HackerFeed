@@ -28,6 +28,8 @@ typedef NS_ENUM(NSInteger, HFInterfaceThemeType) {
 
 @property UIStatusBarStyle statusBarStyle;
 
++ (void)setupAppearanceForActiveTheme;
+
 + (HFInterfaceTheme *)activeTheme;
 + (void)setActiveTheme:(HFInterfaceTheme *)theme;
 

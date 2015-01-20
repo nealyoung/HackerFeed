@@ -206,11 +206,11 @@ static NSInteger const kThemeSection = 2;
             break;
             
         case kFontSection:
-            [UIColor hf_setCurrentColorTheme:indexPath.row];
+            [HFInterfaceTheme setActiveTheme:[HFInterfaceTheme themeWithType:indexPath.row]];
             break;
             
         case kThemeSection:
-            [UIColor hf_setCurrentColorTheme:indexPath.row];
+            [HFInterfaceTheme setActiveTheme:[HFInterfaceTheme themeWithType:indexPath.row]];
             break;
     }
 }

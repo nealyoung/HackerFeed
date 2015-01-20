@@ -56,15 +56,13 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     
-    if (self) {
-        //self.view.backgroundColor = [UIColor whiteColor];
-        
+    if (self) {        
         self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
         [self.tableView setTranslatesAutoresizingMaskIntoConstraints:NO];
         self.tableView.dataSource = self;
         self.tableView.delegate = self;
         self.tableView.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.03f];
-        self.tableView.separatorColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.06f];
+        self.tableView.separatorColor = [HFInterfaceTheme activeTheme].cellSeparatorColor;
 
         // Hide the cell separators until a post is set
         self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -185,6 +183,11 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
         self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
         self.selectPostLabel.hidden = YES;
         self.commentToolbar.hidden = NO;
+        
+        [[HNManager sharedManager] loadCommentsFromPost:post completion:^(NSArray *comments) {
+            self.comments = comments;
+            [self.tableView reloadData];
+        }];
     } else {
         self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.selectPostLabel.hidden = NO;
@@ -201,11 +204,6 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
     
     // Scroll to the top of the table view
     [self.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
-    
-    [[HNManager sharedManager] loadCommentsFromPost:post completion:^(NSArray *comments) {
-        self.comments = comments;
-        [self.tableView reloadData];
-    }];
 }
 
 - (void)addKeyboardNotificationObservers {

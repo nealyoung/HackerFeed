@@ -61,7 +61,7 @@
     self.textLabel.textColor = [HFInterfaceTheme activeTheme].textColor;
 
     self.detailTextLabel.font = [UIFont applicationFontOfSize:16.0f];
-    self.detailTextLabel.textColor = [UIColor hf_themedSecondaryTextColor];
+    self.detailTextLabel.textColor = [HFInterfaceTheme activeTheme].secondaryTextColor;
 }
 
 - (void)dealloc {

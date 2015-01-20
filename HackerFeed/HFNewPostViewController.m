@@ -21,6 +21,8 @@
 
 @property (nonatomic) UITextField *titleTextField;
 @property (nonatomic) UITextField *urlTextField;
+
+@property (nonatomic) UITextField *textPostTitleTextField;
 @property (nonatomic) UITextView *postTextView;
 
 - (void)applyTheme;
@@ -135,13 +137,30 @@ static NSString * const kTextViewTableViewCellIdentifier = @"TextViewTableViewCe
 }
 
 - (UITextField *)titleTextField {
-    HFTextFieldTableViewCell *titleCell = (HFTextFieldTableViewCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-    return titleCell.textField;
+    if (self.segmentedControl.selectedSegmentIndex == 0) {
+        HFTextFieldTableViewCell *titleCell = (HFTextFieldTableViewCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+        return titleCell.textField;
+    } else {
+        return nil;
+    }
+}
+
+- (UITextField *)textPostTitleTextField {
+    if (self.segmentedControl.selectedSegmentIndex == 1) {
+        HFTextFieldTableViewCell *titleCell = (HFTextFieldTableViewCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+        return titleCell.textField;
+    } else {
+        return nil;
+    }
 }
 
 - (UITextField *)urlTextField {
-    HFTextFieldTableViewCell *urlCell = (HFTextFieldTableViewCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
-    return urlCell.textField;
+    if (self.segmentedControl.selectedSegmentIndex == 0) {
+        HFTextFieldTableViewCell *urlCell = (HFTextFieldTableViewCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
+        return urlCell.textField;
+    } else {
+        return nil;
+    }
 }
 
 #pragma mark - UITableViewDataSource
@@ -152,21 +171,20 @@ static NSString * const kTextViewTableViewCellIdentifier = @"TextViewTableViewCe
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.segmentedControl.selectedSegmentIndex == 0) {
+        HFTextFieldTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTextFieldTableViewCellIdentifier forIndexPath:indexPath];
+        cell.textField.delegate = self;
+        
         if (indexPath.row == 0) {
-            HFTextFieldTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTextFieldTableViewCellIdentifier forIndexPath:indexPath];
             cell.titleLabel.text = NSLocalizedString(@"Title", nil);
             cell.textField.placeholder = NSLocalizedString(@"Show HN: My App", nil);
             cell.textField.returnKeyType = UIReturnKeyNext;
-            self.titleTextField = cell.textField;
-            return cell;
         } else {
-            HFTextFieldTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTextFieldTableViewCellIdentifier forIndexPath:indexPath];
             cell.titleLabel.text = NSLocalizedString(@"URL", nil);
             cell.textField.placeholder = NSLocalizedString(@"http://example.com", nil);
             cell.textField.returnKeyType = UIReturnKeyDone;
-            self.urlTextField = cell.textField;
-            return cell;
         }
+        
+        return cell;
     } else {
         if (indexPath.row == 0) {
             HFTextFieldTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTextFieldTableViewCellIdentifier forIndexPath:indexPath];
