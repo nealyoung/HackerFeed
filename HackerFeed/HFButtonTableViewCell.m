@@ -18,9 +18,9 @@
         
         self.button = [UIButton buttonWithType:UIButtonTypeSystem];
         [self.button setTranslatesAutoresizingMaskIntoConstraints:NO];
-        [self.button setTitleColor:[UIColor hf_themedAccentColor] forState:UIControlStateNormal];
-        self.button.titleLabel.font = [UIFont semiboldApplicationFontOfSize:18.0f];
         [self.contentView addSubview:self.button];
+        
+        [self applyTheme];
         
         [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.button
                                                                      attribute:NSLayoutAttributeCenterX
@@ -40,6 +40,12 @@
     }
     
     return self;
+}
+
+- (void)applyTheme {
+    [super applyTheme];
+    [self.button setTitleColor:[UIColor hf_themedAccentColor] forState:UIControlStateNormal];
+    self.button.titleLabel.font = [UIFont semiboldApplicationFontOfSize:18.0f];
 }
 
 @end

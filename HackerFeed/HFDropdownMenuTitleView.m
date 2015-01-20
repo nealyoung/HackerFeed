@@ -54,6 +54,8 @@
 
 @property _HFDropdownMenuTitleViewIndicator *indicator;
 
+- (void)applyTheme;
+
 @end
 
 @implementation HFDropdownMenuTitleView
@@ -64,8 +66,6 @@
     if (self) {
         self.titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         [self.titleLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
-        self.titleLabel.font = [UIFont applicationFontOfSize:18.0f];
-        self.titleLabel.textColor = [UIColor hf_themedAccentColor];
         self.titleLabel.textAlignment = NSTextAlignmentCenter;
         [self addSubview:self.titleLabel];
         
@@ -95,6 +95,15 @@
                                                                      options:NSLayoutFormatAlignAllCenterY
                                                                      metrics:nil
                                                                        views:NSDictionaryOfVariableBindings(_titleLabel, _indicator)]];
+        
+        [self applyTheme];
+        
+        [[NSNotificationCenter defaultCenter] addObserverForName:kThemeChangedNotificationName
+                                                          object:nil
+                                                           queue:nil
+                                                      usingBlock:^(NSNotification *note) {
+                                                          [self applyTheme];
+                                                      }];
     }
     
     return self;
@@ -123,6 +132,16 @@
                          self.indicator.layer.transform = transform;
                      }
                      completion:nil];
+}
+
+- (void)applyTheme {
+    [self.indicator setNeedsDisplay];
+    self.titleLabel.font = [UIFont applicationFontOfSize:18.0f];
+    self.titleLabel.textColor = [UIColor hf_themedAccentColor];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kThemeChangedNotificationName object:nil];
 }
 
 @end

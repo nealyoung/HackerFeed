@@ -17,6 +17,7 @@
 
 @property UITableView *tableView;
 
+- (void)applyTheme;
 - (void)logoutButtonPressed;
 
 @end
@@ -38,8 +39,6 @@ static NSInteger const kThemeSection = 2;
         
 //        self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
 //        [self.tableView setTranslatesAutoresizingMaskIntoConstraints:NO];
-        self.tableView.backgroundColor = [[UIColor hf_themedBackgroundColor] hf_colorDarkenedByFactor:0.03f];
-        self.tableView.separatorColor = [[UIColor hf_themedBackgroundColor] hf_colorDarkenedByFactor:0.06f];
         [self.tableView registerClass:[HFTableViewCell class] forCellReuseIdentifier:kTableViewCellIdentifier];
         [self.tableView registerClass:[HFButtonTableViewCell class] forCellReuseIdentifier:kButtonTableViewCellIdentifier];
 //        self.tableView.dataSource = self;
@@ -55,6 +54,15 @@ static NSInteger const kThemeSection = 2;
 //                                                                          options:0
 //                                                                          metrics:nil
 //                                                                            views:NSDictionaryOfVariableBindings(_tableView)]];
+        
+        [self applyTheme];
+        
+        [[NSNotificationCenter defaultCenter] addObserverForName:kThemeChangedNotificationName
+                                                          object:nil
+                                                           queue:nil
+                                                      usingBlock:^(NSNotification *note) {
+                                                          [self applyTheme];
+                                                      }];
     }
     
     return self;
@@ -76,6 +84,11 @@ static NSInteger const kThemeSection = 2;
         [[HNManager sharedManager] logout];
         [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:kProfileSection] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
+}
+
+- (void)applyTheme {
+    self.tableView.backgroundColor = [[UIColor hf_themedBackgroundColor] hf_colorDarkenedByFactor:0.03f];
+    self.tableView.separatorColor = [[UIColor hf_themedBackgroundColor] hf_colorDarkenedByFactor:0.06f];
 }
 
 #pragma mark - UITableViewDataSource
@@ -201,6 +214,7 @@ static NSInteger const kThemeSection = 2;
             
         case kThemeSection:
             [UIColor hf_setCurrentColorTheme:indexPath.row];
+            [[NSNotificationCenter defaultCenter] postNotificationName:kThemeChangedNotificationName object:nil];
             break;
     }
 }

@@ -58,10 +58,12 @@ static NSString * const kUserSubmissionsTableViewCellIdentifier = @"UserSubmissi
                                                                           metrics:nil
                                                                             views:NSDictionaryOfVariableBindings(_tableView)]];
         
-        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_tableView]|"
+        id <UILayoutSupport> topLayoutGuide = self.topLayoutGuide;
+
+        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topLayoutGuide][_tableView]|"
                                                                           options:0
                                                                           metrics:nil
-                                                                            views:NSDictionaryOfVariableBindings(_tableView)]];
+                                                                            views:NSDictionaryOfVariableBindings(topLayoutGuide, _tableView)]];
     }
     
     return self;

@@ -102,6 +102,13 @@
     self.textView.font = [UIFont applicationFontOfSize:14.0f];
 }
 
+- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
+
+}
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+}
+
 - (void)setExpanded:(BOOL)expanded {
     [self setExpanded:expanded animated:YES];
 }

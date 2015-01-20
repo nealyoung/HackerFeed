@@ -26,33 +26,27 @@
         
         self.infoLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         [self.infoLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
-        self.infoLabel.textColor = [UIColor hf_themedSecondaryTextColor];
-        self.infoLabel.font = [UIFont smallCapsApplicationFontWithSize:15.0f];
         [self.contentView addSubview:self.infoLabel];
         
         self.titleLabel = [[HFLabel alloc] initWithFrame:CGRectZero];
         [self.titleLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
         self.titleLabel.numberOfLines = 0;
-        self.titleLabel.textColor = [UIColor hf_themedTextColor];
-        self.titleLabel.font = [UIFont applicationFontOfSize:17.0f];
         [self.titleLabel setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
         [self.contentView addSubview:self.titleLabel];
         
         self.domainLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         [self.domainLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
-        self.domainLabel.textColor = [UIColor hf_themedSecondaryTextColor];
-        self.domainLabel.font = [UIFont smallCapsApplicationFontWithSize:15.0f];
         [self.contentView addSubview:self.domainLabel];
         
         self.commentButtonBackground = [[UIView alloc] initWithFrame:CGRectZero];
         [self.commentButtonBackground setTranslatesAutoresizingMaskIntoConstraints:NO];
-        self.commentButtonBackground.backgroundColor = [[UIColor hf_themedBackgroundColor] hf_colorDarkenedByFactor:0.03f];
         [self.contentView addSubview:self.commentButtonBackground];
         
         self.commentsButton = [HFCommentsButton buttonWithType:UIButtonTypeCustom];
         [self.commentsButton setTranslatesAutoresizingMaskIntoConstraints:NO];
-        [self.commentsButton setTitleColor:[UIColor hf_themedSecondaryTextColor] forState:UIControlStateNormal];
         [self.contentView addSubview:self.commentsButton];
+        
+        [self applyTheme];
         
         [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_commentButtonBackground]|"
                                                                                  options:0
@@ -105,18 +99,18 @@
     return self;
 }
 
-- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
-    // By default, setHighlighted:animated: makes the backgrounds subviews of the cell's contentView clear, we want to override this behavior so the comment button background does not disappear when the cell is highlighted
-    UIColor *commentBackgroundColor = self.commentButtonBackground.backgroundColor;
-    [super setHighlighted:highlighted animated:animated];
-    self.commentButtonBackground.backgroundColor = commentBackgroundColor;
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    UIColor *commentBackgroundColor = self.commentButtonBackground.backgroundColor;
-    [super setSelected:selected animated:animated];
-    self.commentButtonBackground.backgroundColor = commentBackgroundColor;
-}
+//- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
+//    // By default, setHighlighted:animated: makes the backgrounds subviews of the cell's contentView clear, we want to override this behavior so the comment button background does not disappear when the cell is highlighted
+//    UIColor *commentBackgroundColor = self.commentButtonBackground.backgroundColor;
+//    [super setHighlighted:highlighted animated:animated];
+//    self.commentButtonBackground.backgroundColor = commentBackgroundColor;
+//}
+//
+//- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+//    UIColor *commentBackgroundColor = self.commentButtonBackground.backgroundColor;
+//    [super setSelected:selected animated:animated];
+//    self.commentButtonBackground.backgroundColor = commentBackgroundColor;
+//}
 
 - (void)layoutSubviews {
     [super layoutSubviews];
@@ -127,6 +121,22 @@
     self.titleLabel.preferredMaxLayoutWidth = CGRectGetWidth(self.titleLabel.frame);
     
     //[self layoutIfNeeded];
+}
+
+- (void)applyTheme {
+    [super applyTheme];
+    
+    self.infoLabel.textColor = [UIColor hf_themedSecondaryTextColor];
+    self.infoLabel.font = [UIFont smallCapsApplicationFontWithSize:15.0f];
+    
+    self.titleLabel.textColor = [UIColor hf_themedTextColor];
+    self.titleLabel.font = [UIFont applicationFontOfSize:17.0f];
+    
+    self.domainLabel.textColor = [UIColor hf_themedSecondaryTextColor];
+    self.domainLabel.font = [UIFont smallCapsApplicationFontWithSize:15.0f];
+    
+    self.commentButtonBackground.backgroundColor = [[UIColor hf_themedBackgroundColor] hf_colorDarkenedByFactor:0.03f];
+    [self.commentsButton setTitleColor:[UIColor hf_themedSecondaryTextColor] forState:UIControlStateNormal];
 }
 
 @end

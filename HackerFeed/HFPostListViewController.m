@@ -23,6 +23,7 @@
 
 @property DMScaleTransition *scaleTransition;
 
+- (void)applyTheme;
 - (void)refresh;
 
 @end
@@ -38,8 +39,6 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
         self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
         [self.tableView setTranslatesAutoresizingMaskIntoConstraints:NO];
         self.tableView.rowHeight = 72.0f;
-        self.tableView.backgroundColor = [[UIColor hf_themedBackgroundColor] hf_colorDarkenedByFactor:0.03f];
-        self.tableView.separatorColor = [[UIColor hf_themedBackgroundColor] hf_colorDarkenedByFactor:0.06f];
         //self.tableView.rowHeight = UITableViewAutomaticDimension;
         //self.tableView.estimatedRowHeight = 80.0f;
         [self.tableView registerClass:[HFPostTableViewCell class] forCellReuseIdentifier:kPostTableViewCellIdentifier];
@@ -59,6 +58,15 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
                                                                                   style:UIBarButtonItemStylePlain
                                                                                  target:self
                                                                                  action:@selector(newPostButtonPressed)];
+        
+        [self applyTheme];
+        
+        [[NSNotificationCenter defaultCenter] addObserverForName:kThemeChangedNotificationName
+                                                          object:nil
+                                                           queue:nil
+                                                      usingBlock:^(NSNotification *note) {
+                                                          [self applyTheme];
+                                                      }];
     }
     
     return self;
@@ -108,6 +116,10 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
 }
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kThemeChangedNotificationName object:nil];
+}
+
 - (void)refresh {
     [self.dataSource refreshWithCompletion:^(BOOL completed) {
         if (completed) {
@@ -131,6 +143,11 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
         
         [self.tableView.infiniteScrollingView stopAnimating];
     }];
+}
+
+- (void)applyTheme {
+    self.tableView.backgroundColor = [[UIColor hf_themedBackgroundColor] hf_colorDarkenedByFactor:0.03f];
+    self.tableView.separatorColor = [[UIColor hf_themedBackgroundColor] hf_colorDarkenedByFactor:0.06f];
 }
 
 - (void)commentsButtonPressed:(HFCommentsButton *)sender {

@@ -10,4 +10,6 @@
 
 @interface HFTableViewCell : UITableViewCell
 
+- (void)applyTheme;
+
 @end

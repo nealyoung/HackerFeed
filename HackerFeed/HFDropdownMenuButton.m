@@ -25,7 +25,7 @@
         [self addSubview:self.iconImageView];
         
         self.bottomBorderView = [[UIView alloc] initWithFrame:CGRectZero];
-        self.bottomBorderView.backgroundColor = [UIColor colorWithWhite:0.4f alpha:1.0f];
+        self.bottomBorderView.backgroundColor = [UIColor colorWithWhite:0.3f alpha:1.0f];
         [self addSubview:self.bottomBorderView];
         
         [self setTitleColor:[UIColor hf_themedTextColor] forState:UIControlStateNormal];
@@ -46,7 +46,7 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     
-    self.iconImageView.frame = CGRectMake(15.0f, 0, 32.0f, CGRectGetHeight(self.frame));
+    self.iconImageView.frame = CGRectMake(15.0f, 0, 30.0f, CGRectGetHeight(self.frame));
     
     self.bottomBorderView.frame = CGRectMake(15.0f,
                                              CGRectGetHeight(self.frame),

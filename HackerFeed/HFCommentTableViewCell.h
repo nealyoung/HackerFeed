@@ -25,13 +25,13 @@
 
 @property (nonatomic) BOOL expanded;
 
-@property IBOutlet UILabel *usernameLabel;
-@property IBOutlet HFTextView *textView;
-@property IBOutlet NSLayoutConstraint *usernameLabelLeadingConstraint;
-@property IBOutlet NSLayoutConstraint *textViewLeadingConstraint;
-@property IBOutlet NSLayoutConstraint *toolbarHeightConstraint;
+@property UILabel *usernameLabel;
+@property HFTextView *textView;
+@property NSLayoutConstraint *usernameLabelLeadingConstraint;
+@property NSLayoutConstraint *textViewLeadingConstraint;
+@property NSLayoutConstraint *toolbarHeightConstraint;
 
-@property IBOutlet HFCommentActionsView *commentActionsView;
+@property HFCommentActionsView *commentActionsView;
 
 - (void)setExpanded:(BOOL)expanded animated:(BOOL)animated;
 

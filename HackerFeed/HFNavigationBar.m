@@ -12,6 +12,8 @@
 
 @property UIView *bottomBorderView;
 
+- (void)applyTheme;
+
 @end
 
 @implementation HFNavigationBar
@@ -21,8 +23,16 @@
     
     if (self) {
         self.bottomBorderView = [[UIView alloc] initWithFrame:CGRectZero];
-        self.bottomBorderView.backgroundColor = [UIColor hf_themedAccentColor];
         [self addSubview:self.bottomBorderView];
+        
+        [self applyTheme];
+        
+        [[NSNotificationCenter defaultCenter] addObserverForName:kThemeChangedNotificationName
+                                                          object:nil
+                                                           queue:nil
+                                                      usingBlock:^(NSNotification *note) {
+                                                          [self applyTheme];
+                                                      }];
     }
     
     return self;
@@ -35,6 +45,15 @@
                                              CGRectGetHeight(self.frame),
                                              CGRectGetWidth(self.frame),
                                              1.0f);
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)applyTheme {
+    self.barTintColor = [UIColor hf_themedNavigationBarColor];
+    self.bottomBorderView.backgroundColor = [UIColor hf_themedAccentColor];
 }
 
 @end

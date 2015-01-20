@@ -29,7 +29,7 @@
     
     if (self) {
         self.clipsToBounds = YES;
-        self.backgroundColor = [[UIColor hf_themedBackgroundColor] hf_colorDarkenedByFactor:0.03f];
+        self.backgroundColor = [[UIColor hf_themedBackgroundColor] hf_colorDarkenedByFactor:0.13f];
         
         self.upvoteButton = [UIButton buttonWithType:UIButtonTypeSystem];
         [self.upvoteButton setTranslatesAutoresizingMaskIntoConstraints:NO];

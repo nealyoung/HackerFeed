@@ -14,6 +14,8 @@ typedef NS_ENUM(NSInteger, HFColorTheme) {
     HFColorThemeDark
 };
 
+static NSString * const kThemeChangedNotificationName = @"ThemeChangedNotification";
+
 @interface UIColor (HFAdditions)
 
 + (HFColorTheme)hf_currentColorTheme;

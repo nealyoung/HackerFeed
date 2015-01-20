@@ -14,14 +14,9 @@
     self = [super initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuseIdentifier];
     
     if (self) {
-        self.backgroundColor = [UIColor hf_themedBackgroundColor];
-        self.contentView.backgroundColor = [UIColor hf_themedBackgroundColor];
+        [self applyTheme];
         
-        self.textLabel.font = [UIFont applicationFontOfSize:16.0f];
-        self.textLabel.textColor = [UIColor hf_themedSecondaryTextColor];
-        
-        self.detailTextLabel.font = [UIFont applicationFontOfSize:16.0f];
-        self.detailTextLabel.textColor = [UIColor hf_themedTextColor];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applyTheme) name:kThemeChangedNotificationName object:nil];
     }
     
     return self;
@@ -57,6 +52,21 @@
             self.contentView.backgroundColor = [UIColor hf_themedBackgroundColor];
         }
     }];
+}
+
+- (void)applyTheme {
+    self.backgroundColor = [UIColor hf_themedBackgroundColor];
+    self.contentView.backgroundColor = [UIColor hf_themedBackgroundColor];
+    
+    self.textLabel.font = [UIFont applicationFontOfSize:16.0f];
+    self.textLabel.textColor = [UIColor hf_themedTextColor];
+    
+    self.detailTextLabel.font = [UIFont applicationFontOfSize:16.0f];
+    self.detailTextLabel.textColor = [UIColor hf_themedSecondaryTextColor];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

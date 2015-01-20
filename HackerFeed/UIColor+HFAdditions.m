@@ -35,7 +35,7 @@ static NSString * const kColorThemeDefaultsKey = @"HFColorThemeSetting";
             break;
             
         default:
-            return [UIColor colorWithRed:0.99f green:0.40f blue:0.13f alpha:1.0f];
+            return [UIColor colorWithRed:0.90f green:0.40f blue:0.13f alpha:1.0f];
             break;
     }
 }
@@ -51,7 +51,7 @@ static NSString * const kColorThemeDefaultsKey = @"HFColorThemeSetting";
             break;
             
         default:
-            return [UIColor blackColor];
+            return [UIColor colorWithWhite:0.12f alpha:1.0f];
             break;
     }
 }
@@ -83,7 +83,7 @@ static NSString * const kColorThemeDefaultsKey = @"HFColorThemeSetting";
             break;
             
         default:
-            return [UIColor colorWithWhite:0.98 alpha:1.0f];
+            return [UIColor colorWithRed:1.0f green:0.99f blue:0.96f alpha:1.0f];
             break;
     }
 }
@@ -99,7 +99,7 @@ static NSString * const kColorThemeDefaultsKey = @"HFColorThemeSetting";
             break;
             
         default:
-            return [UIColor colorWithWhite:0.98f alpha:1.0f];
+            return [UIColor colorWithRed:1.0f green:0.99f blue:0.97f alpha:1.0f];
             break;
     }
 }

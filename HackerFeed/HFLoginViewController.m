@@ -87,11 +87,14 @@
                                                                                                                  _passwordTextField,
                                                                                                                  _securityLabel,
                                                                                                                  _submitButton)]];
-        
-        [self.usernameTextField becomeFirstResponder];
     }
     
     return self;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self.usernameTextField becomeFirstResponder];
 }
 
 - (void)submitButtonPressed:(id)sender {

@@ -61,7 +61,7 @@
     
     self.topBorderView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.topBorderView setTranslatesAutoresizingMaskIntoConstraints:NO];
-    self.topBorderView.backgroundColor = [UIColor clearColor];
+    self.topBorderView.backgroundColor = [UIColor hf_themedAccentColor];
     [self addSubview:self.topBorderView];
     
     self.textView = [[HFTextView alloc] initWithFrame:CGRectZero];
