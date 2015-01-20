@@ -136,6 +136,8 @@
     self.domainLabel.font = [UIFont smallCapsApplicationFontWithSize:15.0f];
     
     self.commentButtonBackground.backgroundColor = [[UIColor hf_themedBackgroundColor] hf_colorDarkenedByFactor:0.03f];
+    
+    [self.commentsButton setNeedsDisplay];
     [self.commentsButton setTitleColor:[UIColor hf_themedSecondaryTextColor] forState:UIControlStateNormal];
 }
 

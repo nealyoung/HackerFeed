@@ -12,6 +12,8 @@
 
 @property UIView *bottomBorderView;
 
+- (void)applyTheme;
+
 @end
 
 @implementation HFDropdownMenuButton
@@ -25,10 +27,13 @@
         [self addSubview:self.iconImageView];
         
         self.bottomBorderView = [[UIView alloc] initWithFrame:CGRectZero];
-        self.bottomBorderView.backgroundColor = [UIColor colorWithWhite:0.3f alpha:1.0f];
         [self addSubview:self.bottomBorderView];
         
         [self setTitleColor:[UIColor hf_themedTextColor] forState:UIControlStateNormal];
+        
+        [self applyTheme];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applyTheme) name:kThemeChangedNotificationName object:nil];
     }
     
     return self;
@@ -52,6 +57,16 @@
                                              CGRectGetHeight(self.frame),
                                              CGRectGetWidth(self.frame) - 15.0f,
                                              1.0f / [UIScreen mainScreen].scale);
+}
+
+- (void)applyTheme {
+    self.iconImageView.tintColor = [UIColor hf_themedAccentColor];
+    self.bottomBorderView.backgroundColor = [UIColor colorWithWhite:0.3f alpha:1.0f];
+    [self setTitleColor:[UIColor hf_themedTextColor] forState:UIControlStateNormal];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kThemeChangedNotificationName object:nil];
 }
 
 @end

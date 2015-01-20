@@ -54,15 +54,9 @@ static NSInteger const kThemeSection = 2;
 //                                                                          options:0
 //                                                                          metrics:nil
 //                                                                            views:NSDictionaryOfVariableBindings(_tableView)]];
-        
+    
         [self applyTheme];
-        
-        [[NSNotificationCenter defaultCenter] addObserverForName:kThemeChangedNotificationName
-                                                          object:nil
-                                                           queue:nil
-                                                      usingBlock:^(NSNotification *note) {
-                                                          [self applyTheme];
-                                                      }];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applyTheme) name:kThemeChangedNotificationName object:nil];
     }
     
     return self;
@@ -214,7 +208,6 @@ static NSInteger const kThemeSection = 2;
             
         case kThemeSection:
             [UIColor hf_setCurrentColorTheme:indexPath.row];
-            [[NSNotificationCenter defaultCenter] postNotificationName:kThemeChangedNotificationName object:nil];
             break;
     }
 }

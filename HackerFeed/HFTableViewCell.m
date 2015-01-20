@@ -15,7 +15,6 @@
     
     if (self) {
         [self applyTheme];
-        
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applyTheme) name:kThemeChangedNotificationName object:nil];
     }
     
@@ -60,13 +59,13 @@
     
     self.textLabel.font = [UIFont applicationFontOfSize:16.0f];
     self.textLabel.textColor = [UIColor hf_themedTextColor];
-    
+
     self.detailTextLabel.font = [UIFont applicationFontOfSize:16.0f];
     self.detailTextLabel.textColor = [UIColor hf_themedSecondaryTextColor];
 }
 
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kThemeChangedNotificationName object:nil];
 }
 
 @end

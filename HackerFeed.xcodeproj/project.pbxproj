@@ -14,17 +14,24 @@
 		0E25F3FC1A50802F00B869EE /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E0214FA19CB518E00561912 /* libz.dylib */; };
 		0E25F3FD1A50811900B869EE /* UIFont+HFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC81431197C9C15009F0D99 /* UIFont+HFAdditions.m */; };
 		0E25F4001A50861C00B869EE /* HFShareExtensionNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E25F3FF1A50861C00B869EE /* HFShareExtensionNavigationController.m */; };
-		0E25F4011A50868C00B869EE /* SourceSansPro-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0E3C12C919881D9300AAF072 /* SourceSansPro-Light.otf */; };
-		0E25F4021A50868F00B869EE /* SourceSansPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0EC81427197C98B5009F0D99 /* SourceSansPro-Bold.otf */; };
-		0E25F4031A50869200B869EE /* SourceSansPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0EC81428197C98B5009F0D99 /* SourceSansPro-Regular.otf */; };
-		0E25F4041A50869600B869EE /* SourceSansPro-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0EC81429197C98B5009F0D99 /* SourceSansPro-Semibold.otf */; };
+		0E2BE1241A6E164000F81396 /* HFShareExtensionContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E2BE1231A6E164000F81396 /* HFShareExtensionContainerViewController.m */; };
+		0E2BE1251A6E173100F81396 /* HFNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E7D19A11996034200C51E37 /* HFNavigationBar.m */; };
+		0E2BE1261A6E1A8300F81396 /* HFNewPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E2F35BF198B8BF700718E1A /* HFNewPostViewController.m */; };
+		0E2BE1271A6E1EB700F81396 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0EE791D51950318D00925E4F /* Images.xcassets */; };
+		0E2BE12C1A6E25E200F81396 /* SourceSansPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0E2BE1281A6E25E200F81396 /* SourceSansPro-Bold.otf */; };
+		0E2BE12D1A6E25E200F81396 /* SourceSansPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0E2BE1281A6E25E200F81396 /* SourceSansPro-Bold.otf */; };
+		0E2BE12E1A6E25E200F81396 /* SourceSansPro-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0E2BE1291A6E25E200F81396 /* SourceSansPro-Light.otf */; };
+		0E2BE12F1A6E25E200F81396 /* SourceSansPro-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0E2BE1291A6E25E200F81396 /* SourceSansPro-Light.otf */; };
+		0E2BE1301A6E25E200F81396 /* SourceSansPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0E2BE12A1A6E25E200F81396 /* SourceSansPro-Regular.otf */; };
+		0E2BE1311A6E25E200F81396 /* SourceSansPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0E2BE12A1A6E25E200F81396 /* SourceSansPro-Regular.otf */; };
+		0E2BE1321A6E25E200F81396 /* SourceSansPro-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0E2BE12B1A6E25E200F81396 /* SourceSansPro-Semibold.otf */; };
+		0E2BE1331A6E25E200F81396 /* SourceSansPro-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0E2BE12B1A6E25E200F81396 /* SourceSansPro-Semibold.otf */; };
 		0E2F35C0198B8BF700718E1A /* HFNewPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E2F35BF198B8BF700718E1A /* HFNewPostViewController.m */; };
 		0E3600661A50628F002B8EE7 /* HFTextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E511CA2198C0B3300F94E9F /* HFTextFieldTableViewCell.m */; };
 		0E3600671A50629C002B8EE7 /* HFTextViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E57B5B3198C2D6C0056CA54 /* HFTextViewTableViewCell.m */; };
 		0E3600681A506379002B8EE7 /* HFTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFC253D1986026500A67412 /* HFTextView.m */; };
 		0E3653A91A54D1F5002FB22A /* HFSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E3653A81A54D1F5002FB22A /* HFSettingsViewController.m */; };
 		0E3653AC1A55DB0D002FB22A /* HFInterfaceTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E3653AB1A55DB0D002FB22A /* HFInterfaceTheme.m */; };
-		0E3C12CA19881D9700AAF072 /* SourceSansPro-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0E3C12C919881D9300AAF072 /* SourceSansPro-Light.otf */; };
 		0E4283211A50682700A0CC1F /* libPods-HackerFeed.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E4283201A50682700A0CC1F /* libPods-HackerFeed.a */; };
 		0E511CA3198C0B3300F94E9F /* HFTextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E511CA2198C0B3300F94E9F /* HFTextFieldTableViewCell.m */; };
 		0E520C53197C73F900E94DBD /* HFDropdownMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E520C52197C73F900E94DBD /* HFDropdownMenuItem.m */; };
@@ -49,9 +56,6 @@
 		0EC331201992986400E1531A /* HFLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC3311F1992986400E1531A /* HFLabel.m */; };
 		0EC81421197C828A009F0D99 /* HFPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC81420197C828A009F0D99 /* HFPostViewController.m */; };
 		0EC81426197C8D1C009F0D99 /* HFCommentsButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC81425197C8D1C009F0D99 /* HFCommentsButton.m */; };
-		0EC8142A197C98B5009F0D99 /* SourceSansPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0EC81427197C98B5009F0D99 /* SourceSansPro-Bold.otf */; };
-		0EC8142B197C98B5009F0D99 /* SourceSansPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0EC81428197C98B5009F0D99 /* SourceSansPro-Regular.otf */; };
-		0EC8142C197C98B5009F0D99 /* SourceSansPro-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0EC81429197C98B5009F0D99 /* SourceSansPro-Semibold.otf */; };
 		0EC81432197C9C15009F0D99 /* UIFont+HFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC81431197C9C15009F0D99 /* UIFont+HFAdditions.m */; };
 		0EC81435197CA8FA009F0D99 /* HFCommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC81434197CA8FA009F0D99 /* HFCommentTableViewCell.m */; };
 		0ECF6056199171F60088C8E6 /* HFTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ECF6055199171F60088C8E6 /* HFTableViewCell.m */; };
@@ -130,13 +134,18 @@
 		0E1FC634197C4B4700B41804 /* HFPostTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFPostTableViewCell.m; sourceTree = "<group>"; };
 		0E25F3FE1A50861C00B869EE /* HFShareExtensionNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFShareExtensionNavigationController.h; sourceTree = "<group>"; };
 		0E25F3FF1A50861C00B869EE /* HFShareExtensionNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFShareExtensionNavigationController.m; sourceTree = "<group>"; };
+		0E2BE1221A6E164000F81396 /* HFShareExtensionContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFShareExtensionContainerViewController.h; sourceTree = "<group>"; };
+		0E2BE1231A6E164000F81396 /* HFShareExtensionContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFShareExtensionContainerViewController.m; sourceTree = "<group>"; };
+		0E2BE1281A6E25E200F81396 /* SourceSansPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Bold.otf"; sourceTree = "<group>"; };
+		0E2BE1291A6E25E200F81396 /* SourceSansPro-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Light.otf"; sourceTree = "<group>"; };
+		0E2BE12A1A6E25E200F81396 /* SourceSansPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Regular.otf"; sourceTree = "<group>"; };
+		0E2BE12B1A6E25E200F81396 /* SourceSansPro-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Semibold.otf"; sourceTree = "<group>"; };
 		0E2F35BE198B8BF700718E1A /* HFNewPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFNewPostViewController.h; sourceTree = "<group>"; };
 		0E2F35BF198B8BF700718E1A /* HFNewPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFNewPostViewController.m; sourceTree = "<group>"; };
 		0E3653A71A54D1F5002FB22A /* HFSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFSettingsViewController.h; sourceTree = "<group>"; };
 		0E3653A81A54D1F5002FB22A /* HFSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFSettingsViewController.m; sourceTree = "<group>"; };
 		0E3653AA1A55DB0D002FB22A /* HFInterfaceTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFInterfaceTheme.h; sourceTree = "<group>"; };
 		0E3653AB1A55DB0D002FB22A /* HFInterfaceTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFInterfaceTheme.m; sourceTree = "<group>"; };
-		0E3C12C919881D9300AAF072 /* SourceSansPro-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Light.otf"; sourceTree = "<group>"; };
 		0E4283201A50682700A0CC1F /* libPods-HackerFeed.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-HackerFeed.a"; path = "Pods/build/Debug-iphoneos/libPods-HackerFeed.a"; sourceTree = "<group>"; };
 		0E4BEAE81A48961100BDA99B /* Share Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Share Extension.entitlements"; sourceTree = "<group>"; };
 		0E511CA1198C0B3300F94E9F /* HFTextFieldTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFTextFieldTableViewCell.h; sourceTree = "<group>"; };
@@ -180,9 +189,6 @@
 		0EC81420197C828A009F0D99 /* HFPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFPostViewController.m; sourceTree = "<group>"; };
 		0EC81424197C8D1C009F0D99 /* HFCommentsButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFCommentsButton.h; sourceTree = "<group>"; };
 		0EC81425197C8D1C009F0D99 /* HFCommentsButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFCommentsButton.m; sourceTree = "<group>"; };
-		0EC81427197C98B5009F0D99 /* SourceSansPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Bold.otf"; sourceTree = "<group>"; };
-		0EC81428197C98B5009F0D99 /* SourceSansPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Regular.otf"; sourceTree = "<group>"; };
-		0EC81429197C98B5009F0D99 /* SourceSansPro-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Semibold.otf"; sourceTree = "<group>"; };
 		0EC81430197C9C15009F0D99 /* UIFont+HFAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+HFAdditions.h"; sourceTree = "<group>"; };
 		0EC81431197C9C15009F0D99 /* UIFont+HFAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+HFAdditions.m"; sourceTree = "<group>"; };
 		0EC81433197CA8FA009F0D99 /* HFCommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFCommentTableViewCell.h; sourceTree = "<group>"; };
@@ -398,10 +404,10 @@
 		0EC8142D197C9924009F0D99 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				0E3C12C919881D9300AAF072 /* SourceSansPro-Light.otf */,
-				0EC81427197C98B5009F0D99 /* SourceSansPro-Bold.otf */,
-				0EC81428197C98B5009F0D99 /* SourceSansPro-Regular.otf */,
-				0EC81429197C98B5009F0D99 /* SourceSansPro-Semibold.otf */,
+				0E2BE1281A6E25E200F81396 /* SourceSansPro-Bold.otf */,
+				0E2BE1291A6E25E200F81396 /* SourceSansPro-Light.otf */,
+				0E2BE12A1A6E25E200F81396 /* SourceSansPro-Regular.otf */,
+				0E2BE12B1A6E25E200F81396 /* SourceSansPro-Semibold.otf */,
 			);
 			name = Fonts;
 			sourceTree = "<group>";
@@ -514,6 +520,8 @@
 				0E4BEAE81A48961100BDA99B /* Share Extension.entitlements */,
 				0E25F3FE1A50861C00B869EE /* HFShareExtensionNavigationController.h */,
 				0E25F3FF1A50861C00B869EE /* HFShareExtensionNavigationController.m */,
+				0E2BE1221A6E164000F81396 /* HFShareExtensionContainerViewController.h */,
+				0E2BE1231A6E164000F81396 /* HFShareExtensionContainerViewController.m */,
 				0EF06ECB1A487DC70072D766 /* ShareViewController.h */,
 				0EF06ECC1A487DC70072D766 /* ShareViewController.m */,
 				0EF06EC91A487DC70072D766 /* Supporting Files */,
@@ -649,12 +657,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0EC8142C197C98B5009F0D99 /* SourceSansPro-Semibold.otf in Resources */,
-				0E3C12CA19881D9700AAF072 /* SourceSansPro-Light.otf in Resources */,
+				0E2BE1321A6E25E200F81396 /* SourceSansPro-Semibold.otf in Resources */,
 				0EE791D61950318D00925E4F /* Images.xcassets in Resources */,
 				0E5424E719C4C07D00FF24A7 /* LaunchScreen.xib in Resources */,
-				0EC8142B197C98B5009F0D99 /* SourceSansPro-Regular.otf in Resources */,
-				0EC8142A197C98B5009F0D99 /* SourceSansPro-Bold.otf in Resources */,
+				0E2BE1301A6E25E200F81396 /* SourceSansPro-Regular.otf in Resources */,
+				0E2BE12C1A6E25E200F81396 /* SourceSansPro-Bold.otf in Resources */,
+				0E2BE12E1A6E25E200F81396 /* SourceSansPro-Light.otf in Resources */,
 				0EE791C51950318D00925E4F /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -671,10 +679,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E25F4041A50869600B869EE /* SourceSansPro-Semibold.otf in Resources */,
-				0E25F4021A50868F00B869EE /* SourceSansPro-Bold.otf in Resources */,
-				0E25F4011A50868C00B869EE /* SourceSansPro-Light.otf in Resources */,
-				0E25F4031A50869200B869EE /* SourceSansPro-Regular.otf in Resources */,
+				0E2BE12F1A6E25E200F81396 /* SourceSansPro-Light.otf in Resources */,
+				0E2BE12D1A6E25E200F81396 /* SourceSansPro-Bold.otf in Resources */,
+				0E2BE1311A6E25E200F81396 /* SourceSansPro-Regular.otf in Resources */,
+				0E2BE1271A6E1EB700F81396 /* Images.xcassets in Resources */,
+				0E2BE1331A6E25E200F81396 /* SourceSansPro-Semibold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -775,7 +784,10 @@
 			files = (
 				0EE27FEF1A65B21B001B01EC /* HFTableViewCell.m in Sources */,
 				0EF06ECD1A487DC70072D766 /* ShareViewController.m in Sources */,
+				0E2BE1261A6E1A8300F81396 /* HFNewPostViewController.m in Sources */,
 				0E25F4001A50861C00B869EE /* HFShareExtensionNavigationController.m in Sources */,
+				0E2BE1251A6E173100F81396 /* HFNavigationBar.m in Sources */,
+				0E2BE1241A6E164000F81396 /* HFShareExtensionContainerViewController.m in Sources */,
 				0E3600681A506379002B8EE7 /* HFTextView.m in Sources */,
 				0E3600671A50629C002B8EE7 /* HFTextViewTableViewCell.m in Sources */,
 				0EE27FF01A65B22B001B01EC /* UIColor+HFAdditions.m in Sources */,
@@ -1027,6 +1039,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
+					"HF_SHARE_EXTENSION=1",
 				);
 				INFOPLIST_FILE = "Share Extension/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;

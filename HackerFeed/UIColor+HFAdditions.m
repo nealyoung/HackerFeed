@@ -18,6 +18,14 @@ static NSString * const kColorThemeDefaultsKey = @"HFColorThemeSetting";
 
 + (void)hf_setCurrentColorTheme:(HFColorTheme)theme {
     [[NSUserDefaults standardUserDefaults] setInteger:theme forKey:kColorThemeDefaultsKey];
+    
+#ifndef HF_SHARE_EXTENSION
+    [[UIApplication sharedApplication] setStatusBarStyle:[UIColor hf_themedStatusBarStyle] animated:NO];
+    [UIApplication sharedApplication].keyWindow.tintColor = [UIColor hf_themedAccentColor];
+#endif
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kThemeChangedNotificationName object:nil];
+
 }
 
 + (UIColor *)applicationColor {

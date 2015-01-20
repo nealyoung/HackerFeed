@@ -16,6 +16,7 @@
 @property UIView *listView;
 @property UIView *bottomBorderView;
 
+- (void)applyTheme;
 - (void)buttonPressed:(HFDropdownMenuButton *)sender;
 
 @end
@@ -32,21 +33,21 @@ const CGFloat kListTopMarginHeight = 80.0f;
         
         //_backgroundView = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleDark]];
         _backgroundView = [[UIView alloc] initWithFrame:CGRectZero];
-        _backgroundView.backgroundColor = [UIColor blackColor];
         _backgroundView.layer.opacity = 0.0f;
         [self addSubview:_backgroundView];
 
         //_listView = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight]];
         _listView = [[UIView alloc] initWithFrame:CGRectZero];
-        _listView.backgroundColor = [UIColor hf_themedBackgroundColor];
         _listView.layer.cornerRadius = 0.0f;
         _listView.layer.masksToBounds = YES;
         [self addSubview:_listView];
-
         
         _bottomBorderView = [[UIView alloc] initWithFrame:CGRectZero];
-        _bottomBorderView.backgroundColor = [UIColor darkGrayColor];
         [_listView addSubview:_bottomBorderView];
+        
+        [self applyTheme];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applyTheme) name:kThemeChangedNotificationName object:nil];
     }
     
     return self;
@@ -88,6 +89,12 @@ const CGFloat kListTopMarginHeight = 80.0f;
 
 - (CGFloat)navigationBarHeight {
     return [UIApplication sharedApplication].statusBarFrame.size.height + CGRectGetHeight(self.delegate.navigationBar.frame);
+}
+
+- (void)applyTheme {
+    _backgroundView.backgroundColor = [UIColor blackColor];
+    _listView.backgroundColor = [UIColor hf_themedBackgroundColor];
+    _bottomBorderView.backgroundColor = [UIColor darkGrayColor];
 }
 
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {
@@ -211,6 +218,10 @@ const CGFloat kListTopMarginHeight = 80.0f;
                              [self.delegate dropdownMenuDidShow:self];
                          }
                      }];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kThemeChangedNotificationName object:nil];
 }
 
 @end

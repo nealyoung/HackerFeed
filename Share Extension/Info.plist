@@ -4,6 +4,13 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>SourceSansPro-Regular.otf</string>
+		<string>SourceSansPro-Bold.otf</string>
+		<string>SourceSansPro-Light.otf</string>
+		<string>SourceSansPro-Semibold.otf</string>
+	</array>
 	<key>CFBundleDisplayName</key>
 	<string>Share Extension</string>
 	<key>CFBundleExecutable</key>
@@ -25,7 +32,7 @@
 	<key>NSExtension</key>
 	<dict>
 		<key>NSExtensionPrincipalClass</key>
-		<string>HFShareExtensionNavigationController</string>
+		<string>HFShareExtensionContainerViewController</string>
 		<key>NSExtensionAttributes</key>
 		<dict>
 			<key>NSExtensionActivationRule</key>
