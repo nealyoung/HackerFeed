@@ -480,9 +480,9 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
         commentMetricsCell.toolbarHeightConstraint.constant = 0.0f;
         
         if ([self.expandedIndexPath isEqual:indexPath]) {
-            commentMetricsCell.expanded = YES;
+            [commentMetricsCell setExpanded:YES animated:NO];
         } else {
-            commentMetricsCell.expanded = NO;
+            [commentMetricsCell setExpanded:NO animated:NO];
         }
         
         commentMetricsCell.bounds = CGRectMake(0.0f, 0.0f, self.tableView.bounds.size.width, 9999.0f);

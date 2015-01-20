@@ -130,23 +130,32 @@
         self.toolbarHeightConstraint.constant = 0.0f;
     }
     
-    NSTimeInterval animationDuration = animated ? 0.3f : 0.0f;
-    
     [self setNeedsUpdateConstraints];
     
-    [UIView animateWithDuration:animationDuration animations:^{
+    if (animated) {
+        [UIView animateWithDuration:0.3f animations:^{
+            [self layoutIfNeeded];
+            
+            if (expanded) {
+                self.contentView.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.03f];
+            } else {
+                self.contentView.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
+            }
+        } completion:^(BOOL finished) {
+            if (!expanded) {
+                self.commentActionsView.hidden = YES;
+            }
+        }];
+    } else {
         [self layoutIfNeeded];
-
+        
         if (expanded) {
             self.contentView.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.03f];
         } else {
             self.contentView.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
-        }
-    } completion:^(BOOL finished) {
-        if (!expanded) {
             self.commentActionsView.hidden = YES;
         }
-    }];
+    }
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
