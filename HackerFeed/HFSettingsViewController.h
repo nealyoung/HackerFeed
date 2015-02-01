@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HFSettingsViewController : UITableViewController
+@interface HFSettingsViewController : UIViewController
 
 @end

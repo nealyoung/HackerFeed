@@ -17,16 +17,12 @@
         self.titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         [self.titleLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
         self.titleLabel.numberOfLines = 0;
-        self.titleLabel.textColor = [HFInterfaceTheme activeTheme].textColor;
         self.titleLabel.textAlignment = NSTextAlignmentCenter;
-        self.titleLabel.font = [UIFont applicationFontOfSize:18.0f];
         [self.contentView addSubview:self.titleLabel];
         
         self.infoLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         [self.infoLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
         self.infoLabel.textAlignment = NSTextAlignmentCenter;
-        self.infoLabel.textColor = [HFInterfaceTheme activeTheme].secondaryTextColor;
-        self.infoLabel.font = [UIFont smallCapsApplicationFontWithSize:16.0f];
         [self.contentView addSubview:self.infoLabel];
         
         [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-15-[_titleLabel]-15-|"
@@ -43,9 +39,21 @@
                                                                                  options:0
                                                                                  metrics:nil
                                                                                    views:NSDictionaryOfVariableBindings(_titleLabel, _infoLabel)]];
+        
+        [self applyTheme];
     }
     
     return self;
+}
+
+- (void)applyTheme {
+    [super applyTheme];
+    
+    self.titleLabel.textColor = [HFInterfaceTheme activeTheme].textColor;
+    self.titleLabel.font = [UIFont applicationFontOfSize:18.0f];
+
+    self.infoLabel.textColor = [HFInterfaceTheme activeTheme].secondaryTextColor;
+    self.infoLabel.font = [UIFont smallCapsApplicationFontWithSize:16.0f];
 }
 
 - (void)layoutSubviews {

@@ -12,24 +12,17 @@
 
 @property UIView *bottomBorderView;
 
+- (void)applyTheme;
+
 @end
 
 @implementation HFCommentActionsView
-
-- (instancetype)initWithCoder:(NSCoder *)aDecoder {
-    self = [super initWithCoder:aDecoder];
-    if (self) {
-        [self commonInit];
-    }
-    return self;
-}
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     
     if (self) {
         self.clipsToBounds = YES;
-        self.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.13f];
         
         self.upvoteButton = [UIButton buttonWithType:UIButtonTypeSystem];
         [self.upvoteButton setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -48,7 +41,6 @@
         
         self.bottomBorderView = [[UIView alloc] initWithFrame:CGRectZero];
         [self.bottomBorderView setTranslatesAutoresizingMaskIntoConstraints:NO];
-        self.bottomBorderView.backgroundColor = [[HFInterfaceTheme activeTheme] accentColor];
         
         [self addSubview:self.bottomBorderView];
         
@@ -117,18 +109,21 @@
                                                                      options:0
                                                                      metrics:nil
                                                                        views:NSDictionaryOfVariableBindings(_bottomBorderView)]];
+        
+        [self applyTheme];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applyTheme) name:kThemeChangedNotificationName object:nil];
     }
     
     return self;
 }
 
-- (void)commonInit {
-//    NSLog(@"%@", NSStringFromCGRect(self.layer.bounds));
-//    self.layer.anchorPoint = CGPointMake(0.5f, 0.5f);
-//    self.layer.backgroundColor = [UIColor darkGrayColor].CGColor;
-//    CATransform3D perspective = CATransform3DIdentity;
-//    perspective.m34 = - 1.0 / 500.0;
-//    self.layer.transform = CATransform3DMakeRotation(M_PI_2, -1, 0, 0);
+- (void)applyTheme {
+    self.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.08f];
+    self.bottomBorderView.backgroundColor = [[HFInterfaceTheme activeTheme] accentColor];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kThemeChangedNotificationName object:nil];
 }
 
 @end

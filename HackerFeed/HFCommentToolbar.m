@@ -71,7 +71,7 @@
     
     self.submitButton = [HFBorderedButton buttonWithType:UIButtonTypeCustom];
     [self.submitButton setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [self.submitButton setTitle:NSLocalizedString(@"submit", nil) forState:UIControlStateNormal];
+    [self.submitButton setTitle:NSLocalizedString(@"Submit", nil) forState:UIControlStateNormal];
     [self addSubview:self.submitButton];
     
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_topBorderView]|"
@@ -148,6 +148,7 @@
     self.textView.layer.borderColor = [[[HFInterfaceTheme activeTheme] accentColor] CGColor];
     
     self.submitButton.titleLabel.font = [UIFont smallCapsApplicationFontWithSize:15.0f];
+    self.submitButton.tintColor = [HFInterfaceTheme activeTheme].accentColor;
 }
 
 // If set to nil, the 'reply to' indicator will be hidden
@@ -158,7 +159,7 @@
         [UIView animateWithDuration:0.2f animations:^{
             [self.superview layoutIfNeeded];
         } completion:^(BOOL finished) {
-            self.replyToLabel.text = [NSString stringWithFormat:NSLocalizedString(@"reply to %@", nil), [replyUsername lowercaseString]];
+            self.replyToLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Reply to %@", nil), [replyUsername lowercaseString]];
             self.replyToView.hidden = NO;
         }];
     } else {

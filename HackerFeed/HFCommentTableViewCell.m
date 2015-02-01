@@ -27,8 +27,6 @@
         
         self.usernameLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         [self.usernameLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
-        self.usernameLabel.textColor = [HFInterfaceTheme activeTheme].textColor;
-        self.usernameLabel.font = [UIFont smallCapsApplicationFontWithSize:15.0f];
         //self.usernameLabel.font = [UIFont applicationFontOfSize:16.0f];
         [self.contentView addSubview:self.usernameLabel];
         
@@ -38,8 +36,6 @@
         self.textView.editable = NO;
         self.textView.dataDetectorTypes = UIDataDetectorTypeLink;
         self.textView.backgroundColor = [UIColor clearColor];
-        self.textView.textColor = [HFInterfaceTheme activeTheme].secondaryTextColor;
-        self.textView.font = [UIFont applicationFontOfSize:14.0f];
         [self.contentView addSubview:self.textView];
         
         self.commentActionsView = [[HFCommentActionsView alloc] initWithFrame:CGRectZero];
@@ -93,9 +89,21 @@
                                                                    multiplier:1.0f
                                                                      constant:0.0f];
         [self.contentView addConstraint:self.toolbarHeightConstraint];
+        
+        [self applyTheme];
     }
     
     return self;
+}
+
+- (void)applyTheme {
+    [super applyTheme];
+    
+    self.usernameLabel.textColor = [HFInterfaceTheme activeTheme].textColor;
+    self.usernameLabel.font = [UIFont smallCapsApplicationFontWithSize:15.0f];
+    
+    self.textView.textColor = [HFInterfaceTheme activeTheme].secondaryTextColor;
+    self.textView.font = [UIFont applicationFontOfSize:14.0f];
 }
 
 - (void)awakeFromNib {

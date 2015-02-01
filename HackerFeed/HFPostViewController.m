@@ -16,6 +16,7 @@
 #import "HFPostInfoTableViewCell.h"
 #import "HFProfileViewController.h"
 #import "HFPullToRefreshContentView.h"
+#import "HFTableView.h"
 #import "HFTableViewCell.h"
 #import "PBWebViewController.h"
 #import "SSPullToRefresh.h"
@@ -52,21 +53,18 @@ static NSString * const kCommentTableViewCellIdentifier = @"CommentTableViewCell
 static NSString * const kUsernameTableViewCellIdentifier = @"UsernameTableViewCell";
 static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCell";
 
-static NSString * const kCommentsWebSegueIdentifier = @"CommentsWebSegue";
-static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue";
-
 @implementation HFPostViewController
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     
-    if (self) {        
-        self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+    if (self) {
+        self.view.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.03f];
+
+        self.tableView = [[HFTableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
         [self.tableView setTranslatesAutoresizingMaskIntoConstraints:NO];
         self.tableView.dataSource = self;
         self.tableView.delegate = self;
-        self.tableView.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.03f];
-        self.tableView.separatorColor = [HFInterfaceTheme activeTheme].cellSeparatorColor;
 
         // Hide the cell separators until a post is set
         self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -392,7 +390,7 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
     } else if (indexPath.row == 1 && self.post.Type != PostTypeJobs) {
         HFTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:kUsernameTableViewCellIdentifier forIndexPath:indexPath];
         cell.textLabel.font = [UIFont smallCapsApplicationFontWithSize:cell.textLabel.font.pointSize];
-        cell.textLabel.text = NSLocalizedString(@"submitted by", nil);
+        cell.textLabel.text = NSLocalizedString(@"Submitted by", nil);
         cell.detailTextLabel.font = [UIFont applicationFontOfSize:16.0f];
         cell.detailTextLabel.text = self.post.Username;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;

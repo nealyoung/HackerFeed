@@ -47,134 +47,149 @@
 }
 
 + (UIFont *)applicationFontOfSize:(CGFloat)size {
-    switch ([[NSUserDefaults standardUserDefaults] integerForKey:kFontFamilyDefaultsKey]) {
-        case HFFontFamilyAvenirNext:
-            return [UIFont fontWithName:@"AvenirNext-Regular" size:size];
-            break;
-            
-        case HFFontFamilyHelveticaNeue:
-            return [UIFont fontWithName:@"HelveticaNeue" size:size];
-            break;
-            
-        default:
-            return [UIFont fontWithName:@"SourceSansPro-Regular" size:size];
-            break;
-    }
+    return [UIFont fontWithName:@"AvenirNext-Regular" size:size];
+    
+//    switch ([[NSUserDefaults standardUserDefaults] integerForKey:kFontFamilyDefaultsKey]) {
+//        case HFFontFamilyAvenirNext:
+//            return [UIFont fontWithName:@"AvenirNext-Regular" size:size];
+//            break;
+//            
+//        case HFFontFamilyHelveticaNeue:
+//            return [UIFont fontWithName:@"HelveticaNeue" size:size];
+//            break;
+//            
+//        default:
+//            return [UIFont fontWithName:@"SourceSansPro-Regular" size:size];
+//            break;
+//    }
 }
 
 + (UIFont *)lightApplicationFontOfSize:(CGFloat)size {
-    switch ([[NSUserDefaults standardUserDefaults] integerForKey:kFontFamilyDefaultsKey]) {
-        case HFFontFamilyAvenirNext:
-            return [UIFont fontWithName:@"AvenirNext-UltraLight" size:size];
-            break;
-            
-        case HFFontFamilyHelveticaNeue:
-            return [UIFont fontWithName:@"HelveticaNeue-Light" size:size];
-            break;
-            
-        default:
-            return [UIFont fontWithName:@"SourceSansPro-Light" size:size];
-            break;
-    }
+    return [UIFont fontWithName:@"AvenirNext-UltraLight" size:size];
+
+//    switch ([[NSUserDefaults standardUserDefaults] integerForKey:kFontFamilyDefaultsKey]) {
+//        case HFFontFamilyAvenirNext:
+//            return [UIFont fontWithName:@"AvenirNext-UltraLight" size:size];
+//            break;
+//            
+//        case HFFontFamilyHelveticaNeue:
+//            return [UIFont fontWithName:@"HelveticaNeue-Light" size:size];
+//            break;
+//            
+//        default:
+//            return [UIFont fontWithName:@"SourceSansPro-Light" size:size];
+//            break;
+//    }
 }
 
 + (UIFont *)boldApplicationFontOfSize:(CGFloat)size {
-    switch ([[NSUserDefaults standardUserDefaults] integerForKey:kFontFamilyDefaultsKey]) {
-        case HFFontFamilyAvenirNext:
-            return [UIFont fontWithName:@"AvenirNext-Bold" size:size];
-            break;
-            
-        case HFFontFamilyHelveticaNeue:
-            return [UIFont fontWithName:@"HelveticaNeue-Bold" size:size];
-            break;
-            
-        default:
-            return [UIFont fontWithName:@"SourceSansPro-Bold" size:size];
-            break;
-    }
+    return [UIFont fontWithName:@"AvenirNext-Bold" size:size];
+
+//    switch ([[NSUserDefaults standardUserDefaults] integerForKey:kFontFamilyDefaultsKey]) {
+//        case HFFontFamilyAvenirNext:
+//            return [UIFont fontWithName:@"AvenirNext-Bold" size:size];
+//            break;
+//            
+//        case HFFontFamilyHelveticaNeue:
+//            return [UIFont fontWithName:@"HelveticaNeue-Bold" size:size];
+//            break;
+//            
+//        default:
+//            return [UIFont fontWithName:@"SourceSansPro-Bold" size:size];
+//            break;
+//    }
 }
 
 + (UIFont *)semiboldApplicationFontOfSize:(CGFloat)size {
-    switch ([[NSUserDefaults standardUserDefaults] integerForKey:kFontFamilyDefaultsKey]) {
-        case HFFontFamilyAvenirNext:
-            return [UIFont fontWithName:@"AvenirNext-Medium" size:size];
-            break;
-            
-        case HFFontFamilyHelveticaNeue:
-            return [UIFont fontWithName:@"HelveticaNeue-Medium" size:size];
-            break;
-            
-        default:
-            return [UIFont fontWithName:@"SourceSansPro-Semibold" size:size];
-            break;
-    }
+    return [UIFont fontWithName:@"AvenirNext-Medium" size:size];
+
+//    switch ([[NSUserDefaults standardUserDefaults] integerForKey:kFontFamilyDefaultsKey]) {
+//        case HFFontFamilyAvenirNext:
+//            return [UIFont fontWithName:@"AvenirNext-Medium" size:size];
+//            break;
+//            
+//        case HFFontFamilyHelveticaNeue:
+//            return [UIFont fontWithName:@"HelveticaNeue-Medium" size:size];
+//            break;
+//            
+//        default:
+//            return [UIFont fontWithName:@"SourceSansPro-Semibold" size:size];
+//            break;
+//    }
 }
 
 + (UIFont *)smallCapsApplicationFontWithSize:(CGFloat)size {
+    return [UIFont fontWithName:@"AvenirNext-Regular" size:size];
+
 //    font = [UIFont fontWithName: @"SourceSansPro-Regular" size: 16.0f];
 //    fontProperties  =  CTFontCopyFeatures ( ( __bridge CTFontRef ) font ) ;
 //    NSLog(@"properties = %@", fontProperties);
     
-    NSString *fontName;
-    
-    switch ([[NSUserDefaults standardUserDefaults] integerForKey:kFontFamilyDefaultsKey]) {
-        case HFFontFamilyAvenirNext:
-            fontName = @"AvenirNext-Regular";
-            break;
-            
-        case HFFontFamilyHelveticaNeue:
-            fontName = @"HelveticaNeue";
-            break;
-            
-        default:
-            fontName = @"SourceSansPro-Regular";
-            break;
-    }
-    
-    UIFont *font = [UIFont fontWithName:fontName size: 16.0f];
-    CFArrayRef fontProperties  =  CTFontCopyFeatures ( ( __bridge CTFontRef ) font ) ;
-    
-    NSArray *fontFeatureSettings = @[ @{ UIFontFeatureTypeIdentifierKey: @(37),
-                                         UIFontFeatureSelectorIdentifierKey : @(1) }];
-    
-    NSDictionary *fontAttributes = @{ UIFontDescriptorFeatureSettingsAttribute: fontFeatureSettings ,
-                                      UIFontDescriptorNameAttribute: fontName } ;
-    
-    UIFontDescriptor *fontDescriptor = [[UIFontDescriptor alloc] initWithFontAttributes: fontAttributes];
-    
-    return [UIFont fontWithDescriptor:fontDescriptor size:size];
+//    NSString *fontName;
+//    
+//    switch ([[NSUserDefaults standardUserDefaults] integerForKey:kFontFamilyDefaultsKey]) {
+//        case HFFontFamilyAvenirNext:
+//            fontName = @"AvenirNext-Regular";
+//            break;
+//            
+//        case HFFontFamilyHelveticaNeue:
+//            fontName = @"HelveticaNeue";
+//            break;
+//            
+//        default:
+//            fontName = @"SourceSansPro-Regular";
+//            break;
+//    }
+//    
+//    UIFont *font = [UIFont fontWithName:fontName size:16.0f];
+//    CFArrayRef fontProperties  =  CTFontCopyFeatures ( ( __bridge CTFontRef ) font ) ;
+//    
+//    NSLog(@"%@ properties: %@", font, fontProperties);
+//    
+//    NSArray *fontFeatureSettings = @[ @{ UIFontFeatureTypeIdentifierKey: @(37),
+//                                         UIFontFeatureSelectorIdentifierKey : @(1) }];
+//    
+//    NSDictionary *fontAttributes = @{ UIFontDescriptorFeatureSettingsAttribute: fontFeatureSettings ,
+//                                      UIFontDescriptorNameAttribute: fontName } ;
+//    
+//    UIFontDescriptor *fontDescriptor = [[UIFontDescriptor alloc] initWithFontAttributes: fontAttributes];
+//    
+//    
+//    CTFontRef fontRef = CTFontCreateWithFontDescriptor((( __bridge CTFontDescriptorRef )fontDescriptor), size, NULL);
+//    font = [UIFont fontWithDescriptor:fontDescriptor size:size];
+//    CFArrayRef fontSettings  =  CTFontCopyFeatureSettings( fontRef ) ;
+//    
+//    NSLog(@"%@ properties: %@", font, fontSettings);
+//    
+//    return [UIFont fontWithDescriptor:fontDescriptor size:size];
 }
 
 + (UIFont *)smallCapsLightApplicationFontWithSize:(CGFloat)size {
-//        UIFont *font = [UIFont fontWithName: @"SourceSansPro-Regular" size: 16.0f];
-//        CFArrayRef  fontProperties  =  CTFontCopyFeatures ( ( __bridge CTFontRef ) font ) ;
-//        NSLog(@"properties = %@", fontProperties);
-    
-    NSArray *fontFeatureSettings = @[ @{ UIFontFeatureTypeIdentifierKey: @(37),
-                                         UIFontFeatureSelectorIdentifierKey : @(1) }];
-    
-    NSDictionary *fontAttributes = @{ UIFontDescriptorFeatureSettingsAttribute: fontFeatureSettings ,
-                                      UIFontDescriptorNameAttribute: @"SourceSansPro-Light" } ;
-    
-    UIFontDescriptor *fontDescriptor = [[UIFontDescriptor alloc] initWithFontAttributes: fontAttributes];
-    
-    return [UIFont fontWithDescriptor:fontDescriptor size:size];
+    return [UIFont fontWithName:@"AvenirNext-UltraLight" size:size];
+
+//    NSArray *fontFeatureSettings = @[ @{ UIFontFeatureTypeIdentifierKey: @(37),
+//                                         UIFontFeatureSelectorIdentifierKey : @(1) }];
+//    
+//    NSDictionary *fontAttributes = @{ UIFontDescriptorFeatureSettingsAttribute: fontFeatureSettings ,
+//                                      UIFontDescriptorNameAttribute: @"SourceSansPro-Light" } ;
+//    
+//    UIFontDescriptor *fontDescriptor = [[UIFontDescriptor alloc] initWithFontAttributes: fontAttributes];
+//    
+//    return [UIFont fontWithDescriptor:fontDescriptor size:size];
 }
 
 + (UIFont *)smallCapsSemiboldApplicationFontWithSize:(CGFloat)size {
-    //    UIFont *font = [UIFont fontWithName: @"SourceSansPro-Regular" size: 16.0f];
-    //    CFArrayRef  fontProperties  =  CTFontCopyFeatures ( ( __bridge CTFontRef ) font ) ;
-    //    NSLog(@"properties = %@", fontProperties);
-    
-    NSArray *fontFeatureSettings = @[ @{ UIFontFeatureTypeIdentifierKey: @(37),
-                                         UIFontFeatureSelectorIdentifierKey : @(1) }];
-    
-    NSDictionary *fontAttributes = @{ UIFontDescriptorFeatureSettingsAttribute: fontFeatureSettings ,
-                                      UIFontDescriptorNameAttribute: @"SourceSansPro-Semibold" } ;
-    
-    UIFontDescriptor *fontDescriptor = [[UIFontDescriptor alloc] initWithFontAttributes: fontAttributes];
-    
-    return [UIFont fontWithDescriptor:fontDescriptor size:size];
+    return [UIFont fontWithName:@"AvenirNext-Medium" size:size];
+
+//    NSArray *fontFeatureSettings = @[ @{ UIFontFeatureTypeIdentifierKey: @(37),
+//                                         UIFontFeatureSelectorIdentifierKey : @(1) }];
+//    
+//    NSDictionary *fontAttributes = @{ UIFontDescriptorFeatureSettingsAttribute: fontFeatureSettings ,
+//                                      UIFontDescriptorNameAttribute: @"SourceSansPro-Semibold" } ;
+//    
+//    UIFontDescriptor *fontDescriptor = [[UIFontDescriptor alloc] initWithFontAttributes: fontAttributes];
+//    
+//    return [UIFont fontWithDescriptor:fontDescriptor size:size];
 }
 
 @end

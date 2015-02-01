@@ -43,7 +43,7 @@
     jobsViewController.dataSource = [[HFFilterPostDataSource alloc] initWithPostFilterType:PostFilterTypeJobs image:[UIImage imageNamed:@"JobsIcon"]];
     jobsViewController.title = NSLocalizedString(@"Jobs", nil);
     
-    HFSettingsViewController *settingsViewController = [[HFSettingsViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    HFSettingsViewController *settingsViewController = [[HFSettingsViewController alloc] initWithNibName:nil bundle:nil];
     
     HFDropdownMenuNavigationController *dropdownMenuViewController = [[HFDropdownMenuNavigationController alloc] initWithNavigationBarClass:[HFNavigationBar class]
                                                                                                                                toolbarClass:[HFToolbar class]];

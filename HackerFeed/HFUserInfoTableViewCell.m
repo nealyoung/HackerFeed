@@ -18,14 +18,10 @@
         
         self.usernameLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         [self.usernameLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
-        self.usernameLabel.font = [UIFont applicationFontOfSize:18.0f];
-        self.usernameLabel.textColor = [HFInterfaceTheme activeTheme].textColor;
         [self.contentView addSubview:self.usernameLabel];
         
         self.ageLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         [self.ageLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
-        self.ageLabel.textColor = [HFInterfaceTheme activeTheme].secondaryTextColor;
-        self.ageLabel.font = [UIFont smallCapsApplicationFontWithSize:16.0f];
         [self.contentView addSubview:self.ageLabel];
         
         [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-15-[_usernameLabel]-15-|"
@@ -45,6 +41,14 @@
     }
     
     return self;
+}
+
+- (void)applyTheme {
+    self.usernameLabel.font = [UIFont applicationFontOfSize:18.0f];
+    self.usernameLabel.textColor = [HFInterfaceTheme activeTheme].textColor;
+    
+    self.ageLabel.textColor = [HFInterfaceTheme activeTheme].secondaryTextColor;
+    self.ageLabel.font = [UIFont smallCapsApplicationFontWithSize:16.0f];
 }
 
 @end

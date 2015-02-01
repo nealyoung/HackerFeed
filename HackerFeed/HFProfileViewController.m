@@ -14,6 +14,7 @@
 #import "HFUserPostDataSource.h"
 #import "HFPostListViewController.h"
 #import "HFTextViewTableViewCell.h"
+#import "HFTableView.h"
 #import "HFTableViewCell.h"
 
 @interface HFProfileViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -45,10 +46,8 @@ static NSString * const kUserSubmissionsTableViewCellIdentifier = @"UserSubmissi
     if (self) {
         self.title = NSLocalizedString(@"Profile", nil);
         
-        self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+        self.tableView = [[HFTableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
         [self.tableView setTranslatesAutoresizingMaskIntoConstraints:NO];
-        self.tableView.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.03f];
-        self.tableView.separatorColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.06f];
         self.tableView.dataSource = self;
         self.tableView.delegate = self;
         [self.view addSubview:self.tableView];

@@ -11,6 +11,7 @@
 #import "HFLoginViewController.h"
 #import "HFProfileViewController.h"
 #import "HFSettingsViewController.h"
+#import "HFTableView.h"
 #import "HFTableViewCell.h"
 #import "libHN.h"
 
@@ -18,7 +19,6 @@
 
 @property UITableView *tableView;
 
-- (void)applyTheme;
 - (void)logoutButtonPressed;
 
 @end
@@ -27,38 +27,35 @@ static NSString * const kTableViewCellIdentifier = @"TableViewCell";
 static NSString * const kButtonTableViewCellIdentifier = @"ButtonTableViewCell";
 
 static NSInteger const kProfileSection = 0;
-static NSInteger const kFontSection = 1;
-static NSInteger const kThemeSection = 2;
+static NSInteger const kThemeSection = 1;
+static NSInteger const kFontSection = 2;
 
 @implementation HFSettingsViewController
 
-- (instancetype)initWithStyle:(UITableViewStyle)style {
-    self = [super initWithStyle:UITableViewStyleGrouped];
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     
     if (self) {
         self.title = NSLocalizedString(@"Settings", nil);
         
-//        self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
-//        [self.tableView setTranslatesAutoresizingMaskIntoConstraints:NO];
+        self.tableView = [[HFTableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+        [self.tableView setTranslatesAutoresizingMaskIntoConstraints:NO];
         self.tableView.rowHeight = 44.0f;
         [self.tableView registerClass:[HFTableViewCell class] forCellReuseIdentifier:kTableViewCellIdentifier];
         [self.tableView registerClass:[HFButtonTableViewCell class] forCellReuseIdentifier:kButtonTableViewCellIdentifier];
-//        self.tableView.dataSource = self;
-//        self.tableView.delegate = self;
-//        [self.view addSubview:self.tableView];
-//        
-//        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_tableView]|"
-//                                                                          options:0
-//                                                                          metrics:nil
-//                                                                            views:NSDictionaryOfVariableBindings(_tableView)]];
-//        
-//        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_tableView]|"
-//                                                                          options:0
-//                                                                          metrics:nil
-//                                                                            views:NSDictionaryOfVariableBindings(_tableView)]];
-    
-        [self applyTheme];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applyTheme) name:kThemeChangedNotificationName object:nil];
+        self.tableView.dataSource = self;
+        self.tableView.delegate = self;
+        [self.view addSubview:self.tableView];
+        
+        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_tableView]|"
+                                                                          options:0
+                                                                          metrics:nil
+                                                                            views:NSDictionaryOfVariableBindings(_tableView)]];
+        
+        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_tableView]|"
+                                                                          options:0
+                                                                          metrics:nil
+                                                                            views:NSDictionaryOfVariableBindings(_tableView)]];
     }
     
     return self;
@@ -80,11 +77,6 @@ static NSInteger const kThemeSection = 2;
         [[HNManager sharedManager] logout];
         [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:kProfileSection] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
-}
-
-- (void)applyTheme {
-    self.tableView.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.03f];
-    self.tableView.separatorColor = [HFInterfaceTheme activeTheme].cellSeparatorColor;
 }
 
 #pragma mark - UITableViewDataSource
@@ -110,7 +102,7 @@ static NSInteger const kThemeSection = 2;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

@@ -85,6 +85,7 @@
 		0EEBD378197DD74D00D74AD6 /* HFProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EEBD377197DD74D00D74AD6 /* HFProfileViewController.m */; };
 		0EEBD393197DEB7E00D74AD6 /* HFUserInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EEBD392197DEB7E00D74AD6 /* HFUserInfoTableViewCell.m */; };
 		0EEBD396197E026300D74AD6 /* UIColor+HFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EEBD395197E026300D74AD6 /* UIColor+HFAdditions.m */; };
+		0EECC78B1A7E966D00527326 /* HFTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EECC78A1A7E966D00527326 /* HFTableView.m */; };
 		0EF06ECD1A487DC70072D766 /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EF06ECC1A487DC70072D766 /* ShareViewController.m */; };
 		0EF06ED21A487DC70072D766 /* Share Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0EF06EC71A487DC60072D766 /* Share Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		0EF3353A1A7DD7A900E482CE /* HFPullToRefreshContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EF335391A7DD7A900E482CE /* HFPullToRefreshContentView.m */; };
@@ -235,6 +236,8 @@
 		0EEBD392197DEB7E00D74AD6 /* HFUserInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFUserInfoTableViewCell.m; sourceTree = "<group>"; };
 		0EEBD394197E026300D74AD6 /* UIColor+HFAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HFAdditions.h"; sourceTree = "<group>"; };
 		0EEBD395197E026300D74AD6 /* UIColor+HFAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HFAdditions.m"; sourceTree = "<group>"; };
+		0EECC7891A7E966D00527326 /* HFTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFTableView.h; sourceTree = "<group>"; };
+		0EECC78A1A7E966D00527326 /* HFTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFTableView.m; sourceTree = "<group>"; };
 		0EF06EC71A487DC60072D766 /* Share Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Share Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EF06ECA1A487DC70072D766 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0EF06ECB1A487DC70072D766 /* ShareViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShareViewController.h; sourceTree = "<group>"; };
@@ -397,6 +400,8 @@
 				0EC81425197C8D1C009F0D99 /* HFCommentsButton.m */,
 				0EFC253A1985D9D800A67412 /* HFCommentToolbar.h */,
 				0EFC253B1985D9D800A67412 /* HFCommentToolbar.m */,
+				0EECC7891A7E966D00527326 /* HFTableView.h */,
+				0EECC78A1A7E966D00527326 /* HFTableView.m */,
 				0EFC253E1986026500A67412 /* HFTextView.h */,
 				0EFC253D1986026500A67412 /* HFTextView.m */,
 				0EC3311E1992986400E1531A /* HFLabel.h */,
@@ -769,6 +774,7 @@
 				0EEBD396197E026300D74AD6 /* UIColor+HFAdditions.m in Sources */,
 				0EC81426197C8D1C009F0D99 /* HFCommentsButton.m in Sources */,
 				0E5C453B19838135001EE1CB /* HFFilterPostDataSource.m in Sources */,
+				0EECC78B1A7E966D00527326 /* HFTableView.m in Sources */,
 				0E0214FE19CB53D300561912 /* HFWebViewController.m in Sources */,
 				0E990E841990BA65002933C4 /* DMBaseTransition.m in Sources */,
 				0EF3353A1A7DD7A900E482CE /* HFPullToRefreshContentView.m in Sources */,
