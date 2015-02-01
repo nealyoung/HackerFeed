@@ -22,9 +22,19 @@
 }
 
 - (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
-    NSTimeInterval animationDuration = animated ? 0.3f : 0.0f;
-    
-    [UIView animateWithDuration:animationDuration animations:^{
+    if (animated) {
+        [UIView animateWithDuration:0.3f animations:^{
+            if (highlighted) {
+                self.textLabel.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.25f];
+                self.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.25f];
+                self.contentView.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.25f];
+            } else {
+                self.textLabel.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
+                self.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
+                self.contentView.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
+            }
+        }];
+    } else {
         if (highlighted) {
             self.textLabel.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.25f];
             self.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.25f];
@@ -34,13 +44,23 @@
             self.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
             self.contentView.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
         }
-    }];
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    NSTimeInterval animationDuration = animated ? 0.3f : 0.0f;
-    
-    [UIView animateWithDuration:animationDuration animations:^{
+    if (animated) {
+        [UIView animateWithDuration:0.3f animations:^{
+            if (selected) {
+                self.textLabel.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.25f];
+                self.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.25f];
+                self.contentView.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.25f];
+            } else {
+                self.textLabel.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
+                self.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
+                self.contentView.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
+            }
+        }];
+    } else {
         if (selected) {
             self.textLabel.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.25f];
             self.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.25f];
@@ -50,7 +70,7 @@
             self.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
             self.contentView.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
         }
-    }];
+    }
 }
 
 - (void)applyTheme {
@@ -62,6 +82,8 @@
 
     self.detailTextLabel.font = [UIFont applicationFontOfSize:16.0f];
     self.detailTextLabel.textColor = [HFInterfaceTheme activeTheme].secondaryTextColor;
+    
+    [self setNeedsLayout];
 }
 
 - (void)dealloc {

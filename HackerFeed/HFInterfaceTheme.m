@@ -40,7 +40,7 @@ static HFInterfaceTheme *_activeTheme;
 }
 
 + (HFInterfaceTheme *)activeTheme {
-    if (!_activeTheme || _activeTheme.themeType != [[NSUserDefaults standardUserDefaults] integerForKey:kColorThemeDefaultsKey]) {
+    if (!_activeTheme) {
         _activeTheme = [HFInterfaceTheme themeWithType:[[NSUserDefaults standardUserDefaults] integerForKey:kColorThemeDefaultsKey]];
     }
     
@@ -48,6 +48,7 @@ static HFInterfaceTheme *_activeTheme;
 }
 
 + (void)setActiveTheme:(HFInterfaceTheme *)theme {
+    _activeTheme = theme;
     [[NSUserDefaults standardUserDefaults] setInteger:theme.themeType forKey:kColorThemeDefaultsKey];
     
     [HFInterfaceTheme setupAppearanceForActiveTheme];
@@ -62,7 +63,7 @@ static HFInterfaceTheme *_activeTheme;
         interfaceTheme.title = NSLocalizedString(@"Default", nil);
         
         interfaceTheme.accentColor = [UIColor colorWithRed:0.90f green:0.40f blue:0.13f alpha:1.0f];
-        interfaceTheme.textColor = [UIColor colorWithWhite:0.12f alpha:1.0f];
+        interfaceTheme.textColor = [UIColor colorWithWhite:0.16f alpha:1.0f];
         interfaceTheme.secondaryTextColor = [UIColor colorWithWhite:0.33f alpha:1.0f];
         interfaceTheme.backgroundColor = [UIColor colorWithRed:1.0f green:0.99f blue:0.96f alpha:1.0f];
         interfaceTheme.navigationBarColor = [UIColor colorWithRed:1.0f green:0.99f blue:0.97f alpha:1.0f];

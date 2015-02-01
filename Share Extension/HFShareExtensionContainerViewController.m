@@ -9,6 +9,7 @@
 #import "HFNewPostViewController.h"
 #import "HFShareExtensionContainerViewController.h"
 #import "HFNavigationBar.h"
+#import "HFToolbar.h"
 #import "ShareViewController.h"
 
 @interface HFShareExtensionContainerViewController ()
@@ -23,16 +24,16 @@
     [super viewDidLoad];
     [self customizeAppearance];
     
-//    UINavigationController *shareNavigationController = [[UINavigationController alloc] initWithNavigationBarClass:[HFNavigationBar class] toolbarClass:nil];
-//    
-//    HFNewPostViewController *newPostViewController = [[HFNewPostViewController alloc] initWithNibName:nil bundle:nil];
-//    
-//    ShareViewController *shareViewController = [[ShareViewController alloc] initWithNibName:nil bundle:nil];
-//    shareNavigationController.viewControllers = @[newPostViewController];
+    //    UINavigationController *shareNavigationController = [[UINavigationController alloc] initWithNavigationBarClass:[HFNavigationBar class] toolbarClass:nil];
+    //
+    //    HFNewPostViewController *newPostViewController = [[HFNewPostViewController alloc] initWithNibName:nil bundle:nil];
+    //
+    //    ShareViewController *shareViewController = [[ShareViewController alloc] initWithNibName:nil bundle:nil];
+    //    shareNavigationController.viewControllers = @[newPostViewController];
     
     HFNewPostViewController *newPostViewController = [[HFNewPostViewController alloc] initWithNibName:nil bundle:nil];
     UINavigationController *shareNavigationController = [[UINavigationController alloc] initWithNavigationBarClass:[HFNavigationBar class]
-                                                                                                 toolbarClass:nil];
+                                                                                                      toolbarClass:[HFToolbar class]];
     shareNavigationController.viewControllers = @[newPostViewController];
     
     shareNavigationController.view.frame = self.view.bounds;
@@ -43,7 +44,7 @@
 
 - (void)customizeAppearance {
     self.view.tintColor = [[HFInterfaceTheme activeTheme] accentColor];
-
+    
     NSDictionary *navigationBarTitleTextAttributes = @{NSForegroundColorAttributeName: self.view.tintColor,
                                                        NSFontAttributeName: [UIFont applicationFontOfSize:19.0f]};
     [[UINavigationBar appearance] setTitleTextAttributes:navigationBarTitleTextAttributes];

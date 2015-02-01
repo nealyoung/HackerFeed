@@ -8,7 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSInteger, HFFontFamily) {
+    HFFontFamilySourceSansPro,
+    HFFontFamilyAvenirNext,
+    HFFontFamilyHelveticaNeue
+};
+
+static NSString * const kFontFamilyDefaultsKey = @"HFFontFamilySetting";
+
 @interface UIFont (HFAdditions)
+
++ (NSString *)activeFontFamily;
++ (void)setActiveFontFamily:(NSString *)family;
+
++ (NSArray *)availableFontFamilies;
 
 + (UIFont *)applicationFontOfSize:(CGFloat)size;
 + (UIFont *)boldApplicationFontOfSize:(CGFloat)size;

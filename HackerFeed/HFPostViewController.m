@@ -522,7 +522,7 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
             profileViewController.user = user;
         }];
     } else {
-        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+        //[self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
 }
 

@@ -35,7 +35,8 @@
 }
 
 - (void)commonInit {
-    self.titleLabel.font = [UIFont applicationFontOfSize:16.0f];
+    [self applyTheme];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applyTheme) name:kThemeChangedNotificationName object:nil];
 }
 
 - (void)layoutSubviews {
@@ -64,6 +65,14 @@
     CGContextSetLineWidth(ctx, 1.0f);
     
     CGContextStrokePath(ctx);
+}
+
+- (void)applyTheme {
+    self.titleLabel.font = [UIFont applicationFontOfSize:16.0f];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kThemeChangedNotificationName object:nil];
 }
 
 @end

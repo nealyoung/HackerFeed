@@ -6,12 +6,6 @@
 // project.
 
 
-// BMYCircularProgressPullToRefresh
-#define COCOAPODS_POD_AVAILABLE_BMYCircularProgressPullToRefresh
-#define COCOAPODS_VERSION_MAJOR_BMYCircularProgressPullToRefresh 1
-#define COCOAPODS_VERSION_MINOR_BMYCircularProgressPullToRefresh 1
-#define COCOAPODS_VERSION_PATCH_BMYCircularProgressPullToRefresh 1
-
 // FCUtilities
 #define COCOAPODS_POD_AVAILABLE_FCUtilities
 #define COCOAPODS_VERSION_MAJOR_FCUtilities 0
@@ -29,6 +23,12 @@
 #define COCOAPODS_VERSION_MAJOR_PBWebViewController 0
 #define COCOAPODS_VERSION_MINOR_PBWebViewController 3
 #define COCOAPODS_VERSION_PATCH_PBWebViewController 0
+
+// SSPullToRefresh
+#define COCOAPODS_POD_AVAILABLE_SSPullToRefresh
+#define COCOAPODS_VERSION_MAJOR_SSPullToRefresh 1
+#define COCOAPODS_VERSION_MINOR_SSPullToRefresh 2
+#define COCOAPODS_VERSION_PATCH_SSPullToRefresh 2
 
 // SVProgressHUD
 #define COCOAPODS_POD_AVAILABLE_SVProgressHUD

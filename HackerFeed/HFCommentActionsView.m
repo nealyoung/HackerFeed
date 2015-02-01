@@ -57,13 +57,18 @@
                                                                      metrics:nil
                                                                        views:NSDictionaryOfVariableBindings(_upvoteButton)]];
         
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.upvoteButton
-                                                         attribute:NSLayoutAttributeCenterY
-                                                         relatedBy:NSLayoutRelationEqual
-                                                            toItem:self
-                                                         attribute:NSLayoutAttributeCenterY
-                                                        multiplier:1.0f
-                                                          constant:0.0f]];
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_upvoteButton(34)]-4-|"
+                                                                     options:0
+                                                                     metrics:nil
+                                                                       views:NSDictionaryOfVariableBindings(_upvoteButton)]];
+        
+//        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.upvoteButton
+//                                                         attribute:NSLayoutAttributeCenterY
+//                                                         relatedBy:NSLayoutRelationEqual
+//                                                            toItem:self
+//                                                         attribute:NSLayoutAttributeCenterY
+//                                                        multiplier:1.0f
+//                                                          constant:0.0f]];
         
         [self addConstraint:[NSLayoutConstraint constraintWithItem:self.replyButton
                                                          attribute:NSLayoutAttributeCenterX
@@ -73,26 +78,35 @@
                                                         multiplier:1.0f
                                                           constant:0.0f]];
         
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.replyButton
-                                                         attribute:NSLayoutAttributeCenterY
-                                                         relatedBy:NSLayoutRelationEqual
-                                                            toItem:self
-                                                         attribute:NSLayoutAttributeCenterY
-                                                        multiplier:1.0f
-                                                          constant:0.0f]];
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_replyButton(34)]-4-|"
+                                                                     options:0
+                                                                     metrics:nil
+                                                                       views:NSDictionaryOfVariableBindings(_replyButton)]];
+        
+//        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.replyButton
+//                                                         attribute:NSLayoutAttributeCenterY
+//                                                         relatedBy:NSLayoutRelationEqual
+//                                                            toItem:self
+//                                                         attribute:NSLayoutAttributeCenterY
+//                                                        multiplier:1.0f
+//                                                          constant:0.0f]];
         
         [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[_userButton(34)]-20-|"
                                                                      options:0
                                                                      metrics:nil
                                                                        views:NSDictionaryOfVariableBindings(_userButton)]];
-        
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.userButton
-                                                         attribute:NSLayoutAttributeCenterY
-                                                         relatedBy:NSLayoutRelationEqual
-                                                            toItem:self
-                                                         attribute:NSLayoutAttributeCenterY
-                                                        multiplier:1.0f
-                                                          constant:0.0f]];
+
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_userButton(34)]-4-|"
+                                                                     options:0
+                                                                     metrics:nil
+                                                                       views:NSDictionaryOfVariableBindings(_userButton)]];
+//        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.userButton
+//                                                         attribute:NSLayoutAttributeCenterY
+//                                                         relatedBy:NSLayoutRelationEqual
+//                                                            toItem:self
+//                                                         attribute:NSLayoutAttributeCenterY
+//                                                        multiplier:1.0f
+//                                                          constant:0.0f]];
         
         [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_bottomBorderView]|"
                                                                      options:0

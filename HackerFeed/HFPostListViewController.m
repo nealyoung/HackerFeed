@@ -8,20 +8,22 @@
 
 #import "HFPostListViewController.h"
 
-#import "BMYCircularProgressPullToRefresh.h"
 #import "DMScaleTransition.h"
 #import "HFModalWebViewController.h"
 #import "HFNavigationBar.h"
 #import "HFNewPostViewController.h"
 #import "HFPostTableViewCell.h"
 #import "HFPostViewController.h"
+#import "HFToolbar.h"
 #import "HFWebViewController.h"
+#import "SSPullToRefresh.h"
 #import "SVProgressHUD.h"
 #import "UIScrollView+SVInfiniteScrolling.h"
 
-@interface HFPostListViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface HFPostListViewController () <SSPullToRefreshViewDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property DMScaleTransition *scaleTransition;
+@property SSPullToRefreshView *pullToRefreshView;
 
 - (void)applyTheme;
 - (void)refresh;
@@ -79,22 +81,11 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
-    UIImage *logoImage = [UIImage imageNamed:@"PullToRefreshIcon"];
-    UIImage *backCircleImage = [UIImage imageNamed:@"PullToRefreshGrayCircle"];
-    UIImage *frontCircleImage = [UIImage imageNamed:@"PullToRefreshOrangeCircle"];
+    if (!self.pullToRefreshView) {
+        self.pullToRefreshView = [[SSPullToRefreshView alloc] initWithScrollView:self.tableView delegate:self];
+    }
     
-    BMYCircularProgressView *progressView = [[BMYCircularProgressView alloc] initWithFrame:CGRectMake(0, 0, 25, 25)
-                                                                                      logo:logoImage
-                                                                           backCircleImage:backCircleImage
-                                                                          frontCircleImage:frontCircleImage];
     __weak typeof(self) welf = self;
-
-    [self.tableView setPullToRefreshWithHeight:40.0f actionHandler:^(BMYPullToRefreshView *pullToRefreshView) {
-        [welf refresh];
-    }];
-    
-    [self.tableView.pullToRefreshView setPreserveContentInset:NO];
-    [self.tableView.pullToRefreshView setProgressView:progressView];
     
     [self.tableView addInfiniteScrollingWithActionHandler:^{
         [welf loadMorePosts];
@@ -111,7 +102,7 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
     if (!self.dataSource.posts) {
         [self refresh];
     }
-
+    
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
 }
@@ -127,8 +118,8 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
         } else {
             [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Could not load posts", nil)];
         }
-
-        [self.tableView.pullToRefreshView stopAnimating];
+        
+        [self.pullToRefreshView finishLoading];
     }];
 }
 
@@ -153,7 +144,7 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
 - (void)commentsButtonPressed:(HFCommentsButton *)sender {
     HFPostViewController *postViewController = [[HFPostViewController alloc] initWithNibName:nil bundle:nil];
     UINavigationController *postNavigationController = [[UINavigationController alloc] initWithNavigationBarClass:[HFNavigationBar class]
-                                                                                                     toolbarClass:nil];
+                                                                                                     toolbarClass:[HFToolbar class]];
     postNavigationController.viewControllers = @[postViewController];
     HFCommentsButton *commentsButton = (HFCommentsButton *)sender;
     postViewController.post = self.dataSource.posts[commentsButton.tag];
@@ -164,7 +155,7 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
 - (void)newPostButtonPressed {
     HFNewPostViewController *newPostViewController = [[HFNewPostViewController alloc] initWithNibName:nil bundle:nil];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithNavigationBarClass:[HFNavigationBar class]
-                                                                                                 toolbarClass:nil];
+                                                                                                 toolbarClass:[HFToolbar class]];
     navigationController.viewControllers = @[newPostViewController];
     
     if (self.splitViewController.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular) {
@@ -173,7 +164,7 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
         self.scaleTransition = [DMScaleTransition new];
         navigationController.transitioningDelegate = self.scaleTransition;
     }
-
+    
     [self.splitViewController presentViewController:navigationController animated:YES completion:nil];
 }
 
@@ -184,6 +175,12 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
     self.dropdownMenuItem.image = dataSource.image;
     
     //[self refresh];
+}
+
+#pragma mark - SSPullToRefreshDelegate
+
+- (void)pullToRefreshViewDidStartLoading:(SSPullToRefreshView *)view {
+    [self refresh];
 }
 
 #pragma mark - UITableViewDataSource
@@ -226,7 +223,7 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
     
     postMetricsCell.titleLabel.text = post.Title;
     postMetricsCell.domainLabel.text = post.UrlDomain;
-
+    
     if (post.Type == PostTypeJobs) {
         postMetricsCell.infoLabel.text = nil;
     } else {
@@ -265,7 +262,7 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
         [self showViewController:webViewController sender:self];
     }
     
-    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    //[self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end

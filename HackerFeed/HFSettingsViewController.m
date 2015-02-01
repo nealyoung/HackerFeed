@@ -40,6 +40,7 @@ static NSInteger const kThemeSection = 2;
         
 //        self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
 //        [self.tableView setTranslatesAutoresizingMaskIntoConstraints:NO];
+        self.tableView.rowHeight = 44.0f;
         [self.tableView registerClass:[HFTableViewCell class] forCellReuseIdentifier:kTableViewCellIdentifier];
         [self.tableView registerClass:[HFButtonTableViewCell class] forCellReuseIdentifier:kButtonTableViewCellIdentifier];
 //        self.tableView.dataSource = self;
@@ -119,7 +120,7 @@ static NSInteger const kThemeSection = 2;
             break;
             
         case kFontSection:
-            return 2;
+            return [[UIFont availableFontFamilies] count];
             break;
             
         case kThemeSection:
@@ -164,10 +165,12 @@ static NSInteger const kThemeSection = 2;
         case kFontSection: {
             HFTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableViewCellIdentifier forIndexPath:indexPath];
             
-            if (indexPath.row == 0) {
-                cell.textLabel.text = @"Source Sans Pro";
+            cell.textLabel.text = [UIFont availableFontFamilies][indexPath.row];
+            
+            if ([[NSUserDefaults standardUserDefaults] integerForKey:kFontFamilyDefaultsKey] == indexPath.row) {
+                cell.accessoryType = UITableViewCellAccessoryCheckmark;
             } else {
-                cell.textLabel.text = @"Avenir Next";
+                cell.accessoryType = UITableViewCellAccessoryNone;
             }
             
             return cell;
@@ -177,6 +180,12 @@ static NSInteger const kThemeSection = 2;
             HFTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableViewCellIdentifier forIndexPath:indexPath];
             HFInterfaceTheme *theme = [HFInterfaceTheme allThemes][indexPath.row];
             cell.textLabel.text = theme.title;
+            
+            if ([HFInterfaceTheme activeTheme].themeType == theme.themeType) {
+                cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            } else {
+                cell.accessoryType = UITableViewCellAccessoryNone;
+            }
             
             return cell;
         }
@@ -206,11 +215,13 @@ static NSInteger const kThemeSection = 2;
             break;
             
         case kFontSection:
-            [HFInterfaceTheme setActiveTheme:[HFInterfaceTheme themeWithType:indexPath.row]];
+            [UIFont setActiveFontFamily:[UIFont availableFontFamilies][indexPath.row]];
+            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:kFontSection] withRowAnimation:UITableViewRowAnimationNone];
             break;
             
         case kThemeSection:
             [HFInterfaceTheme setActiveTheme:[HFInterfaceTheme themeWithType:indexPath.row]];
+            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:kThemeSection] withRowAnimation:UITableViewRowAnimationNone];
             break;
     }
 }

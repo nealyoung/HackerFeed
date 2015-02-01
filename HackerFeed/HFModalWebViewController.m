@@ -7,8 +7,8 @@
 //
 
 #import "HFModalWebViewController.h"
-
 #import "HFNavigationBar.h"
+#import "HFToolbar.h"
 
 @interface HFModalWebViewController ()
 
@@ -17,7 +17,7 @@
 @implementation HFModalWebViewController
 
 - (instancetype)initWithURL:(NSURL *)url {
-    self = [super initWithNavigationBarClass:[HFNavigationBar class] toolbarClass:nil];
+    self = [super initWithNavigationBarClass:[HFNavigationBar class] toolbarClass:[HFToolbar class]];
     
     if (self) {
         [self commonInit];

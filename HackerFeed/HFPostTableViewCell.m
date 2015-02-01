@@ -112,6 +112,56 @@
 //    self.commentButtonBackground.backgroundColor = commentBackgroundColor;
 //}
 
+//- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
+//    [super setHighlighted:highlighted animated:animated];
+//    
+//    NSLog(@"set highlighted %d animated %d", highlighted, animated);
+//
+//    NSTimeInterval animationDuration = animated ? 0.3f : 0.0f;
+//    
+//    [UIView animateWithDuration:animationDuration animations:^{
+//        if (highlighted) {
+//            self.titleLabel.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.25f];
+//            self.infoLabel.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.25f];
+//            self.domainLabel.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.25f];
+//        } else {
+//            self.titleLabel.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
+//            self.infoLabel.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
+//            self.domainLabel.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
+//        }
+//    }];
+//}
+//
+//- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+//    [super setSelected:selected animated:animated];
+//    
+//    NSLog(@"set selected %d animated %d", selected, animated);
+//    
+//    if (animated) {
+//        [UIView animateWithDuration:0.3f animations:^{
+//            if (selected) {
+//                self.titleLabel.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.25f];
+//                self.infoLabel.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.25f];
+//                self.domainLabel.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.25f];
+//            } else {
+//                self.titleLabel.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
+//                self.infoLabel.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
+//                self.domainLabel.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
+//            }
+//        }];
+//    } else {
+//        if (selected) {
+//            self.titleLabel.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.25f];
+//            self.infoLabel.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.25f];
+//            self.domainLabel.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.25f];
+//        } else {
+//            self.titleLabel.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
+//            self.infoLabel.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
+//            self.domainLabel.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
+//        }
+//    }
+//}
+
 - (void)layoutSubviews {
     [super layoutSubviews];
     
@@ -128,12 +178,15 @@
     
     self.infoLabel.textColor = [HFInterfaceTheme activeTheme].secondaryTextColor;
     self.infoLabel.font = [UIFont smallCapsApplicationFontWithSize:15.0f];
-    
+//    self.infoLabel.backgroundColor = self.contentView.backgroundColor;
+
     self.titleLabel.textColor = [HFInterfaceTheme activeTheme].textColor;
     self.titleLabel.font = [UIFont applicationFontOfSize:17.0f];
+//    self.titleLabel.backgroundColor = self.contentView.backgroundColor;
     
     self.domainLabel.textColor = [HFInterfaceTheme activeTheme].secondaryTextColor;
     self.domainLabel.font = [UIFont smallCapsApplicationFontWithSize:15.0f];
+//    self.domainLabel.backgroundColor = self.contentView.backgroundColor;
     
     self.commentButtonBackground.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.03f];
     

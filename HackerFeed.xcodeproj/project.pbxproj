@@ -60,6 +60,8 @@
 		0EC81432197C9C15009F0D99 /* UIFont+HFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC81431197C9C15009F0D99 /* UIFont+HFAdditions.m */; };
 		0EC81435197CA8FA009F0D99 /* HFCommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC81434197CA8FA009F0D99 /* HFCommentTableViewCell.m */; };
 		0ECF6056199171F60088C8E6 /* HFTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ECF6055199171F60088C8E6 /* HFTableViewCell.m */; };
+		0EDDFF501A71715B00EBBED9 /* HFToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EDDFF4F1A71715B00EBBED9 /* HFToolbar.m */; };
+		0EDDFF511A71739D00EBBED9 /* HFToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EDDFF4F1A71715B00EBBED9 /* HFToolbar.m */; };
 		0EDEBD64197E2ED00080D446 /* HFDropdownMenuNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EDEBD63197E2ED00080D446 /* HFDropdownMenuNavigationController.m */; };
 		0EE27FEE1A65A939001B01EC /* HFButtonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE27FED1A65A939001B01EC /* HFButtonTableViewCell.m */; };
 		0EE27FEF1A65B21B001B01EC /* HFTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ECF6055199171F60088C8E6 /* HFTableViewCell.m */; };
@@ -196,6 +198,8 @@
 		0EC81434197CA8FA009F0D99 /* HFCommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFCommentTableViewCell.m; sourceTree = "<group>"; };
 		0ECF6054199171F60088C8E6 /* HFTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFTableViewCell.h; sourceTree = "<group>"; };
 		0ECF6055199171F60088C8E6 /* HFTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFTableViewCell.m; sourceTree = "<group>"; };
+		0EDDFF4E1A71715B00EBBED9 /* HFToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFToolbar.h; sourceTree = "<group>"; };
+		0EDDFF4F1A71715B00EBBED9 /* HFToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFToolbar.m; sourceTree = "<group>"; };
 		0EDEBD62197E2ED00080D446 /* HFDropdownMenuNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFDropdownMenuNavigationController.h; sourceTree = "<group>"; };
 		0EDEBD63197E2ED00080D446 /* HFDropdownMenuNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFDropdownMenuNavigationController.m; sourceTree = "<group>"; };
 		0EE27FEC1A65A939001B01EC /* HFButtonTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFButtonTableViewCell.h; sourceTree = "<group>"; };
@@ -398,6 +402,8 @@
 				0E926CD119835AB30078E148 /* HFBorderedButton.m */,
 				0E7D19A01996034200C51E37 /* HFNavigationBar.h */,
 				0E7D19A11996034200C51E37 /* HFNavigationBar.m */,
+				0EDDFF4E1A71715B00EBBED9 /* HFToolbar.h */,
+				0EDDFF4F1A71715B00EBBED9 /* HFToolbar.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -764,6 +770,7 @@
 				0EEBD375197DD52400D74AD6 /* HFPostInfoTableViewCell.m in Sources */,
 				0EFC253C1985D9D800A67412 /* HFCommentToolbar.m in Sources */,
 				0ECF6056199171F60088C8E6 /* HFTableViewCell.m in Sources */,
+				0EDDFF501A71715B00EBBED9 /* HFToolbar.m in Sources */,
 				0EFC253F1986026500A67412 /* HFTextView.m in Sources */,
 				0E7D19A21996034200C51E37 /* HFNavigationBar.m in Sources */,
 				0E926CD219835AB30078E148 /* HFBorderedButton.m in Sources */,
@@ -788,6 +795,7 @@
 				0E2BE1261A6E1A8300F81396 /* HFNewPostViewController.m in Sources */,
 				0E2BE1341A6EBC3600F81396 /* HFInterfaceTheme.m in Sources */,
 				0E25F4001A50861C00B869EE /* HFShareExtensionNavigationController.m in Sources */,
+				0EDDFF511A71739D00EBBED9 /* HFToolbar.m in Sources */,
 				0E2BE1251A6E173100F81396 /* HFNavigationBar.m in Sources */,
 				0E2BE1241A6E164000F81396 /* HFShareExtensionContainerViewController.m in Sources */,
 				0E3600681A506379002B8EE7 /* HFTextView.m in Sources */,
@@ -925,7 +933,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
-					"-l\"Pods-HackerFeed-BMYCircularProgressPullToRefresh\"",
 					"-l\"Pods-HackerFeed-FCUtilities\"",
 					"-l\"Pods-HackerFeed-NYSegmentedControl\"",
 					"-l\"Pods-HackerFeed-PBWebViewController\"",
@@ -938,6 +945,7 @@
 					"-lz",
 					"-framework",
 					Reveal,
+					"$(inherited)",
 				);
 				PRODUCT_NAME = HackerFeed;
 				PROVISIONING_PROFILE = "";
@@ -964,7 +972,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
-					"-l\"Pods-HackerFeed-BMYCircularProgressPullToRefresh\"",
 					"-l\"Pods-HackerFeed-FCUtilities\"",
 					"-l\"Pods-HackerFeed-NYSegmentedControl\"",
 					"-l\"Pods-HackerFeed-PBWebViewController\"",
@@ -973,6 +980,7 @@
 					"-l\"Pods-HackerFeed-libHN\"",
 					"-framework",
 					"\"QuartzCore\"",
+					"$(inherited)",
 				);
 				PRODUCT_NAME = HackerFeed;
 				PROVISIONING_PROFILE = "";

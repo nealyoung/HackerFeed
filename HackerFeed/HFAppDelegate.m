@@ -15,6 +15,7 @@
 #import "HFPostListViewController.h"
 #import "HFPostViewController.h"
 #import "HFSettingsViewController.h"
+#import "HFToolbar.h"
 #import "SVProgressHUD.h"
 
 @implementation HFAppDelegate
@@ -45,7 +46,7 @@
     HFSettingsViewController *settingsViewController = [[HFSettingsViewController alloc] initWithStyle:UITableViewStyleGrouped];
     
     HFDropdownMenuNavigationController *dropdownMenuViewController = [[HFDropdownMenuNavigationController alloc] initWithNavigationBarClass:[HFNavigationBar class]
-                                                                                                                               toolbarClass:nil];
+                                                                                                                               toolbarClass:[HFToolbar class]];
     dropdownMenuViewController.dropdownViewControllers = @[topStoriesViewController,
                                                            newStoriesViewController,
                                                            askHNViewController,
@@ -74,7 +75,6 @@
     [self.window makeKeyAndVisible];
     
     [HFInterfaceTheme setupAppearanceForActiveTheme];
-
     
     return YES;
 }

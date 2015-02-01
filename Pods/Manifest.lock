@@ -1,18 +1,18 @@
 PODS:
-  - BMYCircularProgressPullToRefresh (1.1.1)
   - FCUtilities (0.1.0)
   - libHN (3.0.0)
   - NYSegmentedControl (1.0.3)
   - PBWebViewController (0.3)
+  - SSPullToRefresh (1.2.2)
   - SVProgressHUD (HEAD based on 1.1.2)
   - SVPullToRefresh (HEAD based on 0.4.1)
 
 DEPENDENCIES:
-  - BMYCircularProgressPullToRefresh
   - FCUtilities (from `https://github.com/marcoarment/FCUtilities.git`)
   - libHN
   - NYSegmentedControl
   - PBWebViewController
+  - SSPullToRefresh
   - SVProgressHUD (HEAD)
   - SVPullToRefresh (HEAD)
 
@@ -26,11 +26,11 @@ CHECKOUT OPTIONS:
     :git: https://github.com/marcoarment/FCUtilities.git
 
 SPEC CHECKSUMS:
-  BMYCircularProgressPullToRefresh: a85fa02135b6db50f6e0e26ca1c5c56f2b46b77a
   FCUtilities: d0f0da2640a643bb319c3ef58e9c43530fcbc521
   libHN: 6bca36c2d67f45bc4b14d7c66166a28f970206ea
   NYSegmentedControl: 74094b886a80bfc4e9f6d415601e9b11797b22b7
   PBWebViewController: 0a36bbd0f82741d9457177c9c37f5ff747cba312
+  SSPullToRefresh: da7acfb8e269acbd040be7f0b091824cda365a17
   SVProgressHUD: da7a49e789af645d9279ffbca62318945a832438
   SVPullToRefresh: d5161ebc833a38b465364412e5e307ca80bbb190
 
