@@ -14,6 +14,7 @@
 #import "HFNewPostViewController.h"
 #import "HFPostTableViewCell.h"
 #import "HFPostViewController.h"
+#import "HFPullToRefreshContentView.h"
 #import "HFToolbar.h"
 #import "HFWebViewController.h"
 #import "SSPullToRefresh.h"
@@ -83,6 +84,7 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
     
     if (!self.pullToRefreshView) {
         self.pullToRefreshView = [[SSPullToRefreshView alloc] initWithScrollView:self.tableView delegate:self];
+        self.pullToRefreshView.contentView = [[HFPullToRefreshContentView alloc] initWithFrame:CGRectZero];
     }
     
     __weak typeof(self) welf = self;

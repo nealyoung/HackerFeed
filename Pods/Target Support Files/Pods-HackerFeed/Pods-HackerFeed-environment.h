@@ -6,6 +6,12 @@
 // project.
 
 
+// DACircularProgress
+#define COCOAPODS_POD_AVAILABLE_DACircularProgress
+#define COCOAPODS_VERSION_MAJOR_DACircularProgress 2
+#define COCOAPODS_VERSION_MINOR_DACircularProgress 2
+#define COCOAPODS_VERSION_PATCH_DACircularProgress 0
+
 // FCUtilities
 #define COCOAPODS_POD_AVAILABLE_FCUtilities
 #define COCOAPODS_VERSION_MAJOR_FCUtilities 0

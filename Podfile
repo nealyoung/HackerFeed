@@ -2,6 +2,7 @@
 platform :ios, "8.0"
 
 target "HackerFeed" do
+  pod "DACircularProgress"
   pod 'FCUtilities', :git => 'https://github.com/marcoarment/FCUtilities.git'
   pod 'libHN'
   pod 'NYSegmentedControl'

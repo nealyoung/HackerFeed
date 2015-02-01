@@ -1,4 +1,5 @@
 PODS:
+  - DACircularProgress (2.2.0)
   - FCUtilities (0.1.0)
   - libHN (3.0.0)
   - NYSegmentedControl (1.0.3)
@@ -8,6 +9,7 @@ PODS:
   - SVPullToRefresh (HEAD based on 0.4.1)
 
 DEPENDENCIES:
+  - DACircularProgress
   - FCUtilities (from `https://github.com/marcoarment/FCUtilities.git`)
   - libHN
   - NYSegmentedControl
@@ -26,6 +28,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/marcoarment/FCUtilities.git
 
 SPEC CHECKSUMS:
+  DACircularProgress: 3b41941891a56dc6aa17971f5322a9a38a6f446e
   FCUtilities: d0f0da2640a643bb319c3ef58e9c43530fcbc521
   libHN: 6bca36c2d67f45bc4b14d7c66166a28f970206ea
   NYSegmentedControl: 74094b886a80bfc4e9f6d415601e9b11797b22b7

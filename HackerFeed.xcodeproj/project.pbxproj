@@ -87,6 +87,7 @@
 		0EEBD396197E026300D74AD6 /* UIColor+HFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EEBD395197E026300D74AD6 /* UIColor+HFAdditions.m */; };
 		0EF06ECD1A487DC70072D766 /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EF06ECC1A487DC70072D766 /* ShareViewController.m */; };
 		0EF06ED21A487DC70072D766 /* Share Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0EF06EC71A487DC60072D766 /* Share Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		0EF3353A1A7DD7A900E482CE /* HFPullToRefreshContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EF335391A7DD7A900E482CE /* HFPullToRefreshContentView.m */; };
 		0EFC25391985C22100A67412 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFC25381985C22100A67412 /* CoreText.framework */; };
 		0EFC253C1985D9D800A67412 /* HFCommentToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFC253B1985D9D800A67412 /* HFCommentToolbar.m */; };
 		0EFC253F1986026500A67412 /* HFTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFC253D1986026500A67412 /* HFTextView.m */; };
@@ -238,6 +239,8 @@
 		0EF06ECA1A487DC70072D766 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0EF06ECB1A487DC70072D766 /* ShareViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShareViewController.h; sourceTree = "<group>"; };
 		0EF06ECC1A487DC70072D766 /* ShareViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareViewController.m; sourceTree = "<group>"; };
+		0EF335381A7DD7A900E482CE /* HFPullToRefreshContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFPullToRefreshContentView.h; sourceTree = "<group>"; };
+		0EF335391A7DD7A900E482CE /* HFPullToRefreshContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFPullToRefreshContentView.m; sourceTree = "<group>"; };
 		0EFC25381985C22100A67412 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		0EFC253A1985D9D800A67412 /* HFCommentToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFCommentToolbar.h; sourceTree = "<group>"; };
 		0EFC253B1985D9D800A67412 /* HFCommentToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFCommentToolbar.m; sourceTree = "<group>"; };
@@ -404,6 +407,8 @@
 				0E7D19A11996034200C51E37 /* HFNavigationBar.m */,
 				0EDDFF4E1A71715B00EBBED9 /* HFToolbar.h */,
 				0EDDFF4F1A71715B00EBBED9 /* HFToolbar.m */,
+				0EF335381A7DD7A900E482CE /* HFPullToRefreshContentView.h */,
+				0EF335391A7DD7A900E482CE /* HFPullToRefreshContentView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -766,6 +771,7 @@
 				0E5C453B19838135001EE1CB /* HFFilterPostDataSource.m in Sources */,
 				0E0214FE19CB53D300561912 /* HFWebViewController.m in Sources */,
 				0E990E841990BA65002933C4 /* DMBaseTransition.m in Sources */,
+				0EF3353A1A7DD7A900E482CE /* HFPullToRefreshContentView.m in Sources */,
 				0E57B5B4198C2D6C0056CA54 /* HFTextViewTableViewCell.m in Sources */,
 				0EEBD375197DD52400D74AD6 /* HFPostInfoTableViewCell.m in Sources */,
 				0EFC253C1985D9D800A67412 /* HFCommentToolbar.m in Sources */,

@@ -15,15 +15,19 @@
 #import "HFNavigationBar.h"
 #import "HFPostInfoTableViewCell.h"
 #import "HFProfileViewController.h"
+#import "HFPullToRefreshContentView.h"
 #import "HFTableViewCell.h"
 #import "PBWebViewController.h"
+#import "SSPullToRefresh.h"
 #import "SVProgressHUD.h"
 #import "UIScrollView+SVPullToRefresh.h"
 
-@interface HFPostViewController () <HFCommentTableViewCellDelegate, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate>
+@interface HFPostViewController () <HFCommentTableViewCellDelegate, SSPullToRefreshViewDelegate, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate>
 
 // Store the default frame of the view so we can restore it after the keyboard is hidden
 @property CGRect originalViewFrame;
+
+@property SSPullToRefreshView *pullToRefreshView;
 
 @property UILabel *selectPostLabel;
 @property UITableView *tableView;
@@ -150,10 +154,10 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
     
-    __weak typeof(self) welf = self;
-    [self.tableView addPullToRefreshWithActionHandler:^{
-        [welf refresh];
-    }];
+    if (!self.pullToRefreshView) {
+        self.pullToRefreshView = [[SSPullToRefreshView alloc] initWithScrollView:self.tableView delegate:self];
+        self.pullToRefreshView.contentView = [[HFPullToRefreshContentView alloc] initWithFrame:CGRectZero];
+    }
     
     self.tableView.pullToRefreshView.titleLabel.font = [UIFont applicationFontOfSize:15.0f];
 }
@@ -172,7 +176,7 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
         self.comments = comments;
         [self.tableView reloadData];
         
-        [self.tableView.pullToRefreshView stopAnimating];
+        [self.pullToRefreshView finishLoading];
     }];
 }
 
@@ -350,6 +354,12 @@ static NSString * const kCommentsProfileSegueIdentifier = @"CommentsProfileSegue
         
         [self.tableView endUpdates];
     }
+}
+
+#pragma mark - SSPullToRefreshDelegate
+
+- (void)pullToRefreshViewDidStartLoading:(SSPullToRefreshView *)view {
+    [self refresh];
 }
 
 #pragma mark - UISplitViewControllerDelegate
