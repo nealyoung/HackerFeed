@@ -101,7 +101,11 @@ static NSString * const kTextViewTableViewCellIdentifier = @"TextViewTableViewCe
 }
 
 - (void)cancelButtonPressed:(id)sender {
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    if (self.extensionContext) {
+        [self.extensionContext cancelRequestWithError:nil];
+    } else {
+        [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 - (void)submitButtonPressed:(id)sender {
@@ -110,11 +114,20 @@ static NSString * const kTextViewTableViewCellIdentifier = @"TextViewTableViewCe
                                                   link:self.urlTextField.text
                                                   text:nil
                                             completion:^(BOOL success) {
-                                                if (success) {
-                                                    [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Link submitted", nil)];
-                                                    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+                                                if (self.extensionContext) {
+                                                    if (success) {
+                                                        [self.extensionContext completeRequestReturningItems:self.extensionContext.inputItems
+                                                                                           completionHandler:nil];
+                                                    } else {
+                                                        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Error submitting link", nil)];
+                                                    }
                                                 } else {
-                                                    [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Error submitting link", nil)];
+                                                    if (success) {
+                                                        [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Link submitted", nil)];
+                                                        [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+                                                    } else {
+                                                        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Error submitting link", nil)];
+                                                    }
                                                 }
                                             }];
     } else {
@@ -122,11 +135,20 @@ static NSString * const kTextViewTableViewCellIdentifier = @"TextViewTableViewCe
                                                   link:nil
                                                   text:self.postTextView.text
                                             completion:^(BOOL success) {
-                                                if (success) {
-                                                    [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Post submitted", nil)];
-                                                    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+                                                if (self.extensionContext) {
+                                                    if (success) {
+                                                        [self.extensionContext completeRequestReturningItems:self.extensionContext.inputItems
+                                                                                           completionHandler:nil];
+                                                    } else {
+                                                        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Error submitting post", nil)];
+                                                    }
                                                 } else {
-                                                    [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Error submitting post", nil)];
+                                                    if (success) {
+                                                        [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Post submitted", nil)];
+                                                        [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+                                                    } else {
+                                                        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Error submitting post", nil)];
+                                                    }
                                                 }
                                             }];
     }

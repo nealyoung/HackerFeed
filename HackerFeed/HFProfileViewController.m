@@ -121,7 +121,7 @@ static NSString * const kUserSubmissionsTableViewCellIdentifier = @"UserSubmissi
             HFUserInfoTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:kUserInfoTableViewCellIdentifier
                                                                                   forIndexPath:indexPath];
             cell.usernameLabel.text = self.user.Username;
-            cell.ageLabel.text = [NSString stringWithFormat:@"user for %d days", self.user.Age];
+            cell.ageLabel.text = [NSString stringWithFormat:@"User for %d days", self.user.Age];
 
             return cell;
         } else if (indexPath.row == 1) {

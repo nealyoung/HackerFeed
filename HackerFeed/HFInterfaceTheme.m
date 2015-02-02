@@ -60,7 +60,7 @@ static HFInterfaceTheme *_activeTheme;
     interfaceTheme.themeType = type;
     
     if (type == HFInterfaceThemeTypeDefault) {
-        interfaceTheme.title = NSLocalizedString(@"Default", nil);
+        interfaceTheme.title = NSLocalizedString(@"Light", nil);
         
         interfaceTheme.accentColor = [UIColor colorWithRed:0.90f green:0.40f blue:0.13f alpha:1.0f];
         interfaceTheme.textColor = [UIColor colorWithWhite:0.16f alpha:1.0f];
@@ -82,8 +82,10 @@ static HFInterfaceTheme *_activeTheme;
     } else {
         interfaceTheme.title = NSLocalizedString(@"Dark", nil);
         
-        interfaceTheme.accentColor = [UIColor colorWithRed:0.91f green:0.66f blue:0.44f alpha:1.0f];
-        interfaceTheme.textColor = [UIColor colorWithRed:0.91f green:0.66f blue:0.44f alpha:1.0f];
+//        interfaceTheme.accentColor = [UIColor colorWithRed:0.91f green:0.66f blue:0.44f alpha:1.0f];
+//        interfaceTheme.textColor = [UIColor colorWithRed:0.91f green:0.66f blue:0.44f alpha:1.0f];
+        interfaceTheme.accentColor = [UIColor colorWithRed:0.90f green:0.54f blue:0.30f alpha:1.0f];
+        interfaceTheme.textColor = [UIColor colorWithRed:0.90f green:0.54f blue:0.30f alpha:1.0f];
         interfaceTheme.secondaryTextColor = [UIColor colorWithWhite:0.6f alpha:1.0f];
         interfaceTheme.backgroundColor = [UIColor colorWithWhite:0.12f alpha:1.0f];
         interfaceTheme.navigationBarColor = [UIColor colorWithWhite:0.13f alpha:1.0f];

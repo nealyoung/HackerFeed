@@ -45,15 +45,15 @@
         
         self.securityLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         [self.securityLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
-        self.securityLabel.font = [UIFont smallCapsLightApplicationFontWithSize:14.0f];
+        self.securityLabel.font = [UIFont smallCapsLightApplicationFontWithSize:15.0f];
         self.securityLabel.textAlignment = NSTextAlignmentCenter;
         self.securityLabel.textColor = [HFInterfaceTheme activeTheme].textColor;
-        self.securityLabel.text = NSLocalizedString(@"your information is sent securely", nil);
+        self.securityLabel.text = NSLocalizedString(@"Your information is sent securely", nil);
         [self.view addSubview:self.securityLabel];
         
         self.submitButton = [HFBorderedButton buttonWithType:UIButtonTypeCustom];
         [self.submitButton setTranslatesAutoresizingMaskIntoConstraints:NO];
-        [self.submitButton setTitle:NSLocalizedString(@"submit", nil) forState:UIControlStateNormal];
+        [self.submitButton setTitle:NSLocalizedString(@"Submit", nil) forState:UIControlStateNormal];
         [self.submitButton addTarget:self action:@selector(submitButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:self.submitButton];
         

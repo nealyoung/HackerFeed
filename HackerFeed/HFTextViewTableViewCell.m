@@ -21,9 +21,6 @@
         [self.textView setTranslatesAutoresizingMaskIntoConstraints:NO];
         self.textView.scrollEnabled = NO;
         self.textView.editable = NO;
-        self.textView.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
-        self.textView.textColor = [HFInterfaceTheme activeTheme].secondaryTextColor;
-        self.textView.font = [UIFont applicationFontOfSize:15.0f];
         [self.contentView addSubview:self.textView];
         
         [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-10-[_textView]-10-|"
@@ -35,9 +32,19 @@
                                                                                  options:0
                                                                                  metrics:nil
                                                                                    views:NSDictionaryOfVariableBindings(_textView)]];
+        
+        [self applyTheme];
     }
     
     return self;
+}
+
+- (void)applyTheme {
+    [super applyTheme];
+    
+    self.textView.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
+    self.textView.textColor = [HFInterfaceTheme activeTheme].secondaryTextColor;
+    self.textView.font = [UIFont applicationFontOfSize:15.0f];
 }
 
 @end

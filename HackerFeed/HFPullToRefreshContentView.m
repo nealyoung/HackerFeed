@@ -112,6 +112,7 @@
         self.activityIndicatorView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
     }
     
+    self.circularProgressView.trackTintColor = [UIColor clearColor];
     self.circularProgressView.progressTintColor = [HFInterfaceTheme activeTheme].accentColor;
 }
 

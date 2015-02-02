@@ -38,12 +38,16 @@
                                                                                  options:0
                                                                                  metrics:nil
                                                                                    views:NSDictionaryOfVariableBindings(_usernameLabel, _ageLabel)]];
+        
+        [self applyTheme];
     }
     
     return self;
 }
 
 - (void)applyTheme {
+    [super applyTheme];
+    
     self.usernameLabel.font = [UIFont applicationFontOfSize:18.0f];
     self.usernameLabel.textColor = [HFInterfaceTheme activeTheme].textColor;
     

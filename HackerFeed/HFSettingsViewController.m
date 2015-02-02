@@ -84,7 +84,7 @@ static NSInteger const kFontSection = 2;
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     switch (section) {
         case kProfileSection:
-            return NSLocalizedString(@"Profile", nil);
+            return NSLocalizedString(@"Account", nil);
             break;
             
         case kFontSection:
