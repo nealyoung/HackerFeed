@@ -23,6 +23,8 @@ Then open the `HackerFeed.xcworkspace` file to run the application and make chan
 ## Todos
 
 * Support for Dynamic Type font sizing
+* Finish share extension
+* Create today widget showing top stories
 
 ## License
 
