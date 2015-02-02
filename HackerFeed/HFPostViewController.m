@@ -59,8 +59,6 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     
     if (self) {
-        self.view.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.03f];
-
         self.tableView = [[HFTableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
         [self.tableView setTranslatesAutoresizingMaskIntoConstraints:NO];
         self.tableView.dataSource = self;
@@ -135,6 +133,10 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
         [self addKeyboardNotificationObservers];
         
         self.post = nil;
+        
+        [self applyTheme];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applyTheme) name:kThemeChangedNotificationName object:nil];
+
     }
     
     return self;
@@ -167,6 +169,10 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
     self.commentCellHeightCache = [NSMutableDictionary dictionary];
+}
+
+- (void)applyTheme {
+    self.view.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.03f];
 }
 
 - (void)refresh {
@@ -323,6 +329,10 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
             [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Error submitting comment", nil)];
         }
     }];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kThemeChangedNotificationName object:nil];
 }
 
 #pragma mark - HFCommentTableViewCellDelegate

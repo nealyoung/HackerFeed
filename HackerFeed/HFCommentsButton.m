@@ -51,13 +51,13 @@
     CGContextRef ctx = UIGraphicsGetCurrentContext();
     CGMutablePathRef path = CGPathCreateMutable();
     
-    CGPathMoveToPoint(path, NULL, CGRectGetWidth(rect) * 0.1f, CGRectGetHeight(rect) * 0.15f);
-    CGPathAddLineToPoint(path, NULL, CGRectGetWidth(rect) * 0.1f, CGRectGetHeight(rect) * 0.7f);
+    CGPathMoveToPoint(path, NULL, CGRectGetWidth(rect) * 0.08f, CGRectGetHeight(rect) * 0.15f);
+    CGPathAddLineToPoint(path, NULL, CGRectGetWidth(rect) * 0.08f, CGRectGetHeight(rect) * 0.7f);
     CGPathAddLineToPoint(path, NULL, CGRectGetWidth(rect) * 0.29f, CGRectGetHeight(rect) * 0.7f);
     CGPathAddLineToPoint(path, NULL, CGRectGetWidth(rect) * 0.27f, CGRectGetHeight(rect) * 0.9f);
     CGPathAddLineToPoint(path, NULL, CGRectGetWidth(rect) * 0.5f, CGRectGetHeight(rect) * 0.7f);
-    CGPathAddLineToPoint(path, NULL, CGRectGetWidth(rect) * 0.9f, CGRectGetHeight(rect) * 0.7f);
-    CGPathAddLineToPoint(path, NULL, CGRectGetWidth(rect) * 0.9f, CGRectGetHeight(rect) * 0.15f);
+    CGPathAddLineToPoint(path, NULL, CGRectGetWidth(rect) * 0.92f, CGRectGetHeight(rect) * 0.7f);
+    CGPathAddLineToPoint(path, NULL, CGRectGetWidth(rect) * 0.92f, CGRectGetHeight(rect) * 0.15f);
     CGPathCloseSubpath(path);
     CGContextAddPath(ctx, path);
     CGColorRef strokeColor = self.tintColor.CGColor;

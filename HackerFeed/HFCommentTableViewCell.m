@@ -34,8 +34,8 @@
         [self.textView setTranslatesAutoresizingMaskIntoConstraints:NO];
         [self.textView setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
         self.textView.editable = NO;
+//        self.textView.opaque = YES;
         self.textView.dataDetectorTypes = UIDataDetectorTypeLink;
-        self.textView.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:self.textView];
         
         self.commentActionsView = [[HFCommentActionsView alloc] initWithFrame:CGRectZero];
@@ -140,6 +140,16 @@
     
     [self setNeedsUpdateConstraints];
     
+    /*
+     To improve scrolling performance, we want to make the background color of the text views opaque. However, the backgroundColor property of UITextView is not animatable, so we need to make the text view's background transparent when the cell is expanded and the animation between the expanded/unexpanded colors needs to be visible. When expanded is set to NO, the text view's background is again made opaque after completing any animations.
+     */
+    if (expanded) {
+        self.textView.backgroundColor = [UIColor clearColor];
+        for (UIView *subview in self.textView.subviews) {
+            subview.backgroundColor = [UIColor clearColor];
+        }
+    }
+    
     if (animated) {
         [UIView animateWithDuration:0.3f animations:^{
             [self layoutIfNeeded];
@@ -152,6 +162,11 @@
         } completion:^(BOOL finished) {
             if (!expanded) {
                 self.commentActionsView.hidden = YES;
+                
+                self.textView.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
+                for (UIView *subview in self.textView.subviews) {
+                    subview.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
+                }
             }
         }];
     } else {
@@ -161,6 +176,10 @@
             self.contentView.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.03f];
         } else {
             self.contentView.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
+            self.textView.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
+            for (UIView *subview in self.textView.subviews) {
+                subview.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
+            }
             self.commentActionsView.hidden = YES;
         }
     }
