@@ -55,7 +55,7 @@
         
         // Scan for Upvotes
         if ([htmlComponents[xx] rangeOfString:@"votearrow"].location != NSNotFound) {
-            [scanner scanBetweenString:@"href=\"" andString:@"whence" intoString:&upvoteString];
+            [scanner scanBetweenString:@"href=\"" andString:@"\">" intoString:&upvoteString];
             newPost.UpvoteURLAddition = upvoteString;
         }
         
@@ -77,8 +77,9 @@
         newPost.Username = author;
         
         // Scan Time Ago
-        [scanner scanBetweenString:@"</a> " andString:@"ago" intoString:&hoursAgo];
-        newPost.TimeCreatedString = [hoursAgo stringByAppendingString:@"ago"];
+        [scanner scanBetweenString:@"</a> <a href=\"" andString:@"\"" intoString:&trash];
+        [scanner scanBetweenString:@">" andString:@"</a>" intoString:&hoursAgo];
+        newPost.TimeCreatedString = hoursAgo;
         
         // Scan Number of Comments
         [scanner scanBetweenString:@"<a href=\"item?id=" andString:@"\">" intoString:&postId];
@@ -111,7 +112,7 @@
                 newPost.Type = PostTypeDefault;
             }
         }
-
+        
         
         // Grab FNID if last
         if (xx == htmlComponents.count - 1) {
@@ -139,7 +140,7 @@
             urlDomain = [urlDomain substringFromIndex:4];
         }
     }
-
+    
     return urlDomain;
 }
 

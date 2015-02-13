@@ -41,7 +41,7 @@
         // Check for Upvote
         if ([htmlComponents[0] rangeOfString:@"dir=\"up"].location != NSNotFound) {
             [scanner scanBetweenString:@"<center><a " andString:@"href" intoString:&trash];
-            [scanner scanBetweenString:@"href=\"" andString:@"whence" intoString:&upvoteUrl];
+            [scanner scanBetweenString:@"href=\"" andString:@"\">" intoString:&upvoteUrl];
             upvoteUrl = [upvoteUrl stringByReplacingOccurrencesOfString:@"&amp;" withString:@"&"];
         }
         
@@ -52,7 +52,7 @@
         [scanner scanBetweenString:@"by <a href=\"user?id=" andString:@"\">" intoString:&user];
         
         // Get Time Created String
-        [scanner scanBetweenString:@"</a> " andString:@"ago" intoString:&timeAgo];
+        [scanner scanBetweenString:@">" andString:@"</a>" intoString:&timeAgo];
         timeAgo = [timeAgo stringByAppendingString:@"ago"];
         
         // Get Text
@@ -118,12 +118,12 @@
         // If Logged In - Grab Voting Strings
         if ([htmlComponents[xx] rangeOfString:@"dir=up"].location != NSNotFound) {
             // Scan Upvote String
-            [scanner scanBetweenString:@"href=\"" andString:@"whence" intoString:&upvoteString];
+            [scanner scanBetweenString:@"href=\"" andString:@"\">" intoString:&upvoteString];
             newComment.UpvoteURLAddition = [upvoteString stringByReplacingOccurrencesOfString:@"&amp;" withString:@"&"];
             
             // Check for downvote String
             if ([htmlComponents[xx] rangeOfString:@"dir=down"].location != NSNotFound) {
-                [scanner scanBetweenString:@"href=\"" andString:@"whence" intoString:&downvoteString];
+                [scanner scanBetweenString:@"href=\"" andString:@"\">" intoString:&downvoteString];
                 newComment.DownvoteURLAddition = [downvoteString stringByReplacingOccurrencesOfString:@"&amp;" withString:@"&"];
             }
         }
@@ -132,18 +132,18 @@
         [scanner scanBetweenString:@"<a href=\"user?id=" andString:@"\">" intoString:&user];
         newComment.Username = user.length > 0 ? user : @"[deleted]";
         
+        // Get CommentId
+        [scanner scanBetweenString:@"<a href=\"item?id=" andString:@"\">" intoString:&commentId];
+        newComment.CommentId = commentId;
+        
         // Get Date/Time Label
-        [scanner scanBetweenString:@"</a> " andString:@" |" intoString:&timeAgo];
+        [scanner scanBetweenString:@">" andString:@"</a>" intoString:&timeAgo];
         newComment.TimeCreatedString = timeAgo;
         
         // Get Comment Text
-        [scanner scanBetweenString:@"<font color=" andString:@">" intoString:&trash];
+        [scanner scanBetweenString:@"<span class=\"comment\"><font color=" andString:@">" intoString:&trash];
         [scanner scanBetweenString:@">" andString:@"</font>" intoString:&text];
         newComment.Text = [HNUtilities stringByReplacingHTMLEntitiesInText:text];
-        
-        // Get CommentId
-        [scanner scanBetweenString:@"reply?id=" andString:@"&" intoString:&commentId];
-        newComment.CommentId = commentId;
         
         // Get Reply URL Addition
         [scanner scanBetweenString:@"<font size=1><u><a href=\"" andString:@"\">reply" intoString:&reply];

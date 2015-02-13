@@ -1,7 +1,7 @@
 PODS:
   - DACircularProgress (2.2.0)
   - FCUtilities (0.1.0)
-  - libHN (3.0.0)
+  - libHN (3.1.1)
   - NYSegmentedControl (1.0.3)
   - PBWebViewController (0.3)
   - SSPullToRefresh (1.2.2)
@@ -30,7 +30,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   DACircularProgress: 3b41941891a56dc6aa17971f5322a9a38a6f446e
   FCUtilities: d0f0da2640a643bb319c3ef58e9c43530fcbc521
-  libHN: 6bca36c2d67f45bc4b14d7c66166a28f970206ea
+  libHN: 20a31b831c18aa17eadfd34815f14e9694d8da60
   NYSegmentedControl: 74094b886a80bfc4e9f6d415601e9b11797b22b7
   PBWebViewController: 0a36bbd0f82741d9457177c9c37f5ff747cba312
   SSPullToRefresh: da7acfb8e269acbd040be7f0b091824cda365a17
