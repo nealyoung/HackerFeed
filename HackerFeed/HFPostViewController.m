@@ -146,7 +146,8 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
     [super viewDidLoad];
     
     self.upvoteButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"UpvoteIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(upvoteButtonPressed:)];
-    self.navigationItem.rightBarButtonItem = self.upvoteButton;
+    UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(actionButtonPressed:)];
+    self.navigationItem.rightBarButtonItems = @[self.upvoteButton, shareButton];
     
     self.commentCellHeightCache = [NSMutableDictionary dictionary];
 }
@@ -245,6 +246,14 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
                                                                        }
                                                                        completion:nil];
                                                   }];
+}
+
+- (void)actionButtonPressed:(id)sender {
+    NSArray *activityItems = @[[NSURL URLWithString:self.post.UrlString]];
+    
+    UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
+    
+    [self presentViewController:activityViewController animated:TRUE completion:nil];
 }
 
 - (void)upvoteButtonPressed:(id)sender {
