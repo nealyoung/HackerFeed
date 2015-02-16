@@ -45,6 +45,7 @@
 		0E59357619F9CC820081B28A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E59357519F9CC820081B28A /* Security.framework */; };
 		0E59357819F9CC8C0081B28A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E59357719F9CC8C0081B28A /* SystemConfiguration.framework */; };
 		0E5C453B19838135001EE1CB /* HFFilterPostDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E5C453A19838135001EE1CB /* HFFilterPostDataSource.m */; };
+		0E6C019C1A9171A3002AAA80 /* HFAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E6C019B1A9171A3002AAA80 /* HFAttributedLabel.m */; };
 		0E6C30DF197F5DCB00C33A67 /* HFLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E6C30DE197F5DCB00C33A67 /* HFLoginViewController.m */; };
 		0E796B8719CEAC930045B4E1 /* HFDropdownMenuTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E796B8619CEAC930045B4E1 /* HFDropdownMenuTitleView.m */; };
 		0E7D19A21996034200C51E37 /* HFNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E7D19A11996034200C51E37 /* HFNavigationBar.m */; };
@@ -169,6 +170,8 @@
 		0E59357719F9CC8C0081B28A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0E5C453919838135001EE1CB /* HFFilterPostDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFFilterPostDataSource.h; sourceTree = "<group>"; };
 		0E5C453A19838135001EE1CB /* HFFilterPostDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFFilterPostDataSource.m; sourceTree = "<group>"; };
+		0E6C019A1A9171A3002AAA80 /* HFAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFAttributedLabel.h; sourceTree = "<group>"; };
+		0E6C019B1A9171A3002AAA80 /* HFAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFAttributedLabel.m; sourceTree = "<group>"; };
 		0E6C30DD197F5DCB00C33A67 /* HFLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFLoginViewController.h; sourceTree = "<group>"; };
 		0E6C30DE197F5DCB00C33A67 /* HFLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFLoginViewController.m; sourceTree = "<group>"; };
 		0E796B8519CEAC930045B4E1 /* HFDropdownMenuTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFDropdownMenuTitleView.h; sourceTree = "<group>"; };
@@ -404,6 +407,8 @@
 				0EECC78A1A7E966D00527326 /* HFTableView.m */,
 				0EFC253E1986026500A67412 /* HFTextView.h */,
 				0EFC253D1986026500A67412 /* HFTextView.m */,
+				0E6C019A1A9171A3002AAA80 /* HFAttributedLabel.h */,
+				0E6C019B1A9171A3002AAA80 /* HFAttributedLabel.m */,
 				0EC3311E1992986400E1531A /* HFLabel.h */,
 				0EC3311F1992986400E1531A /* HFLabel.m */,
 				0E926CD019835AB30078E148 /* HFBorderedButton.h */,
@@ -760,6 +765,7 @@
 				0E2F35C0198B8BF700718E1A /* HFNewPostViewController.m in Sources */,
 				0EAC1B11197C54BD00393828 /* HFDropdownMenu.m in Sources */,
 				0E3653AC1A55DB0D002FB22A /* HFInterfaceTheme.m in Sources */,
+				0E6C019C1A9171A3002AAA80 /* HFAttributedLabel.m in Sources */,
 				0EE2838B198394BB00D3A3C6 /* HFUserProfileViewController.m in Sources */,
 				0EEBD393197DEB7E00D74AD6 /* HFUserInfoTableViewCell.m in Sources */,
 				0EFC2542198604A900A67412 /* HFUserPostDataSource.m in Sources */,

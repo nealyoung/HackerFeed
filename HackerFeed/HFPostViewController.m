@@ -422,17 +422,20 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
         HNComment *comment = self.post.Type == PostTypeJobs ? self.comments[indexPath.row - 1] : self.comments[indexPath.row - 2];
         
         // Set to nil first as a workaround for iOS 7 bug with text view link detection (http://stackoverflow.com/questions/19121367/uitextviews-in-a-uitableview-link-detection-bug-in-ios-7)
-        cell.textView.text = nil;
-        cell.textView.text = comment.Text;
+//        cell.textView.text = nil;
+//        cell.textView.text = comment.Text;
+        cell.commentLabel.text = comment.Text;
+        
         // Set the delegate so we can open detected links
-        cell.textView.delegate = self;
-        cell.textView.textContainerInset = UIEdgeInsetsZero;
+//        cell.textView.delegate = self;
+//        cell.textView.textContainerInset = UIEdgeInsetsZero;
+        
         cell.usernameLabel.text = [NSString stringWithFormat:@"%@ · %@", comment.Username, comment.TimeCreatedString];
         
         cell.usernameLabelLeadingConstraint.constant = tableView.separatorInset.left + (comment.Level * tableView.separatorInset.left);
         
         // UITextView has a 5pt content inset
-        cell.textViewLeadingConstraint.constant = tableView.separatorInset.left + (comment.Level * tableView.separatorInset.left) - 5.0f;
+        cell.commentLabelLeadingConstraint.constant = tableView.separatorInset.left + (comment.Level * tableView.separatorInset.left);
         cell.toolbarHeightConstraint.constant = 0.0f;
         
         [cell.commentActionsView.upvoteButton addTarget:self action:@selector(upvoteCommentButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
@@ -500,10 +503,11 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
         commentMetricsCell.frame = frame;
         
         HNComment *comment = self.post.Type == PostTypeJobs ? self.comments[indexPath.row - 1] : self.comments[indexPath.row - 2];
-        commentMetricsCell.textView.text = comment.Text;
+//        commentMetricsCell.textView.text = comment.Text;
+        commentMetricsCell.commentLabel.text = comment.Text;
         commentMetricsCell.usernameLabel.text = comment.Username;
         commentMetricsCell.usernameLabelLeadingConstraint.constant = 15.0f + (comment.Level * 15.0f);
-        commentMetricsCell.textViewLeadingConstraint.constant = 10.0f + (comment.Level * 15.0f);
+        commentMetricsCell.commentLabelLeadingConstraint.constant = 15.0f + (comment.Level * 15.0f);
         commentMetricsCell.toolbarHeightConstraint.constant = 0.0f;
         
         if ([self.expandedIndexPath isEqual:indexPath]) {
@@ -518,7 +522,7 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
         [commentMetricsCell layoutIfNeeded];
         
         CGSize size = [commentMetricsCell.contentView systemLayoutSizeFittingSize:UILayoutFittingExpandedSize];
-        CGFloat cellHeight = size.height - 12;
+        CGFloat cellHeight = size.height;
         
         // If the cell isn't expanded, cache the row height
         if (![indexPath isEqual:self.expandedIndexPath]) {

@@ -10,6 +10,7 @@ target "HackerFeed" do
   pod 'SSPullToRefresh'
   pod 'SVProgressHUD', :head
   pod 'SVPullToRefresh', :head
+  pod 'TTTAttributedLabel'
 end
 
 target "HackerFeedTests" do

@@ -7,6 +7,7 @@ PODS:
   - SSPullToRefresh (1.2.2)
   - SVProgressHUD (HEAD based on 1.1.2)
   - SVPullToRefresh (HEAD based on 0.4.1)
+  - TTTAttributedLabel (1.13.1)
 
 DEPENDENCIES:
   - DACircularProgress
@@ -17,6 +18,7 @@ DEPENDENCIES:
   - SSPullToRefresh
   - SVProgressHUD (HEAD)
   - SVPullToRefresh (HEAD)
+  - TTTAttributedLabel
 
 EXTERNAL SOURCES:
   FCUtilities:
@@ -36,5 +38,6 @@ SPEC CHECKSUMS:
   SSPullToRefresh: da7acfb8e269acbd040be7f0b091824cda365a17
   SVProgressHUD: da7a49e789af645d9279ffbca62318945a832438
   SVPullToRefresh: d5161ebc833a38b465364412e5e307ca80bbb190
+  TTTAttributedLabel: 71843ac4178e1ebd6b0950b54325146726a124ae
 
 COCOAPODS: 0.35.0

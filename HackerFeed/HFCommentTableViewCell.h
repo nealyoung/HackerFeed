@@ -10,6 +10,7 @@
 #import "HFCommentActionsView.h"
 #import "HFTableViewCell.h"
 #import "HFTextView.h"
+#import "TTTAttributedLabel.h"
 
 @class HFCommentTableViewCell;
 
@@ -26,9 +27,10 @@
 @property (nonatomic) BOOL expanded;
 
 @property UILabel *usernameLabel;
-@property HFTextView *textView;
+//@property HFTextView *textView;
+@property TTTAttributedLabel *commentLabel;
 @property NSLayoutConstraint *usernameLabelLeadingConstraint;
-@property NSLayoutConstraint *textViewLeadingConstraint;
+@property NSLayoutConstraint *commentLabelLeadingConstraint;
 @property NSLayoutConstraint *toolbarHeightConstraint;
 
 @property HFCommentActionsView *commentActionsView;

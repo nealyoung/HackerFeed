@@ -8,6 +8,7 @@
 
 #import "HFCommentTableViewCell.h"
 
+#import "HFAttributedLabel.h"
 #import "HFTextView.h"
 
 @interface HFCommentTableViewCell ()
@@ -27,16 +28,23 @@
         
         self.usernameLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         [self.usernameLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
-        //self.usernameLabel.font = [UIFont applicationFontOfSize:16.0f];
         [self.contentView addSubview:self.usernameLabel];
         
-        self.textView = [[HFTextView alloc] initWithFrame:CGRectZero];
-        [self.textView setTranslatesAutoresizingMaskIntoConstraints:NO];
-        [self.textView setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
-        self.textView.editable = NO;
-//        self.textView.opaque = YES;
-        self.textView.dataDetectorTypes = UIDataDetectorTypeLink;
-        [self.contentView addSubview:self.textView];
+//        self.textView = [[HFTextView alloc] initWithFrame:CGRectZero];
+//        [self.textView setTranslatesAutoresizingMaskIntoConstraints:NO];
+//        [self.textView setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
+//        self.textView.editable = NO;
+////        self.textView.opaque = YES;
+//        self.textView.dataDetectorTypes = UIDataDetectorTypeLink;
+//        [self.contentView addSubview:self.textView];
+        
+        self.commentLabel = [[HFAttributedLabel alloc] initWithFrame:CGRectZero];
+        [self.commentLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+        [self.commentLabel setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
+        [self.commentLabel setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
+        self.commentLabel.numberOfLines = 0;
+        self.commentLabel.font = [UIFont applicationFontOfSize:14.0f];
+        [self.contentView addSubview:self.commentLabel];
         
         self.commentActionsView = [[HFCommentActionsView alloc] initWithFrame:CGRectZero];
         [self.commentActionsView setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -57,29 +65,29 @@
                                                                                  metrics:nil
                                                                                    views:NSDictionaryOfVariableBindings(_usernameLabel)]];
         
-        self.textViewLeadingConstraint = [NSLayoutConstraint constraintWithItem:self.textView
+        self.commentLabelLeadingConstraint = [NSLayoutConstraint constraintWithItem:self.commentLabel
                                                                       attribute:NSLayoutAttributeLeft
                                                                       relatedBy:NSLayoutRelationEqual
                                                                          toItem:self.contentView
                                                                       attribute:NSLayoutAttributeLeft
                                                                      multiplier:1.0f
-                                                                       constant:10.0f];
-        [self.contentView addConstraint:self.textViewLeadingConstraint];
+                                                                       constant:15.0f];
+        [self.contentView addConstraint:self.commentLabelLeadingConstraint];
         
-        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[_textView]-10-|"
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[_commentLabel]-15-|"
                                                                                  options:0
                                                                                  metrics:nil
-                                                                                   views:NSDictionaryOfVariableBindings(_textView)]];
+                                                                                   views:NSDictionaryOfVariableBindings(_commentLabel)]];
         
         [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_commentActionsView]|"
                                                                                  options:0
                                                                                  metrics:nil
                                                                                    views:NSDictionaryOfVariableBindings(_commentActionsView)]];
         
-        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-4-[_usernameLabel][_textView]-8-[_commentActionsView]|"
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-4-[_usernameLabel][_commentLabel]-8-[_commentActionsView]|"
                                                                                  options:0
                                                                                  metrics:nil
-                                                                                   views:NSDictionaryOfVariableBindings(_usernameLabel, _textView, _commentActionsView)]];
+                                                                                   views:NSDictionaryOfVariableBindings(_usernameLabel, _commentLabel, _commentActionsView)]];
         
         self.toolbarHeightConstraint = [NSLayoutConstraint constraintWithItem:self.commentActionsView
                                                                     attribute:NSLayoutAttributeHeight
@@ -102,12 +110,15 @@
     self.usernameLabel.textColor = [HFInterfaceTheme activeTheme].textColor;
     self.usernameLabel.font = [UIFont smallCapsApplicationFontWithSize:15.0f];
     
-    self.textView.textColor = [HFInterfaceTheme activeTheme].secondaryTextColor;
-    self.textView.font = [UIFont applicationFontOfSize:14.0f];
+//    self.textView.textColor = [HFInterfaceTheme activeTheme].secondaryTextColor;
+//    self.textView.font = [UIFont applicationFontOfSize:14.0f];
+    
+    self.commentLabel.textColor = [HFInterfaceTheme activeTheme].secondaryTextColor;
+    self.commentLabel.font = [UIFont applicationFontOfSize:14.0f];
 }
 
 - (void)awakeFromNib {
-    self.textView.font = [UIFont applicationFontOfSize:14.0f];
+//    self.textView.font = [UIFont applicationFontOfSize:14.0f];
 }
 
 - (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
@@ -144,10 +155,11 @@
      To improve scrolling performance, we want to make the background color of the text views opaque. However, the backgroundColor property of UITextView is not animatable, so we need to make the text view's background transparent when the cell is expanded and the animation between the expanded/unexpanded colors needs to be visible. When expanded is set to NO, the text view's background is again made opaque after completing any animations.
      */
     if (expanded) {
-        self.textView.backgroundColor = [UIColor clearColor];
-        for (UIView *subview in self.textView.subviews) {
-            subview.backgroundColor = [UIColor clearColor];
-        }
+        self.commentLabel.backgroundColor = [UIColor clearColor];
+//        self.textView.backgroundColor = [UIColor clearColor];
+//        for (UIView *subview in self.textView.subviews) {
+//            subview.backgroundColor = [UIColor clearColor];
+//        }
     }
     
     if (animated) {
@@ -163,10 +175,11 @@
             if (!expanded) {
                 self.commentActionsView.hidden = YES;
                 
-                self.textView.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
-                for (UIView *subview in self.textView.subviews) {
-                    subview.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
-                }
+                self.commentLabel.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
+//                self.textView.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
+//                for (UIView *subview in self.textView.subviews) {
+//                    subview.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
+//                }
             }
         }];
     } else {
@@ -176,10 +189,13 @@
             self.contentView.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.03f];
         } else {
             self.contentView.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
-            self.textView.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
-            for (UIView *subview in self.textView.subviews) {
-                subview.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
-            }
+            self.commentLabel.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
+
+//            self.textView.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
+//            for (UIView *subview in self.textView.subviews) {
+//                subview.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
+//            }
+            
             self.commentActionsView.hidden = YES;
         }
     }
