@@ -23,7 +23,7 @@
 #import "SVProgressHUD.h"
 #import "UIScrollView+SVPullToRefresh.h"
 
-@interface HFPostViewController () <HFCommentTableViewCellDelegate, SSPullToRefreshViewDelegate, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate>
+@interface HFPostViewController () <HFCommentTableViewCellDelegate, SSPullToRefreshViewDelegate, TTTAttributedLabelDelegate, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate>
 
 // Store the default frame of the view so we can restore it after the keyboard is hidden
 @property CGRect originalViewFrame;
@@ -379,6 +379,22 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
     [self refresh];
 }
 
+#pragma mark - TTTAttributedLabelDelegate
+
+- (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithURL:(NSURL *)url {
+    if (self.splitViewController.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular) {
+        HFModalWebViewController *webViewController = [[HFModalWebViewController alloc] initWithURL:url];
+        self.scaleTransition = [DMScaleTransition new];
+        webViewController.transitioningDelegate = self.scaleTransition;
+        [self.splitViewController presentViewController:webViewController animated:YES completion:nil];
+    } else {
+        PBWebViewController *webViewController = [[PBWebViewController alloc] init];
+        webViewController.URL = url;
+        
+        [self showViewController:webViewController sender:self];
+    }
+}
+
 #pragma mark - UISplitViewControllerDelegate
 
 - (BOOL)splitViewController:(UISplitViewController *)splitViewController collapseSecondaryViewController:(UIViewController *)secondaryViewController ontoPrimaryViewController:(UIViewController *)primaryViewController {
@@ -421,14 +437,10 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
         
         HNComment *comment = self.post.Type == PostTypeJobs ? self.comments[indexPath.row - 1] : self.comments[indexPath.row - 2];
         
-        // Set to nil first as a workaround for iOS 7 bug with text view link detection (http://stackoverflow.com/questions/19121367/uitextviews-in-a-uitableview-link-detection-bug-in-ios-7)
-//        cell.textView.text = nil;
-//        cell.textView.text = comment.Text;
         cell.commentLabel.text = comment.Text;
         
-        // Set the delegate so we can open detected links
-//        cell.textView.delegate = self;
-//        cell.textView.textContainerInset = UIEdgeInsetsZero;
+        // Set the label's delegate so we can open detected links
+        cell.commentLabel.delegate = self;
         
         cell.usernameLabel.text = [NSString stringWithFormat:@"%@ · %@", comment.Username, comment.TimeCreatedString];
         
@@ -558,22 +570,6 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
 }
 
 #pragma mark - UITextViewDelegate
-
-- (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange {
-    if (self.splitViewController.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular) {
-        HFModalWebViewController *webViewController = [[HFModalWebViewController alloc] initWithURL:URL];
-        self.scaleTransition = [DMScaleTransition new];
-        webViewController.transitioningDelegate = self.scaleTransition;
-        [self.splitViewController presentViewController:webViewController animated:YES completion:nil];
-    } else {
-        PBWebViewController *webViewController = [[PBWebViewController alloc] init];
-        webViewController.URL = URL;
-        
-        [self showViewController:webViewController sender:self];
-    }
-    
-    return NO;
-}
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text; {
     // If the user hits the return key, dismiss the keyboard

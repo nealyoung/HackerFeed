@@ -43,6 +43,7 @@
         [self.commentLabel setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
         [self.commentLabel setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
         self.commentLabel.numberOfLines = 0;
+        self.commentLabel.enabledTextCheckingTypes = NSTextCheckingTypeLink;
         self.commentLabel.font = [UIFont applicationFontOfSize:14.0f];
         [self.contentView addSubview:self.commentLabel];
         
