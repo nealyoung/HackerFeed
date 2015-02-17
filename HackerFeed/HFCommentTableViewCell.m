@@ -30,21 +30,15 @@
         [self.usernameLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
         [self.contentView addSubview:self.usernameLabel];
         
-//        self.textView = [[HFTextView alloc] initWithFrame:CGRectZero];
-//        [self.textView setTranslatesAutoresizingMaskIntoConstraints:NO];
-//        [self.textView setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
-//        self.textView.editable = NO;
-////        self.textView.opaque = YES;
-//        self.textView.dataDetectorTypes = UIDataDetectorTypeLink;
-//        [self.contentView addSubview:self.textView];
-        
         self.commentLabel = [[HFAttributedLabel alloc] initWithFrame:CGRectZero];
         [self.commentLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+        
         [self.commentLabel setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
         [self.commentLabel setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
         self.commentLabel.numberOfLines = 0;
         self.commentLabel.enabledTextCheckingTypes = NSTextCheckingTypeLink;
         self.commentLabel.font = [UIFont applicationFontOfSize:14.0f];
+        self.commentLabel.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:self.commentLabel];
         
         self.commentActionsView = [[HFCommentActionsView alloc] initWithFrame:CGRectZero];
@@ -116,6 +110,14 @@
     
     self.commentLabel.textColor = [HFInterfaceTheme activeTheme].secondaryTextColor;
     self.commentLabel.font = [UIFont applicationFontOfSize:14.0f];
+    NSDictionary *commentLabelLinkAttributes = @{ NSForegroundColorAttributeName: [HFInterfaceTheme activeTheme].accentColor,
+                                                  NSUnderlineStyleAttributeName: [NSNumber numberWithInt:NSUnderlineStyleSingle] };
+    self.commentLabel.activeLinkAttributes = commentLabelLinkAttributes;
+    self.commentLabel.inactiveLinkAttributes = commentLabelLinkAttributes;
+    self.commentLabel.linkAttributes = commentLabelLinkAttributes;
+    
+    // Updates to TTTAttributedLabel are not displayed until setText: is called
+    self.commentLabel.text = self.commentLabel.text;
 }
 
 - (void)awakeFromNib {
@@ -156,11 +158,7 @@
      To improve scrolling performance, we want to make the background color of the text views opaque. However, the backgroundColor property of UITextView is not animatable, so we need to make the text view's background transparent when the cell is expanded and the animation between the expanded/unexpanded colors needs to be visible. When expanded is set to NO, the text view's background is again made opaque after completing any animations.
      */
     if (expanded) {
-        self.commentLabel.backgroundColor = [UIColor clearColor];
-//        self.textView.backgroundColor = [UIColor clearColor];
-//        for (UIView *subview in self.textView.subviews) {
-//            subview.backgroundColor = [UIColor clearColor];
-//        }
+//        self.commentLabel.backgroundColor = [UIColor clearColor];
     }
     
     if (animated) {
@@ -176,11 +174,7 @@
             if (!expanded) {
                 self.commentActionsView.hidden = YES;
                 
-                self.commentLabel.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
-//                self.textView.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
-//                for (UIView *subview in self.textView.subviews) {
-//                    subview.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
-//                }
+//                self.commentLabel.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
             }
         }];
     } else {
@@ -190,7 +184,7 @@
             self.contentView.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.03f];
         } else {
             self.contentView.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
-            self.commentLabel.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
+//            self.commentLabel.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
 
 //            self.textView.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
 //            for (UIView *subview in self.textView.subviews) {

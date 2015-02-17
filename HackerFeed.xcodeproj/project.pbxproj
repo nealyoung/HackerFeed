@@ -49,6 +49,7 @@
 		0E6C30DF197F5DCB00C33A67 /* HFLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E6C30DE197F5DCB00C33A67 /* HFLoginViewController.m */; };
 		0E796B8719CEAC930045B4E1 /* HFDropdownMenuTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E796B8619CEAC930045B4E1 /* HFDropdownMenuTitleView.m */; };
 		0E7D19A21996034200C51E37 /* HFNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E7D19A11996034200C51E37 /* HFNavigationBar.m */; };
+		0E877F2C1A93BF7B009034B7 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E877F2B1A93BF7B009034B7 /* Reveal.framework */; };
 		0E926CD219835AB30078E148 /* HFBorderedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E926CD119835AB30078E148 /* HFBorderedButton.m */; };
 		0E990E801990BA30002933C4 /* DMScaleTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E990E7F1990BA30002933C4 /* DMScaleTransition.m */; };
 		0E990E841990BA65002933C4 /* DMBaseTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E990E821990BA65002933C4 /* DMBaseTransition.m */; };
@@ -178,6 +179,7 @@
 		0E796B8619CEAC930045B4E1 /* HFDropdownMenuTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFDropdownMenuTitleView.m; sourceTree = "<group>"; };
 		0E7D19A01996034200C51E37 /* HFNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFNavigationBar.h; sourceTree = "<group>"; };
 		0E7D19A11996034200C51E37 /* HFNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFNavigationBar.m; sourceTree = "<group>"; };
+		0E877F2B1A93BF7B009034B7 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		0E926CD019835AB30078E148 /* HFBorderedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFBorderedButton.h; sourceTree = "<group>"; };
 		0E926CD119835AB30078E148 /* HFBorderedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFBorderedButton.m; sourceTree = "<group>"; };
 		0E990E7E1990BA30002933C4 /* DMScaleTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMScaleTransition.h; sourceTree = "<group>"; };
@@ -192,7 +194,6 @@
 		0EAC1B17197C592200393828 /* UIViewController+HFDropdownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+HFDropdownMenu.m"; sourceTree = "<group>"; };
 		0EC3311E1992986400E1531A /* HFLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFLabel.h; sourceTree = "<group>"; };
 		0EC3311F1992986400E1531A /* HFLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFLabel.m; sourceTree = "<group>"; };
-		0EC3B4C41A45039900AB10EE /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		0EC8141F197C828A009F0D99 /* HFPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFPostViewController.h; sourceTree = "<group>"; };
 		0EC81420197C828A009F0D99 /* HFPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFPostViewController.m; sourceTree = "<group>"; };
 		0EC81424197C8D1C009F0D99 /* HFCommentsButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFCommentsButton.h; sourceTree = "<group>"; };
@@ -266,6 +267,7 @@
 				0E59357819F9CC8C0081B28A /* SystemConfiguration.framework in Frameworks */,
 				0E59357619F9CC820081B28A /* Security.framework in Frameworks */,
 				0E59357219F9CAFE0081B28A /* libc++.dylib in Frameworks */,
+				0E877F2C1A93BF7B009034B7 /* Reveal.framework in Frameworks */,
 				0E59357019F9CAF40081B28A /* libicucore.dylib in Frameworks */,
 				0E0214FB19CB518E00561912 /* libz.dylib in Frameworks */,
 				0E59357419F9CB040081B28A /* CFNetwork.framework in Frameworks */,
@@ -478,7 +480,7 @@
 				0E59357119F9CAFE0081B28A /* libc++.dylib */,
 				0E59356F19F9CAF40081B28A /* libicucore.dylib */,
 				0E0214FA19CB518E00561912 /* libz.dylib */,
-				0EC3B4C41A45039900AB10EE /* Reveal.framework */,
+				0E877F2B1A93BF7B009034B7 /* Reveal.framework */,
 				0EFC25381985C22100A67412 /* CoreText.framework */,
 				0EE791BA1950318D00925E4F /* Foundation.framework */,
 				0EE791BC1950318D00925E4F /* CoreGraphics.framework */,
