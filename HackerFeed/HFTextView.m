@@ -50,7 +50,7 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     
-    // Redraw the placeholder to avoid stretching for different sizes
+    // Redraw the placeholder text to avoid stretching for different sizes
     [self setNeedsDisplay];
     
     if (!CGSizeEqualToSize(self.bounds.size, [self intrinsicContentSize])) {
@@ -126,6 +126,11 @@
 	}
     
 	self.attributedPlaceholder = [[NSAttributedString alloc] initWithString:string attributes:attributes];
+}
+
+- (void)setContentOffset:(CGPoint)contentOffset {
+    [super setContentOffset:contentOffset];
+    NSLog(@"Content offset set to %@", NSStringFromCGPoint(contentOffset));
 }
 
 - (void)setContentInset:(UIEdgeInsets)contentInset {

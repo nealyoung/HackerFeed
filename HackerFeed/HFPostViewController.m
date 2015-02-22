@@ -203,8 +203,8 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
         self.commentToolbar.hidden = YES;
     }
     
-    // Disable the upvote button if the user has already voted, or if we're looking at a job post (that can't be voted on)
-    self.upvoteButton.enabled = !([[HNManager sharedManager] hasVotedOnObject:post] || post.Type == PostTypeJobs);
+    // Disable the upvote button if the post is nil, if the user has already voted, or if we're looking at a job post (that can't be voted on)
+    self.upvoteButton.enabled = !(!post || [[HNManager sharedManager] hasVotedOnObject:post] || post.Type == PostTypeJobs);
     
     // Clear the cell height cache
     self.commentCellHeightCache = [NSMutableDictionary dictionary];
@@ -515,7 +515,6 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
         commentMetricsCell.frame = frame;
         
         HNComment *comment = self.post.Type == PostTypeJobs ? self.comments[indexPath.row - 1] : self.comments[indexPath.row - 2];
-//        commentMetricsCell.textView.text = comment.Text;
         commentMetricsCell.commentLabel.text = comment.Text;
         commentMetricsCell.usernameLabel.text = comment.Username;
         commentMetricsCell.usernameLabelLeadingConstraint.constant = 15.0f + (comment.Level * 15.0f);
@@ -550,7 +549,7 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
         if (self.splitViewController.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular) {
             HFModalWebViewController *webViewController = [[HFModalWebViewController alloc] initWithURL:[NSURL URLWithString:self.post.UrlString]];
             self.scaleTransition = [DMScaleTransition new];
-            webViewController.transitioningDelegate = self.scaleTransition;
+//            webViewController.transitioningDelegate = self.scaleTransition;
             [self.splitViewController presentViewController:webViewController animated:YES completion:nil];
         } else {
             PBWebViewController *webViewController = [[PBWebViewController alloc] init];
@@ -565,7 +564,7 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
             profileViewController.user = user;
         }];
     } else {
-        //[self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
 }
 

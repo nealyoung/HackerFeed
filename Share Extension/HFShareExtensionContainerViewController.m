@@ -42,6 +42,9 @@
     [shareNavigationController didMoveToParentViewController:self];
 }
 
+/*
+ Set up UIAppearance
+ */
 - (void)customizeAppearance {
     self.view.tintColor = [[HFInterfaceTheme activeTheme] accentColor];
     

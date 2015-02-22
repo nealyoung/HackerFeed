@@ -54,7 +54,6 @@
     
     self.replyToLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     [self.replyToLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
-    self.replyToLabel.text = @"in reply to tptacek";
     [self.replyToView addSubview:self.replyToLabel];
     
     self.topBorderView = [[UIView alloc] initWithFrame:CGRectZero];
@@ -65,7 +64,7 @@
     [self.textView setTranslatesAutoresizingMaskIntoConstraints:NO];
     self.textView.layer.cornerRadius = 4.0f;
     self.textView.layer.borderWidth = 1.0f;
-    self.textView.scrollEnabled = YES;
+    self.textView.scrollEnabled = NO;
     self.textView.returnKeyType = UIReturnKeyDone;
     [self addSubview:self.textView];
     
@@ -94,7 +93,7 @@
                                                                  metrics:nil
                                                                    views:NSDictionaryOfVariableBindings(_textView, _submitButton)]];
     
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_topBorderView(1)]-3.5-[_replyToView]-4-[_textView(>=32)]-8-|"
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_topBorderView(1)]-3.5-[_replyToView]-4-[_textView(>=36)]-8-|"
                                                                  options:0
                                                                  metrics:nil
                                                                    views:NSDictionaryOfVariableBindings(_topBorderView, _replyToView, _textView)]];
@@ -125,7 +124,7 @@
                                                     multiplier:1.0f
                                                       constant:0.0f]];
     
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_submitButton(34)]-8-|"
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_submitButton(36)]-8-|"
                                                                  options:0
                                                                  metrics:nil
                                                                    views:NSDictionaryOfVariableBindings(_topBorderView, _submitButton)]];
@@ -142,7 +141,7 @@
     self.replyToLabel.font = [UIFont smallCapsApplicationFontWithSize:15.0f];
     self.replyToLabel.textColor = [HFInterfaceTheme activeTheme].secondaryTextColor;
     
-    self.textView.font = [UIFont applicationFontOfSize:14.0f];
+    self.textView.font = [UIFont applicationFontOfSize:15.0f];
     self.textView.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorLightenedByFactor:0.1f];
     self.textView.textColor = [HFInterfaceTheme activeTheme].secondaryTextColor;
     self.textView.layer.borderColor = [[[HFInterfaceTheme activeTheme] accentColor] CGColor];
