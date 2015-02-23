@@ -61,6 +61,8 @@ label.textColor = [UIColor darkGrayColor];
 label.lineBreakMode = UILineBreakModeWordWrap;
 label.numberOfLines = 0;
 
+// If you're using a simple `NSString` for your text, 
+// assign to the `text` property last so it can inherit other label properties.
 NSString *text = @"Lorem ipsum dolor sit amet";
 [label setText:text afterInheritingLabelAttributesAndConfiguringWithBlock:^ NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
   NSRange boldRange = [[mutableAttributedString string] rangeOfString:@"ipsum dolor" options:NSCaseInsensitiveSearch];
@@ -99,7 +101,11 @@ NSRange range = [label.text rangeOfString:@"me"];
 
 ## Demo
 
-Build and run/test the `Espressos` project in Xcode to see `TTTAttributedLabel` in action. If you don't have [CocoaPods](http://cocoapods.org) installed, grab it with `[sudo] gem install cocoapods`.
+```bash
+pod try TTTAttributedLabel
+```
+
+...or clone this repo and build and run/test the `Espressos` project in Xcode to see `TTTAttributedLabel` in action. If you don't have [CocoaPods](http://cocoapods.org) installed, grab it with `[sudo] gem install cocoapods`.
 
 ```bash
 cd Example

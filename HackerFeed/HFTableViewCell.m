@@ -24,7 +24,7 @@
 - (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
     if (animated) {
         [UIView animateWithDuration:0.3f animations:^{
-            if (highlighted) {
+            if (highlighted && self.selectionStyle != UITableViewCellSelectionStyleNone) {
                 self.textLabel.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.25f];
                 self.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.25f];
                 self.contentView.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.25f];
@@ -35,7 +35,7 @@
             }
         }];
     } else {
-        if (highlighted) {
+        if (highlighted && self.selectionStyle != UITableViewCellSelectionStyleNone) {
             self.textLabel.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.25f];
             self.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.25f];
             self.contentView.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.25f];
@@ -50,7 +50,7 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     if (animated) {
         [UIView animateWithDuration:0.3f animations:^{
-            if (selected) {
+            if (selected && self.selectionStyle != UITableViewCellSelectionStyleNone) {
                 self.textLabel.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.25f];
                 self.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.25f];
                 self.contentView.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.25f];
@@ -61,7 +61,7 @@
             }
         }];
     } else {
-        if (selected) {
+        if (selected && self.selectionStyle != UITableViewCellSelectionStyleNone) {
             self.textLabel.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.25f];
             self.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.25f];
             self.contentView.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.25f];

@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <libHN/libHN.h>
 
 @interface HFNewPostViewController : UIViewController
+
+@property HNPost *post;
 
 @end

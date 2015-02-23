@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Nealon Young. All rights reserved.
 //
 
+#import <MobileCoreServices/MobileCoreServices.h>
 #import "HFNewPostViewController.h"
 #import "HFShareExtensionContainerViewController.h"
 #import "HFNavigationBar.h"
@@ -23,6 +24,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self customizeAppearance];
+    
+    NSExtensionItem *extensionItem = [self.extensionContext.inputItems firstObject];
+    NSItemProvider *itemProvider = [extensionItem.attachments firstObject];
+    
+    if ([itemProvider hasItemConformingToTypeIdentifier:(NSString *)kUTTypeURL]) {
+        [itemProvider loadItemForTypeIdentifier:(NSString *)kUTTypeURL options:nil completionHandler:^(NSURL *url, NSError *error) {
+            NSLog(@"URL: %@", url);
+        }];
+    }
     
     //    UINavigationController *shareNavigationController = [[UINavigationController alloc] initWithNavigationBarClass:[HFNavigationBar class] toolbarClass:nil];
     //

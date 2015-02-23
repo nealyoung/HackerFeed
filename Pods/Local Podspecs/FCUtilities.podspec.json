@@ -1,0 +1,22 @@
+{
+  "name": "FCUtilities",
+  "version": "0.1.0",
+  "summary": "Assorted common iOS utilities.",
+  "homepage": "https://github.com/marcoarment/FCUtilities",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Marco Arment": "arment@marco.org"
+  },
+  "source": {
+    "git": "https://github.com/marcoarment/FCUtilities.git",
+    "tag": "0.1.0"
+  },
+  "source_files": "FCUtilities/*.{h,m}",
+  "requires_arc": true,
+  "platforms": {
+    "ios": "7.0"
+  }
+}
