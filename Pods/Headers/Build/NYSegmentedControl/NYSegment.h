@@ -1,1 +1,0 @@
-../../../NYSegmentedControl/NYSegmentedControl/NYSegment.h
