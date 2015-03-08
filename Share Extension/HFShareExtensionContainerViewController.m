@@ -30,26 +30,21 @@
     
     if ([itemProvider hasItemConformingToTypeIdentifier:(NSString *)kUTTypeURL]) {
         [itemProvider loadItemForTypeIdentifier:(NSString *)kUTTypeURL options:nil completionHandler:^(NSURL *url, NSError *error) {
-            NSLog(@"URL: %@", url);
+            HNPost *newPost = [[HNPost alloc] init];
+            newPost.UrlString = [url absoluteString];
+            
+            HFNewPostViewController *newPostViewController = [[HFNewPostViewController alloc] initWithNibName:nil bundle:nil];
+            newPostViewController.post = newPost;
+            UINavigationController *shareNavigationController = [[UINavigationController alloc] initWithNavigationBarClass:[HFNavigationBar class]
+                                                                                                              toolbarClass:[HFToolbar class]];
+            shareNavigationController.viewControllers = @[newPostViewController];
+            
+            shareNavigationController.view.frame = self.view.bounds;
+            [self.view addSubview:shareNavigationController.view];
+            [self addChildViewController:shareNavigationController];
+            [shareNavigationController didMoveToParentViewController:self];
         }];
     }
-    
-    //    UINavigationController *shareNavigationController = [[UINavigationController alloc] initWithNavigationBarClass:[HFNavigationBar class] toolbarClass:nil];
-    //
-    //    HFNewPostViewController *newPostViewController = [[HFNewPostViewController alloc] initWithNibName:nil bundle:nil];
-    //
-    //    ShareViewController *shareViewController = [[ShareViewController alloc] initWithNibName:nil bundle:nil];
-    //    shareNavigationController.viewControllers = @[newPostViewController];
-    
-    HFNewPostViewController *newPostViewController = [[HFNewPostViewController alloc] initWithNibName:nil bundle:nil];
-    UINavigationController *shareNavigationController = [[UINavigationController alloc] initWithNavigationBarClass:[HFNavigationBar class]
-                                                                                                      toolbarClass:[HFToolbar class]];
-    shareNavigationController.viewControllers = @[newPostViewController];
-    
-    shareNavigationController.view.frame = self.view.bounds;
-    [self.view addSubview:shareNavigationController.view];
-    [self addChildViewController:shareNavigationController];
-    [shareNavigationController didMoveToParentViewController:self];
 }
 
 /*

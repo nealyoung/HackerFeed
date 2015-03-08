@@ -23,6 +23,7 @@ Then open the `HackerFeed.xcworkspace` file to run the application and make chan
 ## Todos
 
 * Support for Dynamic Type font sizing
+* Improved support for iOS accessibility features
 * Finish share extension
 * Create today widget showing top stories
 

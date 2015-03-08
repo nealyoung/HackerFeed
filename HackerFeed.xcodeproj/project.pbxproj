@@ -13,7 +13,6 @@
 		0E1FC635197C4B4700B41804 /* HFPostTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E1FC634197C4B4700B41804 /* HFPostTableViewCell.m */; };
 		0E25F3FC1A50802F00B869EE /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E0214FA19CB518E00561912 /* libz.dylib */; };
 		0E25F3FD1A50811900B869EE /* UIFont+HFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC81431197C9C15009F0D99 /* UIFont+HFAdditions.m */; };
-		0E25F4001A50861C00B869EE /* HFShareExtensionNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E25F3FF1A50861C00B869EE /* HFShareExtensionNavigationController.m */; };
 		0E2BE1241A6E164000F81396 /* HFShareExtensionContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E2BE1231A6E164000F81396 /* HFShareExtensionContainerViewController.m */; };
 		0E2BE1251A6E173100F81396 /* HFNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E7D19A11996034200C51E37 /* HFNavigationBar.m */; };
 		0E2BE1261A6E1A8300F81396 /* HFNewPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E2F35BF198B8BF700718E1A /* HFNewPostViewController.m */; };
@@ -139,8 +138,6 @@
 		0E0C0BE719CFC0DD007EAE25 /* HFBasePostDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFBasePostDataSource.m; sourceTree = "<group>"; };
 		0E1FC633197C4B4700B41804 /* HFPostTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFPostTableViewCell.h; sourceTree = "<group>"; };
 		0E1FC634197C4B4700B41804 /* HFPostTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFPostTableViewCell.m; sourceTree = "<group>"; };
-		0E25F3FE1A50861C00B869EE /* HFShareExtensionNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFShareExtensionNavigationController.h; sourceTree = "<group>"; };
-		0E25F3FF1A50861C00B869EE /* HFShareExtensionNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFShareExtensionNavigationController.m; sourceTree = "<group>"; };
 		0E2BE1221A6E164000F81396 /* HFShareExtensionContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFShareExtensionContainerViewController.h; sourceTree = "<group>"; };
 		0E2BE1231A6E164000F81396 /* HFShareExtensionContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFShareExtensionContainerViewController.m; sourceTree = "<group>"; };
 		0E2BE1281A6E25E200F81396 /* SourceSansPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Bold.otf"; sourceTree = "<group>"; };
@@ -542,8 +539,6 @@
 			isa = PBXGroup;
 			children = (
 				0E4BEAE81A48961100BDA99B /* Share Extension.entitlements */,
-				0E25F3FE1A50861C00B869EE /* HFShareExtensionNavigationController.h */,
-				0E25F3FF1A50861C00B869EE /* HFShareExtensionNavigationController.m */,
 				0E2BE1221A6E164000F81396 /* HFShareExtensionContainerViewController.h */,
 				0E2BE1231A6E164000F81396 /* HFShareExtensionContainerViewController.m */,
 				0EF06ECB1A487DC70072D766 /* ShareViewController.h */,
@@ -814,7 +809,6 @@
 				0EF06ECD1A487DC70072D766 /* ShareViewController.m in Sources */,
 				0E2BE1261A6E1A8300F81396 /* HFNewPostViewController.m in Sources */,
 				0E2BE1341A6EBC3600F81396 /* HFInterfaceTheme.m in Sources */,
-				0E25F4001A50861C00B869EE /* HFShareExtensionNavigationController.m in Sources */,
 				0EDDFF511A71739D00EBBED9 /* HFToolbar.m in Sources */,
 				0E2BE1251A6E173100F81396 /* HFNavigationBar.m in Sources */,
 				0E2BE1241A6E164000F81396 /* HFShareExtensionContainerViewController.m in Sources */,

@@ -46,6 +46,25 @@
              @"Helvetica Neue"];
 }
 
++ (UIFont *)preferredApplicationFontForTextStyle:(NSString *)textStyle {
+    UIFontDescriptor *preferredSystemFontDescriptor = [UIFontDescriptor preferredFontDescriptorWithTextStyle:textStyle];
+    CGFloat preferredFontSize = preferredSystemFontDescriptor.pointSize;
+    
+    if ([textStyle isEqualToString:UIFontTextStyleBody]) {
+        return [UIFont applicationFontOfSize:preferredFontSize];
+    } else if ([textStyle isEqualToString:UIFontTextStyleCaption1]) {
+        return [UIFont applicationFontOfSize:preferredFontSize];
+    } else if ([textStyle isEqualToString:UIFontTextStyleCaption2]) {
+        return [UIFont applicationFontOfSize:preferredFontSize];
+    } else if ([textStyle isEqualToString:UIFontTextStyleFootnote]) {
+        return [UIFont applicationFontOfSize:preferredFontSize];
+    } else if ([textStyle isEqualToString:UIFontTextStyleHeadline]) {
+        return [UIFont applicationFontOfSize:preferredFontSize];
+    } else {
+        return [UIFont applicationFontOfSize:preferredFontSize];
+    }
+}
+
 + (UIFont *)applicationFontOfSize:(CGFloat)size {
     return [UIFont fontWithName:@"AvenirNext-Regular" size:size];
     

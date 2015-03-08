@@ -23,6 +23,8 @@ static NSString * const kFontFamilyDefaultsKey = @"HFFontFamilySetting";
 
 + (NSArray *)availableFontFamilies;
 
++ (UIFont *)preferredApplicationFontForTextStyle:(NSString *)textStyle;
+
 + (UIFont *)applicationFontOfSize:(CGFloat)size;
 + (UIFont *)boldApplicationFontOfSize:(CGFloat)size;
 + (UIFont *)semiboldApplicationFontOfSize:(CGFloat)size;

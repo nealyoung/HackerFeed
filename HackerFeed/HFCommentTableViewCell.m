@@ -109,7 +109,7 @@
 //    self.textView.font = [UIFont applicationFontOfSize:14.0f];
     
     self.commentLabel.textColor = [HFInterfaceTheme activeTheme].secondaryTextColor;
-    self.commentLabel.font = [UIFont applicationFontOfSize:14.0f];
+    self.commentLabel.font = [UIFont preferredApplicationFontForTextStyle:UIFontTextStyleBody];
     NSDictionary *commentLabelLinkAttributes = @{ NSForegroundColorAttributeName: [HFInterfaceTheme activeTheme].accentColor,
                                                   NSUnderlineStyleAttributeName: [NSNumber numberWithInt:NSUnderlineStyleSingle] };
     self.commentLabel.activeLinkAttributes = commentLabelLinkAttributes;

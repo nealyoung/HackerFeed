@@ -47,6 +47,8 @@
 - (void)upvoteButtonPressed:(id)sender;
 - (void)refresh;
 
+- (void)clearCommentCellHeightCache;
+
 @end
 
 static NSString * const kCommentTableViewCellIdentifier = @"CommentTableViewCell";
@@ -136,7 +138,7 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
         
         [self applyTheme];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applyTheme) name:kThemeChangedNotificationName object:nil];
-
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(clearCommentCellHeightCache) name:UIContentSizeCategoryDidChangeNotification object:nil];
     }
     
     return self;
@@ -338,6 +340,10 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
             [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Error submitting comment", nil)];
         }
     }];
+}
+
+- (void)clearCommentCellHeightCache {
+    self.commentCellHeightCache = [NSMutableDictionary dictionary];
 }
 
 - (void)dealloc {

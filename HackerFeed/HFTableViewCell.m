@@ -16,6 +16,7 @@
     if (self) {
         [self applyTheme];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applyTheme) name:kThemeChangedNotificationName object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applyTheme) name:UIContentSizeCategoryDidChangeNotification object:nil];
     }
     
     return self;
