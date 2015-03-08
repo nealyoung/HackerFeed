@@ -48,11 +48,11 @@
 - (void)applyTheme {
     [super applyTheme];
     
-    self.usernameLabel.font = [UIFont applicationFontOfSize:18.0f];
+    self.usernameLabel.font = [UIFont preferredApplicationFontForTextStyle:UIFontTextStyleHeadline];
     self.usernameLabel.textColor = [HFInterfaceTheme activeTheme].textColor;
     
     self.ageLabel.textColor = [HFInterfaceTheme activeTheme].secondaryTextColor;
-    self.ageLabel.font = [UIFont smallCapsApplicationFontWithSize:16.0f];
+    self.ageLabel.font = [UIFont preferredApplicationFontForTextStyle:UIFontTextStyleCaption1];
 }
 
 @end

@@ -44,6 +44,7 @@ static NSString * const kUserSubmissionsTableViewCellIdentifier = @"UserSubmissi
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     
     if (self) {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
         self.title = NSLocalizedString(@"Profile", nil);
         
         self.tableView = [[HFTableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];

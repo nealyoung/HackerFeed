@@ -128,11 +128,6 @@
 	self.attributedPlaceholder = [[NSAttributedString alloc] initWithString:string attributes:attributes];
 }
 
-- (void)setContentOffset:(CGPoint)contentOffset {
-    [super setContentOffset:contentOffset];
-    NSLog(@"Content offset set to %@", NSStringFromCGPoint(contentOffset));
-}
-
 - (void)setContentInset:(UIEdgeInsets)contentInset {
 	[super setContentInset:contentInset];
 	[self setNeedsDisplay];

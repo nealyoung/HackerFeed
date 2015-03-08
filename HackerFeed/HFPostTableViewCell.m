@@ -177,15 +177,15 @@
     [super applyTheme];
     
     self.infoLabel.textColor = [HFInterfaceTheme activeTheme].secondaryTextColor;
-    self.infoLabel.font = [UIFont smallCapsApplicationFontWithSize:15.0f];
+    self.infoLabel.font = [UIFont preferredApplicationFontForTextStyle:UIFontTextStyleSubheadline];
 //    self.infoLabel.backgroundColor = self.contentView.backgroundColor;
 
     self.titleLabel.textColor = [HFInterfaceTheme activeTheme].textColor;
-    self.titleLabel.font = [UIFont applicationFontOfSize:17.0f];
+    self.titleLabel.font = [UIFont preferredApplicationFontForTextStyle:UIFontTextStyleHeadline];
 //    self.titleLabel.backgroundColor = self.contentView.backgroundColor;
     
     self.domainLabel.textColor = [HFInterfaceTheme activeTheme].secondaryTextColor;
-    self.domainLabel.font = [UIFont smallCapsApplicationFontWithSize:15.0f];
+    self.domainLabel.font = [UIFont preferredApplicationFontForTextStyle:UIFontTextStyleSubheadline];
 //    self.domainLabel.backgroundColor = self.contentView.backgroundColor;
     
     self.commentButtonBackground.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.03f];

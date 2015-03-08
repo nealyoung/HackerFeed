@@ -39,7 +39,7 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     
     if (self) {
-        self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+        self.tableView = [[HFTableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
         [self.tableView setTranslatesAutoresizingMaskIntoConstraints:NO];
         self.tableView.rowHeight = 72.0f;
         //self.tableView.rowHeight = UITableViewAutomaticDimension;
@@ -163,6 +163,7 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
     if (self.splitViewController.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular) {
         navigationController.modalPresentationStyle = UIModalPresentationFormSheet;
     } else {
+        navigationController.modalPresentationStyle = UIModalPresentationPopover;
         self.scaleTransition = [DMScaleTransition new];
         navigationController.transitioningDelegate = self.scaleTransition;
     }

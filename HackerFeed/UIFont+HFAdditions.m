@@ -51,18 +51,20 @@
     CGFloat preferredFontSize = preferredSystemFontDescriptor.pointSize;
     
     if ([textStyle isEqualToString:UIFontTextStyleBody]) {
-        return [UIFont applicationFontOfSize:preferredFontSize];
+        return [UIFont applicationFontOfSize:preferredFontSize * 0.9f];
     } else if ([textStyle isEqualToString:UIFontTextStyleCaption1]) {
-        return [UIFont applicationFontOfSize:preferredFontSize];
+        return [UIFont applicationFontOfSize:preferredFontSize * 1.2f];
     } else if ([textStyle isEqualToString:UIFontTextStyleCaption2]) {
         return [UIFont applicationFontOfSize:preferredFontSize];
     } else if ([textStyle isEqualToString:UIFontTextStyleFootnote]) {
         return [UIFont applicationFontOfSize:preferredFontSize];
     } else if ([textStyle isEqualToString:UIFontTextStyleHeadline]) {
         return [UIFont applicationFontOfSize:preferredFontSize];
-    } else {
+    } else if ([textStyle isEqualToString:UIFontTextStyleSubheadline]) {
         return [UIFont applicationFontOfSize:preferredFontSize];
     }
+    
+    return nil;
 }
 
 + (UIFont *)applicationFontOfSize:(CGFloat)size {

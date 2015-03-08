@@ -18,12 +18,19 @@
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    
     if (self) {
         FCOpenInSafariActivity *openInSafariActivity = [FCOpenInSafariActivity new];
-        
         self.applicationActivities = @[openInSafariActivity];
     }
+    
     return self;
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.edgesForExtendedLayout = UIRectEdgeNone;
 }
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HFTableView.h"
 #import "libHN.h"
 
 @protocol HFPostDataSource <NSObject>
@@ -21,7 +22,7 @@
 
 @interface HFPostListViewController : UIViewController
 
-@property UITableView *tableView;
+@property HFTableView *tableView;
 
 @property (nonatomic) id <HFPostDataSource> dataSource;
 

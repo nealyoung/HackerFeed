@@ -50,10 +50,10 @@
     [super applyTheme];
     
     self.titleLabel.textColor = [HFInterfaceTheme activeTheme].textColor;
-    self.titleLabel.font = [UIFont applicationFontOfSize:18.0f];
+    self.titleLabel.font = [UIFont preferredApplicationFontForTextStyle:UIFontTextStyleHeadline];
 
     self.infoLabel.textColor = [HFInterfaceTheme activeTheme].secondaryTextColor;
-    self.infoLabel.font = [UIFont smallCapsApplicationFontWithSize:16.0f];
+    self.infoLabel.font = [UIFont preferredApplicationFontForTextStyle:UIFontTextStyleSubheadline];
 }
 
 - (void)layoutSubviews {

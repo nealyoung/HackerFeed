@@ -44,7 +44,7 @@
     
     self.textView.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
     self.textView.textColor = [HFInterfaceTheme activeTheme].secondaryTextColor;
-    self.textView.font = [UIFont applicationFontOfSize:15.0f];
+    self.textView.font = [UIFont preferredApplicationFontForTextStyle:UIFontTextStyleBody];
 }
 
 @end

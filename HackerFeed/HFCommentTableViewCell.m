@@ -79,7 +79,7 @@
                                                                                  metrics:nil
                                                                                    views:NSDictionaryOfVariableBindings(_commentActionsView)]];
         
-        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-4-[_usernameLabel][_commentLabel]-8-[_commentActionsView]|"
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-4-[_usernameLabel]-2-[_commentLabel]-8-[_commentActionsView]|"
                                                                                  options:0
                                                                                  metrics:nil
                                                                                    views:NSDictionaryOfVariableBindings(_usernameLabel, _commentLabel, _commentActionsView)]];
@@ -103,7 +103,7 @@
     [super applyTheme];
     
     self.usernameLabel.textColor = [HFInterfaceTheme activeTheme].textColor;
-    self.usernameLabel.font = [UIFont smallCapsApplicationFontWithSize:15.0f];
+    self.usernameLabel.font = [UIFont preferredApplicationFontForTextStyle:UIFontTextStyleSubheadline];
     
 //    self.textView.textColor = [HFInterfaceTheme activeTheme].secondaryTextColor;
 //    self.textView.font = [UIFont applicationFontOfSize:14.0f];

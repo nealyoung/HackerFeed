@@ -78,10 +78,10 @@
     self.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
     self.contentView.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
     
-    self.textLabel.font = [UIFont applicationFontOfSize:16.0f];
+    self.textLabel.font = [UIFont preferredApplicationFontForTextStyle:UIFontTextStyleSubheadline];
     self.textLabel.textColor = [HFInterfaceTheme activeTheme].textColor;
 
-    self.detailTextLabel.font = [UIFont applicationFontOfSize:16.0f];
+    self.detailTextLabel.font = [UIFont preferredApplicationFontForTextStyle:UIFontTextStyleCaption1];
     self.detailTextLabel.textColor = [HFInterfaceTheme activeTheme].secondaryTextColor;
     
     [self setNeedsLayout];

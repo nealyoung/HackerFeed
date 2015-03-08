@@ -18,7 +18,7 @@
 #import "HFPullToRefreshContentView.h"
 #import "HFTableView.h"
 #import "HFTableViewCell.h"
-#import "PBWebViewController.h"
+#import "HFWebViewController.h"
 #import "SSPullToRefresh.h"
 #import "SVProgressHUD.h"
 #import "UIScrollView+SVPullToRefresh.h"
@@ -61,6 +61,8 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     
     if (self) {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+        
         self.tableView = [[HFTableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
         [self.tableView setTranslatesAutoresizingMaskIntoConstraints:NO];
         self.tableView.dataSource = self;
@@ -394,7 +396,7 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
         webViewController.transitioningDelegate = self.scaleTransition;
         [self.splitViewController presentViewController:webViewController animated:YES completion:nil];
     } else {
-        PBWebViewController *webViewController = [[PBWebViewController alloc] init];
+        HFWebViewController *webViewController = [[HFWebViewController alloc] init];
         webViewController.URL = url;
         
         [self showViewController:webViewController sender:self];
@@ -430,9 +432,7 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
         return cell;
     } else if (indexPath.row == 1 && self.post.Type != PostTypeJobs) {
         HFTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:kUsernameTableViewCellIdentifier forIndexPath:indexPath];
-        cell.textLabel.font = [UIFont smallCapsApplicationFontWithSize:cell.textLabel.font.pointSize];
         cell.textLabel.text = NSLocalizedString(@"Submitted by", nil);
-        cell.detailTextLabel.font = [UIFont applicationFontOfSize:16.0f];
         cell.detailTextLabel.text = self.post.Username;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         
@@ -555,10 +555,10 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
         if (self.splitViewController.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular) {
             HFModalWebViewController *webViewController = [[HFModalWebViewController alloc] initWithURL:[NSURL URLWithString:self.post.UrlString]];
             self.scaleTransition = [DMScaleTransition new];
-//            webViewController.transitioningDelegate = self.scaleTransition;
+            webViewController.transitioningDelegate = self.scaleTransition;
             [self.splitViewController presentViewController:webViewController animated:YES completion:nil];
         } else {
-            PBWebViewController *webViewController = [[PBWebViewController alloc] init];
+            HFWebViewController *webViewController = [[HFWebViewController alloc] init];
             webViewController.URL = [NSURL URLWithString:self.post.UrlString];
             
             [self showViewController:webViewController sender:self];
