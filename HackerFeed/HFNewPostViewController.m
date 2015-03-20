@@ -19,11 +19,13 @@
 @property NYSegmentedControl *segmentedControl;
 @property UITableView *tableView;
 
-@property (nonatomic) UITextField *titleTextField;
-@property (nonatomic) UITextField *urlTextField;
+@property NSString *postText;
 
-@property (nonatomic) UITextField *textPostTitleTextField;
-@property (nonatomic) UITextView *postTextView;
+//@property (nonatomic) UITextField *titleTextField;
+//@property (nonatomic) UITextField *urlTextField;
+//
+//@property (nonatomic) UITextField *textPostTitleTextField;
+//@property (nonatomic) UITextView *postTextView;
 
 - (void)applyTheme;
 
@@ -91,13 +93,35 @@ static NSString * const kTextViewTableViewCellIdentifier = @"TextViewTableViewCe
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    HFTextFieldTableViewCell *titleCell = (HFTextFieldTableViewCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-    [titleCell.textField becomeFirstResponder];
+//    HFTextFieldTableViewCell *titleCell = (HFTextFieldTableViewCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+//    [titleCell.textField becomeFirstResponder];
 }
 
 - (void)applyTheme {
     self.tableView.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.03f];
     self.tableView.separatorColor = [HFInterfaceTheme activeTheme].cellSeparatorColor;
+}
+
+- (BOOL)validatePost {
+    if (self.segmentedControl.selectedSegmentIndex == 0) {
+        if (![self.post.Title length]) {
+            [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Enter a post title", nil)];
+            return NO;
+        } else if (![self.post.UrlString length]) {
+            [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Enter a post title", nil)];
+            return NO;
+        }
+    } else {
+        if (![self.post.Title length]) {
+            [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Enter a post title", nil)];
+            return NO;
+        } else if (![self.postText length]) {
+            [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Enter post text", nil)];
+            return NO;
+        }
+    }
+    
+    return YES;
 }
 
 - (void)cancelButtonPressed:(id)sender {
@@ -109,52 +133,57 @@ static NSString * const kTextViewTableViewCellIdentifier = @"TextViewTableViewCe
 }
 
 - (void)submitButtonPressed:(id)sender {
-    if (self.segmentedControl.selectedSegmentIndex == 0) {
-        [[HNManager sharedManager] submitPostWithTitle:self.titleTextField.text
-                                                  link:self.urlTextField.text
-                                                  text:nil
-                                            completion:^(BOOL success) {
-                                                if (self.extensionContext) {
-                                                    if (success) {
-                                                        [self.extensionContext completeRequestReturningItems:self.extensionContext.inputItems
-                                                                                           completionHandler:nil];
+    [self.view endEditing:YES];
+    
+    if ([self validatePost]) {
+        if (self.segmentedControl.selectedSegmentIndex == 0) {
+            [[HNManager sharedManager] submitPostWithTitle:[self titleTextField].text
+                                                      link:self.urlTextField.text
+                                                      text:nil
+                                                completion:^(BOOL success) {
+                                                    if (self.extensionContext) {
+                                                        if (success) {
+                                                            [self.extensionContext completeRequestReturningItems:self.extensionContext.inputItems
+                                                                                               completionHandler:nil];
+                                                        } else {
+                                                            [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Error submitting link", nil)];
+                                                        }
                                                     } else {
-                                                        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Error submitting link", nil)];
+                                                        if (success) {
+                                                            [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Link submitted", nil)];
+                                                            [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+                                                        } else {
+                                                            [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Error submitting link", nil)];
+                                                        }
                                                     }
-                                                } else {
-                                                    if (success) {
-                                                        [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Link submitted", nil)];
-                                                        [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+                                                }];
+        } else {
+            [[HNManager sharedManager] submitPostWithTitle:[self titleTextField].text
+                                                      link:nil
+                                                      text:self.postText
+                                                completion:^(BOOL success) {
+                                                    if (self.extensionContext) {
+                                                        if (success) {
+                                                            [self.extensionContext completeRequestReturningItems:self.extensionContext.inputItems
+                                                                                               completionHandler:nil];
+                                                        } else {
+                                                            [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Error submitting post", nil)];
+                                                        }
                                                     } else {
-                                                        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Error submitting link", nil)];
+                                                        if (success) {
+                                                            [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Post submitted", nil)];
+                                                            [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+                                                        } else {
+                                                            [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Error submitting post", nil)];
+                                                        }
                                                     }
-                                                }
-                                            }];
-    } else {
-        [[HNManager sharedManager] submitPostWithTitle:self.titleTextField.text
-                                                  link:nil
-                                                  text:self.postTextView.text
-                                            completion:^(BOOL success) {
-                                                if (self.extensionContext) {
-                                                    if (success) {
-                                                        [self.extensionContext completeRequestReturningItems:self.extensionContext.inputItems
-                                                                                           completionHandler:nil];
-                                                    } else {
-                                                        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Error submitting post", nil)];
-                                                    }
-                                                } else {
-                                                    if (success) {
-                                                        [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Post submitted", nil)];
-                                                        [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-                                                    } else {
-                                                        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Error submitting post", nil)];
-                                                    }
-                                                }
-                                            }];
+                                                }];
+        }
     }
 }
 
 - (void)segmentSelected:(NYSegmentedControl *)sender {
+    [self.view endEditing:YES];
     [self.tableView reloadData];
 }
 
@@ -162,6 +191,15 @@ static NSString * const kTextViewTableViewCellIdentifier = @"TextViewTableViewCe
     if (self.segmentedControl.selectedSegmentIndex == 0) {
         HFTextFieldTableViewCell *titleCell = (HFTextFieldTableViewCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
         return titleCell.textField;
+    } else {
+        return nil;
+    }
+}
+
+- (UITextField *)urlTextField {
+    if (self.segmentedControl.selectedSegmentIndex == 0) {
+        HFTextFieldTableViewCell *urlCell = (HFTextFieldTableViewCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
+        return urlCell.textField;
     } else {
         return nil;
     }
@@ -176,10 +214,10 @@ static NSString * const kTextViewTableViewCellIdentifier = @"TextViewTableViewCe
     }
 }
 
-- (UITextField *)urlTextField {
-    if (self.segmentedControl.selectedSegmentIndex == 0) {
-        HFTextFieldTableViewCell *urlCell = (HFTextFieldTableViewCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
-        return urlCell.textField;
+- (HFTextView *)postTextView {
+    if (self.segmentedControl.selectedSegmentIndex == 1) {
+        HFTextViewTableViewCell *cell = (HFTextViewTableViewCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
+        return cell.textView;
     } else {
         return nil;
     }
@@ -198,10 +236,14 @@ static NSString * const kTextViewTableViewCellIdentifier = @"TextViewTableViewCe
         
         if (indexPath.row == 0) {
             cell.titleLabel.text = NSLocalizedString(@"Title", nil);
+            
+            cell.textField.text = self.post.Title;
             cell.textField.placeholder = NSLocalizedString(@"Show HN: My App", nil);
             cell.textField.returnKeyType = UIReturnKeyNext;
         } else {
             cell.titleLabel.text = NSLocalizedString(@"URL", nil);
+            
+            cell.textField.text = self.post.UrlString;
             cell.textField.placeholder = NSLocalizedString(@"http://example.com", nil);
             cell.textField.returnKeyType = UIReturnKeyDone;
         }
@@ -218,7 +260,6 @@ static NSString * const kTextViewTableViewCellIdentifier = @"TextViewTableViewCe
             cell.textView.delegate = self;
             cell.textView.editable = YES;
             cell.textView.placeholder = NSLocalizedString(@"Post text", nil);
-            self.postTextView = cell.textView;
             
             return cell;
         }
@@ -241,7 +282,7 @@ static NSString * const kTextViewTableViewCellIdentifier = @"TextViewTableViewCe
             }
             
             textViewMetricsCell.bounds = CGRectMake(0.0f, 0.0f, self.tableView.bounds.size.width, 9999.0f);
-            textViewMetricsCell.textView.text = self.postTextView.text;
+            textViewMetricsCell.textView.text = self.postText;
             [textViewMetricsCell setNeedsLayout];
             [textViewMetricsCell layoutIfNeeded];
             
@@ -258,12 +299,20 @@ static NSString * const kTextViewTableViewCellIdentifier = @"TextViewTableViewCe
 
 #pragma mark - UITextFieldDelegate
 
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    if (textField == [self titleTextField]) {
+        self.post.Title = textField.text;
+    } else if (textField == [self urlTextField]) {
+        self.post.UrlString = textField.text;
+    }
+}
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     if (self.segmentedControl.selectedSegmentIndex == 0) {
-        if (textField == self.titleTextField) {
+        if (textField == [self titleTextField]) {
             [self.titleTextField resignFirstResponder];
             [self.urlTextField becomeFirstResponder];
-        } else if (textField == self.urlTextField) {
+        } else if (textField == [self urlTextField]) {
             [self.urlTextField resignFirstResponder];
         }
     } else {
@@ -288,6 +337,10 @@ static NSString * const kTextViewTableViewCellIdentifier = @"TextViewTableViewCe
         [self.tableView endUpdates];
         return YES;
     }
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView {
+    self.postText = textView.text;
 }
 
 @end

@@ -19,6 +19,7 @@
         
         self.titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         [self.titleLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+        [self.titleLabel setContentCompressionResistancePriority:UILayoutPriorityDefaultHigh forAxis:UILayoutConstraintAxisHorizontal];
         [self.contentView addSubview:self.titleLabel];
         
         self.textField = [[UITextField alloc] initWithFrame:CGRectZero];
