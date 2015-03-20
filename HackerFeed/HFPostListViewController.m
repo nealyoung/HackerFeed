@@ -205,7 +205,12 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
         postTableViewCell.infoLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%d points · %@", nil), post.Points, [post.Username lowercaseString]];
     }
     
-    [postTableViewCell.commentsButton setTitle:[NSString stringWithFormat:@"%d", post.CommentCount] forState:UIControlStateNormal];
+    if (post.CommentCount >= 1000) {
+        [postTableViewCell.commentsButton setTitle:@"1k+" forState:UIControlStateNormal];
+    } else {
+        [postTableViewCell.commentsButton setTitle:[NSString stringWithFormat:@"%d", post.CommentCount] forState:UIControlStateNormal];
+    }
+    
     postTableViewCell.commentsButton.tag = indexPath.row;
     [postTableViewCell.commentsButton addTarget:self action:@selector(commentsButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     
