@@ -51,6 +51,9 @@
 
 @end
 
+static NSInteger const kPostInformationSection = 0;
+static NSInteger const kCommentsSection = 1;
+
 static NSString * const kCommentTableViewCellIdentifier = @"CommentTableViewCell";
 static NSString * const kUsernameTableViewCellIdentifier = @"UsernameTableViewCell";
 static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCell";
@@ -357,28 +360,26 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
 - (void)commentTableViewCellTapped:(HFCommentTableViewCell *)cell {
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
     
-    if (indexPath.row >= 2) {
-        HFCommentTableViewCell *selectedCell = (HFCommentTableViewCell *)[self.tableView cellForRowAtIndexPath:self.expandedIndexPath];
-        
-        [self.tableView beginUpdates];
-        
-        // If the previously selected cell is visible, we need to hide the action bar
-        if (selectedCell) {
-            selectedCell.expanded = NO;
-        }
-        
-        // If the tapped cell is already expanded, don't do anything else
-        if ([indexPath isEqual:self.expandedIndexPath]) {
-            self.expandedIndexPath = nil;
-        } else {
-            HFCommentTableViewCell *cell = (HFCommentTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
-
-            cell.expanded = YES;
-            self.expandedIndexPath = indexPath;
-        }
-        
-        [self.tableView endUpdates];
+    HFCommentTableViewCell *selectedCell = (HFCommentTableViewCell *)[self.tableView cellForRowAtIndexPath:self.expandedIndexPath];
+    
+    [self.tableView beginUpdates];
+    
+    // If the previously selected cell is visible, we need to hide the action bar
+    if (selectedCell) {
+        selectedCell.expanded = NO;
     }
+    
+    // If the tapped cell is already expanded, don't do anything else
+    if ([indexPath isEqual:self.expandedIndexPath]) {
+        self.expandedIndexPath = nil;
+    } else {
+        HFCommentTableViewCell *cell = (HFCommentTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+        
+        cell.expanded = YES;
+        self.expandedIndexPath = indexPath;
+    }
+    
+    [self.tableView endUpdates];
 }
 
 #pragma mark - SSPullToRefreshDelegate
@@ -411,37 +412,55 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
 
 #pragma mark - UITableViewDataSource
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 2;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (self.post) {
-        // Jobs posts don't have a submitter username
+    if (section == kPostInformationSection) {
         if (self.post.Type == PostTypeJobs) {
-            return 1 + [self.comments count];
+            return 1;
         } else {
-            return 2 + [self.comments count];
+            return 2;
         }
-    } else {
-        return 0;
+    } else if (section == kCommentsSection) {
+        return [self.comments count];
     }
+//    
+//    if (self.post) {
+//        // Jobs posts don't have a submitter username
+//        if (self.post.Type == PostTypeJobs) {
+//            return 1 + [self.comments count];
+//        } else {
+//            return 2 + [self.comments count];
+//        }
+//    } else {
+//        return 0;
+//    }
+    
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == 0) {
-        HFPostInfoTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:kPostInfoTableViewCellIdentifier forIndexPath:indexPath];
-        cell.titleLabel.text = self.post.Title;
-        cell.infoLabel.text = [NSString stringWithFormat:@"%d points · %@", self.post.Points, self.post.TimeCreatedString];
-        return cell;
-    } else if (indexPath.row == 1 && self.post.Type != PostTypeJobs) {
-        HFTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:kUsernameTableViewCellIdentifier forIndexPath:indexPath];
-        cell.textLabel.text = NSLocalizedString(@"Submitted by", nil);
-        cell.detailTextLabel.text = self.post.Username;
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        
-        return cell;
-    } else {
+    if (indexPath.section == kPostInformationSection) {
+        if (indexPath.row == 0) {
+            HFPostInfoTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:kPostInfoTableViewCellIdentifier forIndexPath:indexPath];
+            cell.titleLabel.text = self.post.Title;
+            cell.infoLabel.text = [NSString stringWithFormat:@"%d points · %@", self.post.Points, self.post.TimeCreatedString];
+            return cell;
+        } else if (indexPath.row == 1 && self.post.Type != PostTypeJobs) {
+            HFTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:kUsernameTableViewCellIdentifier forIndexPath:indexPath];
+            cell.textLabel.text = NSLocalizedString(@"Submitted by", nil);
+            cell.detailTextLabel.text = self.post.Username;
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            
+            return cell;
+        }
+    } else if (indexPath.section == kCommentsSection) {
         HFCommentTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:kCommentTableViewCellIdentifier forIndexPath:indexPath];
         cell.delegate = self;
         
-        HNComment *comment = self.post.Type == PostTypeJobs ? self.comments[indexPath.row - 1] : self.comments[indexPath.row - 2];
+        HNComment *comment = self.comments[indexPath.row];
         
         cell.commentLabel.text = comment.Text;
         
@@ -457,14 +476,14 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
         cell.toolbarHeightConstraint.constant = 0.0f;
         
         [cell.commentActionsView.upvoteButton addTarget:self action:@selector(upvoteCommentButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-        cell.commentActionsView.upvoteButton.tag = indexPath.row - 2;
+        cell.commentActionsView.upvoteButton.tag = indexPath.row;
         cell.commentActionsView.upvoteButton.enabled = ![[HNManager sharedManager] hasVotedOnObject:comment];
         
         [cell.commentActionsView.replyButton addTarget:self action:@selector(commentReplyButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-        cell.commentActionsView.replyButton.tag = indexPath.row - 2;
+        cell.commentActionsView.replyButton.tag = indexPath.row;
         
         [cell.commentActionsView.userButton addTarget:self action:@selector(userButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-        cell.commentActionsView.userButton.tag = indexPath.row - 2;
+        cell.commentActionsView.userButton.tag = indexPath.row;
         
         if ([self.expandedIndexPath isEqual:indexPath]) {
             [cell setExpanded:YES animated:NO];
@@ -476,42 +495,46 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
         
         return cell;
     }
+    
+    return nil;
 }
 
 #pragma mark - UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == 0) {
-        static HFPostInfoTableViewCell *postInfoMetricsCell;
-
-        if (!postInfoMetricsCell) {
-            postInfoMetricsCell = [[HFPostInfoTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+    if (indexPath.section == kPostInformationSection) {
+        if (indexPath.row == 0) {
+            static HFPostInfoTableViewCell *postInfoMetricsCell;
+            
+            if (!postInfoMetricsCell) {
+                postInfoMetricsCell = [[HFPostInfoTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+            }
+            
+            CGRect frame = postInfoMetricsCell.frame;
+            frame.size.width = self.tableView.bounds.size.width;
+            postInfoMetricsCell.frame = frame;
+            
+            postInfoMetricsCell.titleLabel.text = self.post.Title;
+            postInfoMetricsCell.infoLabel.text = [NSString stringWithFormat:@"%d points · %@", self.post.Points, self.post.TimeCreatedString];
+            
+            [postInfoMetricsCell setNeedsLayout];
+            [postInfoMetricsCell layoutIfNeeded];
+            [postInfoMetricsCell layoutSubviews];
+            
+            CGSize size = [postInfoMetricsCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+            
+            return (size.height + 1);
+        } else if (indexPath.row == 1) {
+            return 44.0f;
         }
-        
-        CGRect frame = postInfoMetricsCell.frame;
-        frame.size.width = self.tableView.bounds.size.width;
-        postInfoMetricsCell.frame = frame;
-        
-        postInfoMetricsCell.titleLabel.text = self.post.Title;
-        postInfoMetricsCell.infoLabel.text = [NSString stringWithFormat:@"%d points · %@", self.post.Points, self.post.TimeCreatedString];
-        
-        [postInfoMetricsCell setNeedsLayout];
-        [postInfoMetricsCell layoutIfNeeded];
-        [postInfoMetricsCell layoutSubviews];
-        
-        CGSize size = [postInfoMetricsCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
-        
-        return (size.height + 1);
-    } else if (indexPath.row == 1 && self.post.Type != PostTypeJobs) {
-        return 44.0f;
-    } else {
+    } else if (indexPath.section == kCommentsSection) {
         NSNumber *cachedCellHeight = self.commentCellHeightCache[@(indexPath.row)];
         if (cachedCellHeight && ![indexPath isEqual:self.expandedIndexPath]) {
             return [cachedCellHeight floatValue];
         }
         
         static HFCommentTableViewCell *commentMetricsCell;
-
+        
         if (!commentMetricsCell) {
             commentMetricsCell = [tableView dequeueReusableCellWithIdentifier:kCommentTableViewCellIdentifier];
         }
@@ -520,7 +543,7 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
         frame.size.width = self.tableView.bounds.size.width;
         commentMetricsCell.frame = frame;
         
-        HNComment *comment = self.post.Type == PostTypeJobs ? self.comments[indexPath.row - 1] : self.comments[indexPath.row - 2];
+        HNComment *comment = self.comments[indexPath.row];
         commentMetricsCell.commentLabel.text = comment.Text;
         commentMetricsCell.usernameLabel.text = comment.Username;
         commentMetricsCell.usernameLabelLeadingConstraint.constant = 15.0f + (comment.Level * 15.0f);
@@ -548,27 +571,31 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
         
         return cellHeight;
     }
+    
+    return 0.0f;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == 0) {
-        if (self.splitViewController.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular) {
-            HFModalWebViewController *webViewController = [[HFModalWebViewController alloc] initWithURL:[NSURL URLWithString:self.post.UrlString]];
-            self.scaleTransition = [DMScaleTransition new];
-            webViewController.transitioningDelegate = self.scaleTransition;
-            [self.splitViewController presentViewController:webViewController animated:YES completion:nil];
-        } else {
-            HFWebViewController *webViewController = [[HFWebViewController alloc] init];
-            webViewController.URL = [NSURL URLWithString:self.post.UrlString];
-            
-            [self showViewController:webViewController sender:self];
+    if (indexPath.section == kPostInformationSection) {
+        if (indexPath.row == 0) {
+            if (self.splitViewController.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular) {
+                HFModalWebViewController *webViewController = [[HFModalWebViewController alloc] initWithURL:[NSURL URLWithString:self.post.UrlString]];
+                self.scaleTransition = [DMScaleTransition new];
+                webViewController.transitioningDelegate = self.scaleTransition;
+                [self.splitViewController presentViewController:webViewController animated:YES completion:nil];
+            } else {
+                HFWebViewController *webViewController = [[HFWebViewController alloc] init];
+                webViewController.URL = [NSURL URLWithString:self.post.UrlString];
+                
+                [self showViewController:webViewController sender:self];
+            }
+        } else if (indexPath.row == 1) {
+            HFProfileViewController *profileViewController = [[HFProfileViewController alloc] initWithNibName:nil bundle:nil];
+            [self.navigationController pushViewController:profileViewController animated:YES];
+            [[HNManager sharedManager] loadUserWithUsername:self.post.Username completion:^(HNUser *user) {
+                profileViewController.user = user;
+            }];
         }
-    } else if (indexPath.row == 1 && self.post.Type != PostTypeJobs) {
-        HFProfileViewController *profileViewController = [[HFProfileViewController alloc] initWithNibName:nil bundle:nil];
-        [self.navigationController pushViewController:profileViewController animated:YES];
-        [[HNManager sharedManager] loadUserWithUsername:self.post.Username completion:^(HNUser *user) {
-            profileViewController.user = user;
-        }];
     } else {
         [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     }

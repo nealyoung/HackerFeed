@@ -165,7 +165,7 @@ static NSString * const kUserSubmissionsTableViewCellIdentifier = @"UserSubmissi
                 textViewMetricsCell = [[HFTextViewTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
             }
             
-            textViewMetricsCell.bounds = CGRectMake(0.0f, 0.0f, self.tableView.bounds.size.width, 9999.0f);
+            textViewMetricsCell.bounds = CGRectMake(0.0f, 0.0f, self.view.bounds.size.width, 9999.0f);
             
             textViewMetricsCell.textView.text = self.user.AboutInfo;
             [textViewMetricsCell setNeedsLayout];

@@ -251,7 +251,7 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
     HNPost *post = self.dataSource.posts[indexPath.row];
     
     // If the post is a link pointing to a HN page with a relative URL (like 'item?id=8175089'), open the post in the app
-    if ([post.UrlString hasPrefix:@"item?"]) {
+    if ([post.UrlString hasPrefix:@"item?"] || [post.UrlString hasPrefix:@"https://news.ycombinator.com/item?"]) {
         HFPostTableViewCell *cell = (HFPostTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
         [self commentsButtonPressed:cell.commentsButton];
         

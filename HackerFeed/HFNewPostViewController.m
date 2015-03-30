@@ -110,7 +110,7 @@ static NSString * const kTextViewTableViewCellIdentifier = @"TextViewTableViewCe
             [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Enter a post title", nil)];
             return NO;
         } else if (![self.post.UrlString length]) {
-            [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Enter a post title", nil)];
+            [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Enter a URL", nil)];
             return NO;
         }
     } else {
@@ -322,18 +322,20 @@ static NSString * const kTextViewTableViewCellIdentifier = @"TextViewTableViewCe
 #pragma mark - UITextViewDelegate
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
-    // Trigger an update of cell heights so the text view can add a new line if needed
-    [self.tableView beginUpdates];
-    [self.tableView endUpdates];
-    
     if ([text isEqualToString:@"\n"]){
         [textView resignFirstResponder];
         return NO;
     } else {
-        [self.tableView beginUpdates];
-        [self.tableView endUpdates];
         return YES;
     }
+}
+
+- (void)textViewDidChange:(UITextView *)textView {
+    self.postText = textView.text;
+    
+    // Trigger an update of cell heights so the text view can add a new line if needed
+    [self.tableView beginUpdates];
+    [self.tableView endUpdates];
 }
 
 - (void)textViewDidEndEditing:(UITextView *)textView {
