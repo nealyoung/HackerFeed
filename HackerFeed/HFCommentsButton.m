@@ -46,7 +46,7 @@
     
     // Vertically center the label within the comment box
     self.titleLabel.center = CGPointMake(CGRectGetMidX(self.bounds),
-                                         CGRectGetMidY(self.bounds) - (0.1f * CGRectGetHeight(self.bounds)));
+                                         CGRectGetMidY(self.bounds) - (0.08f * CGRectGetHeight(self.bounds)));
 }
 
 //- (void)drawRect:(CGRect)rect {

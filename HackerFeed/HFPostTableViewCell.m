@@ -63,7 +63,7 @@
                                                                                  metrics:nil
                                                                                    views:NSDictionaryOfVariableBindings(_infoLabel, _commentsButton)]];
         
-        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-15-[_titleLabel]-16-[_commentsButton(40)]-8-|"
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-15-[_titleLabel]-14-[_commentsButton(44)]-6-|"
                                                                                  options:0
                                                                                  metrics:nil
                                                                                    views:NSDictionaryOfVariableBindings(_titleLabel, _commentsButton)]];
@@ -78,13 +78,10 @@
                                                                                  metrics:nil
                                                                                    views:NSDictionaryOfVariableBindings(_infoLabel, _titleLabel, _domainLabel)]];
         
-        [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.commentsButton
-                                                                     attribute:NSLayoutAttributeHeight
-                                                                     relatedBy:NSLayoutRelationEqual
-                                                                        toItem:nil
-                                                                     attribute:NSLayoutAttributeNotAnAttribute
-                                                                    multiplier:1.0f
-                                                                      constant:40.0f]];
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(>=4)-[_commentsButton(44)]-(>=4)-|"
+                                                                                 options:0
+                                                                                 metrics:nil
+                                                                                   views:NSDictionaryOfVariableBindings(_commentsButton)]];
         
         // Vertically center the comments button
         [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.commentsButton
