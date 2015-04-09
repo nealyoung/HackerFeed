@@ -200,19 +200,21 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
     postTableViewCell.domainLabel.text = post.UrlDomain;
     
     if (post.Type == PostTypeJobs) {
+        postTableViewCell.commentsButton.enabled = NO;
         postTableViewCell.infoLabel.text = nil;
+        [postTableViewCell.commentsButton setTitle:@"" forState:UIControlStateNormal];
     } else {
+        postTableViewCell.commentsButton.enabled = YES;
         postTableViewCell.infoLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%d points · %@", nil), post.Points, [post.Username lowercaseString]];
+        postTableViewCell.commentsButton.tag = indexPath.row;
+        [postTableViewCell.commentsButton addTarget:self action:@selector(commentsButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+        
+        if (post.CommentCount >= 1000) {
+            [postTableViewCell.commentsButton setTitle:@"1k+" forState:UIControlStateNormal];
+        } else {
+            [postTableViewCell.commentsButton setTitle:[NSString stringWithFormat:@"%d", post.CommentCount] forState:UIControlStateNormal];
+        }
     }
-    
-    if (post.CommentCount >= 1000) {
-        [postTableViewCell.commentsButton setTitle:@"1k+" forState:UIControlStateNormal];
-    } else {
-        [postTableViewCell.commentsButton setTitle:[NSString stringWithFormat:@"%d", post.CommentCount] forState:UIControlStateNormal];
-    }
-    
-    postTableViewCell.commentsButton.tag = indexPath.row;
-    [postTableViewCell.commentsButton addTarget:self action:@selector(commentsButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     
     return postTableViewCell;
 }
