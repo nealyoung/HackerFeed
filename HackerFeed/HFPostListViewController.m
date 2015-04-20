@@ -29,6 +29,10 @@
 - (void)applyTheme;
 - (void)refresh;
 
+- (void)cellSwiped:(MCSwipeTableViewCell *)cell;
+- (void)commentsButtonPressed:(UIButton *)button;
+- (void)newPostButtonPressed;
+
 @end
 
 static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
@@ -143,6 +147,32 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
     self.tableView.separatorColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.06f];
 }
 
+- (void)cellSwiped:(MCSwipeTableViewCell *)cell {
+    NSIndexPath* cellIndexPath = [self.tableView indexPathForCell:cell];
+    HNPost *post = self.dataSource.posts[cellIndexPath.row];
+    
+    if (![HNManager sharedManager].SessionUser) {
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"You must be signed in to vote", nil)];
+        return;
+    }
+    
+    [[HNManager sharedManager] voteOnPostOrComment:post direction:VoteDirectionUp completion:^(BOOL success) {
+        if (!success) {
+            [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Error upvoting post", nil)];
+            return;
+        }
+        
+        post.Points++;
+        
+        // Make sure the cell is still visible
+        if ([self.tableView cellForRowAtIndexPath:cellIndexPath]) {
+            // Reload the cell so the points label reflects the user's upvote
+            [self.tableView reloadRowsAtIndexPaths:@[cellIndexPath] withRowAnimation:UITableViewRowAnimationNone];
+        }
+    }];
+
+}
+
 - (void)commentsButtonPressed:(HFCommentsButton *)sender {
     HFPostViewController *postViewController = [[HFPostViewController alloc] initWithNibName:nil bundle:nil];
     UINavigationController *postNavigationController = [[UINavigationController alloc] initWithNavigationBarClass:[HFNavigationBar class]
@@ -198,6 +228,7 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
     
     postTableViewCell.titleLabel.text = post.Title;
     postTableViewCell.domainLabel.text = post.UrlDomain;
+    postTableViewCell.commentsButton.tag = indexPath.row;
     
     if (post.Type == PostTypeJobs) {
         postTableViewCell.commentsButton.enabled = NO;
@@ -206,7 +237,6 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
     } else {
         postTableViewCell.commentsButton.enabled = YES;
         postTableViewCell.infoLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%d points · %@", nil), post.Points, [post.Username lowercaseString]];
-        postTableViewCell.commentsButton.tag = indexPath.row;
         [postTableViewCell.commentsButton addTarget:self action:@selector(commentsButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
         
         if (post.CommentCount >= 1000) {
@@ -215,6 +245,17 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
             [postTableViewCell.commentsButton setTitle:[NSString stringWithFormat:@"%d", post.CommentCount] forState:UIControlStateNormal];
         }
     }
+    
+    postTableViewCell.defaultColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.08f];
+    
+    // Add upvote swipe gesture, this is removed in MCSwipeTableViewCell's prepareForReuse, so we have to re-add it here
+    [postTableViewCell setSwipeGestureWithView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"JobsIcon"]]
+                                         color:[HFInterfaceTheme activeTheme].accentColor
+                                          mode:MCSwipeTableViewCellModeSwitch
+                                         state:MCSwipeTableViewCellState1
+                               completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
+                                   [self cellSwiped:cell];
+                               }];
     
     return postTableViewCell;
 }

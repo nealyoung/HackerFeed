@@ -446,7 +446,10 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
         if (indexPath.row == 0) {
             HFPostInfoTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:kPostInfoTableViewCellIdentifier forIndexPath:indexPath];
             cell.titleLabel.text = self.post.Title;
-            cell.infoLabel.text = [NSString stringWithFormat:@"%d points · %@", self.post.Points, self.post.TimeCreatedString];
+            
+            // Don't display score/time created info for jobs posts
+            cell.infoLabel.text = self.post.Type == PostTypeJobs ? nil : [NSString stringWithFormat:@"%d points · %@", self.post.Points, self.post.TimeCreatedString];
+            
             return cell;
         } else if (indexPath.row == 1 && self.post.Type != PostTypeJobs) {
             HFTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:kUsernameTableViewCellIdentifier forIndexPath:indexPath];
@@ -579,6 +582,11 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
     if (indexPath.section == kPostInformationSection) {
         if (indexPath.row == 0) {
             if (self.splitViewController.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular) {
+                // If the post url is relative to news.yc (job posts), don't do anything
+                if (!self.post.UrlDomain) {
+                    return;
+                }
+                
                 HFModalWebViewController *webViewController = [[HFModalWebViewController alloc] initWithURL:[NSURL URLWithString:self.post.UrlString]];
                 self.scaleTransition = [DMScaleTransition new];
                 webViewController.transitioningDelegate = self.scaleTransition;

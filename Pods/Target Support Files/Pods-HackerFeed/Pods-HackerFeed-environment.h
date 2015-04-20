@@ -18,6 +18,12 @@
 #define COCOAPODS_VERSION_MINOR_FCUtilities 1
 #define COCOAPODS_VERSION_PATCH_FCUtilities 0
 
+// MCSwipeTableViewCell
+#define COCOAPODS_POD_AVAILABLE_MCSwipeTableViewCell
+#define COCOAPODS_VERSION_MAJOR_MCSwipeTableViewCell 2
+#define COCOAPODS_VERSION_MINOR_MCSwipeTableViewCell 1
+#define COCOAPODS_VERSION_PATCH_MCSwipeTableViewCell 2
+
 // NYSegmentedControl
 #define COCOAPODS_POD_AVAILABLE_NYSegmentedControl
 #define COCOAPODS_VERSION_MAJOR_NYSegmentedControl 1
@@ -40,7 +46,7 @@
 #define COCOAPODS_POD_AVAILABLE_SVProgressHUD
 #define COCOAPODS_VERSION_MAJOR_SVProgressHUD 1
 #define COCOAPODS_VERSION_MINOR_SVProgressHUD 1
-#define COCOAPODS_VERSION_PATCH_SVProgressHUD 2
+#define COCOAPODS_VERSION_PATCH_SVProgressHUD 3
 
 // SVPullToRefresh
 #define COCOAPODS_POD_AVAILABLE_SVPullToRefresh

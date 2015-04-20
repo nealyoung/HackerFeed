@@ -141,7 +141,7 @@
 //                self.infoLabel.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.25f];
 //                self.domainLabel.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.25f];
 //            } else {
-//                self.titleLabel.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
+//                self.titleLabel.backgroundColor = [HFInterfaceThe`me activeTheme].backgroundColor;
 //                self.infoLabel.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
 //                self.domainLabel.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
 //            }
@@ -172,6 +172,8 @@
 
 - (void)applyTheme {
     [super applyTheme];
+    
+    self.color1 = [HFInterfaceTheme activeTheme].accentColor;
     
     self.infoLabel.textColor = [HFInterfaceTheme activeTheme].secondaryTextColor;
     self.infoLabel.font = [UIFont preferredApplicationFontForTextStyle:UIFontTextStyleSubheadline];

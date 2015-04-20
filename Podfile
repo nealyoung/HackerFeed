@@ -5,6 +5,7 @@ target "HackerFeed" do
   pod "DACircularProgress"
   pod 'FCUtilities', :git => 'https://github.com/marcoarment/FCUtilities.git'
   pod 'libHN'
+  pod 'MCSwipeTableViewCell'
   pod 'NYSegmentedControl'
   pod 'PBWebViewController'
   pod 'SSPullToRefresh'

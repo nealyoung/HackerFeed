@@ -8,7 +8,6 @@
 
 #import "SSPullToRefreshView.h"
 #import "SSPullToRefreshSimpleContentView.h"
-#import "SSPullToRefreshDefaultContentView.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface SSPullToRefreshView ()
