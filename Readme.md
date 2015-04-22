@@ -10,6 +10,7 @@ HackerFeed is a Hacker News client written in Objective-C targeting iOS 8.
 * Login to your Hacker News account to upvote and reply to posts and comments
 * Submit new links or text posts
 * Universal application supporting iPad, iPhone 6, and iPhone 6 Plus (with split landscape view)
+* Support for Dynamic Type font sizing
 
 ## Getting Started
 
@@ -22,7 +23,6 @@ Then open the `HackerFeed.xcworkspace` file to run the application and make chan
 
 ## Todos
 
-* Support for Dynamic Type font sizing
 * Improved support for iOS accessibility features
 * Finish share extension
 * Create today widget showing top stories
