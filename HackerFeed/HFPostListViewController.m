@@ -156,21 +156,22 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
         return;
     }
     
-    [[HNManager sharedManager] voteOnPostOrComment:post direction:VoteDirectionUp completion:^(BOOL success) {
-        if (!success) {
-            [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Error upvoting post", nil)];
-            return;
-        }
-        
-        post.Points++;
-        
-        // Make sure the cell is still visible
-        if ([self.tableView cellForRowAtIndexPath:cellIndexPath]) {
-            // Reload the cell so the points label reflects the user's upvote
-            [self.tableView reloadRowsAtIndexPaths:@[cellIndexPath] withRowAnimation:UITableViewRowAnimationNone];
-        }
-    }];
-
+    if (![[HNManager sharedManager] hasVotedOnObject:post]) {
+        [[HNManager sharedManager] voteOnPostOrComment:post direction:VoteDirectionUp completion:^(BOOL success) {
+            if (!success) {
+                [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Error upvoting post", nil)];
+                return;
+            }
+            
+            post.Points++;
+            
+            // Make sure the cell is still visible
+            if ([self.tableView cellForRowAtIndexPath:cellIndexPath]) {
+                // Reload the cell so the points label reflects the user's upvote
+                [self.tableView reloadRowsAtIndexPaths:@[cellIndexPath] withRowAnimation:UITableViewRowAnimationNone];
+            }
+        }];
+    }
 }
 
 - (void)commentsButtonPressed:(HFCommentsButton *)sender {
@@ -248,8 +249,11 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
     
     postTableViewCell.defaultColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.08f];
     
+    UIImageView *upvoteIconImageView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"UpvoteIconFilled"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
+    upvoteIconImageView.tintColor = [UIColor whiteColor];
+    
     // Add upvote swipe gesture, this is removed in MCSwipeTableViewCell's prepareForReuse, so we have to re-add it here
-    [postTableViewCell setSwipeGestureWithView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"JobsIcon"]]
+    [postTableViewCell setSwipeGestureWithView:upvoteIconImageView
                                          color:[HFInterfaceTheme activeTheme].accentColor
                                           mode:MCSwipeTableViewCellModeSwitch
                                          state:MCSwipeTableViewCellState1
