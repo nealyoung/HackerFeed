@@ -37,6 +37,7 @@
 - (void)commonInit {
     [self setBackgroundImage:[[UIImage imageNamed:@"CommentsIcon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
     
+    self.imageView.contentMode = UIViewContentModeCenter;
     [self applyTheme];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applyTheme) name:kThemeChangedNotificationName object:nil];
 }

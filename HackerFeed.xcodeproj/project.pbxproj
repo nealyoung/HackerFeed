@@ -10,6 +10,7 @@
 		0E0214FB19CB518E00561912 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E0214FA19CB518E00561912 /* libz.dylib */; };
 		0E0214FE19CB53D300561912 /* HFWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E0214FD19CB53D300561912 /* HFWebViewController.m */; };
 		0E0C0BE819CFC0DD007EAE25 /* HFBasePostDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E0C0BE719CFC0DD007EAE25 /* HFBasePostDataSource.m */; };
+		0E183AAC1AF442F0004E6324 /* HNPost+HFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E183AAB1AF442F0004E6324 /* HNPost+HFAdditions.m */; };
 		0E1FC635197C4B4700B41804 /* HFPostTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E1FC634197C4B4700B41804 /* HFPostTableViewCell.m */; };
 		0E25F3FC1A50802F00B869EE /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E0214FA19CB518E00561912 /* libz.dylib */; };
 		0E25F3FD1A50811900B869EE /* UIFont+HFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC81431197C9C15009F0D99 /* UIFont+HFAdditions.m */; };
@@ -136,6 +137,8 @@
 		0E07A4DC1A5064F5004C0758 /* libPods-HackerFeed.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-HackerFeed.a"; path = "Pods/build/Debug-iphoneos/libPods-HackerFeed.a"; sourceTree = "<group>"; };
 		0E0C0BE619CFC0DD007EAE25 /* HFBasePostDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFBasePostDataSource.h; sourceTree = "<group>"; };
 		0E0C0BE719CFC0DD007EAE25 /* HFBasePostDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFBasePostDataSource.m; sourceTree = "<group>"; };
+		0E183AAA1AF442F0004E6324 /* HNPost+HFAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HNPost+HFAdditions.h"; sourceTree = "<group>"; };
+		0E183AAB1AF442F0004E6324 /* HNPost+HFAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HNPost+HFAdditions.m"; sourceTree = "<group>"; };
 		0E1FC633197C4B4700B41804 /* HFPostTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFPostTableViewCell.h; sourceTree = "<group>"; };
 		0E1FC634197C4B4700B41804 /* HFPostTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFPostTableViewCell.m; sourceTree = "<group>"; };
 		0E2BE1221A6E164000F81396 /* HFShareExtensionContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFShareExtensionContainerViewController.h; sourceTree = "<group>"; };
@@ -440,6 +443,8 @@
 				0EC81431197C9C15009F0D99 /* UIFont+HFAdditions.m */,
 				0EEBD394197E026300D74AD6 /* UIColor+HFAdditions.h */,
 				0EEBD395197E026300D74AD6 /* UIColor+HFAdditions.m */,
+				0E183AAA1AF442F0004E6324 /* HNPost+HFAdditions.h */,
+				0E183AAB1AF442F0004E6324 /* HNPost+HFAdditions.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -769,6 +774,7 @@
 				0EC81435197CA8FA009F0D99 /* HFCommentTableViewCell.m in Sources */,
 				0E1FC635197C4B4700B41804 /* HFPostTableViewCell.m in Sources */,
 				0E5424EA19C4DA5F00FF24A7 /* HFModalWebViewController.m in Sources */,
+				0E183AAC1AF442F0004E6324 /* HNPost+HFAdditions.m in Sources */,
 				0EE791C71950318D00925E4F /* main.m in Sources */,
 				0EE791D41950318D00925E4F /* HFPostListViewController.m in Sources */,
 				0E6C30DF197F5DCB00C33A67 /* HFLoginViewController.m in Sources */,

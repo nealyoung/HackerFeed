@@ -2,6 +2,8 @@
 
 HackerFeed is a Hacker News client written in Objective-C targeting iOS 8.
 
+[Download on the App Store](https://itunes.apple.com/us/app/hackerfeed-hacker-news-client/id919346897?ls=1&mt=8)
+
 ![Screenshot](https://github.com/nealyoung/HackerFeed/raw/master/header.png)
 
 ## Features

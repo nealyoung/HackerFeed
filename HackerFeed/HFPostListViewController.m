@@ -17,6 +17,7 @@
 #import "HFPullToRefreshContentView.h"
 #import "HFToolbar.h"
 #import "HFWebViewController.h"
+#import "HNPost+HFAdditions.h"
 #import "SSPullToRefresh.h"
 #import "SVProgressHUD.h"
 #import "UIScrollView+SVInfiniteScrolling.h"
@@ -227,41 +228,52 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
     HFPostTableViewCell *postTableViewCell = [tableView dequeueReusableCellWithIdentifier:kPostTableViewCellIdentifier forIndexPath:indexPath];
     HNPost *post = self.dataSource.posts[indexPath.row];
     
-    postTableViewCell.titleLabel.text = post.Title;
-    postTableViewCell.domainLabel.text = post.UrlDomain;
-    postTableViewCell.commentsButton.tag = indexPath.row;
+    [self configureCell:postTableViewCell forPost:post];
+    
+    return postTableViewCell;
+}
+
+- (void)configureCell:(HFPostTableViewCell *)cell forPost:(HNPost *)post {
+    cell.titleLabel.text = post.Title;
+    
+    if ([post isViewed]) {
+        cell.titleLabel.textColor = [HFInterfaceTheme activeTheme].secondaryTextColor;
+    } else {
+        cell.titleLabel.textColor = [HFInterfaceTheme activeTheme].textColor;
+    }
+    
+    cell.domainLabel.text = post.UrlDomain;
+    cell.commentsButton.tag = [self.dataSource.posts indexOfObject:post];
     
     if (post.Type == PostTypeJobs) {
-        postTableViewCell.commentsButton.enabled = NO;
-        postTableViewCell.infoLabel.text = nil;
-        [postTableViewCell.commentsButton setTitle:@"" forState:UIControlStateNormal];
+        cell.commentsButton.enabled = NO;
+        cell.infoLabel.text = nil;
+        [cell.commentsButton setTitle:@"" forState:UIControlStateNormal];
     } else {
-        postTableViewCell.commentsButton.enabled = YES;
-        postTableViewCell.infoLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%d points · %@", nil), post.Points, [post.Username lowercaseString]];
-        [postTableViewCell.commentsButton addTarget:self action:@selector(commentsButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+        cell.commentsButton.enabled = YES;
+        cell.infoLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%d points · %@", nil), post.Points, [post.Username lowercaseString]];
+        [cell.commentsButton addTarget:self action:@selector(commentsButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
         
         if (post.CommentCount >= 1000) {
-            [postTableViewCell.commentsButton setTitle:@"1k+" forState:UIControlStateNormal];
+            [cell.commentsButton setTitle:@"1k+" forState:UIControlStateNormal];
         } else {
-            [postTableViewCell.commentsButton setTitle:[NSString stringWithFormat:@"%d", post.CommentCount] forState:UIControlStateNormal];
+            [cell.commentsButton setTitle:[NSString stringWithFormat:@"%d", post.CommentCount] forState:UIControlStateNormal];
         }
     }
     
-    postTableViewCell.defaultColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.08f];
+    cell.defaultColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.08f];
     
     UIImageView *upvoteIconImageView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"UpvoteIcon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
     upvoteIconImageView.tintColor = [UIColor whiteColor];
     
     // Add upvote swipe gesture, this is removed in MCSwipeTableViewCell's prepareForReuse, so we have to re-add it here
-    [postTableViewCell setSwipeGestureWithView:upvoteIconImageView
-                                         color:[HFInterfaceTheme activeTheme].accentColor
-                                          mode:MCSwipeTableViewCellModeSwitch
-                                         state:MCSwipeTableViewCellState1
-                               completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
-                                   [self cellSwiped:cell];
-                               }];
-    
-    return postTableViewCell;
+    [cell setSwipeGestureWithView:upvoteIconImageView
+                            color:[HFInterfaceTheme activeTheme].accentColor
+                             mode:MCSwipeTableViewCellModeSwitch
+                            state:MCSwipeTableViewCellState1
+                  completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
+                      [self cellSwiped:cell];
+                  }];
 }
 
 #pragma mark - UITableViewDelegate
@@ -276,14 +288,7 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
     postMetricsCell.bounds = CGRectMake(0.0f, 0.0f, self.tableView.bounds.size.width, 9999.0f);
     HNPost *post = self.dataSource.posts[indexPath.row];
     
-    postMetricsCell.titleLabel.text = post.Title;
-    postMetricsCell.domainLabel.text = post.UrlDomain;
-    
-    if (post.Type == PostTypeJobs) {
-        postMetricsCell.infoLabel.text = nil;
-    } else {
-        postMetricsCell.infoLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%d points · %@", nil), post.Points, [post.Username lowercaseString]];
-    }
+    [self configureCell:postMetricsCell forPost:post];
     
     [postMetricsCell setNeedsLayout];
     [postMetricsCell layoutIfNeeded];
@@ -296,6 +301,13 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     HNPost *post = self.dataSource.posts[indexPath.row];
+    
+    [post markAsViewed];
+    
+    HFPostTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    
+    // Reconfigure the cell so the title color immediately reflects the link's read state
+    [self configureCell:cell forPost:post];
     
     // If the post is a link pointing to a HN page with a relative URL (like 'item?id=8175089'), open the post in the app
     if ([post.UrlString hasPrefix:@"item?"] || [post.UrlString hasPrefix:@"https://news.ycombinator.com/item?"]) {
