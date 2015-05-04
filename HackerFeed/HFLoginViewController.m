@@ -20,6 +20,8 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     
     if (self) {
+        self.title = NSLocalizedString(@"Log In", nil);
+        
         self.view.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.03f];
         
         self.usernameTextField = [[UITextField alloc] initWithFrame:CGRectZero];

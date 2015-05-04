@@ -304,7 +304,7 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
     
     [post markAsViewed];
     
-    HFPostTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    HFPostTableViewCell *cell = (HFPostTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
     
     // Reconfigure the cell so the title color immediately reflects the link's read state
     [self configureCell:cell forPost:post];

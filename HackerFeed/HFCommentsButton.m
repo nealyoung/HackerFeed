@@ -35,8 +35,8 @@
 }
 
 - (void)commonInit {
-    [self setBackgroundImage:[[UIImage imageNamed:@"CommentsIcon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
-    
+    [self setImage:[[UIImage imageNamed:@"CommentsIcon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+    self.titleLabel.textAlignment = NSTextAlignmentCenter;
     self.imageView.contentMode = UIViewContentModeCenter;
     [self applyTheme];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applyTheme) name:kThemeChangedNotificationName object:nil];
@@ -45,6 +45,7 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     
+    self.titleLabel.frame = self.bounds;
     // Vertically center the label within the comment box
     self.titleLabel.center = CGPointMake(CGRectGetMidX(self.bounds),
                                          CGRectGetMidY(self.bounds) - (0.08f * CGRectGetHeight(self.bounds)));
@@ -76,9 +77,9 @@
 
 - (void)setEnabled:(BOOL)enabled {
     if (enabled) {
-        [self setBackgroundImage:[[UIImage imageNamed:@"CommentsIcon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+        [self setImage:[[UIImage imageNamed:@"CommentsIcon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
     } else {
-        [self setBackgroundImage:[[UIImage imageNamed:@"JobsIcon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+        [self setImage:[[UIImage imageNamed:@"JobsIcon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
     }
     
     [super setEnabled:enabled];
