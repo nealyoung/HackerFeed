@@ -180,8 +180,15 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
     UINavigationController *postNavigationController = [[UINavigationController alloc] initWithNavigationBarClass:[HFNavigationBar class]
                                                                                                      toolbarClass:[HFToolbar class]];
     postNavigationController.viewControllers = @[postViewController];
+    
     HFCommentsButton *commentsButton = (HFCommentsButton *)sender;
-    postViewController.post = self.dataSource.posts[commentsButton.tag];
+    HNPost *post = self.dataSource.posts[commentsButton.tag];
+    postViewController.post = post;
+    
+    [post markAsViewed];
+    HFPostTableViewCell *cell = (HFPostTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+    // Reconfigure the cell so the title color immediately reflects the link's read state
+    [self configureCell:cell forPost:post];
     
     [self showDetailViewController:postNavigationController sender:self];
 }
@@ -266,14 +273,16 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
     UIImageView *upvoteIconImageView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"UpvoteIcon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
     upvoteIconImageView.tintColor = [UIColor whiteColor];
     
-    // Add upvote swipe gesture, this is removed in MCSwipeTableViewCell's prepareForReuse, so we have to re-add it here
-    [cell setSwipeGestureWithView:upvoteIconImageView
-                            color:[HFInterfaceTheme activeTheme].accentColor
-                             mode:MCSwipeTableViewCellModeSwitch
-                            state:MCSwipeTableViewCellState1
-                  completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
-                      [self cellSwiped:cell];
-                  }];
+    // Add upvote swipe gesture, except for job posts, this is removed in MCSwipeTableViewCell's prepareForReuse, so we have to re-add it here
+    if (post.Type != PostTypeJobs) {
+        [cell setSwipeGestureWithView:upvoteIconImageView
+                                color:[HFInterfaceTheme activeTheme].accentColor
+                                 mode:MCSwipeTableViewCellModeSwitch
+                                state:MCSwipeTableViewCellState1
+                      completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
+                          [self cellSwiped:cell];
+                      }];
+    }
 }
 
 #pragma mark - UITableViewDelegate
