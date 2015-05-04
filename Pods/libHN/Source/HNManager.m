@@ -194,7 +194,13 @@ static HNManager * _sharedManager = nil;
     }
     
     // Make the Webservice Call
-    [self.Service voteOnHNObject:hnObject direction:direction completion:completion];
+    [self.Service voteOnHNObject:hnObject direction:direction completion:^(BOOL success) {
+        [self addHNObjectToVotedOnDictionary:hnObject direction:direction];
+        
+        if (completion) {
+            completion(success);
+        }
+    }];
 }
 
 - (void)fetchSubmissionsForUser:(NSString *)user urlAddition:(NSString *)urlAddition completion:(GetPostsCompletion)completion {

@@ -166,10 +166,32 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
             
             post.Points++;
             
+            HFPostTableViewCell *cell = (HFPostTableViewCell *)[self.tableView cellForRowAtIndexPath:cellIndexPath];
+            
             // Make sure the cell is still visible
-            if ([self.tableView cellForRowAtIndexPath:cellIndexPath]) {
+            if (cell) {
                 // Reload the cell so the points label reflects the user's upvote
-                [self.tableView reloadRowsAtIndexPaths:@[cellIndexPath] withRowAnimation:UITableViewRowAnimationNone];
+                [self configureCell:cell forPost:post];
+                
+                [UIView animateWithDuration:0.3 delay:0
+                                    options:UIViewAnimationOptionAutoreverse
+                                 animations:^{
+                                     cell.upvotesIconImageView.transform = CGAffineTransformMakeScale(1.2f, 1.2f);
+                                 } completion:^(BOOL finished) {
+                                     cell.upvotesIconImageView.transform = CGAffineTransformIdentity;
+                                 }];
+                
+//                [UIView animateWithDuration:0.3f
+//                                      delay:0.0f
+//                     usingSpringWithDamping:1.0f
+//                      initialSpringVelocity:0.2f
+//                                    options:UIViewAnimationOptionAutoreverse
+//                                 animations:^{
+//                                     cell.upvotesIconImageView.transform = CGAffineTransformMakeScale(1.2f, 1.2f);
+//                                 }
+//                                 completion:^(BOOL finished) {
+//                                     cell.upvotesIconImageView.transform = CGAffineTransformIdentity;
+//                                 }];
             }
         }];
     }
@@ -186,7 +208,7 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
     postViewController.post = post;
     
     [post markAsViewed];
-    HFPostTableViewCell *cell = (HFPostTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+    HFPostTableViewCell *cell = (HFPostTableViewCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:sender.tag inSection:0]];
     // Reconfigure the cell so the title color immediately reflects the link's read state
     [self configureCell:cell forPost:post];
     
@@ -254,11 +276,20 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
     
     if (post.Type == PostTypeJobs) {
         cell.commentsButton.enabled = NO;
+        cell.upvotesIconImageView.hidden = YES;
         cell.infoLabel.text = nil;
         [cell.commentsButton setTitle:@"" forState:UIControlStateNormal];
     } else {
         cell.commentsButton.enabled = YES;
-        cell.infoLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%d points · %@", nil), post.Points, [post.Username lowercaseString]];
+        cell.upvotesIconImageView.hidden = NO;
+        
+        if ([[HNManager sharedManager] hasVotedOnObject:post]) {
+            cell.upvotesIconImageView.image = [[UIImage imageNamed:@"CellUpvoteIconFilled"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        } else {
+            cell.upvotesIconImageView.image = [[UIImage imageNamed:@"CellUpvoteIcon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        }
+        
+        cell.infoLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%d  · %@", nil), post.Points, [post.Username lowercaseString]];
         [cell.commentsButton addTarget:self action:@selector(commentsButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
         
         if (post.CommentCount >= 1000) {

@@ -12,6 +12,8 @@
 
 @interface HFPostTableViewCell : HFTableViewCell
 
+@property UIImageView *upvotesIconImageView;
+@property UILabel *upvotesLabel;
 @property UILabel *infoLabel;
 @property UILabel *titleLabel;
 @property UILabel *domainLabel;

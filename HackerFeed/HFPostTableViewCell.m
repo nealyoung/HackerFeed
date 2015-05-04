@@ -24,6 +24,16 @@
     if (self) {
         self.contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         
+//        self.upvotesLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+//        [self.upvotesLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+//        [self.contentView addSubview:self.upvotesLabel];
+        
+        self.upvotesIconImageView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"CellUpvoteIcon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
+        [self.upvotesIconImageView setTranslatesAutoresizingMaskIntoConstraints:NO];
+        [self.upvotesIconImageView setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
+        self.upvotesIconImageView.contentMode = UIViewContentModeScaleAspectFit;
+        [self.contentView addSubview:self.upvotesIconImageView];
+        
         self.infoLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         [self.infoLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
         [self.contentView addSubview:self.infoLabel];
@@ -58,10 +68,10 @@
                                                                                  metrics:nil
                                                                                    views:NSDictionaryOfVariableBindings(_commentButtonBackground)]];
         
-        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-15-[_infoLabel]-15-|"
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-15-[_upvotesIconImageView(18)]-2-[_infoLabel]-15-|"
                                                                                  options:0
                                                                                  metrics:nil
-                                                                                   views:NSDictionaryOfVariableBindings(_infoLabel, _commentsButton)]];
+                                                                                   views:NSDictionaryOfVariableBindings(_upvotesIconImageView, _infoLabel)]];
         
         [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-15-[_titleLabel]-14-[_commentsButton(44)]-6-|"
                                                                                  options:0
@@ -77,6 +87,22 @@
                                                                                  options:0
                                                                                  metrics:nil
                                                                                    views:NSDictionaryOfVariableBindings(_infoLabel, _titleLabel, _domainLabel)]];
+        
+        [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.upvotesIconImageView
+                                                                     attribute:NSLayoutAttributeCenterY
+                                                                     relatedBy:NSLayoutRelationEqual
+                                                                        toItem:self.infoLabel
+                                                                     attribute:NSLayoutAttributeCenterY
+                                                                    multiplier:1.0f
+                                                                      constant:0.0f]];
+        
+        [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.upvotesIconImageView
+                                                                     attribute:NSLayoutAttributeHeight
+                                                                     relatedBy:NSLayoutRelationEqual
+                                                                        toItem:nil
+                                                                     attribute:NSLayoutAttributeNotAnAttribute
+                                                                    multiplier:0.0f
+                                                                      constant:14.0f]];
         
         [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(>=4)-[_commentsButton(44)]-(>=4)-|"
                                                                                  options:0
@@ -174,6 +200,9 @@
     [super applyTheme];
     
     self.color1 = [HFInterfaceTheme activeTheme].accentColor;
+    
+    self.upvotesLabel.textColor = [HFInterfaceTheme activeTheme].secondaryTextColor;
+    self.upvotesLabel.font = [UIFont preferredApplicationFontForTextStyle:UIFontTextStyleSubheadline];
     
     self.infoLabel.textColor = [HFInterfaceTheme activeTheme].secondaryTextColor;
     self.infoLabel.font = [UIFont preferredApplicationFontForTextStyle:UIFontTextStyleSubheadline];
