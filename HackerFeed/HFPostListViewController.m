@@ -173,25 +173,22 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
                 // Reload the cell so the points label reflects the user's upvote
                 [self configureCell:cell forPost:post];
                 
-                [UIView animateWithDuration:0.3 delay:0
-                                    options:UIViewAnimationOptionAutoreverse
+                [UIView animateWithDuration:0.3f
+                                      delay:0.0f
+                                    options:UIViewAnimationOptionCurveEaseOut
                                  animations:^{
-                                     cell.upvotesIconImageView.transform = CGAffineTransformMakeScale(1.2f, 1.2f);
-                                 } completion:^(BOOL finished) {
-                                     cell.upvotesIconImageView.transform = CGAffineTransformIdentity;
+                                     cell.upvotesIconImageView.layer.transform = CATransform3DMakeScale(1.2f, 1.2f, 1.0f);
+                                     //                                     cell.upvotesIconImageView.layer.transform = CATransform3DIdentity;
+                                 }
+                                 completion:^(BOOL finished) {
+                                     [UIView animateWithDuration:0.3f
+                                                           delay:0.0f
+                                                         options:UIViewAnimationOptionCurveEaseIn
+                                                      animations:^{
+                                                          cell.upvotesIconImageView.layer.transform = CATransform3DIdentity;
+                                                      }
+                                                      completion:nil];
                                  }];
-                
-//                [UIView animateWithDuration:0.3f
-//                                      delay:0.0f
-//                     usingSpringWithDamping:1.0f
-//                      initialSpringVelocity:0.2f
-//                                    options:UIViewAnimationOptionAutoreverse
-//                                 animations:^{
-//                                     cell.upvotesIconImageView.transform = CGAffineTransformMakeScale(1.2f, 1.2f);
-//                                 }
-//                                 completion:^(BOOL finished) {
-//                                     cell.upvotesIconImageView.transform = CGAffineTransformIdentity;
-//                                 }];
             }
         }];
     }
