@@ -26,7 +26,7 @@
         
         self.upvoteButton = [UIButton buttonWithType:UIButtonTypeSystem];
         [self.upvoteButton setTranslatesAutoresizingMaskIntoConstraints:NO];
-        [self.upvoteButton setImage:[UIImage imageNamed:@"UpvoteIcon"] forState:UIControlStateNormal];
+        [self.upvoteButton setImage:[UIImage imageNamed:@"BarButtonUpvoteIcon"] forState:UIControlStateNormal];
         [self addSubview:self.upvoteButton];
         
         self.replyButton = [UIButton buttonWithType:UIButtonTypeSystem];

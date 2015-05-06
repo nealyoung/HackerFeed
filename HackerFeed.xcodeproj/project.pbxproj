@@ -49,7 +49,6 @@
 		0E6C30DF197F5DCB00C33A67 /* HFLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E6C30DE197F5DCB00C33A67 /* HFLoginViewController.m */; };
 		0E796B8719CEAC930045B4E1 /* HFDropdownMenuTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E796B8619CEAC930045B4E1 /* HFDropdownMenuTitleView.m */; };
 		0E7D19A21996034200C51E37 /* HFNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E7D19A11996034200C51E37 /* HFNavigationBar.m */; };
-		0E877F2C1A93BF7B009034B7 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E877F2B1A93BF7B009034B7 /* Reveal.framework */; };
 		0E926CD219835AB30078E148 /* HFBorderedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E926CD119835AB30078E148 /* HFBorderedButton.m */; };
 		0E990E801990BA30002933C4 /* DMScaleTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E990E7F1990BA30002933C4 /* DMScaleTransition.m */; };
 		0E990E841990BA65002933C4 /* DMBaseTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E990E821990BA65002933C4 /* DMBaseTransition.m */; };
@@ -89,7 +88,6 @@
 		0EEBD396197E026300D74AD6 /* UIColor+HFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EEBD395197E026300D74AD6 /* UIColor+HFAdditions.m */; };
 		0EECC78B1A7E966D00527326 /* HFTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EECC78A1A7E966D00527326 /* HFTableView.m */; };
 		0EF06ECD1A487DC70072D766 /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EF06ECC1A487DC70072D766 /* ShareViewController.m */; };
-		0EF06ED21A487DC70072D766 /* Share Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0EF06EC71A487DC60072D766 /* Share Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		0EF3353A1A7DD7A900E482CE /* HFPullToRefreshContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EF335391A7DD7A900E482CE /* HFPullToRefreshContentView.m */; };
 		0EFC25391985C22100A67412 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFC25381985C22100A67412 /* CoreText.framework */; };
 		0EFC253C1985D9D800A67412 /* HFCommentToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFC253B1985D9D800A67412 /* HFCommentToolbar.m */; };
@@ -122,7 +120,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				0EF06ED21A487DC70072D766 /* Share Extension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -267,7 +264,6 @@
 				0E59357819F9CC8C0081B28A /* SystemConfiguration.framework in Frameworks */,
 				0E59357619F9CC820081B28A /* Security.framework in Frameworks */,
 				0E59357219F9CAFE0081B28A /* libc++.dylib in Frameworks */,
-				0E877F2C1A93BF7B009034B7 /* Reveal.framework in Frameworks */,
 				0E59357019F9CAF40081B28A /* libicucore.dylib in Frameworks */,
 				0E0214FB19CB518E00561912 /* libz.dylib in Frameworks */,
 				0E59357419F9CB040081B28A /* CFNetwork.framework in Frameworks */,

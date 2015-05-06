@@ -298,7 +298,7 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
     
     cell.defaultColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.08f];
     
-    UIImageView *upvoteIconImageView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"UpvoteIcon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
+    UIImageView *upvoteIconImageView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"BarButtonUpvoteIcon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
     upvoteIconImageView.tintColor = [UIColor whiteColor];
     
     // Add upvote swipe gesture, except for job posts, this is removed in MCSwipeTableViewCell's prepareForReuse, so we have to re-add it here
