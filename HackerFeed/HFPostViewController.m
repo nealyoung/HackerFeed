@@ -180,6 +180,7 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
 }
 
 - (void)applyTheme {
+    self.selectPostLabel.textColor = [HFInterfaceTheme activeTheme].secondaryTextColor;
     self.view.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.03f];
 }
 

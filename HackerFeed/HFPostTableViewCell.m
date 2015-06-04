@@ -32,6 +32,7 @@
         [self.upvotesIconImageView setTranslatesAutoresizingMaskIntoConstraints:NO];
         [self.upvotesIconImageView setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
         self.upvotesIconImageView.contentMode = UIViewContentModeScaleAspectFit;
+        self.upvotesIconImageView.layer.shouldRasterize = YES;
         [self.contentView addSubview:self.upvotesIconImageView];
         
         self.infoLabel = [[UILabel alloc] initWithFrame:CGRectZero];

@@ -101,6 +101,20 @@ static NSInteger const kFontSection = 2;
     }
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    if (section == kThemeSection) {
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
+        label.font = [UIFont preferredApplicationFontForTextStyle:UIFontTextStyleFootnote];
+        label.textAlignment = NSTextAlignmentCenter;
+        label.textColor = [HFInterfaceTheme activeTheme].secondaryTextColor;
+        label.text = NSLocalizedString(@"© 2015 Nealon Young", nil);
+        
+        return label;
+    } else {
+        return nil;
+    }
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 2;
 }
