@@ -38,6 +38,7 @@
     [self setImage:[[UIImage imageNamed:@"CommentsIcon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
     self.imageView.contentMode = UIViewContentModeCenter;
+    self.imageView.layer.shouldRasterize = YES;
     [self applyTheme];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applyTheme) name:kThemeChangedNotificationName object:nil];
 }

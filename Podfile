@@ -5,12 +5,12 @@ target "HackerFeed" do
   pod "DACircularProgress"
   pod 'FCUtilities', :git => 'https://github.com/marcoarment/FCUtilities.git'
   pod 'libHN'
-  pod 'MCSwipeTableViewCell'
+  pod 'MCSwipeTableViewCell', inhibit_warnings: true
   pod 'NYSegmentedControl'
   pod 'PBWebViewController'
   pod 'SSPullToRefresh'
   pod 'SVProgressHUD', :head
-  pod 'SVPullToRefresh', :head
+  pod 'SVPullToRefresh', :head, inhibit_warnings: true
   pod 'TTTAttributedLabel'
 end
 

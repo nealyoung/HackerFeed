@@ -47,6 +47,14 @@
 - (void)upvoteButtonPressed:(id)sender;
 - (void)refresh;
 
+- (void)upvoteCommentButtonPressed:(UIButton *)sender;
+- (void)commentReplyButtonPressed:(UIButton *)sender;
+- (void)userButtonPressed:(UIButton *)sender;
+- (void)cancelReplyButtonPressed:(UIButton *)sender;
+- (void)submitCommentButtonPressed:(UIButton *)sender;
+
+- (void)upvoteCommentGestureActivatedForCell:(MCSwipeTableViewCell *)cell;
+
 - (void)clearCommentCellHeightCache;
 
 @end
@@ -70,7 +78,7 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
         [self.tableView setTranslatesAutoresizingMaskIntoConstraints:NO];
         self.tableView.dataSource = self;
         self.tableView.delegate = self;
-
+        
         // Hide the cell separators until a post is set
         self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 
@@ -137,7 +145,7 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
                                                                           metrics:nil
                                                                             views:NSDictionaryOfVariableBindings(topGuide, _commentToolbar)]];
         
-        [self addKeyboardNotificationObservers];
+//        [self addKeyboardNotificationObservers];
         
         self.post = nil;
         
@@ -175,10 +183,11 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
 }
 
-- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
-    self.commentCellHeightCache = [NSMutableDictionary dictionary];
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(nonnull id<UIViewControllerTransitionCoordinator>)coordinator {
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+    
+    [self clearCommentCellHeightCache];
 }
-
 - (void)applyTheme {
     self.selectPostLabel.textColor = [HFInterfaceTheme activeTheme].secondaryTextColor;
     self.view.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.03f];
@@ -220,7 +229,7 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
     self.expandedIndexPath = nil;
     
     // Scroll to the top of the table view
-    [self.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
+    [self.tableView scrollRectToVisible:CGRectMake(0.0f, 0.0f, 1.0f, 1.0f) animated:YES];
 }
 
 - (void)addKeyboardNotificationObservers {
@@ -349,11 +358,52 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
 }
 
 - (void)clearCommentCellHeightCache {
-    self.commentCellHeightCache = [NSMutableDictionary dictionary];
+    [self.commentCellHeightCache removeAllObjects];
 }
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kThemeChangedNotificationName object:nil];
+}
+
+#pragma mark - Swipe Gesture Handlers
+
+- (void)upvoteCommentGestureActivatedForCell:(MCSwipeTableViewCell *)cell {
+    if (![HNManager sharedManager].SessionUser) {
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"You must be signed in to vote", nil)];
+        return;
+    }
+    
+    NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
+    
+    HNComment *comment = self.comments[cellIndexPath.row];
+    [[HNManager sharedManager] voteOnPostOrComment:comment direction:VoteDirectionUp completion:^(BOOL success) {
+        if (success) {
+            
+        } else {
+            [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Error submitting vote", nil)];
+        }
+    }];
+}
+
+- (void)replyToCommentGestureActivatedForCell:(MCSwipeTableViewCell *)cell {
+    NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
+
+    self.commentToReply = self.comments[cellIndexPath.row];
+    self.commentToolbar.replyUsername = self.commentToReply.Username;
+    [self.commentToolbar.textView becomeFirstResponder];
+}
+
+- (void)viewUserGestureActivatedForCell:(MCSwipeTableViewCell *)cell {
+    NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
+
+    HNComment *comment = self.comments[cellIndexPath.row];
+    
+    HFProfileViewController *profileViewController = [[HFProfileViewController alloc] initWithNibName:nil bundle:nil];
+    [[HNManager sharedManager] loadUserWithUsername:comment.Username completion:^(HNUser *user) {
+        profileViewController.user = user;
+    }];
+    
+    [self.navigationController pushViewController:profileViewController animated:YES];
 }
 
 #pragma mark - HFCommentTableViewCellDelegate
@@ -463,6 +513,7 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
     } else if (indexPath.section == kCommentsSection) {
         HFCommentTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:kCommentTableViewCellIdentifier forIndexPath:indexPath];
         cell.delegate = self;
+        cell.tag = indexPath.row;
         
         HNComment *comment = self.comments[indexPath.row];
         
@@ -496,6 +547,43 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
         }
         
         cell.separatorInset = UIEdgeInsetsMake(0.0f, tableView.separatorInset.left + (comment.Level * tableView.separatorInset.left), 0.0f, 0.0f);
+        
+        // Setup swipe gestures
+        
+        cell.defaultColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.08f];
+
+        UIImageView *upvoteIconImageView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"BarButtonUpvoteIcon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
+        upvoteIconImageView.tintColor = [UIColor whiteColor];
+        
+        UIImageView *replyIconImageView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"ReplyIcon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
+        replyIconImageView.tintColor = [UIColor whiteColor];
+        
+        UIImageView *userIconImageView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"UserIcon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
+        userIconImageView.tintColor = [UIColor whiteColor];
+
+        [cell setSwipeGestureWithView:upvoteIconImageView
+                                color:[HFInterfaceTheme activeTheme].accentColor
+                                 mode:MCSwipeTableViewCellModeSwitch
+                                state:MCSwipeTableViewCellState1
+                      completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
+                          [self upvoteCommentGestureActivatedForCell:cell];
+                      }];
+        
+        [cell setSwipeGestureWithView:replyIconImageView
+                                color:[[HFInterfaceTheme activeTheme].accentColor hf_colorLightenedByFactor:0.08f]
+                                 mode:MCSwipeTableViewCellModeSwitch
+                                state:MCSwipeTableViewCellState3
+                      completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
+                          [self replyToCommentGestureActivatedForCell:cell];
+                      }];
+        
+        [cell setSwipeGestureWithView:userIconImageView
+                                color:[[HFInterfaceTheme activeTheme].accentColor hf_colorLightenedByFactor:0.16f]
+                                 mode:MCSwipeTableViewCellModeSwitch
+                                state:MCSwipeTableViewCellState4
+                      completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
+                          [self viewUserGestureActivatedForCell:cell];
+                      }];
         
         return cell;
     }

@@ -128,7 +128,8 @@ static NSString * const kTextViewTableViewCellIdentifier = @"TextViewTableViewCe
 
 - (void)cancelButtonPressed:(id)sender {
     if (self.extensionContext) {
-        [self.extensionContext cancelRequestWithError:nil];
+        NSError *error = nil;
+        [self.extensionContext cancelRequestWithError:error];
     } else {
         [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
     }

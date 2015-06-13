@@ -47,10 +47,10 @@
         [self.contentView addSubview:self.commentActionsView];
         
         self.usernameLabelLeadingConstraint = [NSLayoutConstraint constraintWithItem:self.usernameLabel
-                                                                           attribute:NSLayoutAttributeLeft
+                                                                           attribute:NSLayoutAttributeLeading
                                                                            relatedBy:NSLayoutRelationEqual
                                                                               toItem:self.contentView
-                                                                           attribute:NSLayoutAttributeLeft
+                                                                           attribute:NSLayoutAttributeLeading
                                                                           multiplier:1.0f
                                                                             constant:15.0f];
         [self.contentView addConstraint:self.usernameLabelLeadingConstraint];
@@ -61,10 +61,10 @@
                                                                                    views:NSDictionaryOfVariableBindings(_usernameLabel)]];
         
         self.commentLabelLeadingConstraint = [NSLayoutConstraint constraintWithItem:self.commentLabel
-                                                                      attribute:NSLayoutAttributeLeft
+                                                                      attribute:NSLayoutAttributeLeading
                                                                       relatedBy:NSLayoutRelationEqual
                                                                          toItem:self.contentView
-                                                                      attribute:NSLayoutAttributeLeft
+                                                                      attribute:NSLayoutAttributeLeading
                                                                      multiplier:1.0f
                                                                        constant:15.0f];
         [self.contentView addConstraint:self.commentLabelLeadingConstraint];
