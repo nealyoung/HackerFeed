@@ -23,12 +23,14 @@
 }
 
 - (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
+    UIColor *selectedBackgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.08f];
+
     if (animated) {
         [UIView animateWithDuration:0.3f animations:^{
             if (highlighted && self.selectionStyle != UITableViewCellSelectionStyleNone) {
-                self.textLabel.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.25f];
-                self.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.25f];
-                self.contentView.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.25f];
+                self.textLabel.backgroundColor = selectedBackgroundColor;
+                self.backgroundColor = selectedBackgroundColor;
+                self.contentView.backgroundColor = selectedBackgroundColor;
             } else {
                 self.textLabel.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
                 self.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
@@ -37,9 +39,9 @@
         }];
     } else {
         if (highlighted && self.selectionStyle != UITableViewCellSelectionStyleNone) {
-            self.textLabel.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.25f];
-            self.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.25f];
-            self.contentView.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.25f];
+            self.textLabel.backgroundColor = selectedBackgroundColor;
+            self.backgroundColor = selectedBackgroundColor;
+            self.contentView.backgroundColor = selectedBackgroundColor;
         } else {
             self.textLabel.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
             self.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
@@ -49,12 +51,14 @@
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    UIColor *selectedBackgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.08f];
+    
     if (animated) {
         [UIView animateWithDuration:0.3f animations:^{
             if (selected && self.selectionStyle != UITableViewCellSelectionStyleNone) {
-                self.textLabel.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.25f];
-                self.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.25f];
-                self.contentView.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.25f];
+                self.textLabel.backgroundColor = selectedBackgroundColor;
+                self.backgroundColor = selectedBackgroundColor;
+                self.contentView.backgroundColor = selectedBackgroundColor;
             } else {
                 self.textLabel.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
                 self.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
@@ -63,9 +67,9 @@
         }];
     } else {
         if (selected && self.selectionStyle != UITableViewCellSelectionStyleNone) {
-            self.textLabel.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.25f];
-            self.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.25f];
-            self.contentView.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.25f];
+            self.textLabel.backgroundColor = selectedBackgroundColor;
+            self.backgroundColor = selectedBackgroundColor;
+            self.contentView.backgroundColor = selectedBackgroundColor;
         } else {
             self.textLabel.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
             self.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;

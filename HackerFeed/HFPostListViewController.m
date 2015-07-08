@@ -9,6 +9,7 @@
 #import "HFPostListViewController.h"
 
 #import "DMScaleTransition.h"
+#import "HFModalPresentationManager.h"
 #import "HFModalWebViewController.h"
 #import "HFNavigationBar.h"
 #import "HFNewPostViewController.h"
@@ -26,6 +27,8 @@
 
 @property DMScaleTransition *scaleTransition;
 @property SSPullToRefreshView *pullToRefreshView;
+
+@property HFModalPresentationManager *modalPresentationManager;
 
 - (void)applyTheme;
 - (void)refresh;
@@ -66,6 +69,8 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
                                                                                   style:UIBarButtonItemStylePlain
                                                                                  target:self
                                                                                  action:@selector(newPostButtonPressed)];
+        self.navigationItem.rightBarButtonItem.accessibilityLabel = NSLocalizedString(@"New post", nil);
+        self.navigationItem.rightBarButtonItem.accessibilityHint = NSLocalizedString(@"Displays the new post page", nil);
         
         [self applyTheme];
         
@@ -116,6 +121,14 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kThemeChangedNotificationName object:nil];
+}
+
+- (HFModalPresentationManager *)modalPresentationManager {
+    if (!_modalPresentationManager) {
+        _modalPresentationManager = [[HFModalPresentationManager alloc] init];
+    }
+    
+    return _modalPresentationManager;
 }
 
 - (void)refresh {
@@ -221,9 +234,11 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
     if (self.splitViewController.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular) {
         navigationController.modalPresentationStyle = UIModalPresentationFormSheet;
     } else {
-        navigationController.modalPresentationStyle = UIModalPresentationPopover;
-        self.scaleTransition = [DMScaleTransition new];
-        navigationController.transitioningDelegate = self.scaleTransition;
+//        self.scaleTransition = [DMScaleTransition new];
+//        navigationController.transitioningDelegate = self.scaleTransition;
+        navigationController.modalPresentationStyle = UIModalPresentationCustom;
+
+        navigationController.transitioningDelegate = self.modalPresentationManager;
     }
     
     [self.splitViewController presentViewController:navigationController animated:YES completion:nil];

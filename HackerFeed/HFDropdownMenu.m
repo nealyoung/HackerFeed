@@ -34,6 +34,9 @@ const CGFloat kListTopMarginHeight = 80.0f;
         //_backgroundView = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleDark]];
         _backgroundView = [[UIView alloc] initWithFrame:CGRectZero];
         _backgroundView.layer.opacity = 0.0f;
+        _backgroundView.isAccessibilityElement = YES;
+        _backgroundView.accessibilityLabel = NSLocalizedString(@"Dismiss", nil);
+        _backgroundView.accessibilityHint = NSLocalizedString(@"Dismisses the feed type selection menu", nil);
         [self addSubview:_backgroundView];
 
         //_listView = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight]];

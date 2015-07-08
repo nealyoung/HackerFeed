@@ -50,6 +50,8 @@
     self.cancelReplyButton = [UIButton buttonWithType:UIButtonTypeSystem];
     [self.cancelReplyButton setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.cancelReplyButton setImage:[UIImage imageNamed:@"CancelIcon"] forState:UIControlStateNormal];
+    self.cancelReplyButton.accessibilityLabel = NSLocalizedString(@"Cancel reply", nil);
+    self.cancelReplyButton.accessibilityHint = NSLocalizedString(@"Cancels the reply state of the comment being composed", nil);
     [self.replyToView addSubview:self.cancelReplyButton];
     
     self.replyToLabel = [[UILabel alloc] initWithFrame:CGRectZero];

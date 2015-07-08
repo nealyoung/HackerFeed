@@ -64,6 +64,10 @@
     self = [super initWithFrame:frame];
     
     if (self) {
+        self.isAccessibilityElement = YES;
+        self.accessibilityTraits = UIAccessibilityTraitButton;
+        self.accessibilityHint = NSLocalizedString(@"Toggles visibility of feed type menu", nil);
+
         self.titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         [self.titleLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
         self.titleLabel.textAlignment = NSTextAlignmentCenter;
@@ -107,6 +111,10 @@
     }
     
     return self;
+}
+
+- (NSString *)accessibilityLabel {
+    return self.titleLabel.text;
 }
 
 - (CGSize)intrinsicContentSize {

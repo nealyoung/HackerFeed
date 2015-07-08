@@ -24,6 +24,8 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     
     if (self) {
+        self.isAccessibilityElement = NO;
+        
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         
         self.usernameLabel = [[UILabel alloc] initWithFrame:CGRectZero];
@@ -122,6 +124,10 @@
 
 - (void)awakeFromNib {
 //    self.textView.font = [UIFont applicationFontOfSize:14.0f];
+}
+;
+- (NSString *)accessibilityLabel {
+    return [NSString stringWithFormat:NSLocalizedString(@"Comment by %@, %@, %@", nil), self.usernameLabel.text, self.usernameLabel.text, self.commentLabel.text];
 }
 
 - (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {

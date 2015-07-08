@@ -12,6 +12,7 @@ target "HackerFeed" do
   pod 'SVProgressHUD', :head
   pod 'SVPullToRefresh', :head, inhibit_warnings: true
   pod 'TTTAttributedLabel'
+  pod 'ZFDragableModalTransition'
 end
 
 target "HackerFeedTests" do

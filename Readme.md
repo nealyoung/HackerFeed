@@ -25,8 +25,8 @@ Then open the `HackerFeed.xcworkspace` file to run the application and make chan
 
 ## Todos
 
-* Improved support for iOS accessibility features
 * Finish share extension
+* Support for collapsing comment threads
 * Create today widget showing top stories
 
 ## License

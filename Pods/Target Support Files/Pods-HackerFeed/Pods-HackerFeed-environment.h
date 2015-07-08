@@ -60,6 +60,12 @@
 #define COCOAPODS_VERSION_MINOR_TTTAttributedLabel 13
 #define COCOAPODS_VERSION_PATCH_TTTAttributedLabel 2
 
+// ZFDragableModalTransition
+#define COCOAPODS_POD_AVAILABLE_ZFDragableModalTransition
+#define COCOAPODS_VERSION_MAJOR_ZFDragableModalTransition 0
+#define COCOAPODS_VERSION_MINOR_ZFDragableModalTransition 5
+#define COCOAPODS_VERSION_PATCH_ZFDragableModalTransition 1
+
 // libHN
 #define COCOAPODS_POD_AVAILABLE_libHN
 #define COCOAPODS_VERSION_MAJOR_libHN 4

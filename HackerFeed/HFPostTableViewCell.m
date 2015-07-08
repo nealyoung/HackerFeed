@@ -55,6 +55,8 @@
         
         self.commentsButton = [HFCommentsButton buttonWithType:UIButtonTypeCustom];
         [self.commentsButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+        self.commentsButton.accessibilityLabel = @"Comments";
+        self.commentsButton.accessibilityHint = @"Opens article comments";
         [self.contentView addSubview:self.commentsButton];
         
         [self applyTheme];
@@ -217,7 +219,7 @@
     self.domainLabel.font = [UIFont preferredApplicationFontForTextStyle:UIFontTextStyleSubheadline];
 //    self.domainLabel.backgroundColor = self.contentView.backgroundColor;
     
-    self.commentButtonBackground.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.03f];
+    self.commentButtonBackground.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.02f];
     
     [self.commentsButton setNeedsDisplay];
     [self.commentsButton setTitleColor:[HFInterfaceTheme activeTheme].secondaryTextColor forState:UIControlStateNormal];

@@ -160,8 +160,16 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.upvoteButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"BarButtonUpvoteIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(upvoteButtonPressed:)];
-    UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(actionButtonPressed:)];
+    self.upvoteButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"BarButtonUpvoteIcon"]
+                                                         style:UIBarButtonItemStylePlain
+                                                        target:self
+                                                        action:@selector(upvoteButtonPressed:)];
+    
+    self.upvoteButton.accessibilityLabel = @"Upvote";
+    self.upvoteButton.accessibilityHint = NSLocalizedString(@"Upvotes the story", nil);
+    UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
+                                                                                 target:self
+                                                                                 action:@selector(actionButtonPressed:)];
     self.navigationItem.rightBarButtonItems = @[self.upvoteButton, shareButton];
     
     self.commentCellHeightCache = [NSMutableDictionary dictionary];

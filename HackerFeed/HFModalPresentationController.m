@@ -1,0 +1,115 @@
+//
+//  HFModalPresentationController.m
+//  HackerFeed
+//
+//  Created by Nealon Young on 5/8/15.
+//  Copyright (c) 2015 Nealon Young. All rights reserved.
+//
+
+#import "HFModalPresentationController.h"
+
+@interface HFModalPresentationController ()
+
+@property UIView *backgroundDimmingView;
+
+- (void)tapGestureRecognized:(UITapGestureRecognizer *)gestureRecognizer;
+
+@end
+
+@implementation HFModalPresentationController
+
+- (instancetype)initWithPresentedViewController:(UIViewController *)presentedViewController presentingViewController:(UIViewController *)presentingViewController {
+    self = [super initWithPresentedViewController:presentedViewController presentingViewController:presentingViewController];
+    
+    if (self) {
+
+        //        [self.containerView addSubview:self.backgroundDimmingView];
+        
+
+    }
+    
+    return self;
+}
+
+- (void)presentationTransitionWillBegin {
+    self.presentedViewController.view.layer.cornerRadius = 6.0f;
+    self.presentedViewController.view.layer.masksToBounds = YES;
+    
+    self.backgroundDimmingView = [[UIView alloc] initWithFrame:self.containerView.bounds];
+    self.backgroundDimmingView.alpha = 0.0f;
+    self.backgroundDimmingView.backgroundColor = [UIColor blackColor];
+    [self.containerView addSubview:self.backgroundDimmingView];
+    
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureRecognized:)];
+    [self.backgroundDimmingView addGestureRecognizer:tapGestureRecognizer];
+    
+    // Shrink the presenting view controller, and animate in the dark background view
+    id <UIViewControllerTransitionCoordinator> transitionCoordinator = self.presentingViewController.transitionCoordinator;
+    [transitionCoordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+        self.backgroundDimmingView.alpha = 0.7f;
+        
+        //        self.presentingViewController.view.transform = CGAffineTransformMakeScale(0.8f, 0.8f);
+    }
+                                           completion:nil];
+    
+    //    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+}
+
+- (BOOL)shouldPresentInFullscreen {
+    return NO;
+}
+
+- (BOOL)shouldRemovePresentersView {
+    return NO;
+}
+
+- (void)presentationTransitionDidEnd:(BOOL)completed {
+    if (!completed) {
+        [self.backgroundDimmingView removeFromSuperview];
+    }
+}
+
+- (void)dismissalTransitionWillBegin {
+    id <UIViewControllerTransitionCoordinator> transitionCoordinator = self.presentingViewController.transitionCoordinator;
+    [transitionCoordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+        self.backgroundDimmingView.alpha = 0.0f;
+        
+        self.presentingViewController.view.transform = CGAffineTransformIdentity;
+    }
+                                           completion:nil];
+    
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
+}
+
+- (void)containerViewWillLayoutSubviews {
+    self.presentedView.frame = CGRectInset(self.containerView.bounds, 18.0f, 24.0f);
+    
+    NSLog(@"%@", NSStringFromCGSize(self.containerView.frame.size));
+    NSLog(@"Will Layout Container Subviews");
+}
+
+
+- (void)containerViewDidLayoutSubviews {
+    NSLog(@"%@", NSStringFromCGSize(self.containerView.frame.size));
+    NSLog(@"Did Layout Container Subviews");
+}
+
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+    NSLog(@"%@", NSStringFromCGSize(size));
+}
+
+- (void)dismissalTransitionDidEnd:(BOOL)completed {
+    if (completed) {
+        [self.backgroundDimmingView removeFromSuperview];
+    }
+}
+
+- (CGRect)frameOfPresentedViewInContainerView {
+    return CGRectInset(self.containerView.bounds, 18.0f, 24.0f);
+}
+
+- (void)tapGestureRecognized:(UITapGestureRecognizer *)gestureRecognizer {
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+@end
