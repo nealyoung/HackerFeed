@@ -9,6 +9,7 @@
 #import "HFPostListViewController.h"
 
 #import "DMScaleTransition.h"
+#import "HFAlertViewController.h"
 #import "HFModalPresentationManager.h"
 #import "HFModalWebViewController.h"
 #import "HFNavigationBar.h"
@@ -28,7 +29,7 @@
 @property DMScaleTransition *scaleTransition;
 @property SSPullToRefreshView *pullToRefreshView;
 
-@property HFModalPresentationManager *modalPresentationManager;
+@property (nonatomic) HFModalPresentationManager *modalPresentationManager;
 
 - (void)applyTheme;
 - (void)refresh;
@@ -166,7 +167,65 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
     HNPost *post = self.dataSource.posts[cellIndexPath.row];
     
     if (![HNManager sharedManager].SessionUser) {
-        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"You must be signed in to vote", nil)];
+//        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"You must be signed in to vote", nil)];
+        
+        HFAlertViewController *alertViewController = [[HFAlertViewController alloc] initWithNibName:nil bundle:nil];
+        alertViewController.title = NSLocalizedString(@"Log In", nil);
+        alertViewController.message = NSLocalizedString(@"You must be signed in to vote", nil);
+        
+        [alertViewController addAction:[HFAlertAction actionWithTitle:NSLocalizedString(@"Sign In", nil) style:UIAlertActionStyleDefault handler:^(HFAlertAction *action) {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }]];
+        
+        [alertViewController addAction:[HFAlertAction actionWithTitle:NSLocalizedString(@"Cancel", nil) style:UIAlertActionStyleCancel handler:^(HFAlertAction *action) {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }]];
+        
+        alertViewController.modalPresentationStyle = UIModalPresentationCustom;
+        alertViewController.transitioningDelegate = self.modalPresentationManager;
+        
+        UIView *contentView = [[UIView alloc] initWithFrame:CGRectZero];
+        
+        UITextField *usernameTextField = [[UITextField alloc] initWithFrame:CGRectZero];
+        [usernameTextField setTranslatesAutoresizingMaskIntoConstraints:NO];
+        usernameTextField.borderStyle = UITextBorderStyleRoundedRect;
+        usernameTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+        usernameTextField.autocorrectionType = UITextAutocorrectionTypeNo;
+        usernameTextField.returnKeyType = UIReturnKeyNext;
+        usernameTextField.font = [UIFont applicationFontOfSize:14.0f];
+        usernameTextField.placeholder = NSLocalizedString(@"Username", nil);
+        [contentView addSubview:usernameTextField];
+        
+        UITextField *passwordTextField = [[UITextField alloc] initWithFrame:CGRectZero];
+        [passwordTextField setTranslatesAutoresizingMaskIntoConstraints:NO];
+        passwordTextField.borderStyle = UITextBorderStyleRoundedRect;
+        passwordTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+        passwordTextField.autocorrectionType = UITextAutocorrectionTypeNo;
+        passwordTextField.returnKeyType = UIReturnKeyNext;
+        passwordTextField.secureTextEntry = YES;
+        passwordTextField.font = [UIFont applicationFontOfSize:14.0f];
+        passwordTextField.placeholder = NSLocalizedString(@"Password", nil);
+        [contentView addSubview:passwordTextField];
+        
+        [contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[usernameTextField]-|"
+                                                                            options:0
+                                                                            metrics:nil
+                                                                              views:NSDictionaryOfVariableBindings(usernameTextField)]];
+        
+        [contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[passwordTextField]-|"
+                                                                            options:0
+                                                                            metrics:nil
+                                                                              views:NSDictionaryOfVariableBindings(passwordTextField)]];
+        
+        [contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[usernameTextField]-[passwordTextField]-|"
+                                                                            options:0
+                                                                            metrics:nil
+                                                                              views:NSDictionaryOfVariableBindings(usernameTextField, passwordTextField)]];
+        
+        alertViewController.alertViewContentView = contentView;
+        
+        [self presentViewController:alertViewController animated:YES completion:nil];
+        
         return;
     }
     

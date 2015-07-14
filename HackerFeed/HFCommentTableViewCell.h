@@ -22,7 +22,7 @@
 
 @interface HFCommentTableViewCell : HFTableViewCell
 
-@property (weak) id <HFCommentTableViewCellDelegate> delegate;
+@property (weak) id <HFCommentTableViewCellDelegate> gestureDelegate;
 
 @property (nonatomic) BOOL expanded;
 

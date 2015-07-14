@@ -520,7 +520,7 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
         }
     } else if (indexPath.section == kCommentsSection) {
         HFCommentTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:kCommentTableViewCellIdentifier forIndexPath:indexPath];
-        cell.delegate = self;
+        cell.gestureDelegate = self;
         cell.tag = indexPath.row;
         
         HNComment *comment = self.comments[indexPath.row];

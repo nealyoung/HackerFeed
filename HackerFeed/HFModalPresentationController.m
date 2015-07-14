@@ -16,16 +16,18 @@
 
 @end
 
+static const CGFloat kDefaultHorizontalInset = 10.0f;
+static const CGFloat kDefaultVerticalInset = 12.0f;
+
 @implementation HFModalPresentationController
 
 - (instancetype)initWithPresentedViewController:(UIViewController *)presentedViewController presentingViewController:(UIViewController *)presentingViewController {
     self = [super initWithPresentedViewController:presentedViewController presentingViewController:presentingViewController];
     
     if (self) {
-
+        self.presentedViewControllerHorizontalInset = kDefaultHorizontalInset;
+        self.presentedViewControllerVerticalInset = kDefaultVerticalInset;
         //        [self.containerView addSubview:self.backgroundDimmingView];
-        
-
     }
     
     return self;

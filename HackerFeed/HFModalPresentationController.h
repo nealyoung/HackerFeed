@@ -10,4 +10,7 @@
 
 @interface HFModalPresentationController : UIPresentationController
 
+@property CGFloat presentedViewControllerHorizontalInset;
+@property CGFloat presentedViewControllerVerticalInset;
+
 @end
