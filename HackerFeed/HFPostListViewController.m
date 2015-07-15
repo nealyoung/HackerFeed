@@ -10,6 +10,7 @@
 
 #import "DMScaleTransition.h"
 #import "HFAlertViewController.h"
+#import "HFLoginPopupController.h"
 #import "HFModalPresentationManager.h"
 #import "HFModalWebViewController.h"
 #import "HFNavigationBar.h"
@@ -29,6 +30,7 @@
 @property DMScaleTransition *scaleTransition;
 @property SSPullToRefreshView *pullToRefreshView;
 
+@property (nonatomic) HFLoginPopupController *loginPopupController;
 @property (nonatomic) HFModalPresentationManager *modalPresentationManager;
 
 - (void)applyTheme;
@@ -124,6 +126,14 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kThemeChangedNotificationName object:nil];
 }
 
+- (HFLoginPopupController *)loginPopupController {
+    if (!_loginPopupController) {
+        _loginPopupController = [[HFLoginPopupController alloc] init];
+    }
+    
+    return _loginPopupController;
+}
+
 - (HFModalPresentationManager *)modalPresentationManager {
     if (!_modalPresentationManager) {
         _modalPresentationManager = [[HFModalPresentationManager alloc] init];
@@ -169,62 +179,64 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
     if (![HNManager sharedManager].SessionUser) {
 //        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"You must be signed in to vote", nil)];
         
-        HFAlertViewController *alertViewController = [[HFAlertViewController alloc] initWithNibName:nil bundle:nil];
-        alertViewController.title = NSLocalizedString(@"Log In", nil);
-        alertViewController.message = NSLocalizedString(@"You must be signed in to vote", nil);
+        [self.loginPopupController showInViewController:self];
         
-        [alertViewController addAction:[HFAlertAction actionWithTitle:NSLocalizedString(@"Sign In", nil) style:UIAlertActionStyleDefault handler:^(HFAlertAction *action) {
-            [self dismissViewControllerAnimated:YES completion:nil];
-        }]];
-        
-        [alertViewController addAction:[HFAlertAction actionWithTitle:NSLocalizedString(@"Cancel", nil) style:UIAlertActionStyleCancel handler:^(HFAlertAction *action) {
-            [self dismissViewControllerAnimated:YES completion:nil];
-        }]];
-        
-        alertViewController.modalPresentationStyle = UIModalPresentationCustom;
-        alertViewController.transitioningDelegate = self.modalPresentationManager;
-        
-        UIView *contentView = [[UIView alloc] initWithFrame:CGRectZero];
-        
-        UITextField *usernameTextField = [[UITextField alloc] initWithFrame:CGRectZero];
-        [usernameTextField setTranslatesAutoresizingMaskIntoConstraints:NO];
-        usernameTextField.borderStyle = UITextBorderStyleRoundedRect;
-        usernameTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
-        usernameTextField.autocorrectionType = UITextAutocorrectionTypeNo;
-        usernameTextField.returnKeyType = UIReturnKeyNext;
-        usernameTextField.font = [UIFont applicationFontOfSize:14.0f];
-        usernameTextField.placeholder = NSLocalizedString(@"Username", nil);
-        [contentView addSubview:usernameTextField];
-        
-        UITextField *passwordTextField = [[UITextField alloc] initWithFrame:CGRectZero];
-        [passwordTextField setTranslatesAutoresizingMaskIntoConstraints:NO];
-        passwordTextField.borderStyle = UITextBorderStyleRoundedRect;
-        passwordTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
-        passwordTextField.autocorrectionType = UITextAutocorrectionTypeNo;
-        passwordTextField.returnKeyType = UIReturnKeyNext;
-        passwordTextField.secureTextEntry = YES;
-        passwordTextField.font = [UIFont applicationFontOfSize:14.0f];
-        passwordTextField.placeholder = NSLocalizedString(@"Password", nil);
-        [contentView addSubview:passwordTextField];
-        
-        [contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[usernameTextField]-|"
-                                                                            options:0
-                                                                            metrics:nil
-                                                                              views:NSDictionaryOfVariableBindings(usernameTextField)]];
-        
-        [contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[passwordTextField]-|"
-                                                                            options:0
-                                                                            metrics:nil
-                                                                              views:NSDictionaryOfVariableBindings(passwordTextField)]];
-        
-        [contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[usernameTextField]-[passwordTextField]-|"
-                                                                            options:0
-                                                                            metrics:nil
-                                                                              views:NSDictionaryOfVariableBindings(usernameTextField, passwordTextField)]];
-        
-        alertViewController.alertViewContentView = contentView;
-        
-        [self presentViewController:alertViewController animated:YES completion:nil];
+//        HFAlertViewController *alertViewController = [[HFAlertViewController alloc] initWithNibName:nil bundle:nil];
+//        alertViewController.title = NSLocalizedString(@"Log In", nil);
+//        alertViewController.message = NSLocalizedString(@"You must be signed in to vote", nil);
+//        
+//        [alertViewController addAction:[HFAlertAction actionWithTitle:NSLocalizedString(@"Sign In", nil) style:UIAlertActionStyleDefault handler:^(HFAlertAction *action) {
+//            [self dismissViewControllerAnimated:YES completion:nil];
+//        }]];
+//        
+//        [alertViewController addAction:[HFAlertAction actionWithTitle:NSLocalizedString(@"Cancel", nil) style:UIAlertActionStyleCancel handler:^(HFAlertAction *action) {
+//            [self dismissViewControllerAnimated:YES completion:nil];
+//        }]];
+//        
+//        alertViewController.modalPresentationStyle = UIModalPresentationCustom;
+//        alertViewController.transitioningDelegate = self.modalPresentationManager;
+//        
+//        UIView *contentView = [[UIView alloc] initWithFrame:CGRectZero];
+//        
+//        UITextField *usernameTextField = [[UITextField alloc] initWithFrame:CGRectZero];
+//        [usernameTextField setTranslatesAutoresizingMaskIntoConstraints:NO];
+//        usernameTextField.borderStyle = UITextBorderStyleRoundedRect;
+//        usernameTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+//        usernameTextField.autocorrectionType = UITextAutocorrectionTypeNo;
+//        usernameTextField.returnKeyType = UIReturnKeyNext;
+//        usernameTextField.font = [UIFont applicationFontOfSize:14.0f];
+//        usernameTextField.placeholder = NSLocalizedString(@"Username", nil);
+//        [contentView addSubview:usernameTextField];
+//        
+//        UITextField *passwordTextField = [[UITextField alloc] initWithFrame:CGRectZero];
+//        [passwordTextField setTranslatesAutoresizingMaskIntoConstraints:NO];
+//        passwordTextField.borderStyle = UITextBorderStyleRoundedRect;
+//        passwordTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+//        passwordTextField.autocorrectionType = UITextAutocorrectionTypeNo;
+//        passwordTextField.returnKeyType = UIReturnKeyNext;
+//        passwordTextField.secureTextEntry = YES;
+//        passwordTextField.font = [UIFont applicationFontOfSize:14.0f];
+//        passwordTextField.placeholder = NSLocalizedString(@"Password", nil);
+//        [contentView addSubview:passwordTextField];
+//        
+//        [contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[usernameTextField]-|"
+//                                                                            options:0
+//                                                                            metrics:nil
+//                                                                              views:NSDictionaryOfVariableBindings(usernameTextField)]];
+//        
+//        [contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[passwordTextField]-|"
+//                                                                            options:0
+//                                                                            metrics:nil
+//                                                                              views:NSDictionaryOfVariableBindings(passwordTextField)]];
+//        
+//        [contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[usernameTextField]-[passwordTextField]-|"
+//                                                                            options:0
+//                                                                            metrics:nil
+//                                                                              views:NSDictionaryOfVariableBindings(usernameTextField, passwordTextField)]];
+//        
+//        alertViewController.alertViewContentView = contentView;
+//        
+//        [self presentViewController:alertViewController animated:YES completion:nil];
         
         return;
     }
@@ -432,7 +444,7 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
         HFModalWebViewController *webViewController = [[HFModalWebViewController alloc] initWithURL:[NSURL URLWithString:post.UrlString]];
         self.scaleTransition = [DMScaleTransition new];
         webViewController.transitioningDelegate = self.scaleTransition;
-        [self.splitViewController presentViewController:webViewController animated:YES completion:nil];
+        [self presentViewController:webViewController animated:YES completion:nil];
     } else {
         HFWebViewController *webViewController = [[HFWebViewController alloc] init];
         webViewController.URL = [NSURL URLWithString:post.UrlString];

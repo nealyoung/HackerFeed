@@ -8,6 +8,7 @@
 
 #import "HFButtonTableViewCell.h"
 #import "HFInterfaceTheme.h"
+#import "HFLoginPopupController.h"
 #import "HFLoginViewController.h"
 #import "HFProfileViewController.h"
 #import "HFSettingsViewController.h"
@@ -72,6 +73,12 @@ static NSInteger const kFontSection = 2;
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
 }
 
+- (void)loginButtonPressed {
+    HFLoginPopupController *loginPopupController = [[HFLoginPopupController alloc] init];
+    loginPopupController.message = @"";
+    [loginPopupController showInViewController:self];
+}
+
 - (void)logoutButtonPressed {
     if ([HNManager sharedManager].SessionUser) {
         [[HNManager sharedManager] logout];
@@ -98,20 +105,6 @@ static NSInteger const kFontSection = 2;
         default:
             return nil;
             break;
-    }
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-    if (section == kThemeSection) {
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
-        label.font = [UIFont preferredApplicationFontForTextStyle:UIFontTextStyleFootnote];
-        label.textAlignment = NSTextAlignmentCenter;
-        label.textColor = [HFInterfaceTheme activeTheme].secondaryTextColor;
-        label.text = NSLocalizedString(@"© 2015 Nealon Young", nil);
-        
-        return label;
-    } else {
-        return nil;
     }
 }
 
@@ -159,10 +152,10 @@ static NSInteger const kFontSection = 2;
                     return cell;
                 }
             } else {
-                HFTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableViewCellIdentifier forIndexPath:indexPath];
+                HFButtonTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kButtonTableViewCellIdentifier forIndexPath:indexPath];
                 
-                cell.textLabel.text = NSLocalizedString(@"Log In", nil);
-                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                [cell.button setTitle:NSLocalizedString(@"Log In", nil) forState:UIControlStateNormal];
+                [cell.button addTarget:self action:@selector(loginButtonPressed) forControlEvents:UIControlEventTouchUpInside];
                 
                 return cell;
             }
@@ -204,6 +197,28 @@ static NSInteger const kFontSection = 2;
 
 #pragma mark - UITableViewDelegate
 
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    if (section == kThemeSection) {
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
+        label.font = [UIFont preferredApplicationFontForTextStyle:UIFontTextStyleFootnote];
+        label.textAlignment = NSTextAlignmentCenter;
+        label.textColor = [HFInterfaceTheme activeTheme].secondaryTextColor;
+        label.text = NSLocalizedString(@"© 2015 Nealon Young", nil);
+        
+        return label;
+    } else {
+        return nil;
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    if (section == kThemeSection) {
+        return 44.0f;
+    } else {
+        return 0.0f;
+    }
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     switch (indexPath.section) {
         case kProfileSection:
@@ -213,8 +228,11 @@ static NSInteger const kFontSection = 2;
                     profileViewController.user = [HNManager sharedManager].SessionUser;
                     [self.navigationController pushViewController:profileViewController animated:YES];
                 } else {
-                    HFLoginViewController *loginViewController = [[HFLoginViewController alloc] initWithNibName:nil bundle:nil];
-                    [self.navigationController pushViewController:loginViewController animated:YES];
+                    HFLoginPopupController *loginPopupController = [[HFLoginPopupController alloc] init];
+                    loginPopupController.message = @"";
+                    [loginPopupController showInViewController:self];
+//                    HFLoginViewController *loginViewController = [[HFLoginViewController alloc] initWithNibName:nil bundle:nil];
+//                    [self.navigationController pushViewController:loginViewController animated:YES];
                 }
             }
             

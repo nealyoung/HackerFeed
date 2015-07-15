@@ -178,8 +178,14 @@
         [button setTitle:action.title forState:UIControlStateNormal];
         
         if (action.style == UIAlertActionStyleCancel) {
+            button.titleLabel.font = [UIFont applicationFontOfSize:16.0f];
+        } else {
+            button.titleLabel.font = [UIFont semiboldApplicationFontOfSize:16.0f];
+        }
+        
+        if (action.style == UIAlertActionStyleCancel) {
             [button setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-            button.tintColor = [UIColor darkGrayColor];
+            button.tintColor = [HFInterfaceTheme activeTheme].secondaryTextColor;
         } else if (action.style == UIAlertActionStyleDestructive) {
             [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
             button.tintColor = [UIColor redColor];
@@ -198,40 +204,72 @@
     
     _actionButtons = actionButtons;
     
-    for (int i = 0; i < [actionButtons count]; i++) {
-        UIButton *actionButton = actionButtons[i];
+    // If there are 2 actions, display the buttons next to each other. Otherwise, stack the buttons vertically at full width
+    if ([actionButtons count] == 2) {
+        UIButton *firstButton = actionButtons[0];
+        UIButton *lastButton = actionButtons[1];
         
-        [self.backgroundView addSubview:actionButton];
+        [self.backgroundView addSubview:firstButton];
+        [self.backgroundView addSubview:lastButton];
         
-        [self.backgroundView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[actionButton]-|"
+        [self.backgroundView addConstraint:[NSLayoutConstraint constraintWithItem:firstButton
+                                                                        attribute:NSLayoutAttributeWidth
+                                                                        relatedBy:NSLayoutRelationEqual
+                                                                           toItem:lastButton
+                                                                        attribute:NSLayoutAttributeWidth
+                                                                       multiplier:1.0f
+                                                                         constant:0.0f]];
+        
+        [self.backgroundView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[firstButton]-[lastButton]-|"
+                                                                                    options:NSLayoutFormatAlignAllCenterY
+                                                                                    metrics:nil
+                                                                                      views:NSDictionaryOfVariableBindings(firstButton, lastButton)]];
+        
+        [self.backgroundView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_contentViewContainerView]-[firstButton(44)]-|"
                                                                                     options:0
                                                                                     metrics:nil
-                                                                                      views:NSDictionaryOfVariableBindings(actionButton)]];
+                                                                                      views:NSDictionaryOfVariableBindings(_contentViewContainerView, firstButton)]];
         
-        [self.backgroundView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[actionButton(44)]"
+        [self.backgroundView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[lastButton(44)]"
                                                                                     options:0
                                                                                     metrics:nil
-                                                                                      views:NSDictionaryOfVariableBindings(actionButton)]];
-        
-        if (i == 0) {
-            [self.backgroundView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_contentViewContainerView]-[actionButton]"
-                                                                                        options:0
-                                                                                        metrics:nil
-                                                                                          views:NSDictionaryOfVariableBindings(_contentViewContainerView, actionButton)]];
-        } else {
-            UIButton *previousButton = actionButtons[i - 1];
+                                                                                      views:NSDictionaryOfVariableBindings(lastButton)]];
+    } else {
+        for (int i = 0; i < [actionButtons count]; i++) {
+            UIButton *actionButton = actionButtons[i];
             
-            [self.backgroundView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[previousButton]-[actionButton]"
-                                                                                        options:0
-                                                                                        metrics:nil
-                                                                                          views:NSDictionaryOfVariableBindings(previousButton, actionButton)]];
-        }
-        
-        if (i == ([actionButtons count] - 1)) {
-            [self.backgroundView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[actionButton]-|"
+            [self.backgroundView addSubview:actionButton];
+            
+            [self.backgroundView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[actionButton]-|"
                                                                                         options:0
                                                                                         metrics:nil
                                                                                           views:NSDictionaryOfVariableBindings(actionButton)]];
+            
+            [self.backgroundView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[actionButton(44)]"
+                                                                                        options:0
+                                                                                        metrics:nil
+                                                                                          views:NSDictionaryOfVariableBindings(actionButton)]];
+            
+            if (i == 0) {
+                [self.backgroundView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_contentViewContainerView]-[actionButton]"
+                                                                                            options:0
+                                                                                            metrics:nil
+                                                                                              views:NSDictionaryOfVariableBindings(_contentViewContainerView, actionButton)]];
+            } else {
+                UIButton *previousButton = actionButtons[i - 1];
+                
+                [self.backgroundView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[previousButton]-[actionButton]"
+                                                                                            options:0
+                                                                                            metrics:nil
+                                                                                              views:NSDictionaryOfVariableBindings(previousButton, actionButton)]];
+            }
+            
+            if (i == ([actionButtons count] - 1)) {
+                [self.backgroundView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[actionButton]-|"
+                                                                                            options:0
+                                                                                            metrics:nil
+                                                                                              views:NSDictionaryOfVariableBindings(actionButton)]];
+            }
         }
     }
 }

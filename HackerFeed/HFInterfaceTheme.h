@@ -22,6 +22,7 @@ typedef NS_ENUM(NSInteger, HFInterfaceThemeType) {
 @property UIColor *accentColor;
 @property UIColor *textColor;
 @property UIColor *secondaryTextColor;
+@property UIColor *placeholderTextColor;
 @property UIColor *backgroundColor;
 @property UIColor *navigationBarColor;
 @property UIColor *cellSeparatorColor;

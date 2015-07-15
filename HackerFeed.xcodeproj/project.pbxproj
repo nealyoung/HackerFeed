@@ -36,6 +36,8 @@
 		0E4283211A50682700A0CC1F /* libPods-HackerFeed.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E4283201A50682700A0CC1F /* libPods-HackerFeed.a */; };
 		0E511CA3198C0B3300F94E9F /* HFTextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E511CA2198C0B3300F94E9F /* HFTextFieldTableViewCell.m */; };
 		0E520C53197C73F900E94DBD /* HFDropdownMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E520C52197C73F900E94DBD /* HFDropdownMenuItem.m */; };
+		0E5325CD1B54B68900301CE0 /* HFLoginPopupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E5325CC1B54B68900301CE0 /* HFLoginPopupController.m */; };
+		0E5325D01B54BBBC00301CE0 /* HFLoginPopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E5325CF1B54BBBC00301CE0 /* HFLoginPopupView.m */; };
 		0E5424E719C4C07D00FF24A7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E5424E619C4C07D00FF24A7 /* LaunchScreen.xib */; };
 		0E5424EA19C4DA5F00FF24A7 /* HFModalWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E5424E919C4DA5F00FF24A7 /* HFModalWebViewController.m */; };
 		0E57B5B4198C2D6C0056CA54 /* HFTextViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E57B5B3198C2D6C0056CA54 /* HFTextViewTableViewCell.m */; };
@@ -59,6 +61,7 @@
 		0EAC1B14197C577800393828 /* HFDropdownMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EAC1B13197C577800393828 /* HFDropdownMenuButton.m */; };
 		0EAC1B18197C592200393828 /* UIViewController+HFDropdownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EAC1B17197C592200393828 /* UIViewController+HFDropdownMenu.m */; };
 		0EC331201992986400E1531A /* HFLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC3311F1992986400E1531A /* HFLabel.m */; };
+		0EC52C5A1B55A12F00C3E8B7 /* HFTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC52C591B55A12F00C3E8B7 /* HFTextField.m */; };
 		0EC81421197C828A009F0D99 /* HFPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC81420197C828A009F0D99 /* HFPostViewController.m */; };
 		0EC81426197C8D1C009F0D99 /* HFCommentsButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC81425197C8D1C009F0D99 /* HFCommentsButton.m */; };
 		0EC81432197C9C15009F0D99 /* UIFont+HFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC81431197C9C15009F0D99 /* UIFont+HFAdditions.m */; };
@@ -163,6 +166,10 @@
 		0E511CA2198C0B3300F94E9F /* HFTextFieldTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFTextFieldTableViewCell.m; sourceTree = "<group>"; };
 		0E520C51197C73F900E94DBD /* HFDropdownMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFDropdownMenuItem.h; sourceTree = "<group>"; };
 		0E520C52197C73F900E94DBD /* HFDropdownMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFDropdownMenuItem.m; sourceTree = "<group>"; };
+		0E5325CB1B54B68900301CE0 /* HFLoginPopupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFLoginPopupController.h; sourceTree = "<group>"; };
+		0E5325CC1B54B68900301CE0 /* HFLoginPopupController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFLoginPopupController.m; sourceTree = "<group>"; };
+		0E5325CE1B54BBBC00301CE0 /* HFLoginPopupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFLoginPopupView.h; sourceTree = "<group>"; };
+		0E5325CF1B54BBBC00301CE0 /* HFLoginPopupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFLoginPopupView.m; sourceTree = "<group>"; };
 		0E5424E619C4C07D00FF24A7 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		0E5424E819C4DA5F00FF24A7 /* HFModalWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFModalWebViewController.h; sourceTree = "<group>"; };
 		0E5424E919C4DA5F00FF24A7 /* HFModalWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFModalWebViewController.m; sourceTree = "<group>"; };
@@ -204,6 +211,8 @@
 		0EAC1B17197C592200393828 /* UIViewController+HFDropdownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+HFDropdownMenu.m"; sourceTree = "<group>"; };
 		0EC3311E1992986400E1531A /* HFLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFLabel.h; sourceTree = "<group>"; };
 		0EC3311F1992986400E1531A /* HFLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFLabel.m; sourceTree = "<group>"; };
+		0EC52C581B55A12F00C3E8B7 /* HFTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFTextField.h; sourceTree = "<group>"; };
+		0EC52C591B55A12F00C3E8B7 /* HFTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFTextField.m; sourceTree = "<group>"; };
 		0EC8141F197C828A009F0D99 /* HFPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFPostViewController.h; sourceTree = "<group>"; };
 		0EC81420197C828A009F0D99 /* HFPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFPostViewController.m; sourceTree = "<group>"; };
 		0EC81424197C8D1C009F0D99 /* HFCommentsButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFCommentsButton.h; sourceTree = "<group>"; };
@@ -426,10 +435,14 @@
 				0EC81425197C8D1C009F0D99 /* HFCommentsButton.m */,
 				0EFC253A1985D9D800A67412 /* HFCommentToolbar.h */,
 				0EFC253B1985D9D800A67412 /* HFCommentToolbar.m */,
+				0E5325CE1B54BBBC00301CE0 /* HFLoginPopupView.h */,
+				0E5325CF1B54BBBC00301CE0 /* HFLoginPopupView.m */,
 				0EECC7891A7E966D00527326 /* HFTableView.h */,
 				0EECC78A1A7E966D00527326 /* HFTableView.m */,
 				0EFC253E1986026500A67412 /* HFTextView.h */,
 				0EFC253D1986026500A67412 /* HFTextView.m */,
+				0EC52C581B55A12F00C3E8B7 /* HFTextField.h */,
+				0EC52C591B55A12F00C3E8B7 /* HFTextField.m */,
 				0E6C019A1A9171A3002AAA80 /* HFAttributedLabel.h */,
 				0E6C019B1A9171A3002AAA80 /* HFAttributedLabel.m */,
 				0EC3311E1992986400E1531A /* HFLabel.h */,
@@ -470,6 +483,8 @@
 				0EDA41501B4DDCBF00A322AF /* HFModalPresentationController.m */,
 				0EDA41511B4DDCBF00A322AF /* HFModalPresentationManager.h */,
 				0EDA41521B4DDCBF00A322AF /* HFModalPresentationManager.m */,
+				0E5325CB1B54B68900301CE0 /* HFLoginPopupController.h */,
+				0E5325CC1B54B68900301CE0 /* HFLoginPopupController.m */,
 			);
 			name = Other;
 			sourceTree = "<group>";
@@ -815,7 +830,10 @@
 				0EC81435197CA8FA009F0D99 /* HFCommentTableViewCell.m in Sources */,
 				0E1FC635197C4B4700B41804 /* HFPostTableViewCell.m in Sources */,
 				0E5424EA19C4DA5F00FF24A7 /* HFModalWebViewController.m in Sources */,
+				0EC52C5A1B55A12F00C3E8B7 /* HFTextField.m in Sources */,
+				0E5325CD1B54B68900301CE0 /* HFLoginPopupController.m in Sources */,
 				0E183AAC1AF442F0004E6324 /* HNPost+HFAdditions.m in Sources */,
+				0E5325D01B54BBBC00301CE0 /* HFLoginPopupView.m in Sources */,
 				0EE791C71950318D00925E4F /* main.m in Sources */,
 				0EE791D41950318D00925E4F /* HFPostListViewController.m in Sources */,
 				0E6C30DF197F5DCB00C33A67 /* HFLoginViewController.m in Sources */,
