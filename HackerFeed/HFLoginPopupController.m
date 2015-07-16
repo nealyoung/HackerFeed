@@ -8,7 +8,6 @@
 
 #import "HFLoginPopupController.h"
 
-#import "libHN.h"
 #import "HFAlertViewController.h"
 #import "HFLoginPopupView.h"
 #import "HFModalPresentationManager.h"
@@ -46,6 +45,11 @@
                                           completion:^(HNUser *user) {
                                               if (user) {
                                                   [SVProgressHUD dismiss];
+                                                  
+                                                  if (self.loginCompletionBlock) {
+                                                      self.loginCompletionBlock(user);
+                                                  }
+                                                  
                                                   [viewController dismissViewControllerAnimated:YES completion:nil];
                                               } else {
                                                   [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Incorrect username or password", nil)];

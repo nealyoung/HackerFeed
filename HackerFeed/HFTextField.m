@@ -52,7 +52,7 @@
 - (void)setPlaceholder:(NSString *)placeholder {
     [super setPlaceholder:placeholder];
     
-    UIColor *placeholderTextColor = [[HFInterfaceTheme activeTheme].secondaryTextColor hf_colorLightenedByFactor:0.3f];
+    UIColor *placeholderTextColor = [HFInterfaceTheme activeTheme].placeholderTextColor;
     NSAttributedString *attributedPlaceholder = [[NSAttributedString alloc] initWithString:self.placeholder
                                                                                 attributes:@{ NSForegroundColorAttributeName : placeholderTextColor }];
     self.attributedPlaceholder = attributedPlaceholder;
@@ -60,7 +60,7 @@
 
 - (void)applyTheme {
     if (self.placeholder) {
-        UIColor *placeholderTextColor = [[HFInterfaceTheme activeTheme].secondaryTextColor hf_colorLightenedByFactor:0.3f];
+        UIColor *placeholderTextColor = [HFInterfaceTheme activeTheme].placeholderTextColor;
         NSAttributedString *attributedPlaceholder = [[NSAttributedString alloc] initWithString:self.placeholder
                                                                                     attributes:@{ NSForegroundColorAttributeName : placeholderTextColor }];
         self.attributedPlaceholder = attributedPlaceholder;

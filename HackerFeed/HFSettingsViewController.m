@@ -76,13 +76,22 @@ static NSInteger const kFontSection = 2;
 - (void)loginButtonPressed {
     HFLoginPopupController *loginPopupController = [[HFLoginPopupController alloc] init];
     loginPopupController.message = @"";
+    loginPopupController.loginCompletionBlock = ^(HNUser *user) {
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:kProfileSection] withRowAnimation:UITableViewRowAnimationAutomatic];
+    };
     [loginPopupController showInViewController:self];
 }
 
 - (void)logoutButtonPressed {
     if ([HNManager sharedManager].SessionUser) {
         [[HNManager sharedManager] logout];
-        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:kProfileSection] withRowAnimation:UITableViewRowAnimationAutomatic];
+        
+        [self.tableView beginUpdates];
+        
+        [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:kProfileSection]] withRowAnimation:UITableViewRowAnimationFade];
+        [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:1 inSection:kProfileSection]] withRowAnimation:UITableViewRowAnimationAutomatic];
+
+        [self.tableView endUpdates];
     }
 }
 

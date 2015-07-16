@@ -7,9 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "libHN.h"
+
+typedef void (^HFLoginPopupControllerCompletionBlock)(HNUser *user);
 
 @interface HFLoginPopupController : NSObject
 
+@property (nonatomic, strong) HFLoginPopupControllerCompletionBlock loginCompletionBlock;
 @property (nonatomic) NSString *message;
 
 - (void)showInViewController:(UIViewController *)viewController;
