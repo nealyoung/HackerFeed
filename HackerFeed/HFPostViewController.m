@@ -569,29 +569,29 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
         UIImageView *userIconImageView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"UserIcon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
         userIconImageView.tintColor = [UIColor whiteColor];
 
-        [cell setSwipeGestureWithView:upvoteIconImageView
-                                color:[HFInterfaceTheme activeTheme].accentColor
-                                 mode:MCSwipeTableViewCellModeSwitch
-                                state:MCSwipeTableViewCellState1
-                      completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
-                          [self upvoteCommentGestureActivatedForCell:cell];
-                      }];
-        
-        [cell setSwipeGestureWithView:replyIconImageView
-                                color:[[HFInterfaceTheme activeTheme].accentColor hf_colorLightenedByFactor:0.08f]
-                                 mode:MCSwipeTableViewCellModeSwitch
-                                state:MCSwipeTableViewCellState3
-                      completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
-                          [self replyToCommentGestureActivatedForCell:cell];
-                      }];
-        
-        [cell setSwipeGestureWithView:userIconImageView
-                                color:[[HFInterfaceTheme activeTheme].accentColor hf_colorLightenedByFactor:0.16f]
-                                 mode:MCSwipeTableViewCellModeSwitch
-                                state:MCSwipeTableViewCellState4
-                      completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
-                          [self viewUserGestureActivatedForCell:cell];
-                      }];
+//        [cell setSwipeGestureWithView:upvoteIconImageView
+//                                color:[HFInterfaceTheme activeTheme].accentColor
+//                                 mode:MCSwipeTableViewCellModeSwitch
+//                                state:MCSwipeTableViewCellState1
+//                      completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
+//                          [self upvoteCommentGestureActivatedForCell:cell];
+//                      }];
+//        
+//        [cell setSwipeGestureWithView:replyIconImageView
+//                                color:[[HFInterfaceTheme activeTheme].accentColor hf_colorLightenedByFactor:0.08f]
+//                                 mode:MCSwipeTableViewCellModeSwitch
+//                                state:MCSwipeTableViewCellState3
+//                      completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
+//                          [self replyToCommentGestureActivatedForCell:cell];
+//                      }];
+//        
+//        [cell setSwipeGestureWithView:userIconImageView
+//                                color:[[HFInterfaceTheme activeTheme].accentColor hf_colorLightenedByFactor:0.16f]
+//                                 mode:MCSwipeTableViewCellModeSwitch
+//                                state:MCSwipeTableViewCellState4
+//                      completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
+//                          [self viewUserGestureActivatedForCell:cell];
+//                      }];
         
         return cell;
     }
