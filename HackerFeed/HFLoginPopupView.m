@@ -48,7 +48,7 @@
                                                                             metrics:nil
                                                                               views:NSDictionaryOfVariableBindings(_passwordTextField)]];
         
-        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[_usernameTextField(28)]-12-[_passwordTextField(28)]-|"
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_usernameTextField(24)]-12-[_passwordTextField(24)]-|"
                                                                             options:0
                                                                             metrics:nil
                                                                               views:NSDictionaryOfVariableBindings(_usernameTextField, _passwordTextField)]];

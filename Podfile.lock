@@ -1,14 +1,14 @@
 PODS:
-  - DACircularProgress (2.2.0)
+  - DACircularProgress (2.3.1)
   - FCUtilities (0.1.0)
-  - libHN (4.0.2)
-  - MCSwipeTableViewCell (2.1.2)
-  - NYSegmentedControl (1.0.3)
+  - libHN (4.0.4)
+  - MCSwipeTableViewCell (2.1.3)
+  - NYSegmentedControl (1.0.5)
   - PBWebViewController (0.3)
-  - SSPullToRefresh (1.2.2)
+  - SSPullToRefresh (1.2.4)
   - SVProgressHUD (HEAD based on 1.1.3)
   - SVPullToRefresh (HEAD based on 0.4.1)
-  - TTTAttributedLabel (1.13.2)
+  - TTTAttributedLabel (1.13.4)
   - ZFDragableModalTransition (0.5.1)
 
 DEPENDENCIES:
@@ -30,20 +30,20 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   FCUtilities:
-    :commit: 84cb4e60e945bda129a5b9e752f4544ebff6ae6f
+    :commit: d5bc17ebb198c8ee0c0c6bfe3396bb6141843f11
     :git: https://github.com/marcoarment/FCUtilities.git
 
 SPEC CHECKSUMS:
-  DACircularProgress: 0f92b77239d5f3c612fc66185e2998391ac8e054
-  FCUtilities: d0f0da2640a643bb319c3ef58e9c43530fcbc521
-  libHN: 00edb36294ec0bc40faff1801024099182bbdc9d
-  MCSwipeTableViewCell: 0fc22bd3635b9b5f4ce08675218b0a7278b6440f
-  NYSegmentedControl: c24774be62ed17442595d33f74e6eb23bcff3412
+  DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
+  FCUtilities: e313e82e37e90edda5dbe8076b19401795b040c1
+  libHN: 3571ddc61a302b1f01213dd50c932c29a6f5b390
+  MCSwipeTableViewCell: 28a50729ba9a1359d70f57737a7e5022b3137297
+  NYSegmentedControl: 6c0dd98de6814a4e294c772ce4ad8bffecc480db
   PBWebViewController: 909b1505da6ba7c5c82519a6457246027926061e
-  SSPullToRefresh: 699d592f8e4264edc36b20b49d60f25eeb5fb77d
+  SSPullToRefresh: 369e862c1d6528c7a354fc85cd4763d4e670e9af
   SVProgressHUD: 748080e4f36e603f6c02aec292664239df5279c1
   SVPullToRefresh: ba2e718695a43253d8bea6852d2960097dc15d8c
-  TTTAttributedLabel: 2ba85bee473885c2aada2bdfec584d39f1869338
+  TTTAttributedLabel: 0a2ac7b2dd726d32a070dafb01446026b11e624f
   ZFDragableModalTransition: 048189eda437f91944ce6d5151618b8bf770196d
 
-COCOAPODS: 0.36.0.beta.1
+COCOAPODS: 0.36.3

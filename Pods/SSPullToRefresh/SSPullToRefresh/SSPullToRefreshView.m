@@ -8,7 +8,7 @@
 
 #import "SSPullToRefreshView.h"
 #import "SSPullToRefreshSimpleContentView.h"
-#import <QuartzCore/QuartzCore.h>
+@import QuartzCore;
 
 @interface SSPullToRefreshView ()
 @property (nonatomic, readwrite) SSPullToRefreshViewState state;
@@ -158,7 +158,7 @@
 - (id)initWithScrollView:(UIScrollView *)scrollView delegate:(id<SSPullToRefreshViewDelegate>)delegate {
 	CGRect frame = CGRectMake(0.0f, 0.0f - scrollView.bounds.size.height, scrollView.bounds.size.width,
 							  scrollView.bounds.size.height);
-	if ((self = [self initWithFrame:frame])) {
+	if ((self = [super initWithFrame:frame])) {
 		for (UIView *view in self.scrollView.subviews) {
 			if ([view isKindOfClass:[SSPullToRefreshView class]]) {
 				[[NSException exceptionWithName:@"SSPullToRefreshViewAlreadyAdded" reason:@"There is already a SSPullToRefreshView added to this scroll view. Unexpected things will happen. Don't do this." userInfo:nil] raise];
@@ -178,9 +178,6 @@
 		// Semaphore is used to ensure only one animation plays at a time
 		_animationSemaphore = dispatch_semaphore_create(0);
 		dispatch_semaphore_signal(_animationSemaphore);
-
-        // Set layer position below other scrollView subviews
-        self.layer.zPosition = -100;
 	}
 	return self;
 }
@@ -371,6 +368,9 @@
 	if (self.scrollView.isDragging) {
 		// Scroll view is ready
 		if (self.state == SSPullToRefreshViewStateReady) {
+			// Update the content view's pulling progressing
+			[self _setPullProgress:-y / self.expandedHeight];
+			
 			// Dragged enough to refresh
 			if (y > -self.expandedHeight && y < 0.0f) {
 				self.state = SSPullToRefreshViewStateNormal;

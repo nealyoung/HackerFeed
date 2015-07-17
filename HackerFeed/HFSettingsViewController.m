@@ -14,6 +14,7 @@
 #import "HFSettingsViewController.h"
 #import "HFTableView.h"
 #import "HFTableViewCell.h"
+#import "HFWebViewController.h"
 #import "libHN.h"
 
 @interface HFSettingsViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -29,7 +30,10 @@ static NSString * const kButtonTableViewCellIdentifier = @"ButtonTableViewCell";
 
 static NSInteger const kProfileSection = 0;
 static NSInteger const kThemeSection = 1;
-static NSInteger const kFontSection = 2;
+static NSInteger const kAboutSection = 2;
+static NSInteger const kFontSection = 3;
+
+static NSInteger const kAboutGitHubRow = 0;
 
 @implementation HFSettingsViewController
 
@@ -107,6 +111,10 @@ static NSInteger const kFontSection = 2;
             return NSLocalizedString(@"Font", nil);
             break;
             
+        case kAboutSection:
+            return NSLocalizedString(@"About", nil);
+            break;
+            
         case kThemeSection:
             return NSLocalizedString(@"Theme", nil);
             break;
@@ -118,7 +126,7 @@ static NSInteger const kFontSection = 2;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -127,12 +135,16 @@ static NSInteger const kFontSection = 2;
             return [HNManager sharedManager].SessionUser ? 2 : 1;
             break;
             
-        case kFontSection:
-            return [[UIFont availableFontFamilies] count];
-            break;
-            
         case kThemeSection:
             return [[HFInterfaceTheme allThemes] count];
+            break;
+            
+        case kAboutSection:
+            return 1;
+            break;
+            
+        case kFontSection:
+            return [[UIFont availableFontFamilies] count];
             break;
             
         default:
@@ -170,12 +182,12 @@ static NSInteger const kFontSection = 2;
             }
         }
             
-        case kFontSection: {
+        case kThemeSection: {
             HFTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableViewCellIdentifier forIndexPath:indexPath];
+            HFInterfaceTheme *theme = [HFInterfaceTheme allThemes][indexPath.row];
+            cell.textLabel.text = theme.title;
             
-            cell.textLabel.text = [UIFont availableFontFamilies][indexPath.row];
-            
-            if ([[NSUserDefaults standardUserDefaults] integerForKey:kFontFamilyDefaultsKey] == indexPath.row) {
+            if ([HFInterfaceTheme activeTheme].themeType == theme.themeType) {
                 cell.accessoryType = UITableViewCellAccessoryCheckmark;
             } else {
                 cell.accessoryType = UITableViewCellAccessoryNone;
@@ -184,12 +196,20 @@ static NSInteger const kFontSection = 2;
             return cell;
         }
             
-        case kThemeSection: {
+        case kAboutSection: {
             HFTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableViewCellIdentifier forIndexPath:indexPath];
-            HFInterfaceTheme *theme = [HFInterfaceTheme allThemes][indexPath.row];
-            cell.textLabel.text = theme.title;
+            cell.textLabel.text = NSLocalizedString(@"GitHub Project", nil);
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             
-            if ([HFInterfaceTheme activeTheme].themeType == theme.themeType) {
+            return cell;
+        }
+            
+        case kFontSection: {
+            HFTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableViewCellIdentifier forIndexPath:indexPath];
+            
+            cell.textLabel.text = [UIFont availableFontFamilies][indexPath.row];
+            
+            if ([[NSUserDefaults standardUserDefaults] integerForKey:kFontFamilyDefaultsKey] == indexPath.row) {
                 cell.accessoryType = UITableViewCellAccessoryCheckmark;
             } else {
                 cell.accessoryType = UITableViewCellAccessoryNone;
@@ -207,7 +227,7 @@ static NSInteger const kFontSection = 2;
 #pragma mark - UITableViewDelegate
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-    if (section == kThemeSection) {
+    if (section == kAboutSection) {
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
         label.font = [UIFont preferredApplicationFontForTextStyle:UIFontTextStyleFootnote];
         label.textAlignment = NSTextAlignmentCenter;
@@ -221,7 +241,7 @@ static NSInteger const kFontSection = 2;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    if (section == kThemeSection) {
+    if (section == kAboutSection) {
         return 44.0f;
     } else {
         return 0.0f;
@@ -256,6 +276,13 @@ static NSInteger const kFontSection = 2;
             [HFInterfaceTheme setActiveTheme:[HFInterfaceTheme themeWithType:indexPath.row]];
             [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:kThemeSection] withRowAnimation:UITableViewRowAnimationNone];
             break;
+            
+        case kAboutSection: {
+            HFWebViewController *webViewController = [[HFWebViewController alloc] init];
+            webViewController.URL = [NSURL URLWithString:@"https://github.com/nealyoung/hackerfeed"];
+            
+            [self showViewController:webViewController sender:self];
+        }
     }
 }
 

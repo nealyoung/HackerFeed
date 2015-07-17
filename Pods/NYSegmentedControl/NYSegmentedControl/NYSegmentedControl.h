@@ -9,7 +9,26 @@
 
 #import <UIKit/UIKit.h>
 
+@class NYSegmentedControl;
+
+@protocol NYSegmentedControlDataSource <NSObject>
+
+- (NSUInteger) numberOfSegmentsOfControl:(NYSegmentedControl *)control;
+- (NSString *) segmentedControl:(NYSegmentedControl *)control titleAtIndex:(NSInteger)index;
+
+@end
+
 @interface NYSegmentedControl : UIControl
+
+/**
+ Data source of segment items
+ */
+@property (weak) IBOutlet id <NYSegmentedControlDataSource> dataSource;
+
+/**
+ Reload items data if dataSource is defined
+ */
+- (void) reloadData;
 
 /**
  If YES, selectedTitleFont and SelectedTitleTextColor are used for the selected segment's title label. The default value is YES.
@@ -129,6 +148,30 @@
  The index of the currently selected segment
  */
 @property (nonatomic) NSUInteger selectedSegmentIndex;
+
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_7_0
+
+/**
+ If `YES`, than use UIView spring animations to animate the motion of the segment indicator
+ */
+@property (nonatomic) BOOL usesSpringAnimations UI_APPEARANCE_SELECTOR;
+
+/**
+ The animation duration used if spring animations are enabled
+ */
+@property (nonatomic) CGFloat springAnimationDuration UI_APPEARANCE_SELECTOR;
+
+/**
+ The damping ratio for the spring animation
+ */
+@property (nonatomic) CGFloat springAnimationDampingRatio UI_APPEARANCE_SELECTOR;
+
+/**
+ The initial spring velocity
+ */
+@property (nonatomic) CGFloat springAnimationVelocity UI_APPEARANCE_SELECTOR;
+
+#endif
 
 /**
  Initializes and returns a control with segments having the specified titles.

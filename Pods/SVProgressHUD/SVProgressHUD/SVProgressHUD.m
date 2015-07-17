@@ -80,7 +80,7 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
 + (SVProgressHUD*)sharedView {
     static dispatch_once_t once;
     static SVProgressHUD *sharedView;
-    dispatch_once(&once, ^ { sharedView = [[self alloc] initWithFrame:[[UIScreen mainScreen] bounds]]; });
+    dispatch_once(&once, ^ { sharedView = [[self alloc] initWithFrame:[UIApplication sharedApplication].keyWindow.bounds]; });
     return sharedView;
 }
 
@@ -251,12 +251,17 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
 
 #pragma mark - Instance Methods
 
-- (id)initWithFrame:(CGRect)frame {
+- (instancetype)initWithFrame:(CGRect)frame {
     if ((self = [super initWithFrame:frame])) {
 		self.userInteractionEnabled = NO;
         self.backgroundColor = [UIColor clearColor];
 		self.alpha = 0.0f;
-        self.activityCount = 0;
+        _activityCount = 0;
+        
+        // add accessibility support
+        self.accessibilityIdentifier = @"SVProgressHUD";
+        self.accessibilityLabel = @"SVProgressHUD";
+        self.isAccessibilityElement = YES;
         
         SVProgressHUDBackgroundColor = [UIColor whiteColor];
         SVProgressHUDForegroundColor = [UIColor blackColor];
@@ -269,7 +274,7 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
             SVProgressHUDForegroundColor = [UIColor whiteColor];
         }
         
-        NSBundle *bundle = [NSBundle bundleForClass:self.class];
+        NSBundle *bundle = [NSBundle bundleForClass:[self class]];
         NSURL *url = [bundle URLForResource:@"SVProgressHUD" withExtension:@"bundle"];
         NSBundle *imageBundle = [NSBundle bundleWithURL:url];
         
@@ -350,7 +355,7 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
         CGRect stringRect;
         if ([string respondsToSelector:@selector(boundingRectWithSize:options:attributes:context:)]){
             stringRect = [string boundingRectWithSize:constraintSize
-                                              options:(NSStringDrawingUsesFontLeading|NSStringDrawingTruncatesLastVisibleLine|NSStringDrawingUsesLineFragmentOrigin)
+                                              options:(NSStringDrawingOptions)(NSStringDrawingUsesFontLeading|NSStringDrawingTruncatesLastVisibleLine|NSStringDrawingUsesLineFragmentOrigin)
                                            attributes:@{NSFontAttributeName: self.stringLabel.font}
                                               context:NULL];
         } else {
@@ -445,6 +450,10 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
                                              selector:@selector(positionHUD:)
                                                  name:UIApplicationDidChangeStatusBarOrientationNotification
                                                object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(positionHUD:)
+                                                 name:UIApplicationDidBecomeActiveNotification
+                                               object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(positionHUD:)
@@ -478,7 +487,7 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
     CGFloat keyboardHeight = 0.0f;
     double animationDuration = 0.0;
     
-    self.frame = UIScreen.mainScreen.bounds;
+    self.frame = [UIApplication sharedApplication].keyWindow.bounds;
     
 #if !defined(SV_APP_EXTENSIONS)
     UIInterfaceOrientation orientation = UIApplication.sharedApplication.statusBarOrientation;
@@ -495,8 +504,8 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
 
     if(notification) {
         NSDictionary* keyboardInfo = [notification userInfo];
-        CGRect keyboardFrame = [[keyboardInfo valueForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue];
-        animationDuration = [[keyboardInfo valueForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+        CGRect keyboardFrame = [keyboardInfo[UIKeyboardFrameBeginUserInfoKey] CGRectValue];
+        animationDuration = [keyboardInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
         
         if(notification.name == UIKeyboardWillShowNotification || notification.name == UIKeyboardDidShowNotification) {
             if(ignoreOrientation || UIInterfaceOrientationIsPortrait(orientation))
@@ -658,7 +667,7 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
         self.hudView.isAccessibilityElement = YES;
     }
     
-    [self.overlayView setHidden:NO];
+    self.overlayView.hidden = NO;
     self.overlayView.backgroundColor = [UIColor clearColor];
     [self positionHUD:nil];
     
@@ -718,8 +727,8 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
     self.maskType = hudMaskType;
     [self cancelRingLayerAnimation];
     
-    if(![self.class isVisible])
-        [self.class showWithMaskType:self.maskType];
+    if(![[self class] isVisible])
+        [[self class] showWithMaskType:self.maskType];
   
     if ([self.imageView respondsToSelector:@selector(setTintColor:)]) {
         self.imageView.tintColor = SVProgressHUDForegroundColor;
@@ -897,7 +906,8 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
 
 - (UIControl *)overlayView {
     if(!_overlayView) {
-        _overlayView = [[UIControl alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        CGRect windowBounds = [UIApplication sharedApplication].keyWindow.bounds;
+        _overlayView = [[UIControl alloc] initWithFrame:windowBounds];
         _overlayView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         _overlayView.backgroundColor = [UIColor clearColor];
         [_overlayView addTarget:self action:@selector(overlayViewDidReceiveTouchEvent:forEvent:) forControlEvents:UIControlEventTouchDown];

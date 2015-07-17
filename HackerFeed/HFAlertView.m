@@ -225,12 +225,12 @@
                                                                                     metrics:nil
                                                                                       views:NSDictionaryOfVariableBindings(firstButton, lastButton)]];
         
-        [self.backgroundView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_contentViewContainerView]-[firstButton(44)]-|"
+        [self.backgroundView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_contentViewContainerView]-[firstButton(40)]-|"
                                                                                     options:0
                                                                                     metrics:nil
                                                                                       views:NSDictionaryOfVariableBindings(_contentViewContainerView, firstButton)]];
         
-        [self.backgroundView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[lastButton(44)]"
+        [self.backgroundView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[lastButton(40)]"
                                                                                     options:0
                                                                                     metrics:nil
                                                                                       views:NSDictionaryOfVariableBindings(lastButton)]];
@@ -245,7 +245,7 @@
                                                                                         metrics:nil
                                                                                           views:NSDictionaryOfVariableBindings(actionButton)]];
             
-            [self.backgroundView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[actionButton(44)]"
+            [self.backgroundView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[actionButton(40)]"
                                                                                         options:0
                                                                                         metrics:nil
                                                                                           views:NSDictionaryOfVariableBindings(actionButton)]];

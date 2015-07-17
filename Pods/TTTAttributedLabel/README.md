@@ -1,6 +1,6 @@
 # TTTAttributedLabel
 
-[![Build Status](https://travis-ci.org/TTTAttributedLabel/TTTAttributedLabel.svg)](https://travis-ci.org/TTTAttributedLabel/TTTAttributedLabel)
+[![Circle CI](https://circleci.com/gh/TTTAttributedLabel/TTTAttributedLabel.svg?style=svg)](https://circleci.com/gh/TTTAttributedLabel/TTTAttributedLabel) [![Documentation](http://img.shields.io/cocoapods/v/TTTAttributedLabel.svg?style=flat)](http://cocoadocs.org/docsets/TTTAttributedLabel/) [![Coverage Status](https://coveralls.io/repos/TTTAttributedLabel/TTTAttributedLabel/badge.svg)](https://coveralls.io/r/TTTAttributedLabel/TTTAttributedLabel) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 **A drop-in replacement for `UILabel` that supports attributes, data detectors, links, and more**
 
@@ -58,7 +58,7 @@ pod 'TTTAttributedLabel'
 TTTAttributedLabel *label = [[TTTAttributedLabel alloc] initWithFrame:CGRectZero];
 label.font = [UIFont systemFontOfSize:14];
 label.textColor = [UIColor darkGrayColor];
-label.lineBreakMode = UILineBreakModeWordWrap;
+label.lineBreakMode = NSLineBreakByWordWrapping;
 label.numberOfLines = 0;
 
 // If you're using a simple `NSString` for your text, 
@@ -117,14 +117,6 @@ open Espressos.xcworkspace
 
 - iOS 4.3+ (iOS 6+ Base SDK)
 - Xcode 6
-
-## Contact
-
-Mattt Thompson
-
-- http://github.com/mattt
-- http://twitter.com/mattt
-- m@mattt.me
 
 ## License
 

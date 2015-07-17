@@ -768,6 +768,11 @@ static inline CGSize CTFramesetterSuggestFrameSizeForAttributedStringWithConstra
         CGFloat yMin = (CGFloat)floor(lineOrigin.y - descent);
         CGFloat yMax = (CGFloat)ceil(lineOrigin.y + ascent);
 
+        // Apply penOffset using flushFactor for horizontal alignment to set lineOrigin since this is the horizontal offset from drawFramesetter
+        CGFloat flushFactor = TTTFlushFactorForTextAlignment(self.textAlignment);
+        CGFloat penOffset = (CGFloat)CTLineGetPenOffsetForFlush(line, flushFactor, textRect.size.width);
+        lineOrigin.x = penOffset;
+
         // Check if we've already passed the line
         if (p.y > yMax) {
             break;
@@ -889,9 +894,13 @@ static inline CGSize CTFramesetterSuggestFrameSizeForAttributedStringWithConstra
 #pragma clang diagnostic pop
 
                 // Append truncationToken to the string
-                // because if string isn't too long, CT wont add the truncationToken on it's own
-                // There is no change of a double truncationToken because CT only add the token if it removes characters (and the one we add will go first)
-                NSMutableAttributedString *truncationString = [[attributedString attributedSubstringFromRange:NSMakeRange((NSUInteger)lastLineRange.location, (NSUInteger)lastLineRange.length)] mutableCopy];
+                // because if string isn't too long, CT won't add the truncationToken on its own.
+                // There is no chance of a double truncationToken because CT only adds the
+                // token if it removes characters (and the one we add will go first)
+                NSMutableAttributedString *truncationString = [[NSMutableAttributedString alloc] initWithAttributedString:
+                                                               [attributedString attributedSubstringFromRange:
+                                                                NSMakeRange((NSUInteger)lastLineRange.location,
+                                                                            (NSUInteger)lastLineRange.length)]];
                 if (lastLineRange.length > 0) {
                     // Remove any newline at the end (we don't want newline space between the text and the truncation token). There can only be one, because the second would be on the next line.
                     unichar lastCharacter = [[truncationString string] characterAtIndex:(NSUInteger)(lastLineRange.length - 1)];
@@ -931,7 +940,8 @@ static inline CGSize CTFramesetterSuggestFrameSizeForAttributedStringWithConstra
                 CTLineDraw(line, c);
             }
         } else {
-            CGContextSetTextPosition(c, lineOrigin.x, lineOrigin.y - descent - self.font.descender);
+            CGFloat penOffset = (CGFloat)CTLineGetPenOffsetForFlush(line, flushFactor, rect.size.width);
+            CGContextSetTextPosition(c, penOffset, lineOrigin.y - descent - self.font.descender);
             CTLineDraw(line, c);
         }
     }
@@ -1302,7 +1312,7 @@ afterInheritingLabelAttributesAndConfiguringWithBlock:(NSMutableAttributedString
         // First, get the text rect (which takes vertical centering into account)
         CGRect textRect = [self textRectForBounds:rect limitedToNumberOfLines:self.numberOfLines];
 
-        // CoreText draws it's text aligned to the bottom, so we move the CTM here to take our vertical offsets into account
+        // CoreText draws its text aligned to the bottom, so we move the CTM here to take our vertical offsets into account
         CGContextTranslateCTM(c, insetRect.origin.x, insetRect.size.height - textRect.origin.y - textRect.size.height);
 
         // Second, trace the shadow before the actual text, if we have one
@@ -1363,6 +1373,11 @@ afterInheritingLabelAttributesAndConfiguringWithBlock:(NSMutableAttributedString
             NSMutableArray *mutableAccessibilityItems = [NSMutableArray array];
 
             for (TTTAttributedLabelLink *link in self.linkModels) {
+                
+                if (link.result.range.location == NSNotFound) {
+                    continue;
+                }
+                
                 NSString *sourceText = [self.text isKindOfClass:[NSString class]] ? self.text : [(NSAttributedString *)self.text string];
 
                 NSString *accessibilityLabel = [sourceText substringWithRange:link.result.range];
@@ -1405,11 +1420,19 @@ afterInheritingLabelAttributesAndConfiguringWithBlock:(NSMutableAttributedString
     if (!self.attributedText) {
         return [super sizeThatFits:size];
     } else {
-        size = CTFramesetterSuggestFrameSizeForAttributedStringWithConstraints([self framesetter], self.attributedText, size, (NSUInteger)self.numberOfLines);
-        size.width += self.textInsets.left + self.textInsets.right;
-        size.height += self.textInsets.top + self.textInsets.bottom;
+        NSMutableAttributedString *fullString = [[NSMutableAttributedString alloc] initWithAttributedString:self.attributedText];
+        
+        if (self.attributedTruncationToken) {
+            [fullString appendAttributedString:self.attributedTruncationToken];
+        }
+        
+        NSAttributedString *string = [[NSAttributedString alloc] initWithAttributedString:fullString];
+        
+        CGSize labelSize = CTFramesetterSuggestFrameSizeForAttributedStringWithConstraints([self framesetter], string, size, (NSUInteger)self.numberOfLines);
+        labelSize.width += self.textInsets.left + self.textInsets.right;
+        labelSize.height += self.textInsets.top + self.textInsets.bottom;
 
-        return size;
+        return labelSize;
     }
 }
 
@@ -1502,6 +1525,12 @@ afterInheritingLabelAttributesAndConfiguringWithBlock:(NSMutableAttributedString
            withEvent:(UIEvent *)event
 {
     if (self.activeLink) {
+        if (self.activeLink.linkTapBlock) {
+            self.activeLink.linkTapBlock(self, self.activeLink);
+            self.activeLink = nil;
+            return;
+        }
+        
         NSTextCheckingResult *result = self.activeLink.result;
         self.activeLink = nil;
 
@@ -1573,9 +1602,20 @@ afterInheritingLabelAttributesAndConfiguringWithBlock:(NSMutableAttributedString
     switch (sender.state) {
         case UIGestureRecognizerStateBegan: {
             CGPoint touchPoint = [sender locationInView:self];
-            NSTextCheckingResult *result = [self linkAtPoint:touchPoint].result;
+            TTTAttributedLabelLink *link = [self linkAtPoint:touchPoint];
             
-            if (result) {
+            if (link) {
+                if (link.linkLongPressBlock) {
+                    link.linkLongPressBlock(self, link);
+                    return;
+                }
+                
+                NSTextCheckingResult *result = link.result;
+                
+                if (!result) {
+                    return;
+                }
+                
                 switch (result.resultType) {
                     case NSTextCheckingTypeLink:
                         if ([self.delegate respondsToSelector:@selector(attributedLabel:didLongPressLinkWithURL:atPoint:)]) {
