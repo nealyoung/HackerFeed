@@ -4,7 +4,7 @@ platform :ios, "8.0"
 target "HackerFeed" do
   pod "DACircularProgress"
   pod 'FCUtilities', :git => 'https://github.com/marcoarment/FCUtilities.git'
-  pod 'libHN'
+  pod 'libHN', :git => 'https://github.com/nealyoung/libHN.git'
   pod 'MCSwipeTableViewCell', inhibit_warnings: true
   pod 'NYSegmentedControl'
   pod 'PBWebViewController'

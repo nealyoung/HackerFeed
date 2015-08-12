@@ -24,19 +24,15 @@
     if (self) {
         self.contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         
-//        self.upvotesLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-//        [self.upvotesLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
-//        [self.contentView addSubview:self.upvotesLabel];
-        
-        self.upvotesIconImageView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"CellUpvoteIcon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
-        [self.upvotesIconImageView setTranslatesAutoresizingMaskIntoConstraints:NO];
-        [self.upvotesIconImageView setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
-        self.upvotesIconImageView.contentMode = UIViewContentModeScaleAspectFit;
-        self.upvotesIconImageView.layer.shouldRasterize = YES;
-        [self.contentView addSubview:self.upvotesIconImageView];
+        self.upvotesLabel = [[HFUpvotesLabel alloc] initWithFrame:CGRectZero];
+        [self.upvotesLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+        [self.upvotesLabel setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
+        self.upvotesLabel.text = @"69";
+        [self.contentView addSubview:self.upvotesLabel];
         
         self.infoLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         [self.infoLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+        [self.infoLabel setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
         [self.contentView addSubview:self.infoLabel];
         
         self.titleLabel = [[HFLabel alloc] initWithFrame:CGRectZero];
@@ -71,10 +67,10 @@
                                                                                  metrics:nil
                                                                                    views:NSDictionaryOfVariableBindings(_commentButtonBackground)]];
         
-        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-15-[_upvotesIconImageView(18)]-2-[_infoLabel]-15-|"
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_upvotesLabel]-8-[_infoLabel]-15-|"
                                                                                  options:0
                                                                                  metrics:nil
-                                                                                   views:NSDictionaryOfVariableBindings(_upvotesIconImageView, _infoLabel)]];
+                                                                                   views:NSDictionaryOfVariableBindings(_upvotesLabel, _infoLabel)]];
         
         [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-15-[_titleLabel]-14-[_commentsButton(44)]-6-|"
                                                                                  options:0
@@ -86,26 +82,18 @@
                                                                                  metrics:nil
                                                                                    views:NSDictionaryOfVariableBindings(_domainLabel, _commentsButton)]];
         
-        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-4-[_infoLabel]-4-[_titleLabel]-4-[_domainLabel]-4-|"
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-4-[_upvotesLabel]-4-[_titleLabel]-4-[_domainLabel]-4-|"
                                                                                  options:0
                                                                                  metrics:nil
-                                                                                   views:NSDictionaryOfVariableBindings(_infoLabel, _titleLabel, _domainLabel)]];
+                                                                                   views:NSDictionaryOfVariableBindings(_upvotesLabel, _titleLabel, _domainLabel)]];
         
-        [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.upvotesIconImageView
+        [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.upvotesLabel
                                                                      attribute:NSLayoutAttributeCenterY
                                                                      relatedBy:NSLayoutRelationEqual
                                                                         toItem:self.infoLabel
                                                                      attribute:NSLayoutAttributeCenterY
                                                                     multiplier:1.0f
                                                                       constant:0.0f]];
-        
-        [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.upvotesIconImageView
-                                                                     attribute:NSLayoutAttributeHeight
-                                                                     relatedBy:NSLayoutRelationEqual
-                                                                        toItem:nil
-                                                                     attribute:NSLayoutAttributeNotAnAttribute
-                                                                    multiplier:0.0f
-                                                                      constant:14.0f]];
         
         [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(>=4)-[_commentsButton(44)]-(>=4)-|"
                                                                                  options:0
@@ -203,9 +191,6 @@
     [super applyTheme];
     
     self.color1 = [HFInterfaceTheme activeTheme].accentColor;
-    
-    self.upvotesLabel.textColor = [HFInterfaceTheme activeTheme].secondaryTextColor;
-    self.upvotesLabel.font = [UIFont preferredApplicationFontForTextStyle:UIFontTextStyleSubheadline];
     
     self.infoLabel.textColor = [HFInterfaceTheme activeTheme].secondaryTextColor;
     self.infoLabel.font = [UIFont preferredApplicationFontForTextStyle:UIFontTextStyleSubheadline];

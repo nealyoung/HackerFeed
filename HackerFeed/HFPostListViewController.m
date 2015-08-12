@@ -261,7 +261,7 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
                                       delay:0.0f
                                     options:UIViewAnimationOptionCurveEaseOut
                                  animations:^{
-                                     cell.upvotesIconImageView.layer.transform = CATransform3DMakeScale(1.2f, 1.2f, 1.0f);
+                                     cell.upvotesLabel.layer.transform = CATransform3DMakeScale(1.1f, 1.11f, 1.0f);
                                      //                                     cell.upvotesIconImageView.layer.transform = CATransform3DIdentity;
                                  }
                                  completion:^(BOOL finished) {
@@ -269,7 +269,7 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
                                                            delay:0.0f
                                                          options:UIViewAnimationOptionCurveEaseIn
                                                       animations:^{
-                                                          cell.upvotesIconImageView.layer.transform = CATransform3DIdentity;
+                                                          cell.upvotesLabel.layer.transform = CATransform3DIdentity;
                                                       }
                                                       completion:nil];
                                  }];
@@ -360,19 +360,25 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
     if (post.Type == PostTypeJobs) {
         cell.commentsButton.enabled = NO;
         cell.upvotesIconImageView.hidden = YES;
+        cell.upvotesLabel.hidden = YES;
+        cell.upvotesLabel.text = nil;
         cell.infoLabel.text = nil;
         [cell.commentsButton setTitle:@"" forState:UIControlStateNormal];
     } else {
         cell.commentsButton.enabled = YES;
         cell.upvotesIconImageView.hidden = NO;
+        cell.upvotesLabel.hidden = NO;
         
         if ([[HNManager sharedManager] hasVotedOnObject:post]) {
+            cell.upvotesLabel.backgroundHighlighted = YES;
             cell.upvotesIconImageView.image = [[UIImage imageNamed:@"CellUpvoteIconFilled"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         } else {
+            cell.upvotesLabel.backgroundHighlighted = NO;
             cell.upvotesIconImageView.image = [[UIImage imageNamed:@"CellUpvoteIcon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         }
         
-        cell.infoLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%d  · %@", nil), post.Points, [post.Username lowercaseString]];
+        cell.upvotesLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%d", nil), post.Points];
+        cell.infoLabel.text = [NSString stringWithFormat:NSLocalizedString(@"By %@ · %@", nil), [post.Username lowercaseString], post.TimeCreatedString];
         [cell.commentsButton addTarget:self action:@selector(commentsButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
         
         if (post.CommentCount >= 1000) {

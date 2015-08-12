@@ -109,9 +109,6 @@ static HNManager * _sharedManager = nil;
     return self.SessionCookie && self.SessionUser;
 }
 
-- (void)loadUserWithUsername:(NSString *)username completion:(GetUserCompletion)completion {
-    [self.Service loadUserWithUsername:username completion:completion];
-}
 
 #pragma mark - WebService Methods
 - (void)loginWithUsername:(NSString *)user password:(NSString *)pass completion:(SuccessfulLoginBlock)completion {
@@ -145,6 +142,10 @@ static HNManager * _sharedManager = nil;
     
     // Post Notification
     [[NSNotificationCenter defaultCenter] postNotificationName:@"DidLoginOrOut" object:nil];
+}
+
+- (void)loadUserWithUsername:(NSString *)username completion:(GetUserCompletion)completion {
+    [self.Service loadUserWithUsername:username completion:completion];
 }
 
 - (void)loadPostsWithFilter:(PostFilterType)filter completion:(GetPostsCompletion)completion {
@@ -193,13 +194,7 @@ static HNManager * _sharedManager = nil;
     }
     
     // Make the Webservice Call
-    [self.Service voteOnHNObject:hnObject direction:direction completion:^(BOOL success) {
-        [self addHNObjectToVotedOnDictionary:hnObject direction:direction];
-        
-        if (completion) {
-            completion(success);
-        }
-    }];
+    [self.Service voteOnHNObject:hnObject direction:direction completion:completion];
 }
 
 - (void)fetchSubmissionsForUser:(NSString *)user urlAddition:(NSString *)urlAddition completion:(GetPostsCompletion)completion {
@@ -288,6 +283,7 @@ static HNManager * _sharedManager = nil;
     if (jsonData) {
         self.JSONConfiguration = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:nil];
     }
+    
     
     request.cachePolicy = NSURLCacheStorageNotAllowed;
     [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {

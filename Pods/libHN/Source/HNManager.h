@@ -76,7 +76,7 @@ typedef void (^SuccessfulLoginBlock) (HNUser *user);
 /**
  Loads a user from HN.
  @param username   - Username of the user to load
- @return    HNUser in the completion block if successful
+ @return    HNUser in the completion block if the user was found
  */
 - (void)loadUserWithUsername:(NSString *)username completion:(GetUserCompletion)completion;
 

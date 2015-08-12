@@ -9,11 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "HFCommentsButton.h"
 #import "HFTableViewCell.h"
+#import "HFUpvotesLabel.h"
 
 @interface HFPostTableViewCell : HFTableViewCell
 
 @property UIImageView *upvotesIconImageView;
-@property UILabel *upvotesLabel;
+@property HFUpvotesLabel *upvotesLabel;
 @property UILabel *infoLabel;
 @property UILabel *titleLabel;
 @property UILabel *domainLabel;
