@@ -82,7 +82,7 @@
                                                                                  metrics:nil
                                                                                    views:NSDictionaryOfVariableBindings(_domainLabel, _commentsButton)]];
         
-        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-4-[_upvotesLabel]-4-[_titleLabel]-4-[_domainLabel]-4-|"
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-6-[_upvotesLabel]-4-[_titleLabel]-4-[_domainLabel]-4-|"
                                                                                  options:0
                                                                                  metrics:nil
                                                                                    views:NSDictionaryOfVariableBindings(_upvotesLabel, _titleLabel, _domainLabel)]];

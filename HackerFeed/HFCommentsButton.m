@@ -73,7 +73,7 @@
 //}
 
 - (void)applyTheme {
-    self.titleLabel.font = [UIFont applicationFontOfSize:16.0f];
+    self.titleLabel.font = [UIFont semiboldApplicationFontOfSize:16.0f];
 }
 
 - (void)setEnabled:(BOOL)enabled {
