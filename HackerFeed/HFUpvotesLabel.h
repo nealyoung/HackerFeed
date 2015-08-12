@@ -12,6 +12,4 @@
 
 @property (nonatomic) BOOL backgroundHighlighted;
 
-- (void)setBackgroundHighlighted:(BOOL)backgroundHighlighted animated:(BOOL)animated;
-
 @end

@@ -35,12 +35,11 @@
 }
 
 - (void)commonInit {
-    [self setImage:[[UIImage imageNamed:@"CommentsIcon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
-    self.titleLabel.textAlignment = NSTextAlignmentCenter;
-    self.imageView.contentMode = UIViewContentModeCenter;
-    self.imageView.layer.shouldRasterize = YES;
     [self applyTheme];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applyTheme) name:kThemeChangedNotificationName object:nil];
+    
+    self.titleLabel.textAlignment = NSTextAlignmentCenter;
+    self.opaque = YES;
 }
 
 - (void)layoutSubviews {
@@ -52,38 +51,107 @@
                                          CGRectGetMidY(self.bounds) - (0.08f * CGRectGetHeight(self.bounds)));
 }
 
-//- (void)drawRect:(CGRect)rect {
-//    CGContextRef ctx = UIGraphicsGetCurrentContext();
-//    CGMutablePathRef path = CGPathCreateMutable();
-//    
-//    CGPathMoveToPoint(path, NULL, CGRectGetWidth(rect) * 0.08f, CGRectGetHeight(rect) * 0.15f);
-//    CGPathAddLineToPoint(path, NULL, CGRectGetWidth(rect) * 0.08f, CGRectGetHeight(rect) * 0.7f);
-//    CGPathAddLineToPoint(path, NULL, CGRectGetWidth(rect) * 0.29f, CGRectGetHeight(rect) * 0.7f);
-//    CGPathAddLineToPoint(path, NULL, CGRectGetWidth(rect) * 0.27f, CGRectGetHeight(rect) * 0.9f);
-//    CGPathAddLineToPoint(path, NULL, CGRectGetWidth(rect) * 0.5f, CGRectGetHeight(rect) * 0.7f);
-//    CGPathAddLineToPoint(path, NULL, CGRectGetWidth(rect) * 0.92f, CGRectGetHeight(rect) * 0.7f);
-//    CGPathAddLineToPoint(path, NULL, CGRectGetWidth(rect) * 0.92f, CGRectGetHeight(rect) * 0.15f);
-//    CGPathCloseSubpath(path);
-//    CGContextAddPath(ctx, path);
-//    CGColorRef strokeColor = self.tintColor.CGColor;
-//    CGContextSetStrokeColorWithColor(ctx, strokeColor);
-//    CGContextSetLineWidth(ctx, 1.0f);
-//    
-//    CGContextStrokePath(ctx);
-//}
+- (void)drawRect:(CGRect)rect {
+    [super drawRect:rect];
+    
+    CGFloat cornerRadius = 4.0f;
+    CGRect speechBubbleRect = CGRectMake(0.08f * CGRectGetWidth(rect),
+                                         0.12f * CGRectGetHeight(rect),
+                                         0.84f * CGRectGetWidth(rect),
+                                         0.58f * CGRectGetHeight(rect));
+    
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    CGMutablePathRef path = CGPathCreateMutable();
+    
+    // Start in top left corner,
+    CGPathMoveToPoint(path, NULL, speechBubbleRect.origin.x + cornerRadius, speechBubbleRect.origin.y ) ;
+    
+    CGFloat minX = CGRectGetMinX(speechBubbleRect);
+    CGFloat minY = CGRectGetMinY(speechBubbleRect);
+
+    CGFloat maxX = CGRectGetMaxX(speechBubbleRect);
+    CGFloat maxY = CGRectGetMaxY(speechBubbleRect);
+    
+    // Move to top right corner
+    CGPathAddArcToPoint(path,
+                        NULL,
+                        maxX,
+                        minY,
+                        maxX,
+                        minY + cornerRadius,
+                        cornerRadius);
+    
+    // Bottom right corner
+    CGPathAddArcToPoint(path,
+                        NULL,
+                        maxX,
+                        maxY,
+                        maxX - cornerRadius,
+                        maxY,
+                        cornerRadius);
+    
+    // Right side of bottom triangle
+    CGPathAddArcToPoint(path,
+                        NULL,
+                        minX + CGRectGetWidth(speechBubbleRect) * 0.5f,
+                        maxY,
+                        minX + CGRectGetWidth(speechBubbleRect) * 0.5f,
+                        maxY,
+                        cornerRadius);
+    
+    // Bottom of triangle
+    CGPathAddArcToPoint(path,
+                        NULL,
+                        minX + CGRectGetWidth(speechBubbleRect) * 0.24f,
+                        maxY + CGRectGetHeight(speechBubbleRect) * 0.38f,
+                        minX + CGRectGetWidth(speechBubbleRect) * 0.24f,
+                        maxY + CGRectGetHeight(speechBubbleRect) * 0.38f,
+                        cornerRadius);
+    
+    // Left side of bottom triangle
+    CGPathAddArcToPoint(path,
+                        NULL,
+                        minX + CGRectGetWidth(speechBubbleRect) * 0.24f,
+                        maxY,
+                        minX + CGRectGetWidth(speechBubbleRect) * 0.24f,
+                        maxY,
+                        cornerRadius);
+    
+    // Bottom left corner
+    CGPathAddArcToPoint(path,
+                        NULL,
+                        minX,
+                        maxY,
+                        minX,
+                        maxY - cornerRadius,
+                        cornerRadius);
+    
+    // Top right corner
+    CGPathAddArcToPoint(path,
+                        NULL,
+                        minX,
+                        minY,
+                        minX + cornerRadius,
+                        minY, cornerRadius);
+    
+    CGPathCloseSubpath(path);
+    CGContextAddPath(ctx, path);
+    CGColorRef strokeColor = self.enabled ? [HFInterfaceTheme activeTheme].accentColor.CGColor : [[HFInterfaceTheme activeTheme].secondaryTextColor hf_colorLightenedByFactor:0.2f].CGColor;
+    CGContextSetStrokeColorWithColor(ctx, strokeColor);
+    CGContextSetLineWidth(ctx, 1.0f);
+    
+    CGContextStrokePath(ctx);
+}
 
 - (void)applyTheme {
     self.titleLabel.font = [UIFont semiboldApplicationFontOfSize:16.0f];
+    [self setNeedsDisplay];
 }
 
 - (void)setEnabled:(BOOL)enabled {
-    if (enabled) {
-        [self setImage:[[UIImage imageNamed:@"CommentsIcon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
-    } else {
-        [self setImage:[[UIImage imageNamed:@"JobsIcon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
-    }
-    
     [super setEnabled:enabled];
+    
+    [self setNeedsDisplay];
 }
 
 - (void)dealloc {

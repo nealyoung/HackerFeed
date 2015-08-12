@@ -13,7 +13,6 @@
 
 @interface HFPostTableViewCell : HFTableViewCell
 
-@property UIImageView *upvotesIconImageView;
 @property HFUpvotesLabel *upvotesLabel;
 @property UILabel *infoLabel;
 @property UILabel *titleLabel;

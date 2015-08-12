@@ -208,6 +208,7 @@
     
     [self.commentsButton setNeedsDisplay];
     [self.commentsButton setTitleColor:[HFInterfaceTheme activeTheme].secondaryTextColor forState:UIControlStateNormal];
+    self.commentsButton.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.02f];
 }
 
 @end

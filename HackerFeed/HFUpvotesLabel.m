@@ -32,7 +32,6 @@
     CGSize size = [super intrinsicContentSize];
     
     if (self.text) {
-        size.height += 2.0f;
         size.width += 8.0f;
     }
     
