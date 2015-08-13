@@ -85,19 +85,6 @@ static const CGFloat kDefaultVerticalInset = 12.0f;
 
 - (void)containerViewWillLayoutSubviews {
     self.presentedView.frame = CGRectInset(self.containerView.bounds, 18.0f, 24.0f);
-    
-    NSLog(@"%@", NSStringFromCGSize(self.containerView.frame.size));
-    NSLog(@"Will Layout Container Subviews");
-}
-
-
-- (void)containerViewDidLayoutSubviews {
-    NSLog(@"%@", NSStringFromCGSize(self.containerView.frame.size));
-    NSLog(@"Did Layout Container Subviews");
-}
-
-- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
-    NSLog(@"%@", NSStringFromCGSize(size));
 }
 
 - (void)dismissalTransitionDidEnd:(BOOL)completed {
