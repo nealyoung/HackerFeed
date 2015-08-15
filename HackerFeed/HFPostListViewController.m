@@ -259,13 +259,18 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
                 
                 [UIView animateWithDuration:0.3f
                                       delay:0.0f
-                                    options:UIViewAnimationOptionAutoreverse
+                                    options:0
                                  animations:^{
                                      cell.upvotesLabel.layer.transform = CATransform3DMakeScale(1.1f, 1.1f, 1.0f);
-                                     //                                     cell.upvotesIconImageView.layer.transform = CATransform3DIdentity;
                                  }
                                  completion:^(BOOL finished) {
-                                     cell.upvotesLabel.layer.transform = CATransform3DIdentity;
+                                     [UIView animateWithDuration:0.3f
+                                                           delay:0.0f
+                                                         options:0
+                                                      animations:^{
+                                                          cell.upvotesLabel.layer.transform = CATransform3DIdentity;
+                                                      }
+                                                      completion:nil];
                                  }];
             }
         }];
