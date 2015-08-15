@@ -1,0 +1,5 @@
+#include "NYAlertViewController.xcconfig"
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/NYAlertViewController" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/DACircularProgress" "${PODS_ROOT}/Headers/Public/FCUtilities" "${PODS_ROOT}/Headers/Public/MCSwipeTableViewCell" "${PODS_ROOT}/Headers/Public/NYAlertViewController" "${PODS_ROOT}/Headers/Public/NYSegmentedControl" "${PODS_ROOT}/Headers/Public/PBWebViewController" "${PODS_ROOT}/Headers/Public/SSPullToRefresh" "${PODS_ROOT}/Headers/Public/SVProgressHUD" "${PODS_ROOT}/Headers/Public/SVPullToRefresh" "${PODS_ROOT}/Headers/Public/TTTAttributedLabel" "${PODS_ROOT}/Headers/Public/ZFDragableModalTransition" "${PODS_ROOT}/Headers/Public/libHN"
+PODS_ROOT = ${SRCROOT}
+SKIP_INSTALL = YES

@@ -46,7 +46,8 @@
         self.backgroundColor = [HFInterfaceTheme activeTheme].accentColor;
         self.textColor = [HFInterfaceTheme activeTheme].backgroundColor;
     } else {
-        self.backgroundColor = [UIColor clearColor];
+        // We don't make the label's backgroundColor transparent to avoid blended layers
+        self.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
         self.textColor = [HFInterfaceTheme activeTheme].accentColor;
     }
 }

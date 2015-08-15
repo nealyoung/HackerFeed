@@ -3,6 +3,7 @@ PODS:
   - FCUtilities (0.1.0)
   - libHN (4.1.0)
   - MCSwipeTableViewCell (2.1.4)
+  - NYAlertViewController (1.0.2)
   - NYSegmentedControl (1.0.5)
   - PBWebViewController (0.3)
   - SSPullToRefresh (1.2.4)
@@ -16,6 +17,7 @@ DEPENDENCIES:
   - FCUtilities (from `https://github.com/marcoarment/FCUtilities.git`)
   - libHN (from `https://github.com/nealyoung/libHN.git`)
   - MCSwipeTableViewCell
+  - NYAlertViewController
   - NYSegmentedControl
   - PBWebViewController
   - SSPullToRefresh
@@ -43,6 +45,7 @@ SPEC CHECKSUMS:
   FCUtilities: e313e82e37e90edda5dbe8076b19401795b040c1
   libHN: fe671e9d39466235239b793f1f0181baadb327b2
   MCSwipeTableViewCell: 1b303e16c3a26b1982f3a68386e9b8c5fc8344c3
+  NYAlertViewController: cd7b5d2fdfc3ff45a673d2406ffb31b1361ea7dd
   NYSegmentedControl: 6c0dd98de6814a4e294c772ce4ad8bffecc480db
   PBWebViewController: 909b1505da6ba7c5c82519a6457246027926061e
   SSPullToRefresh: 369e862c1d6528c7a354fc85cd4763d4e670e9af

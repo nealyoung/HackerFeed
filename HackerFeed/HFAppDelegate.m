@@ -23,37 +23,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    [[NSNotificationCenter defaultCenter] addObserverForName:UIKeyboardWillChangeFrameNotification
-                                                      object:nil
-                                                       queue:[NSOperationQueue mainQueue]
-                                                  usingBlock:^(NSNotification *note) {
-                                                      CGRect keyboardFrame = [self.window convertRect:[(NSValue *)note.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue]
-                                                                                             fromView:nil];
-                                                      CGRect viewFrame = self.window.frame;
-                                                      
-                                                      NSLog(@"Original frame: %@", NSStringFromCGRect(viewFrame));
-                                                      
-                                                      viewFrame.size.height = CGRectGetMinY(keyboardFrame);
-                                                      
-                                                      NSLog(@"New view frame: %@\n", NSStringFromCGRect(viewFrame));
-                                                      
-                                                      UIViewAnimationCurve curve = [note.userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue];
-                                                      NSTimeInterval animationDuration = [note.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-                                                      
-                                                      // There is no animationDuration key when the user shows/hides the suggestions bar under iOS 8
-                                                      if (animationDuration == 0.0f) {
-                                                          animationDuration = 0.25f;
-                                                      }
-                                                      
-                                                      [UIView animateWithDuration:animationDuration
-                                                                            delay:0
-                                                                          options:UIViewAnimationOptionBeginFromCurrentState | curve
-                                                                       animations:^{
-                                                                           self.window.frame = viewFrame;
-                                                                       }
-                                                                       completion:nil];
-                                                  }];
-    
     HFPostListViewController *topStoriesViewController = [[HFPostListViewController alloc] initWithNibName:nil bundle:nil];
     topStoriesViewController.dataSource = [[HFFilterPostDataSource alloc] initWithPostFilterType:PostFilterTypeTop image:[UIImage imageNamed:@"TopStoriesIcon"]];
     topStoriesViewController.title = NSLocalizedString(@"Top Stories", nil);
@@ -106,12 +75,46 @@
     [self.window makeKeyAndVisible];
     
     [HFInterfaceTheme setupAppearanceForActiveTheme];
+    [self setupKeyboardFrameChangeNotificationHandler];
     
     return YES;
 }
 
 - (void)applicationWillResignActive:(nonnull UIApplication *)application {
     NSLog(@"Resigning active application");
+}
+
+- (void)setupKeyboardFrameChangeNotificationHandler {
+    [[NSNotificationCenter defaultCenter] addObserverForName:UIKeyboardWillChangeFrameNotification
+                                                      object:nil
+                                                       queue:[NSOperationQueue mainQueue]
+                                                  usingBlock:^(NSNotification *note) {
+                                                      CGRect keyboardFrame = [self.window convertRect:[(NSValue *)note.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue]
+                                                                                             fromView:nil];
+                                                      CGRect viewFrame = self.window.frame;
+                                                      
+                                                      NSLog(@"Original frame: %@", NSStringFromCGRect(viewFrame));
+                                                      
+                                                      viewFrame.size.height = CGRectGetMinY(keyboardFrame);
+                                                      
+                                                      NSLog(@"New view frame: %@\n", NSStringFromCGRect(viewFrame));
+                                                      
+                                                      UIViewAnimationCurve curve = [note.userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue];
+                                                      NSTimeInterval animationDuration = [note.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+                                                      
+                                                      // There is no animationDuration key when the user shows/hides the suggestions bar under iOS 8
+                                                      if (animationDuration == 0.0f) {
+                                                          animationDuration = 0.25f;
+                                                      }
+                                                      
+                                                      [UIView animateWithDuration:animationDuration
+                                                                            delay:0
+                                                                          options:UIViewAnimationOptionBeginFromCurrentState | curve
+                                                                       animations:^{
+                                                                           self.window.frame = viewFrame;
+                                                                       }
+                                                                       completion:nil];
+                                                  }];
 }
 
 - (void)customizeAppearance {

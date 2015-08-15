@@ -113,13 +113,19 @@
     return self;
 }
 
-//- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
-//    // By default, setHighlighted:animated: makes the backgrounds subviews of the cell's contentView clear, we want to override this behavior so the comment button background does not disappear when the cell is highlighted
-//    UIColor *commentBackgroundColor = self.commentButtonBackground.backgroundColor;
-//    [super setHighlighted:highlighted animated:animated];
-//    self.commentButtonBackground.backgroundColor = commentBackgroundColor;
-//}
-//
+- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
+    [super setHighlighted:highlighted animated:animated];
+
+    // To improve scrolling performance, the upvotes label is opaque, so we need to set its background color appropriately when the cell is highlighted
+    if (!self.upvotesLabel.backgroundHighlighted) {
+        if (highlighted) {
+            self.upvotesLabel.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.08f];
+        } else {
+            self.upvotesLabel.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
+        }
+    }
+}
+
 //- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
 //    UIColor *commentBackgroundColor = self.commentButtonBackground.backgroundColor;
 //    [super setSelected:selected animated:animated];
@@ -183,8 +189,6 @@
     
     // Set the max layout width of the multi-line information label to the calculated width of the label after auto layout has run
     self.titleLabel.preferredMaxLayoutWidth = CGRectGetWidth(self.titleLabel.frame);
-    
-    //[self layoutIfNeeded];
 }
 
 - (void)applyTheme {

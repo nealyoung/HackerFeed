@@ -10,7 +10,7 @@
 
 #import "DMScaleTransition.h"
 #import "HFAlertViewController.h"
-#import "HFLoginPopupController.h"
+#import "HFLoginPopupManager.h"
 #import "HFModalPresentationManager.h"
 #import "HFModalWebViewController.h"
 #import "HFNavigationBar.h"
@@ -30,7 +30,7 @@
 @property DMScaleTransition *scaleTransition;
 @property SSPullToRefreshView *pullToRefreshView;
 
-@property (nonatomic) HFLoginPopupController *loginPopupController;
+@property (nonatomic) HFLoginPopupManager *loginPopupController;
 @property (nonatomic) HFModalPresentationManager *modalPresentationManager;
 
 - (void)applyTheme;
@@ -126,9 +126,9 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kThemeChangedNotificationName object:nil];
 }
 
-- (HFLoginPopupController *)loginPopupController {
+- (HFLoginPopupManager *)loginPopupController {
     if (!_loginPopupController) {
-        _loginPopupController = [[HFLoginPopupController alloc] init];
+        _loginPopupController = [[HFLoginPopupManager alloc] init];
     }
     
     return _loginPopupController;
@@ -259,19 +259,13 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
                 
                 [UIView animateWithDuration:0.3f
                                       delay:0.0f
-                                    options:UIViewAnimationOptionCurveEaseOut
+                                    options:UIViewAnimationOptionAutoreverse
                                  animations:^{
                                      cell.upvotesLabel.layer.transform = CATransform3DMakeScale(1.1f, 1.1f, 1.0f);
                                      //                                     cell.upvotesIconImageView.layer.transform = CATransform3DIdentity;
                                  }
                                  completion:^(BOOL finished) {
-                                     [UIView animateWithDuration:0.3f
-                                                           delay:0.0f
-                                                         options:UIViewAnimationOptionCurveEaseIn
-                                                      animations:^{
-                                                          cell.upvotesLabel.layer.transform = CATransform3DIdentity;
-                                                      }
-                                                      completion:nil];
+                                     cell.upvotesLabel.layer.transform = CATransform3DIdentity;
                                  }];
             }
         }];
@@ -279,18 +273,30 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
 }
 
 - (void)commentsButtonPressed:(HFCommentsButton *)sender {
-    HFPostViewController *postViewController = [[HFPostViewController alloc] initWithNibName:nil bundle:nil];
-    UINavigationController *postNavigationController = [[UINavigationController alloc] initWithNavigationBarClass:[HFNavigationBar class]
-                                                                                                     toolbarClass:[HFToolbar class]];
-    postNavigationController.viewControllers = @[postViewController];
+    UINavigationController *postNavigationController;
+    HFPostViewController *postViewController;
+    
+    // If the split view controller is displaying the post list VC and the post VC, we can access the visible post VC through the viewControllers property of UISplitViewcontroller. Otherwise, we need to instantiate and display a new post VC to show comments
+    if ([self.splitViewController.viewControllers count] == 2) {
+        postNavigationController = [self.splitViewController.viewControllers lastObject];
+        postViewController = [postNavigationController.viewControllers firstObject];
+    } else {
+        postViewController = [[HFPostViewController alloc] initWithNibName:nil bundle:nil];
+        self.splitViewController.delegate = postViewController;
+        
+        postNavigationController = [[UINavigationController alloc] initWithNavigationBarClass:[HFNavigationBar class]
+                                                                                 toolbarClass:[HFToolbar class]];
+        postNavigationController.viewControllers = @[postViewController];
+    }
     
     HFCommentsButton *commentsButton = (HFCommentsButton *)sender;
     HNPost *post = self.dataSource.posts[commentsButton.tag];
     postViewController.post = post;
     
     [post markAsViewed];
-    HFPostTableViewCell *cell = (HFPostTableViewCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:sender.tag inSection:0]];
+    
     // Reconfigure the cell so the title color immediately reflects the link's read state
+    HFPostTableViewCell *cell = (HFPostTableViewCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:sender.tag inSection:0]];
     [self configureCell:cell forPost:post];
     
     [self showDetailViewController:postNavigationController sender:self];

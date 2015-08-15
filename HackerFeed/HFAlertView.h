@@ -10,6 +10,8 @@
 
 @interface HFAlertView : UIView
 
+@property (nonatomic) CGFloat maximumWidth;
+
 @property UILabel *titleLabel;
 @property UILabel *textLabel;
 @property (nonatomic) UIView *contentView;

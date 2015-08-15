@@ -8,7 +8,7 @@
 
 #import "HFButtonTableViewCell.h"
 #import "HFInterfaceTheme.h"
-#import "HFLoginPopupController.h"
+#import "HFLoginPopupManager.h"
 #import "HFLoginViewController.h"
 #import "HFProfileViewController.h"
 #import "HFSettingsViewController.h"
@@ -78,7 +78,7 @@ static NSInteger const kAboutGitHubRow = 0;
 }
 
 - (void)loginButtonPressed {
-    HFLoginPopupController *loginPopupController = [[HFLoginPopupController alloc] init];
+    HFLoginPopupManager *loginPopupController = [[HFLoginPopupManager alloc] init];
     loginPopupController.message = @"";
     loginPopupController.loginCompletionBlock = ^(HNUser *user) {
         [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:kProfileSection] withRowAnimation:UITableViewRowAnimationAutomatic];
@@ -257,7 +257,7 @@ static NSInteger const kAboutGitHubRow = 0;
                     profileViewController.user = [HNManager sharedManager].SessionUser;
                     [self.navigationController pushViewController:profileViewController animated:YES];
                 } else {
-                    HFLoginPopupController *loginPopupController = [[HFLoginPopupController alloc] init];
+                    HFLoginPopupManager *loginPopupController = [[HFLoginPopupManager alloc] init];
                     loginPopupController.message = @"";
                     [loginPopupController showInViewController:self];
 //                    HFLoginViewController *loginViewController = [[HFLoginViewController alloc] initWithNibName:nil bundle:nil];

@@ -13,7 +13,8 @@
 
 @interface HFAlertView ()
 
-@property UIView *contentViewContainerView;
+@property (nonatomic) NSLayoutConstraint *alertBackgroundWidthConstraint;
+@property (nonatomic) UIView *contentViewContainerView;
 @property (nonatomic) NSArray *actionButtons;
 
 - (void)actionButtonPressed:(HFBorderedButton *)button;
@@ -26,6 +27,8 @@
     self = [super initWithFrame:frame];
     
     if (self) {
+        self.maximumWidth = 480.0f;
+
         _backgroundView = [[UIView alloc] initWithFrame:CGRectZero];
         [self.backgroundView setTranslatesAutoresizingMaskIntoConstraints:NO];
         self.backgroundView.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorLightenedByFactor:0.04f];
@@ -70,10 +73,6 @@
 //                                                                                              metrics:nil
 //                                                                                                views:NSDictionaryOfVariableBindings(_contentView)]];
         
-        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_backgroundView]-|"
-                                                                     options:0
-                                                                     metrics:nil
-                                                                       views:NSDictionaryOfVariableBindings(_backgroundView)]];
         //
         //        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.backgroundView
         //                                                         attribute:NSLayoutAttributeHeight
@@ -83,13 +82,30 @@
         //                                                        multiplier:1.0f
         //                                                          constant:-48.0f]];
         
-//        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.backgroundView
-//                                                         attribute:NSLayoutAttributeCenterX
-//                                                         relatedBy:NSLayoutRelationEqual
-//                                                            toItem:self
-//                                                         attribute:NSLayoutAttributeCenterX
-//                                                        multiplier:1.0f
-//                                                          constant:0.0f]];
+        CGFloat alertBackgroundViewWidth = MIN(CGRectGetWidth([UIApplication sharedApplication].keyWindow.bounds),
+                                               CGRectGetHeight([UIApplication sharedApplication].keyWindow.bounds)) * 0.8f;
+        
+        if (alertBackgroundViewWidth > self.maximumWidth) {
+            alertBackgroundViewWidth = self.maximumWidth;
+        }
+        
+        _alertBackgroundWidthConstraint = [NSLayoutConstraint constraintWithItem:self.backgroundView
+                                                                       attribute:NSLayoutAttributeWidth
+                                                                       relatedBy:NSLayoutRelationEqual
+                                                                          toItem:nil
+                                                                       attribute:NSLayoutAttributeNotAnAttribute
+                                                                      multiplier:0.0f
+                                                                        constant:alertBackgroundViewWidth];
+        
+        [self addConstraint:self.alertBackgroundWidthConstraint];
+
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.backgroundView
+                                                         attribute:NSLayoutAttributeCenterX
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self
+                                                         attribute:NSLayoutAttributeCenterX
+                                                        multiplier:1.0f
+                                                          constant:0.0f]];
         
         self.backgroundViewVerticalCenteringConstraint = [NSLayoutConstraint constraintWithItem:self.backgroundView
                                                                                       attribute:NSLayoutAttributeCenterY

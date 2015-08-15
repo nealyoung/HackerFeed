@@ -6,6 +6,7 @@ target "HackerFeed" do
   pod 'FCUtilities', :git => 'https://github.com/marcoarment/FCUtilities.git'
   pod 'libHN', :git => 'https://github.com/nealyoung/libHN.git'
   pod 'MCSwipeTableViewCell', inhibit_warnings: true
+  pod 'NYAlertViewController'
   pod 'NYSegmentedControl'
   pod 'PBWebViewController'
   pod 'SSPullToRefresh'

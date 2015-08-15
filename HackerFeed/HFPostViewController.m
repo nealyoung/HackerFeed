@@ -236,6 +236,9 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
     
     self.expandedIndexPath = nil;
     
+    self.commentToReply = nil;
+    [self.commentToolbar.textView resignFirstResponder];
+    
     // Scroll to the top of the table view
     [self.tableView scrollRectToVisible:CGRectMake(0.0f, 0.0f, 1.0f, 1.0f) animated:YES];
 }

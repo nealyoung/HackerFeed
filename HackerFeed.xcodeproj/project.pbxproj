@@ -36,7 +36,7 @@
 		0E4283211A50682700A0CC1F /* libPods-HackerFeed.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E4283201A50682700A0CC1F /* libPods-HackerFeed.a */; };
 		0E511CA3198C0B3300F94E9F /* HFTextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E511CA2198C0B3300F94E9F /* HFTextFieldTableViewCell.m */; };
 		0E520C53197C73F900E94DBD /* HFDropdownMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E520C52197C73F900E94DBD /* HFDropdownMenuItem.m */; };
-		0E5325CD1B54B68900301CE0 /* HFLoginPopupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E5325CC1B54B68900301CE0 /* HFLoginPopupController.m */; };
+		0E5325CD1B54B68900301CE0 /* HFLoginPopupManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E5325CC1B54B68900301CE0 /* HFLoginPopupManager.m */; };
 		0E5325D01B54BBBC00301CE0 /* HFLoginPopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E5325CF1B54BBBC00301CE0 /* HFLoginPopupView.m */; };
 		0E5424E719C4C07D00FF24A7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E5424E619C4C07D00FF24A7 /* LaunchScreen.xib */; };
 		0E5424EA19C4DA5F00FF24A7 /* HFModalWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E5424E919C4DA5F00FF24A7 /* HFModalWebViewController.m */; };
@@ -169,8 +169,8 @@
 		0E511CA2198C0B3300F94E9F /* HFTextFieldTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFTextFieldTableViewCell.m; sourceTree = "<group>"; };
 		0E520C51197C73F900E94DBD /* HFDropdownMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFDropdownMenuItem.h; sourceTree = "<group>"; };
 		0E520C52197C73F900E94DBD /* HFDropdownMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFDropdownMenuItem.m; sourceTree = "<group>"; };
-		0E5325CB1B54B68900301CE0 /* HFLoginPopupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFLoginPopupController.h; sourceTree = "<group>"; };
-		0E5325CC1B54B68900301CE0 /* HFLoginPopupController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFLoginPopupController.m; sourceTree = "<group>"; };
+		0E5325CB1B54B68900301CE0 /* HFLoginPopupManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFLoginPopupManager.h; sourceTree = "<group>"; };
+		0E5325CC1B54B68900301CE0 /* HFLoginPopupManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFLoginPopupManager.m; sourceTree = "<group>"; };
 		0E5325CE1B54BBBC00301CE0 /* HFLoginPopupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFLoginPopupView.h; sourceTree = "<group>"; };
 		0E5325CF1B54BBBC00301CE0 /* HFLoginPopupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFLoginPopupView.m; sourceTree = "<group>"; };
 		0E5424E619C4C07D00FF24A7 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
@@ -493,8 +493,8 @@
 				0EDA41501B4DDCBF00A322AF /* HFModalPresentationController.m */,
 				0EDA41511B4DDCBF00A322AF /* HFModalPresentationManager.h */,
 				0EDA41521B4DDCBF00A322AF /* HFModalPresentationManager.m */,
-				0E5325CB1B54B68900301CE0 /* HFLoginPopupController.h */,
-				0E5325CC1B54B68900301CE0 /* HFLoginPopupController.m */,
+				0E5325CB1B54B68900301CE0 /* HFLoginPopupManager.h */,
+				0E5325CC1B54B68900301CE0 /* HFLoginPopupManager.m */,
 			);
 			name = Other;
 			sourceTree = "<group>";
@@ -842,7 +842,7 @@
 				0E1FC635197C4B4700B41804 /* HFPostTableViewCell.m in Sources */,
 				0E5424EA19C4DA5F00FF24A7 /* HFModalWebViewController.m in Sources */,
 				0EC52C5A1B55A12F00C3E8B7 /* HFTextField.m in Sources */,
-				0E5325CD1B54B68900301CE0 /* HFLoginPopupController.m in Sources */,
+				0E5325CD1B54B68900301CE0 /* HFLoginPopupManager.m in Sources */,
 				0E183AAC1AF442F0004E6324 /* HNPost+HFAdditions.m in Sources */,
 				0E5325D01B54BBBC00301CE0 /* HFLoginPopupView.m in Sources */,
 				0EE791C71950318D00925E4F /* main.m in Sources */,

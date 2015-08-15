@@ -145,6 +145,7 @@
 
 - (void)applyTheme {
     self.titleLabel.font = [UIFont semiboldApplicationFontOfSize:16.0f];
+    self.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.02f];
     [self setNeedsDisplay];
 }
 

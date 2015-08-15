@@ -1,26 +1,27 @@
 //
-//  HFLoginPopupController.m
+//  HFLoginPopupManager.m
 //  HackerFeed
 //
 //  Created by Nealon Young on 7/13/15.
 //  Copyright (c) 2015 Nealon Young. All rights reserved.
 //
 
-#import "HFLoginPopupController.h"
+#import "HFLoginPopupManager.h"
 
 #import "HFAlertViewController.h"
 #import "HFLoginPopupView.h"
 #import "HFModalPresentationManager.h"
+#import "NYAlertViewController.h"
 #import "SVProgressHUD.h"
 
-@interface HFLoginPopupController () <UITextFieldDelegate>
+@interface HFLoginPopupManager () <UITextFieldDelegate>
 
 @property (nonatomic) HFLoginPopupView *loginView;
 @property (nonatomic) HFModalPresentationManager *modalPresentationManager;
 
 @end
 
-@implementation HFLoginPopupController
+@implementation HFLoginPopupManager
 
 - (HFModalPresentationManager *)modalPresentationManager {
     if (!_modalPresentationManager) {

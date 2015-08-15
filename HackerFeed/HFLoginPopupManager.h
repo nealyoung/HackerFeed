@@ -1,5 +1,5 @@
 //
-//  HFLoginPopupController.h
+//  HFLoginPopupManager.h
 //  HackerFeed
 //
 //  Created by Nealon Young on 7/13/15.
@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "libHN.h"
 
-typedef void (^HFLoginPopupControllerCompletionBlock)(HNUser *user);
+typedef void (^HFLoginPopupManagerCompletionBlock)(HNUser *user);
 
-@interface HFLoginPopupController : NSObject
+@interface HFLoginPopupManager : NSObject
 
-@property (nonatomic, strong) HFLoginPopupControllerCompletionBlock loginCompletionBlock;
+@property (nonatomic, strong) HFLoginPopupManagerCompletionBlock loginCompletionBlock;
 @property (nonatomic) NSString *message;
 
 - (void)showInViewController:(UIViewController *)viewController;

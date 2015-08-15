@@ -84,7 +84,13 @@ static const CGFloat kDefaultVerticalInset = 12.0f;
 }
 
 - (void)containerViewWillLayoutSubviews {
+    [super containerViewWillLayoutSubviews];
     self.presentedView.frame = CGRectInset(self.containerView.bounds, 18.0f, 24.0f);
+    self.backgroundDimmingView.frame = self.containerView.bounds;
+}
+
+- (void)containerViewDidLayoutSubviews {
+    [super containerViewDidLayoutSubviews];
 }
 
 - (void)dismissalTransitionDidEnd:(BOOL)completed {
