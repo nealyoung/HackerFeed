@@ -164,7 +164,7 @@
 //                self.infoLabel.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.25f];
 //                self.domainLabel.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.25f];
 //            } else {
-//                self.titleLabel.backgroundColor = [HFInterfaceThe`me activeTheme].backgroundColor;
+//                self.titleLabel.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
 //                self.infoLabel.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
 //                self.domainLabel.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
 //            }

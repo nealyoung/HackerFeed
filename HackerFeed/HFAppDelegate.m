@@ -88,19 +88,15 @@
     [[NSNotificationCenter defaultCenter] addObserverForName:UIKeyboardWillChangeFrameNotification
                                                       object:nil
                                                        queue:[NSOperationQueue mainQueue]
-                                                  usingBlock:^(NSNotification *note) {
-                                                      CGRect keyboardFrame = [self.window convertRect:[(NSValue *)note.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue]
+                                                  usingBlock:^(NSNotification *notification) {
+                                                      CGRect keyboardFrame = [self.window convertRect:[(NSValue *)notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue]
                                                                                              fromView:nil];
                                                       CGRect viewFrame = self.window.frame;
                                                       
-                                                      NSLog(@"Original frame: %@", NSStringFromCGRect(viewFrame));
-                                                      
                                                       viewFrame.size.height = CGRectGetMinY(keyboardFrame);
                                                       
-                                                      NSLog(@"New view frame: %@\n", NSStringFromCGRect(viewFrame));
-                                                      
-                                                      UIViewAnimationCurve curve = [note.userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue];
-                                                      NSTimeInterval animationDuration = [note.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+                                                      UIViewAnimationCurve curve = [notification.userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue];
+                                                      NSTimeInterval animationDuration = [notification.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
                                                       
                                                       // There is no animationDuration key when the user shows/hides the suggestions bar under iOS 8
                                                       if (animationDuration == 0.0f) {
