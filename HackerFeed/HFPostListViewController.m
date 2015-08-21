@@ -259,14 +259,14 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
                 
                 [UIView animateWithDuration:0.3f
                                       delay:0.0f
-                                    options:0
+                                    options:UIViewAnimationOptionCurveEaseOut
                                  animations:^{
-                                     cell.upvotesLabel.layer.transform = CATransform3DMakeScale(1.1f, 1.1f, 1.0f);
+                                     cell.upvotesLabel.layer.transform = CATransform3DMakeScale(1.14f, 1.14f, 1.0f);
                                  }
                                  completion:^(BOOL finished) {
                                      [UIView animateWithDuration:0.3f
                                                            delay:0.0f
-                                                         options:0
+                                                         options:UIViewAnimationOptionCurveEaseIn
                                                       animations:^{
                                                           cell.upvotesLabel.layer.transform = CATransform3DIdentity;
                                                       }
