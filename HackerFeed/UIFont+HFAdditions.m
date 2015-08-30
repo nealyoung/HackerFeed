@@ -47,6 +47,8 @@
 }
 
 + (UIFont *)preferredApplicationFontForTextStyle:(NSString *)textStyle {
+    return [UIFont preferredFontForTextStyle:textStyle];
+    
     UIFontDescriptor *preferredSystemFontDescriptor = [UIFontDescriptor preferredFontDescriptorWithTextStyle:textStyle];
     CGFloat preferredFontSize = preferredSystemFontDescriptor.pointSize;
     

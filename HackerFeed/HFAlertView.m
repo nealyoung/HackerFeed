@@ -37,7 +37,7 @@
         
         _titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         [self.titleLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
-        self.titleLabel.font = [UIFont semiboldApplicationFontOfSize:18.0f];
+        self.titleLabel.font = [UIFont preferredApplicationFontForTextStyle:UIFontTextStyleHeadline];
         self.titleLabel.textAlignment = NSTextAlignmentCenter;
         self.titleLabel.textColor = [HFInterfaceTheme activeTheme].textColor;
         self.titleLabel.text = NSLocalizedString(@"Title Label", nil);
@@ -49,7 +49,7 @@
         self.textLabel.numberOfLines = 0;
         self.textLabel.textAlignment = NSTextAlignmentCenter;
         self.textLabel.textColor = [HFInterfaceTheme activeTheme].secondaryTextColor;
-        self.textLabel.font = [UIFont applicationFontOfSize:16.0f];
+        self.textLabel.font = [UIFont preferredApplicationFontForTextStyle:UIFontTextStyleSubheadline];
         self.textLabel.text = NSLocalizedString(@"Message Label", nil);
         [self.backgroundView addSubview:self.textLabel];
         
@@ -190,13 +190,13 @@
         [button addTarget:self action:@selector(actionButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
         
         [button setTranslatesAutoresizingMaskIntoConstraints:NO];
-        button.titleLabel.font = [UIFont semiboldApplicationFontOfSize:16.0f];
+        button.titleLabel.font = [UIFont systemFontOfSize:16.0f weight:UIFontWeightSemibold];
         [button setTitle:action.title forState:UIControlStateNormal];
         
         if (action.style == UIAlertActionStyleCancel) {
-            button.titleLabel.font = [UIFont applicationFontOfSize:16.0f];
+            button.titleLabel.font = [UIFont systemFontOfSize:16.0f];
         } else {
-            button.titleLabel.font = [UIFont semiboldApplicationFontOfSize:16.0f];
+            button.titleLabel.font = [UIFont systemFontOfSize:16.0f weight:UIFontWeightSemibold];
         }
         
         if (action.style == UIAlertActionStyleCancel) {

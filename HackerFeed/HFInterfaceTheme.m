@@ -15,16 +15,16 @@ static HFInterfaceTheme *_activeTheme;
 @implementation HFInterfaceTheme
 
 + (void)setupAppearanceForActiveTheme {
-    [[UILabel appearanceWhenContainedIn:[UITableViewHeaderFooterView class], nil] setFont:[UIFont applicationFontOfSize:15.0f]];
+    [[UILabel appearanceWhenContainedIn:[UITableViewHeaderFooterView class], nil] setFont:[UIFont systemFontOfSize:15.0f]];
     
     NSDictionary *barButtonItemTitleTextAttributes = @{NSForegroundColorAttributeName:[[HFInterfaceTheme activeTheme] accentColor],
-                                                       NSFontAttributeName: [UIFont applicationFontOfSize:18.0f]};
+                                                       NSFontAttributeName: [UIFont systemFontOfSize:18.0f]};
     [[UIBarButtonItem appearance] setTitleTextAttributes:barButtonItemTitleTextAttributes forState:UIControlStateNormal];
     
     [SVProgressHUD setFont:[UIFont applicationFontOfSize:15.0f]];
     
     NSDictionary *navigationBarTitleTextAttributes = @{NSForegroundColorAttributeName:[[HFInterfaceTheme activeTheme] accentColor],
-                                                       NSFontAttributeName: [UIFont applicationFontOfSize:19.0f]};
+                                                       NSFontAttributeName: [UIFont systemFontOfSize:19.0f]};
     [[UINavigationBar appearance] setTitleTextAttributes:navigationBarTitleTextAttributes];
     [[UINavigationBar appearance] setBarTintColor:[[HFInterfaceTheme activeTheme] navigationBarColor]];
     [[UINavigationBar appearance] setTranslucent:NO];

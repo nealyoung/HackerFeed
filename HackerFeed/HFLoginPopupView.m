@@ -23,7 +23,7 @@
         self.usernameTextField.autocorrectionType = UITextAutocorrectionTypeNo;
         self.usernameTextField.returnKeyType = UIReturnKeyNext;
         self.usernameTextField.textColor = [HFInterfaceTheme activeTheme].secondaryTextColor;
-        self.usernameTextField.font = [UIFont semiboldApplicationFontOfSize:14.0f];
+        self.usernameTextField.font = [UIFont systemFontOfSize:14.0f weight:UIFontWeightMedium];
         self.usernameTextField.placeholder = NSLocalizedString(@"Username", nil);
         [self addSubview:self.usernameTextField];
         

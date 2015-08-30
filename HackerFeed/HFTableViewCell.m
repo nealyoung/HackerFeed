@@ -87,7 +87,7 @@
     self.textLabel.font = [UIFont preferredApplicationFontForTextStyle:UIFontTextStyleSubheadline];
     self.textLabel.textColor = [HFInterfaceTheme activeTheme].textColor;
 
-    self.detailTextLabel.font = [UIFont preferredApplicationFontForTextStyle:UIFontTextStyleCaption1];
+    self.detailTextLabel.font = [UIFont preferredApplicationFontForTextStyle:UIFontTextStyleSubheadline];
     self.detailTextLabel.textColor = [HFInterfaceTheme activeTheme].secondaryTextColor;
     
     [self setNeedsLayout];

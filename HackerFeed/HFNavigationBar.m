@@ -51,7 +51,7 @@
     self.bottomBorderView.backgroundColor = [[HFInterfaceTheme activeTheme] accentColor];
     
     NSDictionary *navigationBarTitleTextAttributes = @{NSForegroundColorAttributeName:[[HFInterfaceTheme activeTheme] accentColor],
-                                                       NSFontAttributeName: [UIFont applicationFontOfSize:19.0f]};
+                                                       NSFontAttributeName: [UIFont systemFontOfSize:19.0f]};
     self.titleTextAttributes = navigationBarTitleTextAttributes;
 }
 

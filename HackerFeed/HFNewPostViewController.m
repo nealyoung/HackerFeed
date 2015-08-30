@@ -62,8 +62,8 @@ static NSString * const kTextViewTableViewCellIdentifier = @"TextViewTableViewCe
         self.segmentedControl.segmentIndicatorBorderWidth = 0.0f;
         self.segmentedControl.titleTextColor = [HFInterfaceTheme activeTheme].secondaryTextColor;
         self.segmentedControl.selectedTitleTextColor = [HFInterfaceTheme activeTheme].accentColor;
-        self.segmentedControl.selectedTitleFont = [UIFont semiboldApplicationFontOfSize:14.0f];
-        self.segmentedControl.titleFont = [UIFont applicationFontOfSize:14.0f];
+        self.segmentedControl.selectedTitleFont = [UIFont systemFontOfSize:14.0f weight:UIFontWeightMedium];
+        self.segmentedControl.titleFont = [UIFont systemFontOfSize:14.0f];
         [self.segmentedControl sizeToFit];
         self.segmentedControl.cornerRadius = CGRectGetHeight(self.segmentedControl.frame) / 2.0f;
         self.navigationItem.titleView = self.segmentedControl;

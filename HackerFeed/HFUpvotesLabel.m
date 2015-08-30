@@ -39,7 +39,7 @@
 }
 
 - (void)applyTheme {
-    self.font = [UIFont semiboldApplicationFontOfSize:14.0f];
+    self.font = [UIFont systemFontOfSize:14.0f weight:UIFontWeightMedium];
     self.layer.borderColor = [HFInterfaceTheme activeTheme].accentColor.CGColor;
     
     if (self.backgroundHighlighted) {

@@ -53,7 +53,7 @@
                                                            showHNViewController,
                                                            jobsViewController,
                                                            settingsViewController];
-    dropdownMenuViewController.dropdownMenu.itemFont = [UIFont semiboldApplicationFontOfSize:17.0f];
+    dropdownMenuViewController.dropdownMenu.itemFont = [UIFont systemFontOfSize:17.0f weight:UIFontWeightMedium];
     
     [[HNManager sharedManager] startSession];
 //    [self customizeAppearance];
@@ -122,7 +122,7 @@
     self.window.backgroundColor = [UIColor whiteColor];
     
     NSDictionary *navigationBarTitleTextAttributes = @{NSForegroundColorAttributeName:self.window.tintColor,
-                                                       NSFontAttributeName: [UIFont applicationFontOfSize:19.0f]};
+                                                       NSFontAttributeName: [UIFont systemFontOfSize:19.0f]};
     [[UINavigationBar appearance] setTitleTextAttributes:navigationBarTitleTextAttributes];
     [[UINavigationBar appearance] setBarTintColor:[[HFInterfaceTheme activeTheme] navigationBarColor]];
     [[UINavigationBar appearance] setTranslucent:NO];
@@ -131,7 +131,7 @@
     [[UIToolbar appearance] setTranslucent:NO];
     
     NSDictionary *barButtonItemTitleTextAttributes = @{NSForegroundColorAttributeName:self.window.tintColor,
-                                                       NSFontAttributeName: [UIFont applicationFontOfSize:18.0f]};
+                                                       NSFontAttributeName: [UIFont systemFontOfSize:18.0f]};
     [[UIBarButtonItem appearance] setTitleTextAttributes:barButtonItemTitleTextAttributes forState:UIControlStateNormal];
     
     [SVProgressHUD setFont:[UIFont applicationFontOfSize:15.0f]];

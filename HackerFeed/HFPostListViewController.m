@@ -8,6 +8,7 @@
 
 #import "HFPostListViewController.h"
 
+#import <SafariServices/SafariServices.h>
 #import "DMScaleTransition.h"
 #import "HFAlertViewController.h"
 #import "HFLoginPopupManager.h"
@@ -453,19 +454,9 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
         return;
     }
     
-    if (self.splitViewController.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular) {
-        HFModalWebViewController *webViewController = [[HFModalWebViewController alloc] initWithURL:[NSURL URLWithString:post.UrlString]];
-        self.scaleTransition = [DMScaleTransition new];
-        webViewController.transitioningDelegate = self.scaleTransition;
-        [self presentViewController:webViewController animated:YES completion:nil];
-    } else {
-        HFWebViewController *webViewController = [[HFWebViewController alloc] init];
-        webViewController.URL = [NSURL URLWithString:post.UrlString];
-        
-        [self showViewController:webViewController sender:self];
-    }
-    
-    //[self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSURL *postURL = [NSURL URLWithString:post.UrlString];
+    SFSafariViewController *safariViewController = [[SFSafariViewController alloc] initWithURL:postURL];
+    [self presentViewController:safariViewController animated:YES completion:nil];
 }
 
 @end

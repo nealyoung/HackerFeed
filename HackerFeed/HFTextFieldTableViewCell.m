@@ -64,10 +64,10 @@
 - (void)applyTheme {
     [super applyTheme];
     
-    self.titleLabel.font = [UIFont applicationFontOfSize:16.0f];
+    self.titleLabel.font = [UIFont preferredApplicationFontForTextStyle:UIFontTextStyleBody];
     self.titleLabel.textColor = [HFInterfaceTheme activeTheme].textColor;
 
-    self.textField.font = [UIFont applicationFontOfSize:15.0f];
+    self.textField.font = [UIFont preferredApplicationFontForTextStyle:UIFontTextStyleBody];
     self.textField.textColor = [HFInterfaceTheme activeTheme].secondaryTextColor;
 }
 

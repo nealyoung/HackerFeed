@@ -140,7 +140,7 @@
 
     self.topBorderView.backgroundColor = [[HFInterfaceTheme activeTheme] accentColor];
 
-    self.replyToLabel.font = [UIFont smallCapsApplicationFontWithSize:15.0f];
+    self.replyToLabel.font = [UIFont preferredApplicationFontForTextStyle:UIFontTextStyleSubheadline];
     self.replyToLabel.textColor = [HFInterfaceTheme activeTheme].secondaryTextColor;
     
     self.textView.font = [UIFont applicationFontOfSize:15.0f];
@@ -148,7 +148,7 @@
     self.textView.textColor = [HFInterfaceTheme activeTheme].secondaryTextColor;
     self.textView.layer.borderColor = [[[HFInterfaceTheme activeTheme] accentColor] CGColor];
     
-    self.submitButton.titleLabel.font = [UIFont smallCapsApplicationFontWithSize:15.0f];
+    self.submitButton.titleLabel.font = [UIFont preferredApplicationFontForTextStyle:UIFontTextStyleSubheadline];
     self.submitButton.tintColor = [HFInterfaceTheme activeTheme].accentColor;
 }
 
