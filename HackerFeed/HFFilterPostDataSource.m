@@ -32,6 +32,7 @@
         if (posts) {
             self.urlAddition = [HNManager sharedManager].postUrlAddition;
             self.posts = [NSMutableArray arrayWithArray:posts];
+            
             block(YES);
         } else {
             block(NO);
@@ -42,7 +43,9 @@
 - (void)loadMorePostsWithCompletion:(void (^)(BOOL completed))block {
     if (self.urlAddition) {
         [[HNManager sharedManager] loadPostsWithUrlAddition:self.urlAddition completion:^(NSArray *posts, NSString *nextPageIdentifier) {
+            self.urlAddition = [HNManager sharedManager].postUrlAddition;
             [self.posts addObjectsFromArray:posts];
+            
             block(YES);
         }];
     } else {
