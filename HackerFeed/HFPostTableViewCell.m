@@ -126,6 +126,19 @@
     }
 }
 
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    [super setSelected:selected animated:animated];
+    
+    // To improve scrolling performance, the upvotes label is opaque, so we need to set its background color appropriately when the cell is highlighted
+    if (!self.upvotesLabel.backgroundHighlighted) {
+        if (selected) {
+            self.upvotesLabel.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.08f];
+        } else {
+            self.upvotesLabel.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
+        }
+    }
+}
+
 //- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
 //    UIColor *commentBackgroundColor = self.commentButtonBackground.backgroundColor;
 //    [super setSelected:selected animated:animated];

@@ -155,9 +155,20 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
 }
 
 - (void)loadMorePosts {
+    __block NSInteger numberOfPosts = [self.dataSource.posts count];
+    
     [self.dataSource loadMorePostsWithCompletion:^(BOOL completed) {
         if (completed) {
-            [self.tableView reloadData];
+            NSInteger numberOfNewPosts = [self.dataSource.posts count] - numberOfPosts;
+            
+            NSMutableArray *indexPathsToInsert = [NSMutableArray array];
+            
+            for (int i = 0; i < numberOfNewPosts; i++) {
+                NSIndexPath *indexPathToInsert = [NSIndexPath indexPathForRow:numberOfPosts + i inSection:0];
+                [indexPathsToInsert addObject:indexPathToInsert];
+            }
+            
+            [self.tableView insertRowsAtIndexPaths:indexPathsToInsert withRowAnimation:UITableViewRowAnimationAutomatic];
         } else {
             [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Could not load posts", nil)];
             self.tableView.showsInfiniteScrolling = NO;
