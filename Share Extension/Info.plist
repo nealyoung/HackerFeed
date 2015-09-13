@@ -4,19 +4,12 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
-	<key>UIAppFonts</key>
-	<array>
-		<string>SourceSansPro-Regular.otf</string>
-		<string>SourceSansPro-Bold.otf</string>
-		<string>SourceSansPro-Light.otf</string>
-		<string>SourceSansPro-Semibold.otf</string>
-	</array>
 	<key>CFBundleDisplayName</key>
 	<string>Share Extension</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.nealonyoung.hackerfeed.$(PRODUCT_NAME:rfc1034identifier)</string>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -31,8 +24,6 @@
 	<string>1</string>
 	<key>NSExtension</key>
 	<dict>
-		<key>NSExtensionPrincipalClass</key>
-		<string>HFShareExtensionContainerViewController</string>
 		<key>NSExtensionAttributes</key>
 		<dict>
 			<key>NSExtensionActivationRule</key>
@@ -45,6 +36,15 @@
 		</dict>
 		<key>NSExtensionPointIdentifier</key>
 		<string>com.apple.share-services</string>
+		<key>NSExtensionPrincipalClass</key>
+		<string>HFShareExtensionContainerViewController</string>
 	</dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>SourceSansPro-Regular.otf</string>
+		<string>SourceSansPro-Bold.otf</string>
+		<string>SourceSansPro-Light.otf</string>
+		<string>SourceSansPro-Semibold.otf</string>
+	</array>
 </dict>
 </plist>
