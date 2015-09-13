@@ -54,8 +54,8 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
         self.tableView = [[HFTableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
         [self.tableView setTranslatesAutoresizingMaskIntoConstraints:NO];
         self.tableView.rowHeight = 72.0f;
-        //self.tableView.rowHeight = UITableViewAutomaticDimension;
-        //self.tableView.estimatedRowHeight = 80.0f;
+//        self.tableView.rowHeight = UITableViewAutomaticDimension;
+//        self.tableView.estimatedRowHeight = 80.0f;
         [self.tableView registerClass:[HFPostTableViewCell class] forCellReuseIdentifier:kPostTableViewCellIdentifier];
         [self.view addSubview:self.tableView];
         
@@ -156,9 +156,20 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
 }
 
 - (void)loadMorePosts {
+    __block NSInteger numberOfPosts = [self.dataSource.posts count];
+    
     [self.dataSource loadMorePostsWithCompletion:^(BOOL completed) {
         if (completed) {
-            [self.tableView reloadData];
+            NSInteger numberOfNewPosts = [self.dataSource.posts count] - numberOfPosts;
+            
+            NSMutableArray *indexPathsToInsert = [NSMutableArray array];
+            
+            for (int i = 0; i < numberOfNewPosts; i++) {
+                NSIndexPath *indexPathToInsert = [NSIndexPath indexPathForRow:numberOfPosts + i inSection:0];
+                [indexPathsToInsert addObject:indexPathToInsert];
+            }
+            
+            [self.tableView insertRowsAtIndexPaths:indexPathsToInsert withRowAnimation:UITableViewRowAnimationAutomatic];
         } else {
             [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Could not load posts", nil)];
             self.tableView.showsInfiniteScrolling = NO;

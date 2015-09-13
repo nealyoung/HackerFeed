@@ -29,6 +29,9 @@ typedef NS_ENUM(NSInteger, HFInterfaceThemeType) {
 
 @property UIStatusBarStyle statusBarStyle;
 
+/**
+ Configures global appearance settings using UIAppearance to reflect the active theme.
+ */
 + (void)setupAppearanceForActiveTheme;
 
 + (HFInterfaceTheme *)activeTheme;
