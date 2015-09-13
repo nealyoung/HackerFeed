@@ -33,8 +33,6 @@ static NSInteger const kThemeSection = 1;
 static NSInteger const kAboutSection = 2;
 static NSInteger const kFontSection = 3;
 
-static NSInteger const kAboutGitHubRow = 0;
-
 @implementation HFSettingsViewController
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -83,6 +81,7 @@ static NSInteger const kAboutGitHubRow = 0;
     loginPopupController.loginCompletionBlock = ^(HNUser *user) {
         [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:kProfileSection] withRowAnimation:UITableViewRowAnimationAutomatic];
     };
+    
     [loginPopupController showInViewController:self];
 }
 

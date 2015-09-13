@@ -67,7 +67,7 @@
                                                                                  metrics:nil
                                                                                    views:NSDictionaryOfVariableBindings(_commentButtonBackground)]];
         
-        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_upvotesLabel]-8-[_infoLabel]-15-|"
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-15-[_upvotesLabel]-8-[_infoLabel]-15-|"
                                                                                  options:0
                                                                                  metrics:nil
                                                                                    views:NSDictionaryOfVariableBindings(_upvotesLabel, _infoLabel)]];
