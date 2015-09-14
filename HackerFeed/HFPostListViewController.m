@@ -53,9 +53,9 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
     if (self) {
         self.tableView = [[HFTableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
         [self.tableView setTranslatesAutoresizingMaskIntoConstraints:NO];
-        self.tableView.rowHeight = 72.0f;
-//        self.tableView.rowHeight = UITableViewAutomaticDimension;
-//        self.tableView.estimatedRowHeight = 80.0f;
+//        self.tableView.rowHeight = 72.0f;
+        self.tableView.rowHeight = UITableViewAutomaticDimension;
+        self.tableView.estimatedRowHeight = 80.0f;
         [self.tableView registerClass:[HFPostTableViewCell class] forCellReuseIdentifier:kPostTableViewCellIdentifier];
         [self.view addSubview:self.tableView];
         
@@ -427,6 +427,7 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
 #pragma mark - UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return UITableViewAutomaticDimension;
     static HFPostTableViewCell *postMetricsCell;
     
     if (!postMetricsCell) {
