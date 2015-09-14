@@ -8,17 +8,16 @@
 
 #import "HFPostViewController.h"
 
+#import <SafariServices/SafariServices.h>
 #import "DMScaleTransition.h"
 #import "HFCommentTableViewCell.h"
 #import "HFCommentToolbar.h"
-#import "HFModalWebViewController.h"
 #import "HFNavigationBar.h"
 #import "HFPostInfoTableViewCell.h"
 #import "HFProfileViewController.h"
 #import "HFPullToRefreshContentView.h"
 #import "HFTableView.h"
 #import "HFTableViewCell.h"
-#import "HFWebViewController.h"
 #import "SSPullToRefresh.h"
 #import "SVProgressHUD.h"
 #import "UIScrollView+SVPullToRefresh.h"
@@ -453,17 +452,20 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
 #pragma mark - TTTAttributedLabelDelegate
 
 - (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithURL:(NSURL *)url {
-    if (self.splitViewController.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular) {
-        HFModalWebViewController *webViewController = [[HFModalWebViewController alloc] initWithURL:url];
-        self.scaleTransition = [DMScaleTransition new];
-        webViewController.transitioningDelegate = self.scaleTransition;
-        [self.splitViewController presentViewController:webViewController animated:YES completion:nil];
-    } else {
-        HFWebViewController *webViewController = [[HFWebViewController alloc] init];
-        webViewController.URL = url;
-        
-        [self showViewController:webViewController sender:self];
-    }
+    SFSafariViewController *safariViewController = [[SFSafariViewController alloc] initWithURL:url];
+    [self presentViewController:safariViewController animated:YES completion:nil];
+    
+//    if (self.splitViewController.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular) {
+//        HFModalWebViewController *webViewController = [[HFModalWebViewController alloc] initWithURL:url];
+//        self.scaleTransition = [DMScaleTransition new];
+//        webViewController.transitioningDelegate = self.scaleTransition;
+//        [self.splitViewController presentViewController:webViewController animated:YES completion:nil];
+//    } else {
+//        HFWebViewController *webViewController = [[HFWebViewController alloc] init];
+//        webViewController.URL = url;
+//        
+//        [self showViewController:webViewController sender:self];
+//    }
 }
 
 #pragma mark - UISplitViewControllerDelegate
@@ -681,22 +683,14 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == kPostInformationSection) {
         if (indexPath.row == 0) {
-            if (self.splitViewController.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular) {
-                // If the post url is relative to news.yc (job posts), don't do anything
-                if (!self.post.UrlDomain) {
-                    return;
-                }
-                
-                HFModalWebViewController *webViewController = [[HFModalWebViewController alloc] initWithURL:[NSURL URLWithString:self.post.UrlString]];
-                self.scaleTransition = [DMScaleTransition new];
-                webViewController.transitioningDelegate = self.scaleTransition;
-                [self.splitViewController presentViewController:webViewController animated:YES completion:nil];
-            } else {
-                HFWebViewController *webViewController = [[HFWebViewController alloc] init];
-                webViewController.URL = [NSURL URLWithString:self.post.UrlString];
-                
-                [self showViewController:webViewController sender:self];
+            // If the post url is relative to news.yc (job posts), don't do anything
+            if (!self.post.UrlDomain) {
+                return;
             }
+            
+            NSURL *postURL = [NSURL URLWithString:self.post.UrlString];
+            SFSafariViewController *safariViewController = [[SFSafariViewController alloc] initWithURL:postURL];
+            [self presentViewController:safariViewController animated:YES completion:nil];
         } else if (indexPath.row == 1) {
             HFProfileViewController *profileViewController = [[HFProfileViewController alloc] initWithNibName:nil bundle:nil];
             [self.navigationController pushViewController:profileViewController animated:YES];

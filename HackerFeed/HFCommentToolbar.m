@@ -143,7 +143,7 @@
     self.replyToLabel.font = [UIFont preferredApplicationFontForTextStyle:UIFontTextStyleSubheadline];
     self.replyToLabel.textColor = [HFInterfaceTheme activeTheme].secondaryTextColor;
     
-    self.textView.font = [UIFont applicationFontOfSize:15.0f];
+    self.textView.font = [UIFont systemFontOfSize:15.0f];
     self.textView.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorLightenedByFactor:0.1f];
     self.textView.textColor = [HFInterfaceTheme activeTheme].secondaryTextColor;
     self.textView.layer.borderColor = [[[HFInterfaceTheme activeTheme] accentColor] CGColor];
