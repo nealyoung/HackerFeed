@@ -122,9 +122,10 @@
 }
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
 //    self.textView.font = [UIFont applicationFontOfSize:14.0f];
 }
-;
+
 - (NSString *)accessibilityLabel {
     return [NSString stringWithFormat:NSLocalizedString(@"Comment by %@, %@, %@", nil), self.usernameLabel.text, self.usernameLabel.text, self.commentLabel.text];
 }

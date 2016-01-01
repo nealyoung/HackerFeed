@@ -17,6 +17,7 @@
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         
         self.button = [UIButton buttonWithType:UIButtonTypeSystem];
+        self.button.titleLabel.font = [UIFont preferredApplicationFontForTextStyle:UIFontTextStyleHeadline];
         [self.button setTranslatesAutoresizingMaskIntoConstraints:NO];
         [self.contentView addSubview:self.button];
         

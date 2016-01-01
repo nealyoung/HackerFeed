@@ -21,7 +21,7 @@ static HFInterfaceTheme *_activeTheme;
                                                        NSFontAttributeName: [UIFont systemFontOfSize:18.0f]};
     [[UIBarButtonItem appearance] setTitleTextAttributes:barButtonItemTitleTextAttributes forState:UIControlStateNormal];
     
-    [SVProgressHUD setFont:[UIFont applicationFontOfSize:15.0f]];
+    [SVProgressHUD setFont:[UIFont systemFontOfSize:15.0f]];
     
     NSDictionary *navigationBarTitleTextAttributes = @{NSForegroundColorAttributeName:[[HFInterfaceTheme activeTheme] accentColor],
                                                        NSFontAttributeName: [UIFont systemFontOfSize:19.0f]};

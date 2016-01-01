@@ -116,7 +116,7 @@
 - (void)customizeAppearance {
     [[UIApplication sharedApplication] setStatusBarStyle:[HFInterfaceTheme activeTheme].statusBarStyle];
     
-    [[UILabel appearanceWhenContainedInInstancesOfClasses:@[[UITableViewHeaderFooterView class]]] setFont:[UIFont applicationFontOfSize:15.0f]];
+    [[UILabel appearanceWhenContainedInInstancesOfClasses:@[[UITableViewHeaderFooterView class]]] setFont:[UIFont systemFontOfSize:15.0f]];
     
     self.window.tintColor = [[HFInterfaceTheme activeTheme] accentColor];
     self.window.backgroundColor = [UIColor whiteColor];
