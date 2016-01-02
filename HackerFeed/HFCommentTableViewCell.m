@@ -30,6 +30,7 @@
         
         self.usernameLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         [self.usernameLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+        [self.usernameLabel setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
         [self.contentView addSubview:self.usernameLabel];
         
         self.commentLabel = [[HFAttributedLabel alloc] initWithFrame:CGRectZero];
@@ -56,7 +57,7 @@
                                                                             constant:15.0f];
         [self.contentView addConstraint:self.usernameLabelLeadingConstraint];
         
-        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[_usernameLabel]-15-|"
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[_usernameLabel]-|"
                                                                                  options:0
                                                                                  metrics:nil
                                                                                    views:NSDictionaryOfVariableBindings(_usernameLabel)]];
@@ -70,7 +71,7 @@
                                                                        constant:15.0f];
         [self.contentView addConstraint:self.commentLabelLeadingConstraint];
         
-        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[_commentLabel]-15-|"
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[_commentLabel]-|"
                                                                                  options:0
                                                                                  metrics:nil
                                                                                    views:NSDictionaryOfVariableBindings(_commentLabel)]];

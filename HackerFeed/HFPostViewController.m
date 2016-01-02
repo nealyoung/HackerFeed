@@ -75,8 +75,11 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
         
         self.tableView = [[HFTableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
         [self.tableView setTranslatesAutoresizingMaskIntoConstraints:NO];
+        self.tableView.cellLayoutMarginsFollowReadableWidth = YES;
         self.tableView.dataSource = self;
         self.tableView.delegate = self;
+        self.tableView.estimatedRowHeight = 64.0f;
+        self.tableView.rowHeight = UITableViewAutomaticDimension;
         
         // Hide the cell separators until a post is set
         self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -100,7 +103,7 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
         
         self.selectPostLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         [self.selectPostLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
-        self.selectPostLabel.font = [UIFont applicationFontOfSize:20.0f];
+        self.selectPostLabel.font = [UIFont systemFontOfSize:20.0f];
         self.selectPostLabel.textColor = [UIColor darkGrayColor];
         self.selectPostLabel.text = NSLocalizedString(@"Select a post", nil);
         [self.view addSubview:self.selectPostLabel];
@@ -181,8 +184,6 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
         self.pullToRefreshView = [[SSPullToRefreshView alloc] initWithScrollView:self.tableView delegate:self];
         self.pullToRefreshView.contentView = [[HFPullToRefreshContentView alloc] initWithFrame:CGRectZero];
     }
-    
-    self.tableView.pullToRefreshView.titleLabel.font = [UIFont applicationFontOfSize:15.0f];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -235,9 +236,12 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
     
     self.expandedIndexPath = nil;
     
+    self.comments = @[];
     self.commentToReply = nil;
     [self.commentToolbar.textView resignFirstResponder];
     
+    [self.tableView reloadData];
+
     // Scroll to the top of the table view
     [self.tableView scrollRectToVisible:CGRectMake(0.0f, 0.0f, 1.0f, 1.0f) animated:YES];
 }
@@ -490,17 +494,6 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
     } else if (section == kCommentsSection) {
         return [self.comments count];
     }
-//    
-//    if (self.post) {
-//        // Jobs posts don't have a submitter username
-//        if (self.post.Type == PostTypeJobs) {
-//            return 1 + [self.comments count];
-//        } else {
-//            return 2 + [self.comments count];
-//        }
-//    } else {
-//        return 0;
-//    }
     
     return 0;
 }
@@ -525,6 +518,8 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
         }
     } else if (indexPath.section == kCommentsSection) {
         HFCommentTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:kCommentTableViewCellIdentifier forIndexPath:indexPath];
+        NSLog(@"cccc %@", NSStringFromUIEdgeInsets(self.tableView.layoutMargins));
+
         cell.gestureDelegate = self;
         cell.tag = indexPath.row;
         
@@ -537,10 +532,10 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
         
         cell.usernameLabel.text = [NSString stringWithFormat:@"%@ · %@", comment.Username, comment.TimeCreatedString];
         
-        cell.usernameLabelLeadingConstraint.constant = tableView.separatorInset.left + (comment.Level * tableView.separatorInset.left);
+        cell.usernameLabelLeadingConstraint.constant = tableView.separatorInset.left + (comment.Level * 16.0f);
         
         // UITextView has a 5pt content inset
-        cell.commentLabelLeadingConstraint.constant = tableView.separatorInset.left + (comment.Level * tableView.separatorInset.left);
+        cell.commentLabelLeadingConstraint.constant = tableView.separatorInset.left + (comment.Level * 16.0f);
         cell.toolbarHeightConstraint.constant = 0.0f;
         
         [cell.commentActionsView.upvoteButton addTarget:self action:@selector(upvoteCommentButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
@@ -598,6 +593,7 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
 //                          [self viewUserGestureActivatedForCell:cell];
 //                      }];
         
+
         return cell;
     }
     
@@ -607,6 +603,8 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
 #pragma mark - UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    return UITableViewAutomaticDimension;
+    
     if (indexPath.section == kPostInformationSection) {
         if (indexPath.row == 0) {
             static HFPostInfoTableViewCell *postInfoMetricsCell;
@@ -642,6 +640,7 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
         
         if (!commentMetricsCell) {
             commentMetricsCell = [tableView dequeueReusableCellWithIdentifier:kCommentTableViewCellIdentifier];
+            commentMetricsCell.layoutMargins = tableView.layoutMargins;
         }
         
         CGRect frame = commentMetricsCell.frame;
@@ -651,8 +650,11 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
         HNComment *comment = self.comments[indexPath.row];
         commentMetricsCell.commentLabel.text = comment.Text;
         commentMetricsCell.usernameLabel.text = comment.Username;
-        commentMetricsCell.usernameLabelLeadingConstraint.constant = 15.0f + (comment.Level * 15.0f);
-        commentMetricsCell.commentLabelLeadingConstraint.constant = 15.0f + (comment.Level * 15.0f);
+        commentMetricsCell.usernameLabelLeadingConstraint.constant = tableView.separatorInset.left + (comment.Level * 16.0f);
+        commentMetricsCell.commentLabelLeadingConstraint.constant = tableView.separatorInset.left + (comment.Level * 16.0f);
+
+        NSLog(@"%@", NSStringFromUIEdgeInsets(tableView.separatorInset));
+        NSLog(@"%@", NSStringFromUIEdgeInsets(commentMetricsCell.contentView.layoutMargins));
         commentMetricsCell.toolbarHeightConstraint.constant = 0.0f;
         
         if ([self.expandedIndexPath isEqual:indexPath]) {

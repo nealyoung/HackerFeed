@@ -57,8 +57,10 @@
 }
 
 - (void)awakeFromNib {
-    self.titleLabel.font = [UIFont applicationFontOfSize:16.0f];
-    self.textField.font = [UIFont applicationFontOfSize:15.0f];
+    [super awakeFromNib];
+    
+    self.titleLabel.font = [UIFont systemFontOfSize:16.0f];
+    self.textField.font = [UIFont systemFontOfSize:15.0f];
 }
 
 - (void)applyTheme {

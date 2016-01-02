@@ -14,6 +14,8 @@
 		0E1FC635197C4B4700B41804 /* HFPostTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E1FC634197C4B4700B41804 /* HFPostTableViewCell.m */; };
 		0E25F3FC1A50802F00B869EE /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E0214FA19CB518E00561912 /* libz.dylib */; };
 		0E25F3FD1A50811900B869EE /* UIFont+HFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC81431197C9C15009F0D99 /* UIFont+HFAdditions.m */; };
+		0E27822B1C3721E900872766 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E27822A1C3721E900872766 /* Reveal.framework */; };
+		0E27822C1C3721E900872766 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E27822A1C3721E900872766 /* Reveal.framework */; };
 		0E2BE1241A6E164000F81396 /* HFShareExtensionContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E2BE1231A6E164000F81396 /* HFShareExtensionContainerViewController.m */; };
 		0E2BE1251A6E173100F81396 /* HFNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E7D19A11996034200C51E37 /* HFNavigationBar.m */; };
 		0E2BE1261A6E1A8300F81396 /* HFNewPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E2F35BF198B8BF700718E1A /* HFNewPostViewController.m */; };
@@ -48,7 +50,6 @@
 		0E59357819F9CC8C0081B28A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E59357719F9CC8C0081B28A /* SystemConfiguration.framework */; };
 		0E5C453B19838135001EE1CB /* HFFilterPostDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E5C453A19838135001EE1CB /* HFFilterPostDataSource.m */; };
 		0E5CD9411B7AA6BF005E908B /* HFUpvotesLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E5CD9401B7AA6BF005E908B /* HFUpvotesLabel.m */; };
-		0E5CD9431B7AA922005E908B /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E5CD9421B7AA922005E908B /* Reveal.framework */; };
 		0E696DC61B93B47F0079C5E2 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E696DC51B93B47F0079C5E2 /* SafariServices.framework */; };
 		0E6C019C1A9171A3002AAA80 /* HFAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E6C019B1A9171A3002AAA80 /* HFAttributedLabel.m */; };
 		0E6C30DF197F5DCB00C33A67 /* HFLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E6C30DE197F5DCB00C33A67 /* HFLoginViewController.m */; };
@@ -152,6 +153,7 @@
 		0E183AAB1AF442F0004E6324 /* HNPost+HFAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HNPost+HFAdditions.m"; sourceTree = "<group>"; };
 		0E1FC633197C4B4700B41804 /* HFPostTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFPostTableViewCell.h; sourceTree = "<group>"; };
 		0E1FC634197C4B4700B41804 /* HFPostTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFPostTableViewCell.m; sourceTree = "<group>"; };
+		0E27822A1C3721E900872766 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		0E2BE1221A6E164000F81396 /* HFShareExtensionContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFShareExtensionContainerViewController.h; sourceTree = "<group>"; };
 		0E2BE1231A6E164000F81396 /* HFShareExtensionContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFShareExtensionContainerViewController.m; sourceTree = "<group>"; };
 		0E2BE1281A6E25E200F81396 /* SourceSansPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Bold.otf"; sourceTree = "<group>"; };
@@ -188,7 +190,6 @@
 		0E5C453A19838135001EE1CB /* HFFilterPostDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFFilterPostDataSource.m; sourceTree = "<group>"; };
 		0E5CD93F1B7AA6BF005E908B /* HFUpvotesLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFUpvotesLabel.h; sourceTree = "<group>"; };
 		0E5CD9401B7AA6BF005E908B /* HFUpvotesLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFUpvotesLabel.m; sourceTree = "<group>"; };
-		0E5CD9421B7AA922005E908B /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		0E696DC51B93B47F0079C5E2 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		0E6C019A1A9171A3002AAA80 /* HFAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFAttributedLabel.h; sourceTree = "<group>"; };
 		0E6C019B1A9171A3002AAA80 /* HFAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFAttributedLabel.m; sourceTree = "<group>"; };
@@ -303,10 +304,10 @@
 				0E0214FB19CB518E00561912 /* libz.dylib in Frameworks */,
 				0EDF5FE01B7A8B590023F4DF /* MobileCoreServices.framework in Frameworks */,
 				0E59357819F9CC8C0081B28A /* SystemConfiguration.framework in Frameworks */,
-				0E5CD9431B7AA922005E908B /* Reveal.framework in Frameworks */,
 				0E59357619F9CC820081B28A /* Security.framework in Frameworks */,
 				0E59357219F9CAFE0081B28A /* libc++.dylib in Frameworks */,
 				0E59357019F9CAF40081B28A /* libicucore.dylib in Frameworks */,
+				0E27822B1C3721E900872766 /* Reveal.framework in Frameworks */,
 				0E59357419F9CB040081B28A /* CFNetwork.framework in Frameworks */,
 				0EFC25391985C22100A67412 /* CoreText.framework in Frameworks */,
 				0EE791BD1950318D00925E4F /* CoreGraphics.framework in Frameworks */,
@@ -330,6 +331,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E27822C1C3721E900872766 /* Reveal.framework in Frameworks */,
 				0E25F3FC1A50802F00B869EE /* libz.dylib in Frameworks */,
 				0E4283211A50682700A0CC1F /* libPods-HackerFeed.a in Frameworks */,
 			);
@@ -540,8 +542,8 @@
 		0EE791B91950318D00925E4F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0E27822A1C3721E900872766 /* Reveal.framework */,
 				0E696DC51B93B47F0079C5E2 /* SafariServices.framework */,
-				0E5CD9421B7AA922005E908B /* Reveal.framework */,
 				0EDF5FDF1B7A8B590023F4DF /* MobileCoreServices.framework */,
 				0E4283201A50682700A0CC1F /* libPods-HackerFeed.a */,
 				0E07A4DC1A5064F5004C0758 /* libPods-HackerFeed.a */,
