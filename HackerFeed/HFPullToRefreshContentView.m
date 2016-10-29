@@ -123,7 +123,9 @@
 #pragma mark - SSPullToRefreshContentView
 
 - (void)setPullProgress:(CGFloat)pullProgress {
-    self.circularProgressView.progress = pullProgress;
+    if (pullProgress > 0.0f) {
+        self.circularProgressView.progress = pullProgress;
+    }
 }
 
 - (void)setState:(SSPullToRefreshViewState)state withPullToRefreshView:(SSPullToRefreshView *)view {

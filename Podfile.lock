@@ -3,14 +3,14 @@ PODS:
   - FCUtilities (0.1.0)
   - libHN (4.1.0)
   - MCSwipeTableViewCell (2.1.4)
-  - NYAlertViewController (1.0.2)
-  - NYSegmentedControl (1.0.5)
-  - PBWebViewController (0.3)
+  - NYAlertViewController (1.3.0)
+  - NYSegmentedControl (1.0.7)
+  - PBWebViewController (0.5.0)
   - SSPullToRefresh (1.2.4)
-  - SVProgressHUD (HEAD based on 2.0-beta)
-  - SVPullToRefresh (HEAD based on 0.4.1)
-  - TTTAttributedLabel (1.13.4)
-  - ZFDragableModalTransition (0.5.1)
+  - SVProgressHUD (2.0.3)
+  - SVPullToRefresh (0.4.1)
+  - TTTAttributedLabel (2.0.0)
+  - ZFDragableModalTransition (0.6)
 
 DEPENDENCIES:
   - DACircularProgress
@@ -21,8 +21,8 @@ DEPENDENCIES:
   - NYSegmentedControl
   - PBWebViewController
   - SSPullToRefresh
-  - SVProgressHUD (HEAD)
-  - SVPullToRefresh (HEAD)
+  - SVProgressHUD (from `https://github.com/SVProgressHUD/SVProgressHUD.git`)
+  - SVPullToRefresh (from `https://github.com/samvermette/SVPullToRefresh.git`)
   - TTTAttributedLabel
   - ZFDragableModalTransition
 
@@ -31,27 +31,39 @@ EXTERNAL SOURCES:
     :git: https://github.com/marcoarment/FCUtilities.git
   libHN:
     :git: https://github.com/nealyoung/libHN.git
+  SVProgressHUD:
+    :git: https://github.com/SVProgressHUD/SVProgressHUD.git
+  SVPullToRefresh:
+    :git: https://github.com/samvermette/SVPullToRefresh.git
 
 CHECKOUT OPTIONS:
   FCUtilities:
-    :commit: e56f000c62f36456f78cb196d47e8e8079afef02
+    :commit: 3db663875d8ba4cfefd598485bbfc371abe3d33a
     :git: https://github.com/marcoarment/FCUtilities.git
   libHN:
-    :commit: d5d01f6eb4c29cfa5c887debad5f690a489954ec
+    :commit: 5d21719f9156686757de37462a6c819705314ca5
     :git: https://github.com/nealyoung/libHN.git
+  SVProgressHUD:
+    :commit: 1871e8e12740f5fc672cb03f314737ab4ff319bc
+    :git: https://github.com/SVProgressHUD/SVProgressHUD.git
+  SVPullToRefresh:
+    :commit: a5f9dfee86a27c4e994d7edf93d0768c881d58bb
+    :git: https://github.com/samvermette/SVPullToRefresh.git
 
 SPEC CHECKSUMS:
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
   FCUtilities: e313e82e37e90edda5dbe8076b19401795b040c1
   libHN: fe671e9d39466235239b793f1f0181baadb327b2
   MCSwipeTableViewCell: 1b303e16c3a26b1982f3a68386e9b8c5fc8344c3
-  NYAlertViewController: cd7b5d2fdfc3ff45a673d2406ffb31b1361ea7dd
-  NYSegmentedControl: 6c0dd98de6814a4e294c772ce4ad8bffecc480db
-  PBWebViewController: 909b1505da6ba7c5c82519a6457246027926061e
+  NYAlertViewController: b93f82e2c1fc6d5e9485512ddbe7b481f463a074
+  NYSegmentedControl: 55b4f9eb652767cae9799623ec3e49e50029ef47
+  PBWebViewController: 6537990155ca850fb8d0563efbc12becebc953ef
   SSPullToRefresh: 369e862c1d6528c7a354fc85cd4763d4e670e9af
-  SVProgressHUD: c83337f10ed32d701c423d519059a249973c8662
+  SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
   SVPullToRefresh: ba2e718695a43253d8bea6852d2960097dc15d8c
-  TTTAttributedLabel: 0a2ac7b2dd726d32a070dafb01446026b11e624f
-  ZFDragableModalTransition: 048189eda437f91944ce6d5151618b8bf770196d
+  TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
+  ZFDragableModalTransition: 0d294eaaba6edfcb9839595de765f9ca06a4b524
 
-COCOAPODS: 0.38.2
+PODFILE CHECKSUM: 394e41550bc09a11aab52f1d31392dc25c1de85d
+
+COCOAPODS: 1.1.1

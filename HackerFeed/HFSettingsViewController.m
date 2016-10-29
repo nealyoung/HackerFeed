@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Nealon Young. All rights reserved.
 //
 
+#import <SafariServices/SafariServices.h>
+
 #import "HFButtonTableViewCell.h"
 #import "HFInterfaceTheme.h"
 #import "HFLoginPopupManager.h"
@@ -14,7 +16,6 @@
 #import "HFSettingsViewController.h"
 #import "HFTableView.h"
 #import "HFTableViewCell.h"
-#import "HFWebViewController.h"
 #import "libHN.h"
 
 @interface HFSettingsViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -125,7 +126,7 @@ static NSInteger const kFontSection = 3;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -277,10 +278,9 @@ static NSInteger const kFontSection = 3;
             break;
             
         case kAboutSection: {
-            HFWebViewController *webViewController = [[HFWebViewController alloc] init];
-            webViewController.URL = [NSURL URLWithString:@"https://github.com/nealyoung/hackerfeed"];
-            
-            [self showViewController:webViewController sender:self];
+            NSURL *githubProjectURL = [NSURL URLWithString:@"https://github.com/nealyoung/hackerfeed"];
+            SFSafariViewController *safariViewController = [[SFSafariViewController alloc] initWithURL:githubProjectURL];
+            [self presentViewController:safariViewController animated:YES completion:nil];
         }
     }
 }

@@ -10,7 +10,7 @@
 
 #import "HFDropdownMenuTitleView.h"
 
-@interface HFDropdownMenuNavigationController () <HFDropdownMenuDelegate>
+@interface HFDropdownMenuNavigationController () <HFDropdownMenuDelegate, UINavigationBarDelegate>
 
 @property HFDropdownMenuTitleView *titleView;
 
@@ -68,12 +68,16 @@
     _dropdownMenu = [[HFDropdownMenu alloc] initWithFrame:self.view.bounds];
     _dropdownMenu.delegate = self;
     [self.view insertSubview:_dropdownMenu belowSubview:self.navigationBar];
-    
+
     // iOS doesn't allow us to add constraints to a navigation bar managed by a UINavigationController
     //HFDropdownMenuTitleView *titleView = [[HFDropdownMenuTitleView alloc] initWithFrame:CGRectMake(0, 0, 120, 24)];
     //[[self.navigationBar.items firstObject] setTitleView:titleView];
     //titleView.center = self.navigationBar.center;
     //[self.navigationBar addSubview:titleView];
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
 }
 
 - (void)setDropdownViewControllers:(NSArray *)dropdownViewControllers {
@@ -122,6 +126,12 @@
 
 - (void)dropdownMenuWillShow:(HFDropdownMenu *)dropdownMenu {
     self.titleView.expanded = YES;
+}
+
+#pragma mark - UINavigationBarDelegate
+
+- (UIBarPosition)positionForBar:(id<UIBarPositioning>)bar {
+    return UIBarPositionTop;
 }
 
 @end

@@ -22,6 +22,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.layer.masksToBounds = YES;
+    self.window.layer.cornerRadius = 6.0f;
     
     HFPostListViewController *topStoriesViewController = [[HFPostListViewController alloc] initWithNibName:nil bundle:nil];
     topStoriesViewController.dataSource = [[HFFilterPostDataSource alloc] initWithPostFilterType:PostFilterTypeTop image:[UIImage imageNamed:@"TopStoriesIcon"]];
@@ -58,7 +60,6 @@
     [[HNManager sharedManager] startSession];
 //    [self customizeAppearance];
     [HFInterfaceTheme setupAppearanceForActiveTheme];
-    NSLog(@"%@", self.window);
     
     HFPostViewController *postViewController = [[HFPostViewController alloc] initWithNibName:nil bundle:nil];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithNavigationBarClass:[HFNavigationBar class]
@@ -69,7 +70,7 @@
     splitViewController.delegate = postViewController;
     splitViewController.viewControllers = @[dropdownMenuViewController, navigationController];
     splitViewController.preferredDisplayMode = UISplitViewControllerDisplayModeAllVisible;
-    
+
     self.window.rootViewController = splitViewController;
     
     [self.window makeKeyAndVisible];

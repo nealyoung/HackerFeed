@@ -144,7 +144,7 @@
 
 - (void)applyTheme {
     [self.indicator setNeedsDisplay];
-    self.titleLabel.font = [UIFont systemFontOfSize:18.0f];
+    self.titleLabel.font = [UIFont applicationFontOfSize:18.0f];
     self.titleLabel.textColor = [[HFInterfaceTheme activeTheme] accentColor];
 }
 

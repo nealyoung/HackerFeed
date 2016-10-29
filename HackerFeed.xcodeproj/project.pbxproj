@@ -11,30 +11,14 @@
 		0E0C0BE819CFC0DD007EAE25 /* HFBasePostDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E0C0BE719CFC0DD007EAE25 /* HFBasePostDataSource.m */; };
 		0E183AAC1AF442F0004E6324 /* HNPost+HFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E183AAB1AF442F0004E6324 /* HNPost+HFAdditions.m */; };
 		0E1FC635197C4B4700B41804 /* HFPostTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E1FC634197C4B4700B41804 /* HFPostTableViewCell.m */; };
-		0E25F3FC1A50802F00B869EE /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E0214FA19CB518E00561912 /* libz.dylib */; };
-		0E25F3FD1A50811900B869EE /* UIFont+HFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC81431197C9C15009F0D99 /* UIFont+HFAdditions.m */; };
 		0E27822B1C3721E900872766 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E27822A1C3721E900872766 /* Reveal.framework */; };
-		0E27822C1C3721E900872766 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E27822A1C3721E900872766 /* Reveal.framework */; };
-		0E2BE1241A6E164000F81396 /* HFShareExtensionContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E2BE1231A6E164000F81396 /* HFShareExtensionContainerViewController.m */; };
-		0E2BE1251A6E173100F81396 /* HFNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E7D19A11996034200C51E37 /* HFNavigationBar.m */; };
-		0E2BE1261A6E1A8300F81396 /* HFNewPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E2F35BF198B8BF700718E1A /* HFNewPostViewController.m */; };
-		0E2BE1271A6E1EB700F81396 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0EE791D51950318D00925E4F /* Images.xcassets */; };
 		0E2BE12C1A6E25E200F81396 /* SourceSansPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0E2BE1281A6E25E200F81396 /* SourceSansPro-Bold.otf */; };
-		0E2BE12D1A6E25E200F81396 /* SourceSansPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0E2BE1281A6E25E200F81396 /* SourceSansPro-Bold.otf */; };
 		0E2BE12E1A6E25E200F81396 /* SourceSansPro-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0E2BE1291A6E25E200F81396 /* SourceSansPro-Light.otf */; };
-		0E2BE12F1A6E25E200F81396 /* SourceSansPro-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0E2BE1291A6E25E200F81396 /* SourceSansPro-Light.otf */; };
 		0E2BE1301A6E25E200F81396 /* SourceSansPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0E2BE12A1A6E25E200F81396 /* SourceSansPro-Regular.otf */; };
-		0E2BE1311A6E25E200F81396 /* SourceSansPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0E2BE12A1A6E25E200F81396 /* SourceSansPro-Regular.otf */; };
 		0E2BE1321A6E25E200F81396 /* SourceSansPro-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0E2BE12B1A6E25E200F81396 /* SourceSansPro-Semibold.otf */; };
-		0E2BE1331A6E25E200F81396 /* SourceSansPro-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0E2BE12B1A6E25E200F81396 /* SourceSansPro-Semibold.otf */; };
-		0E2BE1341A6EBC3600F81396 /* HFInterfaceTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E3653AB1A55DB0D002FB22A /* HFInterfaceTheme.m */; };
 		0E2F35C0198B8BF700718E1A /* HFNewPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E2F35BF198B8BF700718E1A /* HFNewPostViewController.m */; };
-		0E3600661A50628F002B8EE7 /* HFTextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E511CA2198C0B3300F94E9F /* HFTextFieldTableViewCell.m */; };
-		0E3600671A50629C002B8EE7 /* HFTextViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E57B5B3198C2D6C0056CA54 /* HFTextViewTableViewCell.m */; };
-		0E3600681A506379002B8EE7 /* HFTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFC253D1986026500A67412 /* HFTextView.m */; };
 		0E3653A91A54D1F5002FB22A /* HFSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E3653A81A54D1F5002FB22A /* HFSettingsViewController.m */; };
 		0E3653AC1A55DB0D002FB22A /* HFInterfaceTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E3653AB1A55DB0D002FB22A /* HFInterfaceTheme.m */; };
-		0E4283211A50682700A0CC1F /* libPods-HackerFeed.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E4283201A50682700A0CC1F /* libPods-HackerFeed.a */; };
 		0E511CA3198C0B3300F94E9F /* HFTextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E511CA2198C0B3300F94E9F /* HFTextFieldTableViewCell.m */; };
 		0E520C53197C73F900E94DBD /* HFDropdownMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E520C52197C73F900E94DBD /* HFDropdownMenuItem.m */; };
 		0E5325CD1B54B68900301CE0 /* HFLoginPopupManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E5325CC1B54B68900301CE0 /* HFLoginPopupManager.m */; };
@@ -74,12 +58,9 @@
 		0EDA41551B4DDCBF00A322AF /* HFModalPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EDA41501B4DDCBF00A322AF /* HFModalPresentationController.m */; };
 		0EDA41561B4DDCBF00A322AF /* HFModalPresentationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EDA41521B4DDCBF00A322AF /* HFModalPresentationManager.m */; };
 		0EDDFF501A71715B00EBBED9 /* HFToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EDDFF4F1A71715B00EBBED9 /* HFToolbar.m */; };
-		0EDDFF511A71739D00EBBED9 /* HFToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EDDFF4F1A71715B00EBBED9 /* HFToolbar.m */; };
 		0EDEBD64197E2ED00080D446 /* HFDropdownMenuNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EDEBD63197E2ED00080D446 /* HFDropdownMenuNavigationController.m */; };
 		0EDF5FE01B7A8B590023F4DF /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EDF5FDF1B7A8B590023F4DF /* MobileCoreServices.framework */; };
 		0EE27FEE1A65A939001B01EC /* HFButtonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE27FED1A65A939001B01EC /* HFButtonTableViewCell.m */; };
-		0EE27FEF1A65B21B001B01EC /* HFTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ECF6055199171F60088C8E6 /* HFTableViewCell.m */; };
-		0EE27FF01A65B22B001B01EC /* UIColor+HFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EEBD395197E026300D74AD6 /* UIColor+HFAdditions.m */; };
 		0EE2838B198394BB00D3A3C6 /* HFUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE2838A198394BB00D3A3C6 /* HFUserProfileViewController.m */; };
 		0EE6CAE119845B37005AE100 /* HFCommentActionsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE6CAE019845B37005AE100 /* HFCommentActionsView.m */; };
 		0EE791BB1950318D00925E4F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EE791BA1950318D00925E4F /* Foundation.framework */; };
@@ -100,13 +81,13 @@
 		0EEBD393197DEB7E00D74AD6 /* HFUserInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EEBD392197DEB7E00D74AD6 /* HFUserInfoTableViewCell.m */; };
 		0EEBD396197E026300D74AD6 /* UIColor+HFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EEBD395197E026300D74AD6 /* UIColor+HFAdditions.m */; };
 		0EECC78B1A7E966D00527326 /* HFTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EECC78A1A7E966D00527326 /* HFTableView.m */; };
-		0EF06ECD1A487DC70072D766 /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EF06ECC1A487DC70072D766 /* ShareViewController.m */; };
 		0EF3353A1A7DD7A900E482CE /* HFPullToRefreshContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EF335391A7DD7A900E482CE /* HFPullToRefreshContentView.m */; };
 		0EFC25391985C22100A67412 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFC25381985C22100A67412 /* CoreText.framework */; };
 		0EFC253C1985D9D800A67412 /* HFCommentToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFC253B1985D9D800A67412 /* HFCommentToolbar.m */; };
 		0EFC253F1986026500A67412 /* HFTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFC253D1986026500A67412 /* HFTextView.m */; };
 		0EFC2542198604A900A67412 /* HFUserPostDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFC2541198604A900A67412 /* HFUserPostDataSource.m */; };
-		E6BFDD396217447FAA89F718 /* libPods-HackerFeed.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 014806F2979C4ADBAA87257A /* libPods-HackerFeed.a */; };
+		410411511445F5C7E601B96E /* libPods-HackerFeed.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14EF6EE13D1E409991AE6E14 /* libPods-HackerFeed.a */; };
+		73600DF332C72E1644E6B977 /* libPods-HackerFeedTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B74063CB5BFD778372831F25 /* libPods-HackerFeedTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,13 +97,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 0EE791B61950318D00925E4F;
 			remoteInfo = Orange;
-		};
-		0EF06ED01A487DC70072D766 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0EE791AF1950318D00925E4F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0EF06EC61A487DC60072D766;
-			remoteInfo = "Share Extension";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -140,7 +114,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		014806F2979C4ADBAA87257A /* libPods-HackerFeed.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HackerFeed.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E0214FA19CB518E00561912 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		0E07A4DC1A5064F5004C0758 /* libPods-HackerFeed.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-HackerFeed.a"; path = "Pods/build/Debug-iphoneos/libPods-HackerFeed.a"; sourceTree = "<group>"; };
 		0E0C0BE619CFC0DD007EAE25 /* HFBasePostDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFBasePostDataSource.h; sourceTree = "<group>"; };
@@ -150,8 +123,6 @@
 		0E1FC633197C4B4700B41804 /* HFPostTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFPostTableViewCell.h; sourceTree = "<group>"; };
 		0E1FC634197C4B4700B41804 /* HFPostTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFPostTableViewCell.m; sourceTree = "<group>"; };
 		0E27822A1C3721E900872766 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
-		0E2BE1221A6E164000F81396 /* HFShareExtensionContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFShareExtensionContainerViewController.h; sourceTree = "<group>"; };
-		0E2BE1231A6E164000F81396 /* HFShareExtensionContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFShareExtensionContainerViewController.m; sourceTree = "<group>"; };
 		0E2BE1281A6E25E200F81396 /* SourceSansPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Bold.otf"; sourceTree = "<group>"; };
 		0E2BE1291A6E25E200F81396 /* SourceSansPro-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Light.otf"; sourceTree = "<group>"; };
 		0E2BE12A1A6E25E200F81396 /* SourceSansPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Regular.otf"; sourceTree = "<group>"; };
@@ -163,7 +134,6 @@
 		0E3653AA1A55DB0D002FB22A /* HFInterfaceTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFInterfaceTheme.h; sourceTree = "<group>"; };
 		0E3653AB1A55DB0D002FB22A /* HFInterfaceTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFInterfaceTheme.m; sourceTree = "<group>"; };
 		0E4283201A50682700A0CC1F /* libPods-HackerFeed.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-HackerFeed.a"; path = "Pods/build/Debug-iphoneos/libPods-HackerFeed.a"; sourceTree = "<group>"; };
-		0E4BEAE81A48961100BDA99B /* Share Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Share Extension.entitlements"; sourceTree = "<group>"; };
 		0E511CA1198C0B3300F94E9F /* HFTextFieldTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFTextFieldTableViewCell.h; sourceTree = "<group>"; };
 		0E511CA2198C0B3300F94E9F /* HFTextFieldTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFTextFieldTableViewCell.m; sourceTree = "<group>"; };
 		0E520C51197C73F900E94DBD /* HFDropdownMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFDropdownMenuItem.h; sourceTree = "<group>"; };
@@ -272,10 +242,6 @@
 		0EEBD395197E026300D74AD6 /* UIColor+HFAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HFAdditions.m"; sourceTree = "<group>"; };
 		0EECC7891A7E966D00527326 /* HFTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFTableView.h; sourceTree = "<group>"; };
 		0EECC78A1A7E966D00527326 /* HFTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFTableView.m; sourceTree = "<group>"; };
-		0EF06EC71A487DC60072D766 /* Share Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Share Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		0EF06ECA1A487DC70072D766 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0EF06ECB1A487DC70072D766 /* ShareViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShareViewController.h; sourceTree = "<group>"; };
-		0EF06ECC1A487DC70072D766 /* ShareViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareViewController.m; sourceTree = "<group>"; };
 		0EF335381A7DD7A900E482CE /* HFPullToRefreshContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFPullToRefreshContentView.h; sourceTree = "<group>"; };
 		0EF335391A7DD7A900E482CE /* HFPullToRefreshContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFPullToRefreshContentView.m; sourceTree = "<group>"; };
 		0EFC25381985C22100A67412 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
@@ -285,8 +251,12 @@
 		0EFC253E1986026500A67412 /* HFTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFTextView.h; sourceTree = "<group>"; };
 		0EFC2540198604A900A67412 /* HFUserPostDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFUserPostDataSource.h; sourceTree = "<group>"; };
 		0EFC2541198604A900A67412 /* HFUserPostDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFUserPostDataSource.m; sourceTree = "<group>"; };
-		ED545A3266AE771A528F6E8E /* Pods-HackerFeed.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HackerFeed.release.xcconfig"; path = "Pods/Target Support Files/Pods-HackerFeed/Pods-HackerFeed.release.xcconfig"; sourceTree = "<group>"; };
-		EF55B8CC3BFFDC02ECC4E139 /* Pods-HackerFeed.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HackerFeed.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HackerFeed/Pods-HackerFeed.debug.xcconfig"; sourceTree = "<group>"; };
+		14EF6EE13D1E409991AE6E14 /* libPods-HackerFeed.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HackerFeed.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3BAA8B2290CFF60BBFFEB455 /* Pods-HackerFeed.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HackerFeed.release.xcconfig"; path = "Pods/Target Support Files/Pods-HackerFeed/Pods-HackerFeed.release.xcconfig"; sourceTree = "<group>"; };
+		4093C88E3D75E6257F111A76 /* Pods-HackerFeedTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HackerFeedTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HackerFeedTests/Pods-HackerFeedTests.release.xcconfig"; sourceTree = "<group>"; };
+		AB6BA5695F74297ADBB9D38D /* Pods-HackerFeedTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HackerFeedTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HackerFeedTests/Pods-HackerFeedTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B74063CB5BFD778372831F25 /* libPods-HackerFeedTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HackerFeedTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D03C0E754DA76CEFD4144AC9 /* Pods-HackerFeed.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HackerFeed.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HackerFeed/Pods-HackerFeed.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -307,7 +277,7 @@
 				0EE791BD1950318D00925E4F /* CoreGraphics.framework in Frameworks */,
 				0EE791BF1950318D00925E4F /* UIKit.framework in Frameworks */,
 				0EE791BB1950318D00925E4F /* Foundation.framework in Frameworks */,
-				E6BFDD396217447FAA89F718 /* libPods-HackerFeed.a in Frameworks */,
+				410411511445F5C7E601B96E /* libPods-HackerFeed.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,22 +288,24 @@
 				0EE791DD1950318D00925E4F /* XCTest.framework in Frameworks */,
 				0EE791DF1950318D00925E4F /* UIKit.framework in Frameworks */,
 				0EE791DE1950318D00925E4F /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0EF06EC41A487DC60072D766 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0E27822C1C3721E900872766 /* Reveal.framework in Frameworks */,
-				0E25F3FC1A50802F00B869EE /* libz.dylib in Frameworks */,
-				0E4283211A50682700A0CC1F /* libPods-HackerFeed.a in Frameworks */,
+				73600DF332C72E1644E6B977 /* libPods-HackerFeedTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A60EFF2DC2B623A3E14856B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D03C0E754DA76CEFD4144AC9 /* Pods-HackerFeed.debug.xcconfig */,
+				3BAA8B2290CFF60BBFFEB455 /* Pods-HackerFeed.release.xcconfig */,
+				AB6BA5695F74297ADBB9D38D /* Pods-HackerFeedTests.debug.xcconfig */,
+				4093C88E3D75E6257F111A76 /* Pods-HackerFeedTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		0E520C54197C7B1F00E94DBD /* Table View Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -514,8 +486,7 @@
 				0EE791E21950318D00925E4F /* HackerFeedTests */,
 				0EE791B91950318D00925E4F /* Frameworks */,
 				0EE791B81950318D00925E4F /* Products */,
-				8B2673557A94D2ACDA755023 /* Pods */,
-				0EF06EC81A487DC70072D766 /* Share Extension */,
+				0A60EFF2DC2B623A3E14856B /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -524,7 +495,6 @@
 			children = (
 				0EE791B71950318D00925E4F /* HackerFeed.app */,
 				0EE791DB1950318D00925E4F /* HackerFeedTests.xctest */,
-				0EF06EC71A487DC60072D766 /* Share Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -548,7 +518,8 @@
 				0EE791BC1950318D00925E4F /* CoreGraphics.framework */,
 				0EE791BE1950318D00925E4F /* UIKit.framework */,
 				0EE791DC1950318D00925E4F /* XCTest.framework */,
-				014806F2979C4ADBAA87257A /* libPods-HackerFeed.a */,
+				14EF6EE13D1E409991AE6E14 /* libPods-HackerFeed.a */,
+				B74063CB5BFD778372831F25 /* libPods-HackerFeedTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -601,36 +572,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		0EF06EC81A487DC70072D766 /* Share Extension */ = {
-			isa = PBXGroup;
-			children = (
-				0E4BEAE81A48961100BDA99B /* Share Extension.entitlements */,
-				0E2BE1221A6E164000F81396 /* HFShareExtensionContainerViewController.h */,
-				0E2BE1231A6E164000F81396 /* HFShareExtensionContainerViewController.m */,
-				0EF06ECB1A487DC70072D766 /* ShareViewController.h */,
-				0EF06ECC1A487DC70072D766 /* ShareViewController.m */,
-				0EF06EC91A487DC70072D766 /* Supporting Files */,
-			);
-			path = "Share Extension";
-			sourceTree = "<group>";
-		};
-		0EF06EC91A487DC70072D766 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				0EF06ECA1A487DC70072D766 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		8B2673557A94D2ACDA755023 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				EF55B8CC3BFFDC02ECC4E139 /* Pods-HackerFeed.debug.xcconfig */,
-				ED545A3266AE771A528F6E8E /* Pods-HackerFeed.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -638,17 +579,17 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0EE791EC1950318D00925E4F /* Build configuration list for PBXNativeTarget "HackerFeed" */;
 			buildPhases = (
-				F38442C377BD43B1961DE1AF /* Check Pods Manifest.lock */,
+				244BB8E0CE8736BDD31E6313 /* [CP] Check Pods Manifest.lock */,
 				0EE791B31950318D00925E4F /* Sources */,
 				0EE791B41950318D00925E4F /* Frameworks */,
 				0EE791B51950318D00925E4F /* Resources */,
-				41CEFFB62EAD4874A7824513 /* Copy Pods Resources */,
 				0EF06ED61A487DC70072D766 /* Embed App Extensions */,
+				3B00FCDE898FD5BBDAED794E /* [CP] Embed Pods Frameworks */,
+				D9BDB8CC5D229180569C25B5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				0EF06ED11A487DC70072D766 /* PBXTargetDependency */,
 			);
 			name = HackerFeed;
 			productName = Orange;
@@ -659,9 +600,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0EE791EF1950318D00925E4F /* Build configuration list for PBXNativeTarget "HackerFeedTests" */;
 			buildPhases = (
+				572F391EFBCE038A7D491E97 /* [CP] Check Pods Manifest.lock */,
 				0EE791D71950318D00925E4F /* Sources */,
 				0EE791D81950318D00925E4F /* Frameworks */,
 				0EE791D91950318D00925E4F /* Resources */,
+				03CE42598FF0CA4E19155A38 /* [CP] Embed Pods Frameworks */,
+				F0CB4DF34A329346F43B0B16 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -672,23 +616,6 @@
 			productName = OrangeTests;
 			productReference = 0EE791DB1950318D00925E4F /* HackerFeedTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		0EF06EC61A487DC60072D766 /* Share Extension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 0EF06ED51A487DC70072D766 /* Build configuration list for PBXNativeTarget "Share Extension" */;
-			buildPhases = (
-				0EF06EC31A487DC60072D766 /* Sources */,
-				0EF06EC41A487DC60072D766 /* Frameworks */,
-				0EF06EC51A487DC60072D766 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Share Extension";
-			productName = "Share Extension";
-			productReference = 0EF06EC71A487DC60072D766 /* Share Extension.appex */;
-			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -705,15 +632,6 @@
 					};
 					0EE791DA1950318D00925E4F = {
 						TestTargetID = 0EE791B61950318D00925E4F;
-					};
-					0EF06EC61A487DC60072D766 = {
-						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = HFG3GB6CJM;
-						SystemCapabilities = {
-							com.apple.ApplicationGroups.iOS = {
-								enabled = 1;
-							};
-						};
 					};
 				};
 			};
@@ -732,7 +650,6 @@
 			targets = (
 				0EE791B61950318D00925E4F /* HackerFeed */,
 				0EE791DA1950318D00925E4F /* HackerFeedTests */,
-				0EF06EC61A487DC60072D766 /* Share Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -760,29 +677,77 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0EF06EC51A487DC60072D766 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0E2BE12F1A6E25E200F81396 /* SourceSansPro-Light.otf in Resources */,
-				0E2BE12D1A6E25E200F81396 /* SourceSansPro-Bold.otf in Resources */,
-				0E2BE1311A6E25E200F81396 /* SourceSansPro-Regular.otf in Resources */,
-				0E2BE1271A6E1EB700F81396 /* Images.xcassets in Resources */,
-				0E2BE1331A6E25E200F81396 /* SourceSansPro-Semibold.otf in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		41CEFFB62EAD4874A7824513 /* Copy Pods Resources */ = {
+		03CE42598FF0CA4E19155A38 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HackerFeedTests/Pods-HackerFeedTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		244BB8E0CE8736BDD31E6313 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		3B00FCDE898FD5BBDAED794E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HackerFeed/Pods-HackerFeed-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		572F391EFBCE038A7D491E97 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D9BDB8CC5D229180569C25B5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -790,19 +755,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HackerFeed/Pods-HackerFeed-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F38442C377BD43B1961DE1AF /* Check Pods Manifest.lock */ = {
+		F0CB4DF34A329346F43B0B16 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HackerFeedTests/Pods-HackerFeedTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -877,25 +842,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0EF06EC31A487DC60072D766 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0EE27FEF1A65B21B001B01EC /* HFTableViewCell.m in Sources */,
-				0EF06ECD1A487DC70072D766 /* ShareViewController.m in Sources */,
-				0E2BE1261A6E1A8300F81396 /* HFNewPostViewController.m in Sources */,
-				0E2BE1341A6EBC3600F81396 /* HFInterfaceTheme.m in Sources */,
-				0EDDFF511A71739D00EBBED9 /* HFToolbar.m in Sources */,
-				0E2BE1251A6E173100F81396 /* HFNavigationBar.m in Sources */,
-				0E2BE1241A6E164000F81396 /* HFShareExtensionContainerViewController.m in Sources */,
-				0E3600681A506379002B8EE7 /* HFTextView.m in Sources */,
-				0E3600671A50629C002B8EE7 /* HFTextViewTableViewCell.m in Sources */,
-				0EE27FF01A65B22B001B01EC /* UIColor+HFAdditions.m in Sources */,
-				0E25F3FD1A50811900B869EE /* UIFont+HFAdditions.m in Sources */,
-				0E3600661A50628F002B8EE7 /* HFTextFieldTableViewCell.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -903,11 +849,6 @@
 			isa = PBXTargetDependency;
 			target = 0EE791B61950318D00925E4F /* HackerFeed */;
 			targetProxy = 0EE791E01950318D00925E4F /* PBXContainerItemProxy */;
-		};
-		0EF06ED11A487DC70072D766 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 0EF06EC61A487DC60072D766 /* Share Extension */;
-			targetProxy = 0EF06ED01A487DC70072D766 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -933,7 +874,6 @@
 /* Begin XCBuildConfiguration section */
 		0EE791EA1950318D00925E4F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EF55B8CC3BFFDC02ECC4E139 /* Pods-HackerFeed.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -974,7 +914,6 @@
 		};
 		0EE791EB1950318D00925E4F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ED545A3266AE771A528F6E8E /* Pods-HackerFeed.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -1008,12 +947,13 @@
 		};
 		0EE791ED1950318D00925E4F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EF55B8CC3BFFDC02ECC4E139 /* Pods-HackerFeed.debug.xcconfig */;
+			baseConfigurationReference = D03C0E754DA76CEFD4144AC9 /* Pods-HackerFeed.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = HFG3GB6CJM;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1059,12 +999,13 @@
 		};
 		0EE791EE1950318D00925E4F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ED545A3266AE771A528F6E8E /* Pods-HackerFeed.release.xcconfig */;
+			baseConfigurationReference = 3BAA8B2290CFF60BBFFEB455 /* Pods-HackerFeed.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = HFG3GB6CJM;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1084,7 +1025,7 @@
 		};
 		0EE791F01950318D00925E4F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EF55B8CC3BFFDC02ECC4E139 /* Pods-HackerFeed.debug.xcconfig */;
+			baseConfigurationReference = AB6BA5695F74297ADBB9D38D /* Pods-HackerFeedTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/HackerFeed.app/HackerFeed";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1132,7 +1073,7 @@
 		};
 		0EE791F11950318D00925E4F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ED545A3266AE771A528F6E8E /* Pods-HackerFeed.release.xcconfig */;
+			baseConfigurationReference = 4093C88E3D75E6257F111A76 /* Pods-HackerFeedTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/HackerFeed.app/HackerFeed";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1174,64 +1115,6 @@
 			};
 			name = Release;
 		};
-		0EF06ED31A487DC70072D766 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = EF55B8CC3BFFDC02ECC4E139 /* Pods-HackerFeed.debug.xcconfig */;
-			buildSettings = {
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CODE_SIGN_ENTITLEMENTS = "Share Extension/Share Extension.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "HackerFeed/HackerFeed-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "HF_SHARE_EXTENSION_TARGET=1";
-				INFOPLIST_FILE = "Share Extension/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nealonyoung.hackerfeed.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		0EF06ED41A487DC70072D766 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = ED545A3266AE771A528F6E8E /* Pods-HackerFeed.release.xcconfig */;
-			buildSettings = {
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CODE_SIGN_ENTITLEMENTS = "Share Extension/Share Extension.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "HackerFeed/HackerFeed-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "HF_SHARE_EXTENSION_TARGET=1";
-				INFOPLIST_FILE = "Share Extension/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nealonyoung.hackerfeed.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1258,15 +1141,6 @@
 			buildConfigurations = (
 				0EE791F01950318D00925E4F /* Debug */,
 				0EE791F11950318D00925E4F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		0EF06ED51A487DC70072D766 /* Build configuration list for PBXNativeTarget "Share Extension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				0EF06ED31A487DC70072D766 /* Debug */,
-				0EF06ED41A487DC70072D766 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

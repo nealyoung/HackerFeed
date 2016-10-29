@@ -15,7 +15,7 @@ static HFInterfaceTheme *_activeTheme;
 @implementation HFInterfaceTheme
 
 + (void)setupAppearanceForActiveTheme {
-    [[UILabel appearanceWhenContainedIn:[UITableViewHeaderFooterView class], nil] setFont:[UIFont systemFontOfSize:15.0f]];
+    [[UILabel appearanceWhenContainedInInstancesOfClasses:@[[UITableViewHeaderFooterView class]]] setFont:[UIFont systemFontOfSize:15.0f]];
     
     NSDictionary *barButtonItemTitleTextAttributes = @{NSForegroundColorAttributeName:[[HFInterfaceTheme activeTheme] accentColor],
                                                        NSFontAttributeName: [UIFont systemFontOfSize:18.0f]};
@@ -35,7 +35,7 @@ static HFInterfaceTheme *_activeTheme;
 #ifndef HF_SHARE_EXTENSION_TARGET
     [UIApplication sharedApplication].keyWindow.tintColor = [[HFInterfaceTheme activeTheme] accentColor];
     [UIApplication sharedApplication].keyWindow.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
-    [[UIApplication sharedApplication] setStatusBarStyle:[HFInterfaceTheme activeTheme].statusBarStyle];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 #endif
 }
 

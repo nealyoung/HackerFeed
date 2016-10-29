@@ -46,7 +46,7 @@
 - (void)applyTheme {
     [super applyTheme];
     [self.button setTitleColor:[HFInterfaceTheme activeTheme].accentColor forState:UIControlStateNormal];
-    self.button.titleLabel.font = [UIFont systemFontOfSize:18.0f weight:UIFontWeightSemibold];
+    self.button.titleLabel.font = [UIFont semiboldApplicationFontOfSize:18.0f];
 }
 
 @end

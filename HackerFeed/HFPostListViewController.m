@@ -13,14 +13,12 @@
 #import "HFAlertViewController.h"
 #import "HFLoginPopupManager.h"
 #import "HFModalPresentationManager.h"
-#import "HFModalWebViewController.h"
 #import "HFNavigationBar.h"
 #import "HFNewPostViewController.h"
 #import "HFPostTableViewCell.h"
 #import "HFPostViewController.h"
 #import "HFPullToRefreshContentView.h"
 #import "HFToolbar.h"
-#import "HFWebViewController.h"
 #import "HNPost+HFAdditions.h"
 #import "SSPullToRefresh.h"
 #import "SVProgressHUD.h"
@@ -408,8 +406,14 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
     }
     
     cell.defaultColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.08f];
-    
-    UIImageView *upvoteIconImageView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"BarButtonUpvoteIcon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
+
+    static UIImage *upvoteImage;
+
+    if (!upvoteImage) {
+        upvoteImage = [[UIImage imageNamed:@"BarButtonUpvoteIcon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    }
+
+    UIImageView *upvoteIconImageView = [[UIImageView alloc] initWithImage:upvoteImage];
     upvoteIconImageView.tintColor = [UIColor whiteColor];
     
     // Add upvote swipe gesture, except for job posts (as they can't be upvoted), swipe gestures are removed in MCSwipeTableViewCell's prepareForReuse, so we have to re-add it here

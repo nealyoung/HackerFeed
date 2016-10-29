@@ -42,6 +42,10 @@
     self.font = [UIFont systemFontOfSize:14.0f weight:UIFontWeightMedium];
     self.layer.borderColor = [HFInterfaceTheme activeTheme].accentColor.CGColor;
     
+    [self updateColors];
+}
+
+- (void)updateColors {
     if (self.backgroundHighlighted) {
         self.backgroundColor = [HFInterfaceTheme activeTheme].accentColor;
         self.textColor = [HFInterfaceTheme activeTheme].backgroundColor;
@@ -58,7 +62,7 @@
 
 - (void)setBackgroundHighlighted:(BOOL)backgroundHighlighted {
     _backgroundHighlighted = backgroundHighlighted;
-    [self applyTheme];
+    [self updateColors];
 }
 
 @end
