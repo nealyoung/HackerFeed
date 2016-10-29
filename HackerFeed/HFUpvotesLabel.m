@@ -47,11 +47,11 @@
 
 - (void)updateColors {
     if (self.backgroundHighlighted) {
-        self.backgroundColor = [HFInterfaceTheme activeTheme].accentColor;
+        self.layer.backgroundColor = [HFInterfaceTheme activeTheme].accentColor.CGColor;
         self.textColor = [HFInterfaceTheme activeTheme].backgroundColor;
     } else {
         // We don't make the label's backgroundColor transparent to avoid blended layers
-        self.backgroundColor = self.superview.backgroundColor;
+        self.layer.backgroundColor = self.superview.backgroundColor.CGColor;
         self.textColor = [HFInterfaceTheme activeTheme].accentColor;
     }
 }

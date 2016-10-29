@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MCSwipeTableViewCell.h"
 
-@interface HFTableViewCell : MCSwipeTableViewCell
+@interface HFTableViewCell : UITableViewCell
 
 - (void)applyTheme;
 

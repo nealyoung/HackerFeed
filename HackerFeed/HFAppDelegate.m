@@ -55,7 +55,6 @@
                                                            showHNViewController,
                                                            jobsViewController,
                                                            settingsViewController];
-    dropdownMenuViewController.dropdownMenu.itemFont = [UIFont systemFontOfSize:17.0f weight:UIFontWeightMedium];
     
     [[HNManager sharedManager] startSession];
 //    [self customizeAppearance];

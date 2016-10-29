@@ -81,9 +81,7 @@
 - (void)applyTheme {
     self.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
     self.contentView.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
-    
-    self.defaultColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.08f];
-    
+        
     self.textLabel.font = [UIFont preferredApplicationFontForTextStyle:UIFontTextStyleSubheadline];
     self.textLabel.textColor = [HFInterfaceTheme activeTheme].textColor;
 

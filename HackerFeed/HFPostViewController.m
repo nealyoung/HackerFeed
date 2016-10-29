@@ -52,7 +52,7 @@
 - (void)cancelReplyButtonPressed:(UIButton *)sender;
 - (void)submitCommentButtonPressed:(UIButton *)sender;
 
-- (void)upvoteCommentGestureActivatedForCell:(MCSwipeTableViewCell *)cell;
+- (void)upvoteCommentGestureActivatedForCell:(UITableViewCell *)cell;
 
 - (void)clearCommentCellHeightCache;
 
@@ -381,7 +381,7 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
 
 #pragma mark - Swipe Gesture Handlers
 
-- (void)upvoteCommentGestureActivatedForCell:(MCSwipeTableViewCell *)cell {
+- (void)upvoteCommentGestureActivatedForCell:(UITableViewCell *)cell {
     if (![HNManager sharedManager].SessionUser) {
         [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"You must be signed in to vote", nil)];
         return;
@@ -399,7 +399,7 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
     }];
 }
 
-- (void)replyToCommentGestureActivatedForCell:(MCSwipeTableViewCell *)cell {
+- (void)replyToCommentGestureActivatedForCell:(UITableViewCell *)cell {
     NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
 
     self.commentToReply = self.comments[cellIndexPath.row];
@@ -407,7 +407,7 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
     [self.commentToolbar.textView becomeFirstResponder];
 }
 
-- (void)viewUserGestureActivatedForCell:(MCSwipeTableViewCell *)cell {
+- (void)viewUserGestureActivatedForCell:(UITableViewCell *)cell {
     NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
 
     HNComment *comment = self.comments[cellIndexPath.row];
@@ -555,10 +555,6 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
         }
         
         cell.separatorInset = UIEdgeInsetsMake(0.0f, tableView.separatorInset.left + (comment.Level * tableView.separatorInset.left), 0.0f, 0.0f);
-        
-        // Setup swipe gestures
-        
-        cell.defaultColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.08f];
 
         UIImageView *upvoteIconImageView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"BarButtonUpvoteIcon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
         upvoteIconImageView.tintColor = [UIColor whiteColor];

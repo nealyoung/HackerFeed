@@ -35,7 +35,6 @@
 - (void)applyTheme;
 - (void)refresh;
 
-- (void)cellSwiped:(MCSwipeTableViewCell *)cell;
 - (void)commentsButtonPressed:(UIButton *)button;
 - (void)newPostButtonPressed;
 
@@ -182,110 +181,110 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
     self.tableView.separatorColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.06f];
 }
 
-- (void)cellSwiped:(MCSwipeTableViewCell *)cell {
-    NSIndexPath* cellIndexPath = [self.tableView indexPathForCell:cell];
-    HNPost *post = self.dataSource.posts[cellIndexPath.row];
-    
-    if (![HNManager sharedManager].SessionUser) {
-//        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"You must be signed in to vote", nil)];
-        
-        [self.loginPopupController showInViewController:self];
-        
-//        HFAlertViewController *alertViewController = [[HFAlertViewController alloc] initWithNibName:nil bundle:nil];
-//        alertViewController.title = NSLocalizedString(@"Log In", nil);
-//        alertViewController.message = NSLocalizedString(@"You must be signed in to vote", nil);
+//- (void)cellSwiped:(MCSwipeTableViewCell *)cell {
+//    NSIndexPath* cellIndexPath = [self.tableView indexPathForCell:cell];
+//    HNPost *post = self.dataSource.posts[cellIndexPath.row];
+//    
+//    if (![HNManager sharedManager].SessionUser) {
+////        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"You must be signed in to vote", nil)];
 //        
-//        [alertViewController addAction:[HFAlertAction actionWithTitle:NSLocalizedString(@"Sign In", nil) style:UIAlertActionStyleDefault handler:^(HFAlertAction *action) {
-//            [self dismissViewControllerAnimated:YES completion:nil];
-//        }]];
+//        [self.loginPopupController showInViewController:self];
 //        
-//        [alertViewController addAction:[HFAlertAction actionWithTitle:NSLocalizedString(@"Cancel", nil) style:UIAlertActionStyleCancel handler:^(HFAlertAction *action) {
-//            [self dismissViewControllerAnimated:YES completion:nil];
-//        }]];
+////        HFAlertViewController *alertViewController = [[HFAlertViewController alloc] initWithNibName:nil bundle:nil];
+////        alertViewController.title = NSLocalizedString(@"Log In", nil);
+////        alertViewController.message = NSLocalizedString(@"You must be signed in to vote", nil);
+////        
+////        [alertViewController addAction:[HFAlertAction actionWithTitle:NSLocalizedString(@"Sign In", nil) style:UIAlertActionStyleDefault handler:^(HFAlertAction *action) {
+////            [self dismissViewControllerAnimated:YES completion:nil];
+////        }]];
+////        
+////        [alertViewController addAction:[HFAlertAction actionWithTitle:NSLocalizedString(@"Cancel", nil) style:UIAlertActionStyleCancel handler:^(HFAlertAction *action) {
+////            [self dismissViewControllerAnimated:YES completion:nil];
+////        }]];
+////        
+////        alertViewController.modalPresentationStyle = UIModalPresentationCustom;
+////        alertViewController.transitioningDelegate = self.modalPresentationManager;
+////        
+////        UIView *contentView = [[UIView alloc] initWithFrame:CGRectZero];
+////        
+////        UITextField *usernameTextField = [[UITextField alloc] initWithFrame:CGRectZero];
+////        [usernameTextField setTranslatesAutoresizingMaskIntoConstraints:NO];
+////        usernameTextField.borderStyle = UITextBorderStyleRoundedRect;
+////        usernameTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+////        usernameTextField.autocorrectionType = UITextAutocorrectionTypeNo;
+////        usernameTextField.returnKeyType = UIReturnKeyNext;
+////        usernameTextField.font = [UIFont applicationFontOfSize:14.0f];
+////        usernameTextField.placeholder = NSLocalizedString(@"Username", nil);
+////        [contentView addSubview:usernameTextField];
+////        
+////        UITextField *passwordTextField = [[UITextField alloc] initWithFrame:CGRectZero];
+////        [passwordTextField setTranslatesAutoresizingMaskIntoConstraints:NO];
+////        passwordTextField.borderStyle = UITextBorderStyleRoundedRect;
+////        passwordTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+////        passwordTextField.autocorrectionType = UITextAutocorrectionTypeNo;
+////        passwordTextField.returnKeyType = UIReturnKeyNext;
+////        passwordTextField.secureTextEntry = YES;
+////        passwordTextField.font = [UIFont applicationFontOfSize:14.0f];
+////        passwordTextField.placeholder = NSLocalizedString(@"Password", nil);
+////        [contentView addSubview:passwordTextField];
+////        
+////        [contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[usernameTextField]-|"
+////                                                                            options:0
+////                                                                            metrics:nil
+////                                                                              views:NSDictionaryOfVariableBindings(usernameTextField)]];
+////        
+////        [contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[passwordTextField]-|"
+////                                                                            options:0
+////                                                                            metrics:nil
+////                                                                              views:NSDictionaryOfVariableBindings(passwordTextField)]];
+////        
+////        [contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[usernameTextField]-[passwordTextField]-|"
+////                                                                            options:0
+////                                                                            metrics:nil
+////                                                                              views:NSDictionaryOfVariableBindings(usernameTextField, passwordTextField)]];
+////        
+////        alertViewController.alertViewContentView = contentView;
+////        
+////        [self presentViewController:alertViewController animated:YES completion:nil];
 //        
-//        alertViewController.modalPresentationStyle = UIModalPresentationCustom;
-//        alertViewController.transitioningDelegate = self.modalPresentationManager;
-//        
-//        UIView *contentView = [[UIView alloc] initWithFrame:CGRectZero];
-//        
-//        UITextField *usernameTextField = [[UITextField alloc] initWithFrame:CGRectZero];
-//        [usernameTextField setTranslatesAutoresizingMaskIntoConstraints:NO];
-//        usernameTextField.borderStyle = UITextBorderStyleRoundedRect;
-//        usernameTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
-//        usernameTextField.autocorrectionType = UITextAutocorrectionTypeNo;
-//        usernameTextField.returnKeyType = UIReturnKeyNext;
-//        usernameTextField.font = [UIFont applicationFontOfSize:14.0f];
-//        usernameTextField.placeholder = NSLocalizedString(@"Username", nil);
-//        [contentView addSubview:usernameTextField];
-//        
-//        UITextField *passwordTextField = [[UITextField alloc] initWithFrame:CGRectZero];
-//        [passwordTextField setTranslatesAutoresizingMaskIntoConstraints:NO];
-//        passwordTextField.borderStyle = UITextBorderStyleRoundedRect;
-//        passwordTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
-//        passwordTextField.autocorrectionType = UITextAutocorrectionTypeNo;
-//        passwordTextField.returnKeyType = UIReturnKeyNext;
-//        passwordTextField.secureTextEntry = YES;
-//        passwordTextField.font = [UIFont applicationFontOfSize:14.0f];
-//        passwordTextField.placeholder = NSLocalizedString(@"Password", nil);
-//        [contentView addSubview:passwordTextField];
-//        
-//        [contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[usernameTextField]-|"
-//                                                                            options:0
-//                                                                            metrics:nil
-//                                                                              views:NSDictionaryOfVariableBindings(usernameTextField)]];
-//        
-//        [contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[passwordTextField]-|"
-//                                                                            options:0
-//                                                                            metrics:nil
-//                                                                              views:NSDictionaryOfVariableBindings(passwordTextField)]];
-//        
-//        [contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[usernameTextField]-[passwordTextField]-|"
-//                                                                            options:0
-//                                                                            metrics:nil
-//                                                                              views:NSDictionaryOfVariableBindings(usernameTextField, passwordTextField)]];
-//        
-//        alertViewController.alertViewContentView = contentView;
-//        
-//        [self presentViewController:alertViewController animated:YES completion:nil];
-        
-        return;
-    }
-    
-    if (![[HNManager sharedManager] hasVotedOnObject:post]) {
-        [[HNManager sharedManager] voteOnPostOrComment:post direction:VoteDirectionUp completion:^(BOOL success) {
-            if (!success) {
-                [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Error upvoting post", nil)];
-                return;
-            }
-            
-            post.Points++;
-            
-            HFPostTableViewCell *cell = (HFPostTableViewCell *)[self.tableView cellForRowAtIndexPath:cellIndexPath];
-            
-            // Make sure the cell is still visible
-            if (cell) {
-                // Reload the cell so the points label reflects the user's upvote
-                [self configureCell:cell forPost:post];
-                
-                [UIView animateWithDuration:0.3f
-                                      delay:0.0f
-                                    options:UIViewAnimationOptionCurveEaseOut
-                                 animations:^{
-                                     cell.upvotesLabel.layer.transform = CATransform3DMakeScale(1.14f, 1.14f, 1.0f);
-                                 }
-                                 completion:^(BOOL finished) {
-                                     [UIView animateWithDuration:0.3f
-                                                           delay:0.0f
-                                                         options:UIViewAnimationOptionCurveEaseIn
-                                                      animations:^{
-                                                          cell.upvotesLabel.layer.transform = CATransform3DIdentity;
-                                                      }
-                                                      completion:nil];
-                                 }];
-            }
-        }];
-    }
-}
+//        return;
+//    }
+//    
+//    if (![[HNManager sharedManager] hasVotedOnObject:post]) {
+//        [[HNManager sharedManager] voteOnPostOrComment:post direction:VoteDirectionUp completion:^(BOOL success) {
+//            if (!success) {
+//                [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Error upvoting post", nil)];
+//                return;
+//            }
+//            
+//            post.Points++;
+//            
+//            HFPostTableViewCell *cell = (HFPostTableViewCell *)[self.tableView cellForRowAtIndexPath:cellIndexPath];
+//            
+//            // Make sure the cell is still visible
+//            if (cell) {
+//                // Reload the cell so the points label reflects the user's upvote
+//                [self configureCell:cell forPost:post];
+//                
+//                [UIView animateWithDuration:0.3f
+//                                      delay:0.0f
+//                                    options:UIViewAnimationOptionCurveEaseOut
+//                                 animations:^{
+//                                     cell.upvotesLabel.layer.transform = CATransform3DMakeScale(1.14f, 1.14f, 1.0f);
+//                                 }
+//                                 completion:^(BOOL finished) {
+//                                     [UIView animateWithDuration:0.3f
+//                                                           delay:0.0f
+//                                                         options:UIViewAnimationOptionCurveEaseIn
+//                                                      animations:^{
+//                                                          cell.upvotesLabel.layer.transform = CATransform3DIdentity;
+//                                                      }
+//                                                      completion:nil];
+//                                 }];
+//            }
+//        }];
+//    }
+//}
 
 - (void)commentsButtonPressed:(HFCommentsButton *)sender {
     UINavigationController *postNavigationController;
@@ -405,27 +404,27 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
         }
     }
     
-    cell.defaultColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.08f];
+//    cell.defaultColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.08f];
 
-    static UIImage *upvoteImage;
-
-    if (!upvoteImage) {
-        upvoteImage = [[UIImage imageNamed:@"BarButtonUpvoteIcon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    }
-
-    UIImageView *upvoteIconImageView = [[UIImageView alloc] initWithImage:upvoteImage];
-    upvoteIconImageView.tintColor = [UIColor whiteColor];
-    
-    // Add upvote swipe gesture, except for job posts (as they can't be upvoted), swipe gestures are removed in MCSwipeTableViewCell's prepareForReuse, so we have to re-add it here
-    if (post.Type != PostTypeJobs) {
-        [cell setSwipeGestureWithView:upvoteIconImageView
-                                color:[HFInterfaceTheme activeTheme].accentColor
-                                 mode:MCSwipeTableViewCellModeSwitch
-                                state:MCSwipeTableViewCellState1
-                      completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
-                          [self cellSwiped:cell];
-                      }];
-    }
+//    static UIImage *upvoteImage;
+//
+//    if (!upvoteImage) {
+//        upvoteImage = [[UIImage imageNamed:@"BarButtonUpvoteIcon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+//    }
+//
+//    UIImageView *upvoteIconImageView = [[UIImageView alloc] initWithImage:upvoteImage];
+//    upvoteIconImageView.tintColor = [UIColor whiteColor];
+//    
+//    // Add upvote swipe gesture, except for job posts (as they can't be upvoted), swipe gestures are removed in MCSwipeTableViewCell's prepareForReuse, so we have to re-add it here
+//    if (post.Type != PostTypeJobs) {
+//        [cell setSwipeGestureWithView:upvoteIconImageView
+//                                color:[HFInterfaceTheme activeTheme].accentColor
+//                                 mode:MCSwipeTableViewCellModeSwitch
+//                                state:MCSwipeTableViewCellState1
+//                      completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
+//                          [self cellSwiped:cell];
+//                      }];
+//    }
 }
 
 #pragma mark - UITableViewDelegate

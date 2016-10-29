@@ -115,85 +115,34 @@
 
 - (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
     [super setHighlighted:highlighted animated:animated];
-
-    // To improve scrolling performance, the upvotes label is opaque, so we need to set its background color appropriately when the cell is highlighted
-    if (!self.upvotesLabel.backgroundHighlighted) {
-        if (highlighted) {
-            self.upvotesLabel.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.08f];
-        } else {
-            self.upvotesLabel.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
-        }
-    }
+    [self updateColorsForCurrentHighlightStateAnimated:animated];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-    
-    // To improve scrolling performance, the upvotes label is opaque, so we need to set its background color appropriately when the cell is highlighted
-    if (!self.upvotesLabel.backgroundHighlighted) {
-        if (selected) {
-            self.upvotesLabel.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.08f];
-        } else {
-            self.upvotesLabel.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
-        }
-    }
+    [self updateColorsForCurrentHighlightStateAnimated:animated];
 }
 
-//- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-//    UIColor *commentBackgroundColor = self.commentButtonBackground.backgroundColor;
-//    [super setSelected:selected animated:animated];
-//    self.commentButtonBackground.backgroundColor = commentBackgroundColor;
-//}
+- (void)updateColorsForCurrentHighlightStateAnimated:(BOOL)animated {
+    UIColor *contentViewBackgroundColor = self.contentView.backgroundColor;
 
-//- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
-//    [super setHighlighted:highlighted animated:animated];
-//    
-//    NSLog(@"set highlighted %d animated %d", highlighted, animated);
-//
-//    NSTimeInterval animationDuration = animated ? 0.3f : 0.0f;
-//    
-//    [UIView animateWithDuration:animationDuration animations:^{
-//        if (highlighted) {
-//            self.titleLabel.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.25f];
-//            self.infoLabel.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.25f];
-//            self.domainLabel.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.25f];
-//        } else {
-//            self.titleLabel.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
-//            self.infoLabel.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
-//            self.domainLabel.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
-//        }
-//    }];
-//}
-//
-//- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-//    [super setSelected:selected animated:animated];
-//    
-//    NSLog(@"set selected %d animated %d", selected, animated);
-//    
-//    if (animated) {
-//        [UIView animateWithDuration:0.3f animations:^{
-//            if (selected) {
-//                self.titleLabel.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.25f];
-//                self.infoLabel.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.25f];
-//                self.domainLabel.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.25f];
-//            } else {
-//                self.titleLabel.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
-//                self.infoLabel.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
-//                self.domainLabel.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
-//            }
-//        }];
-//    } else {
-//        if (selected) {
-//            self.titleLabel.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.25f];
-//            self.infoLabel.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.25f];
-//            self.domainLabel.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.25f];
-//        } else {
-//            self.titleLabel.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
-//            self.infoLabel.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
-//            self.domainLabel.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
-//        }
-//    }
-//}
+    void (^updateColorsBlock)() = ^{
+        self.titleLabel.layer.backgroundColor = contentViewBackgroundColor.CGColor;
+        self.infoLabel.layer.backgroundColor = contentViewBackgroundColor.CGColor;
+        self.domainLabel.layer.backgroundColor = contentViewBackgroundColor.CGColor;
+
+        if (!self.upvotesLabel.backgroundHighlighted) {
+            self.upvotesLabel.layer.backgroundColor = contentViewBackgroundColor.CGColor;
+        }
+    };
+
+
+    if (animated) {
+        [UIView animateWithDuration:0.3f animations:updateColorsBlock];
+    } else {
+        updateColorsBlock();
+    }
+}
 
 - (void)layoutSubviews {
     [super layoutSubviews];
@@ -206,26 +155,24 @@
 
 - (void)applyTheme {
     [super applyTheme];
-    
-    self.color1 = [HFInterfaceTheme activeTheme].accentColor;
-    
+
     self.infoLabel.textColor = [HFInterfaceTheme activeTheme].secondaryTextColor;
     self.infoLabel.font = [UIFont preferredApplicationFontForTextStyle:UIFontTextStyleSubheadline];
-//    self.infoLabel.backgroundColor = self.contentView.backgroundColor;
+    self.infoLabel.layer.backgroundColor = self.contentView.backgroundColor.CGColor;
 
     self.titleLabel.textColor = [HFInterfaceTheme activeTheme].textColor;
     self.titleLabel.font = [UIFont preferredApplicationFontForTextStyle:UIFontTextStyleHeadline];
-//    self.titleLabel.backgroundColor = self.contentView.backgroundColor;
+    self.titleLabel.layer.backgroundColor = self.contentView.backgroundColor.CGColor;
     
     self.domainLabel.textColor = [HFInterfaceTheme activeTheme].secondaryTextColor;
     self.domainLabel.font = [UIFont preferredApplicationFontForTextStyle:UIFontTextStyleSubheadline];
-//    self.domainLabel.backgroundColor = self.contentView.backgroundColor;
+    self.domainLabel.layer.backgroundColor = self.contentView.backgroundColor.CGColor;
     
     self.commentButtonBackground.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.02f];
     
     [self.commentsButton setNeedsDisplay];
     [self.commentsButton setTitleColor:[HFInterfaceTheme activeTheme].secondaryTextColor forState:UIControlStateNormal];
-    self.commentsButton.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.02f];
+    self.commentsButton.layer.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.02f].CGColor;
 }
 
 @end
