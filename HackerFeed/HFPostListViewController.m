@@ -403,52 +403,12 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
             [cell.commentsButton setTitle:[NSString stringWithFormat:@"%d", post.CommentCount] forState:UIControlStateNormal];
         }
     }
-    
-//    cell.defaultColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.08f];
-
-//    static UIImage *upvoteImage;
-//
-//    if (!upvoteImage) {
-//        upvoteImage = [[UIImage imageNamed:@"BarButtonUpvoteIcon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-//    }
-//
-//    UIImageView *upvoteIconImageView = [[UIImageView alloc] initWithImage:upvoteImage];
-//    upvoteIconImageView.tintColor = [UIColor whiteColor];
-//    
-//    // Add upvote swipe gesture, except for job posts (as they can't be upvoted), swipe gestures are removed in MCSwipeTableViewCell's prepareForReuse, so we have to re-add it here
-//    if (post.Type != PostTypeJobs) {
-//        [cell setSwipeGestureWithView:upvoteIconImageView
-//                                color:[HFInterfaceTheme activeTheme].accentColor
-//                                 mode:MCSwipeTableViewCellModeSwitch
-//                                state:MCSwipeTableViewCellState1
-//                      completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
-//                          [self cellSwiped:cell];
-//                      }];
-//    }
 }
 
 #pragma mark - UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return UITableViewAutomaticDimension;
-    static HFPostTableViewCell *postMetricsCell;
-    
-    if (!postMetricsCell) {
-        postMetricsCell = [[HFPostTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
-    }
-    
-    postMetricsCell.bounds = CGRectMake(0.0f, 0.0f, self.tableView.bounds.size.width, 9999.0f);
-    HNPost *post = self.dataSource.posts[indexPath.row];
-    
-    [self configureCell:postMetricsCell forPost:post];
-    
-    [postMetricsCell setNeedsLayout];
-    [postMetricsCell layoutIfNeeded];
-    
-    CGSize size = [postMetricsCell.contentView systemLayoutSizeFittingSize:UILayoutFittingExpandedSize];
-    CGFloat cellHeight = size.height + 1;
-    
-    return cellHeight;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
