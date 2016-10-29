@@ -9,8 +9,8 @@ target "HackerFeed" do
   pod 'NYSegmentedControl'
   pod 'PBWebViewController'
   pod 'SSPullToRefresh'
-  pod 'SVProgressHUD', :head
-  pod 'SVPullToRefresh', :head, inhibit_warnings: true
+  pod 'SVProgressHUD', :git => 'https://github.com/SVProgressHUD/SVProgressHUD.git'
+  pod 'SVPullToRefresh', :git => 'https://github.com/samvermette/SVPullToRefresh.git'
   pod 'TTTAttributedLabel'
   pod 'ZFDragableModalTransition'
 end
