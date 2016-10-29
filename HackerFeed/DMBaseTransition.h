@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Thomas Ricouard. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 @interface DMBaseTransition : NSObject <UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning>
 

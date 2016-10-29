@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Nealon Young. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 typedef NS_ENUM(NSInteger, HFInterfaceThemeType) {
     HFInterfaceThemeTypeDefault,

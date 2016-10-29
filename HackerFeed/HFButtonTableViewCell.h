@@ -6,7 +6,8 @@
 //  Copyright (c) 2015 Nealon Young. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
+
 #import "HFTableViewCell.h"
 
 @interface HFButtonTableViewCell : HFTableViewCell

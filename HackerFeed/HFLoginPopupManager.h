@@ -6,7 +6,8 @@
 //  Copyright (c) 2015 Nealon Young. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
+
 #import "libHN.h"
 
 typedef void (^HFLoginPopupManagerCompletionBlock)(HNUser *user);

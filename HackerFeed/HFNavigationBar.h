@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Nealon Young. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 @interface HFNavigationBar : UINavigationBar
 

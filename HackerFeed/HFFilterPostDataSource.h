@@ -6,7 +6,8 @@
 //  Copyright (c) 2014 Nealon Young. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
+
 #import "HFBasePostDataSource.h"
 
 @interface HFFilterPostDataSource : HFBasePostDataSource

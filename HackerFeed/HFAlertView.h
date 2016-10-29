@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Nealon Young. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 @interface HFAlertView : UIView
 
