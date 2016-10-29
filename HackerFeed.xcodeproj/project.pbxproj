@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0E0214FB19CB518E00561912 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E0214FA19CB518E00561912 /* libz.dylib */; };
-		0E0214FE19CB53D300561912 /* HFWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E0214FD19CB53D300561912 /* HFWebViewController.m */; };
 		0E0C0BE819CFC0DD007EAE25 /* HFBasePostDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E0C0BE719CFC0DD007EAE25 /* HFBasePostDataSource.m */; };
 		0E183AAC1AF442F0004E6324 /* HNPost+HFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E183AAB1AF442F0004E6324 /* HNPost+HFAdditions.m */; };
 		0E1FC635197C4B4700B41804 /* HFPostTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E1FC634197C4B4700B41804 /* HFPostTableViewCell.m */; };
@@ -41,7 +40,6 @@
 		0E5325CD1B54B68900301CE0 /* HFLoginPopupManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E5325CC1B54B68900301CE0 /* HFLoginPopupManager.m */; };
 		0E5325D01B54BBBC00301CE0 /* HFLoginPopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E5325CF1B54BBBC00301CE0 /* HFLoginPopupView.m */; };
 		0E5424E719C4C07D00FF24A7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E5424E619C4C07D00FF24A7 /* LaunchScreen.xib */; };
-		0E5424EA19C4DA5F00FF24A7 /* HFModalWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E5424E919C4DA5F00FF24A7 /* HFModalWebViewController.m */; };
 		0E57B5B4198C2D6C0056CA54 /* HFTextViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E57B5B3198C2D6C0056CA54 /* HFTextViewTableViewCell.m */; };
 		0E59357019F9CAF40081B28A /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E59356F19F9CAF40081B28A /* libicucore.dylib */; };
 		0E59357219F9CAFE0081B28A /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E59357119F9CAFE0081B28A /* libc++.dylib */; };
@@ -144,8 +142,6 @@
 /* Begin PBXFileReference section */
 		014806F2979C4ADBAA87257A /* libPods-HackerFeed.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HackerFeed.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E0214FA19CB518E00561912 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		0E0214FC19CB53D300561912 /* HFWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFWebViewController.h; sourceTree = "<group>"; };
-		0E0214FD19CB53D300561912 /* HFWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFWebViewController.m; sourceTree = "<group>"; };
 		0E07A4DC1A5064F5004C0758 /* libPods-HackerFeed.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-HackerFeed.a"; path = "Pods/build/Debug-iphoneos/libPods-HackerFeed.a"; sourceTree = "<group>"; };
 		0E0C0BE619CFC0DD007EAE25 /* HFBasePostDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFBasePostDataSource.h; sourceTree = "<group>"; };
 		0E0C0BE719CFC0DD007EAE25 /* HFBasePostDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFBasePostDataSource.m; sourceTree = "<group>"; };
@@ -177,8 +173,6 @@
 		0E5325CE1B54BBBC00301CE0 /* HFLoginPopupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFLoginPopupView.h; sourceTree = "<group>"; };
 		0E5325CF1B54BBBC00301CE0 /* HFLoginPopupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFLoginPopupView.m; sourceTree = "<group>"; };
 		0E5424E619C4C07D00FF24A7 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
-		0E5424E819C4DA5F00FF24A7 /* HFModalWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFModalWebViewController.h; sourceTree = "<group>"; };
-		0E5424E919C4DA5F00FF24A7 /* HFModalWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFModalWebViewController.m; sourceTree = "<group>"; };
 		0E57B5B2198C2D6C0056CA54 /* HFTextViewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFTextViewTableViewCell.h; sourceTree = "<group>"; };
 		0E57B5B3198C2D6C0056CA54 /* HFTextViewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFTextViewTableViewCell.m; sourceTree = "<group>"; };
 		0E59356F19F9CAF40081B28A /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
@@ -384,10 +378,6 @@
 				0E6C30DE197F5DCB00C33A67 /* HFLoginViewController.m */,
 				0E3653A71A54D1F5002FB22A /* HFSettingsViewController.h */,
 				0E3653A81A54D1F5002FB22A /* HFSettingsViewController.m */,
-				0E5424E819C4DA5F00FF24A7 /* HFModalWebViewController.h */,
-				0E5424E919C4DA5F00FF24A7 /* HFModalWebViewController.m */,
-				0E0214FC19CB53D300561912 /* HFWebViewController.h */,
-				0E0214FD19CB53D300561912 /* HFWebViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -846,7 +836,6 @@
 				0EFC2542198604A900A67412 /* HFUserPostDataSource.m in Sources */,
 				0EC81435197CA8FA009F0D99 /* HFCommentTableViewCell.m in Sources */,
 				0E1FC635197C4B4700B41804 /* HFPostTableViewCell.m in Sources */,
-				0E5424EA19C4DA5F00FF24A7 /* HFModalWebViewController.m in Sources */,
 				0EC52C5A1B55A12F00C3E8B7 /* HFTextField.m in Sources */,
 				0E5325CD1B54B68900301CE0 /* HFLoginPopupManager.m in Sources */,
 				0E183AAC1AF442F0004E6324 /* HNPost+HFAdditions.m in Sources */,
@@ -860,7 +849,6 @@
 				0EC81426197C8D1C009F0D99 /* HFCommentsButton.m in Sources */,
 				0E5C453B19838135001EE1CB /* HFFilterPostDataSource.m in Sources */,
 				0EECC78B1A7E966D00527326 /* HFTableView.m in Sources */,
-				0E0214FE19CB53D300561912 /* HFWebViewController.m in Sources */,
 				0E5CD9411B7AA6BF005E908B /* HFUpvotesLabel.m in Sources */,
 				0EDA41531B4DDCBF00A322AF /* HFModalDismissalAnimationController.m in Sources */,
 				0E990E841990BA65002933C4 /* DMBaseTransition.m in Sources */,
