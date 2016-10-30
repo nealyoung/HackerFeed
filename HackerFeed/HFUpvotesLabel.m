@@ -1,11 +1,3 @@
-//
-//  HFUpvotesLabel.m
-//  HackerFeed
-//
-//  Created by Nealon Young on 8/11/15.
-//  Copyright (c) 2015 Nealon Young. All rights reserved.
-//
-
 #import "HFUpvotesLabel.h"
 
 @implementation HFUpvotesLabel
@@ -33,13 +25,14 @@
     
     if (self.text) {
         size.width += 8.0f;
+        size.height += 2.0f;
     }
     
     return size;
 }
 
 - (void)applyTheme {
-    self.font = [UIFont systemFontOfSize:14.0f weight:UIFontWeightMedium];
+    self.font = [UIFont systemFontOfSize:15.0f weight:UIFontWeightMedium];
     self.layer.borderColor = [HFInterfaceTheme activeTheme].accentColor.CGColor;
     
     [self updateColors];

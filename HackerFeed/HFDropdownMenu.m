@@ -1,11 +1,3 @@
-//
-//  HFDropdownMenu.m
-//  HackerFeed
-//
-//  Created by Nealon Young on 7/20/14.
-//  Copyright (c) 2014 Nealon Young. All rights reserved.
-//
-
 #import "HFDropdownMenu.h"
 
 #import "HFDropdownMenuButton.h"
@@ -13,11 +5,12 @@
 @interface HFDropdownMenu ()
 
 @property (nonatomic) NSArray *buttons;
+@property (nonatomic) HFDropdownMenuButton *selectedButton;
 @property UIView *listView;
-@property UIView *bottomBorderView;
 
 - (void)applyTheme;
 - (void)buttonPressed:(HFDropdownMenuButton *)sender;
+- (void)setSelectedButton:(HFDropdownMenuButton *)selectedButton animated:(BOOL)animated;
 
 @end
 
@@ -31,7 +24,6 @@ const CGFloat kListTopMarginHeight = 80.0f;
         _animationDuration = 0.6f;
         _itemHeight = 40.0f;
         
-        //_backgroundView = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleDark]];
         _backgroundView = [[UIView alloc] initWithFrame:CGRectZero];
         _backgroundView.layer.opacity = 0.0f;
         _backgroundView.isAccessibilityElement = YES;
@@ -39,14 +31,16 @@ const CGFloat kListTopMarginHeight = 80.0f;
         _backgroundView.accessibilityHint = NSLocalizedString(@"Dismisses the feed type selection menu", nil);
         [self addSubview:_backgroundView];
 
-        //_listView = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight]];
         _listView = [[UIView alloc] initWithFrame:CGRectZero];
-        _listView.layer.cornerRadius = 0.0f;
-        _listView.layer.masksToBounds = YES;
+        _listView.layer.shadowColor = [UIColor blackColor].CGColor;
+        _listView.layer.shadowOpacity = 0.64f;
+        _listView.layer.shadowOffset = CGSizeZero;
+        _listView.layer.shadowRadius = 16.0f;
+        _listView.layer.shouldRasterize = YES;
+        _listView.layer.rasterizationScale = [UIScreen mainScreen].scale;
+
+        _listView.layer.cornerRadius = 12.0f;
         [self addSubview:_listView];
-        
-        _bottomBorderView = [[UIView alloc] initWithFrame:CGRectZero];
-        [_listView addSubview:_bottomBorderView];
         
         [self applyTheme];
         
@@ -72,22 +66,19 @@ const CGFloat kListTopMarginHeight = 80.0f;
     self.backgroundView.frame = self.bounds;
     
     CGFloat menuBackgroundHeight = kListTopMarginHeight + [self navigationBarHeight] + self.itemHeight * [self.items count];
-    self.listView.frame = CGRectMake(self.listView.frame.origin.x,
+    self.listView.frame = CGRectMake(40.0f,
                                      self.showingMenu ? -kListTopMarginHeight : -(menuBackgroundHeight + kListTopMarginHeight),
-                                     CGRectGetWidth(self.frame),
+                                     CGRectGetWidth(self.frame) - 80.0f,
                                      menuBackgroundHeight);
-    
+
+    self.listView.layer.shadowPath = [UIBezierPath bezierPathWithRoundedRect:self.listView.bounds cornerRadius:self.listView.layer.cornerRadius].CGPath;
+
     [self.buttons enumerateObjectsUsingBlock:^(HFDropdownMenuButton *button, NSUInteger idx, BOOL *stop) {
-        button.frame = CGRectMake(CGRectGetMinX(self.listView.frame),
+        button.frame = CGRectMake(0.0f,
                                   kListTopMarginHeight + [self navigationBarHeight] + self.itemHeight * idx,
                                   CGRectGetWidth(self.listView.frame),
                                   self.itemHeight);
     }];
-    
-    self.bottomBorderView.frame = CGRectMake(0.0f,
-                                             CGRectGetMaxY(((UIButton *)[self.buttons lastObject]).frame) - (1.0f / [UIScreen mainScreen].scale),
-                                             CGRectGetWidth(self.listView.frame),
-                                             1.0f / [UIScreen mainScreen].scale);
 }
 
 - (CGFloat)navigationBarHeight {
@@ -97,7 +88,6 @@ const CGFloat kListTopMarginHeight = 80.0f;
 - (void)applyTheme {
     _backgroundView.backgroundColor = [UIColor blackColor];
     _listView.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
-    _bottomBorderView.backgroundColor = [HFInterfaceTheme activeTheme].cellSeparatorColor;
 }
 
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {
@@ -133,6 +123,19 @@ const CGFloat kListTopMarginHeight = 80.0f;
     [self setNeedsLayout];
 }
 
+- (void)setSelectedButton:(HFDropdownMenuButton *)selectedButton {
+    [self setSelectedButton:selectedButton animated:NO];
+}
+
+- (void)setSelectedButton:(HFDropdownMenuButton *)selectedButton animated:(BOOL)animated {
+    if (selectedButton != _selectedButton) {
+        [_selectedButton setSelected:NO animated:animated];
+        [selectedButton setSelected:YES animated:animated];
+
+        _selectedButton = selectedButton;
+    }
+}
+
 - (void)setItems:(NSArray *)items {
     _items = items;
     
@@ -160,11 +163,14 @@ const CGFloat kListTopMarginHeight = 80.0f;
 }
 
 - (void)buttonPressed:(HFDropdownMenuButton *)sender {
+    [self setSelectedButton:sender animated:YES];
     self.selectedItem = self.items[sender.tag];
-    
-    if ([self.delegate respondsToSelector:@selector(dropdownMenu:didSelectItem:)]) {
-        [self.delegate dropdownMenu:self didSelectItem:self.selectedItem];
-    }
+
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if ([self.delegate respondsToSelector:@selector(dropdownMenu:didSelectItem:)]) {
+            [self.delegate dropdownMenu:self didSelectItem:self.selectedItem];
+        }
+    });
 }
 
 - (void)toggleMenu {
@@ -181,13 +187,13 @@ const CGFloat kListTopMarginHeight = 80.0f;
     [UIView animateWithDuration:self.animationDuration
                           delay:0.0f
          usingSpringWithDamping:1.0f
-          initialSpringVelocity:0.8f
+          initialSpringVelocity:0.6f
                         options:0
                      animations:^{
                          self.backgroundView.layer.opacity = 0.0f;
 
                          CGRect listFrame = self.listView.frame;
-                         listFrame.origin = CGPointMake(0.0f, -(CGRectGetHeight(listFrame) + kListTopMarginHeight));
+                         listFrame.origin = CGPointMake(listFrame.origin.x, -(CGRectGetHeight(listFrame) + kListTopMarginHeight));
                          self.listView.frame = listFrame;
                      }
                      completion:^(BOOL finished) {
@@ -206,14 +212,14 @@ const CGFloat kListTopMarginHeight = 80.0f;
     
     [UIView animateWithDuration:self.animationDuration
                           delay:0.0f
-         usingSpringWithDamping:1.0f
-          initialSpringVelocity:0.8f
+         usingSpringWithDamping:0.74f
+          initialSpringVelocity:0.6f
                         options:0
                      animations:^{
-                         self.backgroundView.layer.opacity = 0.8f;
+                         self.backgroundView.layer.opacity = 0.0f;
 
                          CGRect listFrame = self.listView.frame;
-                         listFrame.origin = CGPointMake(0.0f, -kListTopMarginHeight);
+                         listFrame.origin = CGPointMake(listFrame.origin.x, -kListTopMarginHeight);
                          self.listView.frame = listFrame;
                      }
                      completion:^(BOOL finished) {

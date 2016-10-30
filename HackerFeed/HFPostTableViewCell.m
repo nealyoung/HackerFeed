@@ -136,7 +136,6 @@
         }
     };
 
-
     if (animated) {
         [UIView animateWithDuration:0.3f animations:updateColorsBlock];
     } else {

@@ -1,11 +1,3 @@
-//
-//  HFInterfaceTheme.m
-//  HackerFeed
-//
-//  Created by Nealon Young on 1/1/15.
-//  Copyright (c) 2015 Nealon Young. All rights reserved.
-//
-
 #import "HFInterfaceTheme.h"
 #import "SVProgressHUD.h"
 
@@ -15,16 +7,16 @@ static HFInterfaceTheme *_activeTheme;
 @implementation HFInterfaceTheme
 
 + (void)setupAppearanceForActiveTheme {
-    [[UILabel appearanceWhenContainedInInstancesOfClasses:@[[UITableViewHeaderFooterView class]]] setFont:[UIFont systemFontOfSize:15.0f]];
+    [[UILabel appearanceWhenContainedInInstancesOfClasses:@[[UITableViewHeaderFooterView class]]] setFont:[UIFont applicationFontOfSize:15.0f]];
     
     NSDictionary *barButtonItemTitleTextAttributes = @{NSForegroundColorAttributeName:[[HFInterfaceTheme activeTheme] accentColor],
-                                                       NSFontAttributeName: [UIFont systemFontOfSize:18.0f]};
+                                                       NSFontAttributeName: [UIFont applicationFontOfSize:18.0f]};
     [[UIBarButtonItem appearance] setTitleTextAttributes:barButtonItemTitleTextAttributes forState:UIControlStateNormal];
     
     [SVProgressHUD setFont:[UIFont systemFontOfSize:15.0f]];
     
     NSDictionary *navigationBarTitleTextAttributes = @{NSForegroundColorAttributeName:[[HFInterfaceTheme activeTheme] accentColor],
-                                                       NSFontAttributeName: [UIFont systemFontOfSize:19.0f]};
+                                                       NSFontAttributeName: [UIFont applicationFontOfSize:19.0f]};
     [[UINavigationBar appearance] setTitleTextAttributes:navigationBarTitleTextAttributes];
     [[UINavigationBar appearance] setBarTintColor:[[HFInterfaceTheme activeTheme] navigationBarColor]];
     [[UINavigationBar appearance] setTranslucent:NO];
@@ -35,7 +27,7 @@ static HFInterfaceTheme *_activeTheme;
 #ifndef HF_SHARE_EXTENSION_TARGET
     [UIApplication sharedApplication].keyWindow.tintColor = [[HFInterfaceTheme activeTheme] accentColor];
     [UIApplication sharedApplication].keyWindow.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    [[UIApplication sharedApplication] setStatusBarStyle:[HFInterfaceTheme activeTheme].statusBarStyle];
 #endif
 }
 

@@ -22,8 +22,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.layer.masksToBounds = YES;
-    self.window.layer.cornerRadius = 6.0f;
     
     HFPostListViewController *topStoriesViewController = [[HFPostListViewController alloc] initWithNibName:nil bundle:nil];
     topStoriesViewController.dataSource = [[HFFilterPostDataSource alloc] initWithPostFilterType:PostFilterTypeTop image:[UIImage imageNamed:@"TopStoriesIcon"]];
@@ -54,7 +52,8 @@
                                                            askHNViewController,
                                                            showHNViewController,
                                                            jobsViewController,
-                                                           settingsViewController];
+                                                           //settingsViewController
+                                                           ];
     
     [[HNManager sharedManager] startSession];
 //    [self customizeAppearance];
