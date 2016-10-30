@@ -108,28 +108,4 @@
                                                   }];
 }
 
-- (void)customizeAppearance {
-    [[UIApplication sharedApplication] setStatusBarStyle:[HFInterfaceTheme activeTheme].statusBarStyle];
-    
-    [[UILabel appearanceWhenContainedInInstancesOfClasses:@[[UITableViewHeaderFooterView class]]] setFont:[UIFont systemFontOfSize:15.0f]];
-    
-    self.window.tintColor = [[HFInterfaceTheme activeTheme] accentColor];
-    self.window.backgroundColor = [UIColor whiteColor];
-    
-    NSDictionary *navigationBarTitleTextAttributes = @{NSForegroundColorAttributeName:self.window.tintColor,
-                                                       NSFontAttributeName: [UIFont systemFontOfSize:19.0f]};
-    [[UINavigationBar appearance] setTitleTextAttributes:navigationBarTitleTextAttributes];
-    [[UINavigationBar appearance] setBarTintColor:[[HFInterfaceTheme activeTheme] navigationBarColor]];
-    [[UINavigationBar appearance] setTranslucent:NO];
-
-    [[UIToolbar appearance] setBarTintColor:[[HFInterfaceTheme activeTheme] navigationBarColor]];
-    [[UIToolbar appearance] setTranslucent:NO];
-    
-    NSDictionary *barButtonItemTitleTextAttributes = @{NSForegroundColorAttributeName:self.window.tintColor,
-                                                       NSFontAttributeName: [UIFont systemFontOfSize:18.0f]};
-    [[UIBarButtonItem appearance] setTitleTextAttributes:barButtonItemTitleTextAttributes forState:UIControlStateNormal];
-    
-    [SVProgressHUD setFont:[UIFont systemFontOfSize:15.0f]];
-}
-
 @end
