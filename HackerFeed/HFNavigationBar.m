@@ -1,11 +1,3 @@
-//
-//  HFNavigationBar.m
-//  HackerFeed
-//
-//  Created by Nealon Young on 8/9/14.
-//  Copyright (c) 2014 Nealon Young. All rights reserved.
-//
-
 #import "HFNavigationBar.h"
 
 @interface HFNavigationBar ()

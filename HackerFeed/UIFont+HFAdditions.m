@@ -1,11 +1,3 @@
-//
-//  UIFont+HFAdditions.h
-//  HackerFeed
-//
-//  Created by Nealon Young on 3/3/14.
-//  Copyright (c) 2014 Nealon Young. All rights reserved.
-//
-
 #import "UIFont+HFAdditions.h"
 
 #import <CoreText/CoreText.h>

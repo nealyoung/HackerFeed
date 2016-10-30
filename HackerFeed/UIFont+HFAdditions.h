@@ -1,11 +1,3 @@
-//
-//  UIFont+HFAdditions.h
-//  HackerFeed
-//
-//  Created by Nealon Young on 3/3/14.
-//  Copyright (c) 2014 Nealon Young. All rights reserved.
-//
-
 @import UIKit;
 
 typedef NS_ENUM(NSInteger, HFFontFamily) {

@@ -1,11 +1,3 @@
-//
-//  HFCommentToolbar.h
-//  HackerFeed
-//
-//  Created by Nealon Young on 7/27/14.
-//  Copyright (c) 2014 Nealon Young. All rights reserved.
-//
-
 @import UIKit;
 
 #import "HFBorderedButton.h"

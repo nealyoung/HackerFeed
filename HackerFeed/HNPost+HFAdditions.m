@@ -1,11 +1,3 @@
-//
-//  HNPost+HFAdditions.m
-//  HackerFeed
-//
-//  Created by Nealon Young on 5/1/15.
-//  Copyright (c) 2015 Nealon Young. All rights reserved.
-//
-
 #import "HNPost+HFAdditions.h"
 
 static NSInteger const kViewedPostLimit = 100;
