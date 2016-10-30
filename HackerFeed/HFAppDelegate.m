@@ -42,18 +42,14 @@
     HFPostListViewController *jobsViewController = [[HFPostListViewController alloc] initWithNibName:nil bundle:nil];
     jobsViewController.dataSource = [[HFFilterPostDataSource alloc] initWithPostFilterType:PostFilterTypeJobs image:[UIImage imageNamed:@"JobsIcon"]];
     jobsViewController.title = NSLocalizedString(@"Jobs", nil);
-    
-    HFSettingsViewController *settingsViewController = [[HFSettingsViewController alloc] initWithNibName:nil bundle:nil];
-    
+
     HFDropdownMenuNavigationController *dropdownMenuViewController = [[HFDropdownMenuNavigationController alloc] initWithNavigationBarClass:[HFNavigationBar class]
                                                                                                                                toolbarClass:[HFToolbar class]];
     dropdownMenuViewController.dropdownViewControllers = @[topStoriesViewController,
                                                            newStoriesViewController,
                                                            askHNViewController,
                                                            showHNViewController,
-                                                           jobsViewController,
-                                                           //settingsViewController
-                                                           ];
+                                                           jobsViewController];
     
     [[HNManager sharedManager] startSession];
 //    [self customizeAppearance];

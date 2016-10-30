@@ -41,7 +41,12 @@ static NSInteger const kFontSection = 3;
     
     if (self) {
         self.title = NSLocalizedString(@"Settings", nil);
-        
+
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"CloseIcon"]
+                                                                                 style:UIBarButtonItemStylePlain
+                                                                                target:self
+                                                                                action:@selector(cancelButtonPressed:)];
+
         self.tableView = [[HFTableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
         [self.tableView setTranslatesAutoresizingMaskIntoConstraints:NO];
         self.tableView.rowHeight = 44.0f;
@@ -74,6 +79,17 @@ static NSInteger const kFontSection = 3;
     
     [self.tableView reloadData];
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+}
+
+#pragma mark - Actions
+
+- (void)cancelButtonPressed:(id)sender {
+    if (self.extensionContext) {
+        NSError *error = nil;
+        [self.extensionContext cancelRequestWithError:error];
+    } else {
+        [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 - (void)loginButtonPressed {

@@ -10,6 +10,7 @@
 #import "HFPostTableViewCell.h"
 #import "HFPostViewController.h"
 #import "HFPullToRefreshContentView.h"
+#import "HFSettingsViewController.h"
 #import "HFToolbar.h"
 #import "HNPost+HFAdditions.h"
 #import "SSPullToRefresh.h"
@@ -42,7 +43,6 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
     if (self) {
         self.tableView = [[HFTableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
         [self.tableView setTranslatesAutoresizingMaskIntoConstraints:NO];
-//        self.tableView.rowHeight = 72.0f;
         self.tableView.rowHeight = UITableViewAutomaticDimension;
         self.tableView.estimatedRowHeight = 80.0f;
         [self.tableView registerClass:[HFPostTableViewCell class] forCellReuseIdentifier:kPostTableViewCellIdentifier];
@@ -57,6 +57,13 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
                                                                           options:0
                                                                           metrics:nil
                                                                             views:NSDictionaryOfVariableBindings(_tableView)]];
+
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"SettingsIcon"]
+                                                                                 style:UIBarButtonItemStylePlain
+                                                                                target:self
+                                                                                action:@selector(settingsButtonPressed)];
+        self.navigationItem.rightBarButtonItem.accessibilityLabel = NSLocalizedString(@"Settings", nil);
+        self.navigationItem.rightBarButtonItem.accessibilityHint = NSLocalizedString(@"Displays the settings page", nil);
 
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"CreatePostIcon"]
                                                                                   style:UIBarButtonItemStylePlain
@@ -324,6 +331,23 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
         navigationController.transitioningDelegate = self.modalPresentationManager;
     }
     
+    [self.splitViewController presentViewController:navigationController animated:YES completion:nil];
+}
+
+- (void)settingsButtonPressed {
+    HFSettingsViewController *settingsViewController = [[HFSettingsViewController alloc] initWithNibName:nil bundle:nil];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithNavigationBarClass:[HFNavigationBar class]
+                                                                                                 toolbarClass:[HFToolbar class]];
+    navigationController.viewControllers = @[settingsViewController];
+
+    if (self.splitViewController.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular) {
+        navigationController.modalPresentationStyle = UIModalPresentationFormSheet;
+    } else {
+        navigationController.modalPresentationStyle = UIModalPresentationCustom;
+
+        navigationController.transitioningDelegate = self.modalPresentationManager;
+    }
+
     [self.splitViewController presentViewController:navigationController animated:YES completion:nil];
 }
 
