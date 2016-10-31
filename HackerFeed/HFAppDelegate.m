@@ -1,6 +1,6 @@
 #import "HFAppDelegate.h"
-
 #import "HNManager.h"
+#import "HFAppContainerViewController.h"
 #import "HFDropdownMenuNavigationController.h"
 #import "HFFilterPostDataSource.h"
 #import "HFNavigationBar.h"
@@ -57,7 +57,10 @@
     splitViewController.viewControllers = @[dropdownMenuViewController, navigationController];
     splitViewController.preferredDisplayMode = UISplitViewControllerDisplayModeAllVisible;
 
-    self.window.rootViewController = splitViewController;
+    HFAppContainerViewController *containerViewController = [[HFAppContainerViewController alloc] init];
+    containerViewController.childViewController = splitViewController;
+
+    self.window.rootViewController = containerViewController;
     
     [self.window makeKeyAndVisible];
     

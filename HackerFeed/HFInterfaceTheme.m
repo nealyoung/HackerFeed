@@ -26,8 +26,8 @@ static HFInterfaceTheme *_activeTheme;
     
 #ifndef HF_SHARE_EXTENSION_TARGET
     [UIApplication sharedApplication].keyWindow.tintColor = [[HFInterfaceTheme activeTheme] accentColor];
-    [UIApplication sharedApplication].keyWindow.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
-    [[UIApplication sharedApplication] setStatusBarStyle:[HFInterfaceTheme activeTheme].statusBarStyle];
+//    [UIApplication sharedApplication].keyWindow.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
+//    [[UIApplication sharedApplication] setStatusBarStyle:[HFInterfaceTheme activeTheme].statusBarStyle];
 #endif
 }
 

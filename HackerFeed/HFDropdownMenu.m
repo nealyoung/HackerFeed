@@ -68,7 +68,7 @@ const CGFloat kListTopMarginHeight = 80.0f;
                                       0.0f,
                                       CGRectGetWidth(self.frame) - 80.0f,
                                       menuBackgroundHeight);
-    self.listView.center = CGPointMake(self.center.x, 72.0f);
+    self.listView.center = CGPointMake(self.center.x, 54.0f);
 }
 
 - (CGFloat)navigationBarHeight {

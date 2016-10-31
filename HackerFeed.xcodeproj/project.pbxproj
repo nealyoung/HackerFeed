@@ -40,6 +40,7 @@
 		0E926CD219835AB30078E148 /* HFBorderedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E926CD119835AB30078E148 /* HFBorderedButton.m */; };
 		0E990E801990BA30002933C4 /* DMScaleTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E990E7F1990BA30002933C4 /* DMScaleTransition.m */; };
 		0E990E841990BA65002933C4 /* DMBaseTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E990E821990BA65002933C4 /* DMBaseTransition.m */; };
+		0E9F18091DC6DFBF008A1B3C /* HFAppContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E9F18081DC6DFBF008A1B3C /* HFAppContainerViewController.m */; };
 		0EAB35611B547A6800EBBD55 /* HFAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EAB355E1B547A6800EBBD55 /* HFAlertView.m */; };
 		0EAB35621B547A6800EBBD55 /* HFAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EAB35601B547A6800EBBD55 /* HFAlertViewController.m */; };
 		0EAB35651B547A8F00EBBD55 /* HFAlertAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EAB35641B547A8E00EBBD55 /* HFAlertAction.m */; };
@@ -170,6 +171,8 @@
 		0E990E7F1990BA30002933C4 /* DMScaleTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMScaleTransition.m; sourceTree = "<group>"; };
 		0E990E821990BA65002933C4 /* DMBaseTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMBaseTransition.m; sourceTree = "<group>"; };
 		0E990E831990BA65002933C4 /* DMBaseTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMBaseTransition.h; sourceTree = "<group>"; };
+		0E9F18071DC6DFBF008A1B3C /* HFAppContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFAppContainerViewController.h; sourceTree = "<group>"; };
+		0E9F18081DC6DFBF008A1B3C /* HFAppContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFAppContainerViewController.m; sourceTree = "<group>"; };
 		0EAB355D1B547A6800EBBD55 /* HFAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFAlertView.h; sourceTree = "<group>"; };
 		0EAB355E1B547A6800EBBD55 /* HFAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFAlertView.m; sourceTree = "<group>"; };
 		0EAB355F1B547A6800EBBD55 /* HFAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFAlertViewController.h; sourceTree = "<group>"; };
@@ -337,6 +340,8 @@
 			children = (
 				0EAB355D1B547A6800EBBD55 /* HFAlertView.h */,
 				0EAB355E1B547A6800EBBD55 /* HFAlertView.m */,
+				0E9F18071DC6DFBF008A1B3C /* HFAppContainerViewController.h */,
+				0E9F18081DC6DFBF008A1B3C /* HFAppContainerViewController.m */,
 				0EAB355F1B547A6800EBBD55 /* HFAlertViewController.h */,
 				0EAB35601B547A6800EBBD55 /* HFAlertViewController.m */,
 				0E2F35BE198B8BF700718E1A /* HFNewPostViewController.h */,
@@ -824,6 +829,7 @@
 				0E990E841990BA65002933C4 /* DMBaseTransition.m in Sources */,
 				0EF3353A1A7DD7A900E482CE /* HFPullToRefreshContentView.m in Sources */,
 				0EAB35621B547A6800EBBD55 /* HFAlertViewController.m in Sources */,
+				0E9F18091DC6DFBF008A1B3C /* HFAppContainerViewController.m in Sources */,
 				0EAB35651B547A8F00EBBD55 /* HFAlertAction.m in Sources */,
 				0E57B5B4198C2D6C0056CA54 /* HFTextViewTableViewCell.m in Sources */,
 				0EDA41551B4DDCBF00A322AF /* HFModalPresentationController.m in Sources */,
