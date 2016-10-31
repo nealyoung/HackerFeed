@@ -81,6 +81,7 @@
 		0EEBD393197DEB7E00D74AD6 /* HFUserInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EEBD392197DEB7E00D74AD6 /* HFUserInfoTableViewCell.m */; };
 		0EEBD396197E026300D74AD6 /* UIColor+HFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EEBD395197E026300D74AD6 /* UIColor+HFAdditions.m */; };
 		0EECC78B1A7E966D00527326 /* HFTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EECC78A1A7E966D00527326 /* HFTableView.m */; };
+		0EEF58C61DC67CE600FCC906 /* HFDropdownMenuListBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EEF58C51DC67CE600FCC906 /* HFDropdownMenuListBackgroundView.m */; };
 		0EF3353A1A7DD7A900E482CE /* HFPullToRefreshContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EF335391A7DD7A900E482CE /* HFPullToRefreshContentView.m */; };
 		0EFC25391985C22100A67412 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFC25381985C22100A67412 /* CoreText.framework */; };
 		0EFC253C1985D9D800A67412 /* HFCommentToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFC253B1985D9D800A67412 /* HFCommentToolbar.m */; };
@@ -242,6 +243,8 @@
 		0EEBD395197E026300D74AD6 /* UIColor+HFAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HFAdditions.m"; sourceTree = "<group>"; };
 		0EECC7891A7E966D00527326 /* HFTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFTableView.h; sourceTree = "<group>"; };
 		0EECC78A1A7E966D00527326 /* HFTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFTableView.m; sourceTree = "<group>"; };
+		0EEF58C41DC67CE600FCC906 /* HFDropdownMenuListBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFDropdownMenuListBackgroundView.h; sourceTree = "<group>"; };
+		0EEF58C51DC67CE600FCC906 /* HFDropdownMenuListBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFDropdownMenuListBackgroundView.m; sourceTree = "<group>"; };
 		0EF335381A7DD7A900E482CE /* HFPullToRefreshContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFPullToRefreshContentView.h; sourceTree = "<group>"; };
 		0EF335391A7DD7A900E482CE /* HFPullToRefreshContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFPullToRefreshContentView.m; sourceTree = "<group>"; };
 		0EFC25381985C22100A67412 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
@@ -387,6 +390,8 @@
 				0EDEBD63197E2ED00080D446 /* HFDropdownMenuNavigationController.m */,
 				0E796B8519CEAC930045B4E1 /* HFDropdownMenuTitleView.h */,
 				0E796B8619CEAC930045B4E1 /* HFDropdownMenuTitleView.m */,
+				0EEF58C41DC67CE600FCC906 /* HFDropdownMenuListBackgroundView.h */,
+				0EEF58C51DC67CE600FCC906 /* HFDropdownMenuListBackgroundView.m */,
 				0EAC1B0F197C54BD00393828 /* HFDropdownMenu.h */,
 				0EAC1B10197C54BD00393828 /* HFDropdownMenu.m */,
 				0E520C51197C73F900E94DBD /* HFDropdownMenuItem.h */,
@@ -830,6 +835,7 @@
 				0EFC253F1986026500A67412 /* HFTextView.m in Sources */,
 				0E7D19A21996034200C51E37 /* HFNavigationBar.m in Sources */,
 				0E926CD219835AB30078E148 /* HFBorderedButton.m in Sources */,
+				0EEF58C61DC67CE600FCC906 /* HFDropdownMenuListBackgroundView.m in Sources */,
 				0EE27FEE1A65A939001B01EC /* HFButtonTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

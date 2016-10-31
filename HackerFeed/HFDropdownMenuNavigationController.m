@@ -67,7 +67,8 @@
 - (void)commonInit {
     _dropdownMenu = [[HFDropdownMenu alloc] initWithFrame:self.view.bounds];
     _dropdownMenu.delegate = self;
-    [self.view insertSubview:_dropdownMenu belowSubview:self.navigationBar];
+    [self.view addSubview:_dropdownMenu];
+//    [self.view insertSubview:_dropdownMenu belowSubview:self.navigationBar];
 
     // iOS doesn't allow us to add constraints to a navigation bar managed by a UINavigationController
     //HFDropdownMenuTitleView *titleView = [[HFDropdownMenuTitleView alloc] initWithFrame:CGRectMake(0, 0, 120, 24)];
@@ -115,9 +116,7 @@
     
 //    CGRect titleViewFrame = CGRectZero;
 //    titleViewFrame.size = [self.titleView intrinsicContentSize];
-//    self.titleView.frame = titleViewFrame;
-        
-    [self.dropdownMenu toggleMenu];
+//    self.titleView.frame = titleViewFrame;        
 }
 
 - (void)dropdownMenuWillHide:(HFDropdownMenu *)dropdownMenu {

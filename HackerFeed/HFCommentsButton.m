@@ -56,7 +56,7 @@
     CGMutablePathRef path = CGPathCreateMutable();
     
     // Start in top left corner,
-    CGPathMoveToPoint(path, NULL, speechBubbleRect.origin.x + cornerRadius, speechBubbleRect.origin.y ) ;
+    CGPathMoveToPoint(path, NULL, speechBubbleRect.origin.x + cornerRadius, speechBubbleRect.origin.y) ;
     
     CGFloat minX = CGRectGetMinX(speechBubbleRect);
     CGFloat minY = CGRectGetMinY(speechBubbleRect);
