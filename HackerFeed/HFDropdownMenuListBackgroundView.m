@@ -20,6 +20,8 @@ static CGFloat const kHFDropdownMenuCornerRadius = 12.0f;
         self.layer.shadowOffset = CGSizeZero;
         self.layer.shouldRasterize = YES;
         self.layer.rasterizationScale = [UIScreen mainScreen].scale;
+
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applyTheme) name:kThemeChangedNotificationName object:nil];
     }
 
     return self;
@@ -120,7 +122,11 @@ static CGFloat const kHFDropdownMenuCornerRadius = 12.0f;
 }
 
 - (void)applyTheme {
+    [self setNeedsDisplay];
+}
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kThemeChangedNotificationName object:nil];
 }
 
 @end

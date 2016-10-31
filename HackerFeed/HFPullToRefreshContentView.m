@@ -31,6 +31,7 @@
         _circularProgressView = [[DACircularProgressView alloc] initWithFrame:CGRectZero];
         [_circularProgressView setTranslatesAutoresizingMaskIntoConstraints:NO];
         _circularProgressView.thicknessRatio = 0.2f;
+        _circularProgressView.roundedCorners = YES;
         [self addSubview:_circularProgressView];
         
         [self addConstraint:[NSLayoutConstraint constraintWithItem:_activityIndicatorView

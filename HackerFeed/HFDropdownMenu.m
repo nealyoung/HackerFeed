@@ -209,7 +209,7 @@ const CGFloat kListTopMarginHeight = 80.0f;
           initialSpringVelocity:0.6f
                         options:0
                      animations:^{
-                         self.backgroundView.layer.opacity = 0.12f;
+                         self.backgroundView.layer.opacity = 0.16f;
                          self.listView.layer.opacity = 1.0f;
 
                          self.listView.transform = CGAffineTransformIdentity;

@@ -1,6 +1,10 @@
+#import <CoreText/CoreText.h>
+
 #import "UIFont+HFAdditions.h"
 
-#import <CoreText/CoreText.h>
+static NSString * const kHFSourceSansProFontName = @"SourceSansPro-Regular";
+static NSString * const kHFSourceSansProLightFontName = @"SourceSansPro-Light";
+static NSString * const kHFSourceSansProSemiboldFontName = @"SourceSansPro-Semibold";
 
 @implementation UIFont (HFAdditions)
 

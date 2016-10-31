@@ -1,11 +1,3 @@
-//
-//  HFDropdownMenuTitleView.h
-//  HackerFeed
-//
-//  Created by Nealon Young on 9/20/14.
-//  Copyright (c) 2014 Nealon Young. All rights reserved.
-//
-
 @import UIKit;
 
 @interface HFDropdownMenuTitleView : UIControl

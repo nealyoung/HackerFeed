@@ -1,4 +1,5 @@
 #import "HFDropdownMenuButton.h"
+#import "UIColor+HFAdditions.h"
 
 @interface HFDropdownMenuButton ()
 
@@ -87,7 +88,7 @@
     self.bottomBorderView.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.06f];
     [self setTitleColor:[HFInterfaceTheme activeTheme].textColor forState:UIControlStateSelected];
     [self setTitleColor:[[HFInterfaceTheme activeTheme].textColor hf_colorLightenedByFactor:0.2f] forState:UIControlStateNormal];
-    self.titleLabel.font = [UIFont applicationFontOfSize:17.0f];
+    self.titleLabel.font = [UIFont semiboldApplicationFontOfSize:16.0f];
 }
 
 - (void)dealloc {
