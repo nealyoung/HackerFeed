@@ -4,7 +4,7 @@
 
 @interface HFDropdownMenu ()
 
-@property (nonatomic) NSArray *buttons;
+@property (nonatomic) NSArray<HFDropdownMenuButton *> *buttons;
 @property (nonatomic) HFDropdownMenuButton *selectedButton;
 @property HFDropdownMenuListBackgroundView *listView;
 
@@ -13,8 +13,6 @@
 - (void)setSelectedButton:(HFDropdownMenuButton *)selectedButton animated:(BOOL)animated;
 
 @end
-
-const CGFloat kListTopMarginHeight = 80.0f;
 
 @implementation HFDropdownMenu
 
@@ -34,6 +32,7 @@ const CGFloat kListTopMarginHeight = 80.0f;
         _listView = [[HFDropdownMenuListBackgroundView alloc] initWithFrame:CGRectZero];
         _listView.layer.opacity = 0.0f;
         _listView.layer.anchorPoint = CGPointMake(0.5f, 0.0f);
+        _listView.transform = CGAffineTransformMakeScale(0.6f, 0.6f);
         [self addSubview:_listView];
         
         [self applyTheme];
@@ -111,6 +110,15 @@ const CGFloat kListTopMarginHeight = 80.0f;
     [self setNeedsLayout];
 }
 
+- (void)setSelectedItem:(HFDropdownMenuItem *)selectedItem {
+    [self setSelectedItem:selectedItem animated:NO];
+}
+
+- (void)setSelectedItem:(HFDropdownMenuItem *)selectedItem animated:(BOOL)animated {
+    _selectedItem = selectedItem;
+    [self setSelectedButton:self.buttons[[self.items indexOfObject:selectedItem]] animated:animated];
+}
+
 - (void)setSelectedButton:(HFDropdownMenuButton *)selectedButton {
     [self setSelectedButton:selectedButton animated:NO];
 }
@@ -184,10 +192,6 @@ const CGFloat kListTopMarginHeight = 80.0f;
                          self.listView.layer.opacity = 0.0f;
 
                          self.listView.transform = CGAffineTransformMakeScale(0.6f, 0.6f);
-
-//                         CGRect listFrame = self.listView.frame;
-//                         listFrame.origin = CGPointMake(listFrame.origin.x, -(CGRectGetHeight(listFrame) + kListTopMarginHeight));
-//                         self.listView.frame = listFrame;
                      }
                      completion:^(BOOL finished) {
                          if ([self.delegate respondsToSelector:@selector(dropdownMenuDidHide:)]) {
@@ -213,10 +217,6 @@ const CGFloat kListTopMarginHeight = 80.0f;
                          self.listView.layer.opacity = 1.0f;
 
                          self.listView.transform = CGAffineTransformIdentity;
-
-//                         CGRect listFrame = self.listView.frame;
-//                         listFrame.origin = CGPointMake(listFrame.origin.x, -kListTopMarginHeight + 200);
-//                         self.listView.frame = listFrame;
                      }
                      completion:^(BOOL finished) {
                          if ([self.delegate respondsToSelector:@selector(dropdownMenuDidShow:)]) {

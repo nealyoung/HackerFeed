@@ -66,6 +66,10 @@
     [roundRectBezierPath stroke];
 }
 
+- (CGSize)sizeThatFits:(CGSize)size {
+    return CGSizeMake(128, 32);
+}
+
 - (void)setExpanded:(BOOL)expanded {
     _expanded = expanded;
     

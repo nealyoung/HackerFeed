@@ -1,11 +1,3 @@
-//
-//  HFDropdownMenuViewController.m
-//  HackerFeed
-//
-//  Created by Nealon Young on 7/21/14.
-//  Copyright (c) 2014 Nealon Young. All rights reserved.
-//
-
 #import "HFDropdownMenuNavigationController.h"
 
 #import "HFDropdownMenuTitleView.h"
@@ -68,6 +60,10 @@
     _dropdownMenu = [[HFDropdownMenu alloc] initWithFrame:self.view.bounds];
     _dropdownMenu.delegate = self;
     [self.view addSubview:_dropdownMenu];
+
+    self.titleView = [[HFDropdownMenuTitleView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 140.0f, 28.0f)];
+    [self.titleView addTarget:self.dropdownMenu action:@selector(toggleMenu) forControlEvents:UIControlEventTouchUpInside];
+
 //    [self.view insertSubview:_dropdownMenu belowSubview:self.navigationBar];
 
     // iOS doesn't allow us to add constraints to a navigation bar managed by a UINavigationController
@@ -77,41 +73,35 @@
     //[self.navigationBar addSubview:titleView];
 }
 
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleLightContent;
-}
-
 - (void)setDropdownViewControllers:(NSArray *)dropdownViewControllers {
     _dropdownViewControllers = dropdownViewControllers;
-    NSMutableArray *items = [NSMutableArray array];
-    
-    UIViewController *firstVC = [dropdownViewControllers firstObject];
-    
-    self.titleView = [[HFDropdownMenuTitleView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 140.0f, 28.0f)];
-    self.titleView.titleLabel.text = firstVC.title;
-    [self.titleView addTarget:self.dropdownMenu action:@selector(toggleMenu) forControlEvents:UIControlEventTouchUpInside];
-    firstVC.navigationItem.titleView = self.titleView;
-    
+
+    NSMutableArray<HFDropdownMenuItem *> *mutableItems = [NSMutableArray array];
+
     for (UIViewController *viewController in dropdownViewControllers) {
         viewController.navigationItem.titleView = self.titleView;
         
         HFDropdownMenuItem *menuItem = viewController.dropdownMenuItem;
         menuItem.title = viewController.title;
-        [items addObject:menuItem];
+        [mutableItems addObject:menuItem];
     }
     
-    self.dropdownMenu.items = items;
-    
-    self.viewControllers = @[[dropdownViewControllers firstObject]];
+    self.dropdownMenu.items = [NSArray arrayWithArray:mutableItems];
+    self.selectedViewController = dropdownViewControllers.firstObject;
+}
+
+- (void)setSelectedViewController:(UIViewController *)selectedViewController {
+    _selectedViewController = selectedViewController;
+
+    self.titleView.titleLabel.text = selectedViewController.title;
+    self.dropdownMenu.selectedItem = self.dropdownMenu.items[[self.dropdownViewControllers indexOfObject:selectedViewController]];
+    self.viewControllers = @[selectedViewController];
 }
 
 #pragma mark - HFDropdownMenuDelegate
 
 - (void)dropdownMenu:(HFDropdownMenu *)dropdownMenu didSelectItem:(HFDropdownMenuItem *)menuItem {
-    UIViewController *selectedViewController = self.dropdownViewControllers[[dropdownMenu.items indexOfObject:menuItem]];
-    self.viewControllers = @[selectedViewController];
-    
-    self.titleView.titleLabel.text = selectedViewController.title;
+    self.selectedViewController = self.dropdownViewControllers[[dropdownMenu.items indexOfObject:menuItem]];
     [self.titleView sizeToFit];
     
 //    CGRect titleViewFrame = CGRectZero;
@@ -125,12 +115,6 @@
 
 - (void)dropdownMenuWillShow:(HFDropdownMenu *)dropdownMenu {
     self.titleView.expanded = YES;
-}
-
-#pragma mark - UINavigationBarDelegate
-
-- (UIBarPosition)positionForBar:(id<UIBarPositioning>)bar {
-    return UIBarPositionTop;
 }
 
 @end

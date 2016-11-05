@@ -26,7 +26,7 @@
 /**
  Items displayed in the dropdown menu
  */
-@property (nonatomic) NSArray *items;
+@property (nonatomic) NSArray<HFDropdownMenuItem *> *items;
 
 /**
  The currently selected item
