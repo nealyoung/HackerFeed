@@ -8,6 +8,7 @@ target "HackerFeed" do
   pod 'NYAlertViewController'
   pod 'NYSegmentedControl'
   pod 'PBWebViewController'
+  pod 'Reveal-iOS-SDK', :configurations => ['Debug']
   pod 'SSPullToRefresh'
   pod 'SVProgressHUD', :git => 'https://github.com/SVProgressHUD/SVProgressHUD.git'
   pod 'SVPullToRefresh', :git => 'https://github.com/samvermette/SVPullToRefresh.git'

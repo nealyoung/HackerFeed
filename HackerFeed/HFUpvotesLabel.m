@@ -25,14 +25,13 @@
     
     if (self.text) {
         size.width += 8.0f;
-        size.height += 2.0f;
     }
     
     return size;
 }
 
 - (void)applyTheme {
-    self.font = [UIFont systemFontOfSize:15.0f weight:UIFontWeightMedium];
+    self.font = [UIFont semiboldApplicationFontOfSize:15.0f];
     self.layer.borderColor = [HFInterfaceTheme activeTheme].accentColor.CGColor;
     
     [self updateColors];

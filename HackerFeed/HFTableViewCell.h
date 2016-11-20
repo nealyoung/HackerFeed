@@ -11,5 +11,6 @@
 @interface HFTableViewCell : UITableViewCell
 
 - (void)applyTheme;
+- (void)selectionAnimationFinished;
 
 @end

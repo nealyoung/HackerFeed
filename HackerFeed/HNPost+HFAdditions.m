@@ -33,4 +33,20 @@ static NSString * const kViewedPostsDefaultsKey = @"HFViewedPostsDefaultsKey";
     return viewedPostsArray;
 }
 
+- (NSString *)shortCreatedAtString {
+    NSMutableString *mutableCreatedAtString = [self.TimeCreatedString mutableCopy];
+
+    if ([mutableCreatedAtString rangeOfString:@" minute ago"].location != NSNotFound) {
+        [mutableCreatedAtString replaceCharactersInRange:[mutableCreatedAtString rangeOfString:@" minute ago"] withString:@"m"];
+    } else if ([mutableCreatedAtString rangeOfString:@" minutes ago"].location != NSNotFound) {
+        [mutableCreatedAtString replaceCharactersInRange:[mutableCreatedAtString rangeOfString:@" minutes ago"] withString:@"m"];
+    } else if ([mutableCreatedAtString rangeOfString:@" hour ago"].location != NSNotFound) {
+        [mutableCreatedAtString replaceCharactersInRange:[mutableCreatedAtString rangeOfString:@" hour ago"] withString:@"h"];
+    } else if ([mutableCreatedAtString rangeOfString:@" hours ago"].location != NSNotFound) {
+        [mutableCreatedAtString replaceCharactersInRange:[mutableCreatedAtString rangeOfString:@" hours ago"] withString:@"h"];
+    }
+
+    return [NSString stringWithString:mutableCreatedAtString];
+}
+
 @end

@@ -169,9 +169,10 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
     
     self.upvoteButton.accessibilityLabel = @"Upvote";
     self.upvoteButton.accessibilityHint = NSLocalizedString(@"Upvotes the story", nil);
-    UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
-                                                                                 target:self
-                                                                                 action:@selector(actionButtonPressed:)];
+    UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"MoreIcon"]
+                                                                    style:UIBarButtonItemStyleDone
+                                                                   target:self
+                                                                   action:@selector(actionButtonPressed:)];
     self.navigationItem.rightBarButtonItems = @[self.upvoteButton, shareButton];
     
     self.commentCellHeightCache = [NSMutableDictionary dictionary];
@@ -193,9 +194,15 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
 
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(nonnull id<UIViewControllerTransitionCoordinator>)coordinator {
     [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
-    
+
     [self clearCommentCellHeightCache];
+
+    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+        [self.tableView beginUpdates];
+        [self.tableView endUpdates];
+    } completion:nil];
 }
+
 - (void)applyTheme {
     self.selectPostLabel.textColor = [HFInterfaceTheme activeTheme].secondaryTextColor;
     self.view.backgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.03f];

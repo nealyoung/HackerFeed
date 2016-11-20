@@ -11,7 +11,6 @@
 		0E0C0BE819CFC0DD007EAE25 /* HFBasePostDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E0C0BE719CFC0DD007EAE25 /* HFBasePostDataSource.m */; };
 		0E183AAC1AF442F0004E6324 /* HNPost+HFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E183AAB1AF442F0004E6324 /* HNPost+HFAdditions.m */; };
 		0E1FC635197C4B4700B41804 /* HFPostTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E1FC634197C4B4700B41804 /* HFPostTableViewCell.m */; };
-		0E27822B1C3721E900872766 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E27822A1C3721E900872766 /* Reveal.framework */; };
 		0E2BE12C1A6E25E200F81396 /* SourceSansPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0E2BE1281A6E25E200F81396 /* SourceSansPro-Bold.otf */; };
 		0E2BE12E1A6E25E200F81396 /* SourceSansPro-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0E2BE1291A6E25E200F81396 /* SourceSansPro-Light.otf */; };
 		0E2BE1301A6E25E200F81396 /* SourceSansPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0E2BE12A1A6E25E200F81396 /* SourceSansPro-Regular.otf */; };
@@ -47,6 +46,7 @@
 		0EAC1B11197C54BD00393828 /* HFDropdownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EAC1B10197C54BD00393828 /* HFDropdownMenu.m */; };
 		0EAC1B14197C577800393828 /* HFDropdownMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EAC1B13197C577800393828 /* HFDropdownMenuButton.m */; };
 		0EAC1B18197C592200393828 /* UIViewController+HFDropdownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EAC1B17197C592200393828 /* UIViewController+HFDropdownMenu.m */; };
+		0EC113ED1DCE9D4A00AE9463 /* HFRoundedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC113EC1DCE9D4A00AE9463 /* HFRoundedButton.m */; };
 		0EC331201992986400E1531A /* HFLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC3311F1992986400E1531A /* HFLabel.m */; };
 		0EC52C5A1B55A12F00C3E8B7 /* HFTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC52C591B55A12F00C3E8B7 /* HFTextField.m */; };
 		0EC81421197C828A009F0D99 /* HFPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC81420197C828A009F0D99 /* HFPostViewController.m */; };
@@ -124,7 +124,6 @@
 		0E183AAB1AF442F0004E6324 /* HNPost+HFAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HNPost+HFAdditions.m"; sourceTree = "<group>"; };
 		0E1FC633197C4B4700B41804 /* HFPostTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFPostTableViewCell.h; sourceTree = "<group>"; };
 		0E1FC634197C4B4700B41804 /* HFPostTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFPostTableViewCell.m; sourceTree = "<group>"; };
-		0E27822A1C3721E900872766 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		0E2BE1281A6E25E200F81396 /* SourceSansPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Bold.otf"; sourceTree = "<group>"; };
 		0E2BE1291A6E25E200F81396 /* SourceSansPro-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Light.otf"; sourceTree = "<group>"; };
 		0E2BE12A1A6E25E200F81396 /* SourceSansPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Regular.otf"; sourceTree = "<group>"; };
@@ -185,6 +184,8 @@
 		0EAC1B13197C577800393828 /* HFDropdownMenuButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFDropdownMenuButton.m; sourceTree = "<group>"; };
 		0EAC1B16197C592200393828 /* UIViewController+HFDropdownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+HFDropdownMenu.h"; sourceTree = "<group>"; };
 		0EAC1B17197C592200393828 /* UIViewController+HFDropdownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+HFDropdownMenu.m"; sourceTree = "<group>"; };
+		0EC113EB1DCE9D4A00AE9463 /* HFRoundedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFRoundedButton.h; sourceTree = "<group>"; };
+		0EC113EC1DCE9D4A00AE9463 /* HFRoundedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFRoundedButton.m; sourceTree = "<group>"; };
 		0EC3311E1992986400E1531A /* HFLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFLabel.h; sourceTree = "<group>"; };
 		0EC3311F1992986400E1531A /* HFLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFLabel.m; sourceTree = "<group>"; };
 		0EC52C581B55A12F00C3E8B7 /* HFTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFTextField.h; sourceTree = "<group>"; };
@@ -277,7 +278,6 @@
 				0E59357619F9CC820081B28A /* Security.framework in Frameworks */,
 				0E59357219F9CAFE0081B28A /* libc++.dylib in Frameworks */,
 				0E59357019F9CAF40081B28A /* libicucore.dylib in Frameworks */,
-				0E27822B1C3721E900872766 /* Reveal.framework in Frameworks */,
 				0E59357419F9CB040081B28A /* CFNetwork.framework in Frameworks */,
 				0EFC25391985C22100A67412 /* CoreText.framework in Frameworks */,
 				0EE791BD1950318D00925E4F /* CoreGraphics.framework in Frameworks */,
@@ -432,6 +432,8 @@
 				0E6C019B1A9171A3002AAA80 /* HFAttributedLabel.m */,
 				0E5CD93F1B7AA6BF005E908B /* HFUpvotesLabel.h */,
 				0E5CD9401B7AA6BF005E908B /* HFUpvotesLabel.m */,
+				0EC113EB1DCE9D4A00AE9463 /* HFRoundedButton.h */,
+				0EC113EC1DCE9D4A00AE9463 /* HFRoundedButton.m */,
 				0EC3311E1992986400E1531A /* HFLabel.h */,
 				0EC3311F1992986400E1531A /* HFLabel.m */,
 				0E926CD019835AB30078E148 /* HFBorderedButton.h */,
@@ -512,7 +514,6 @@
 		0EE791B91950318D00925E4F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0E27822A1C3721E900872766 /* Reveal.framework */,
 				0E696DC51B93B47F0079C5E2 /* SafariServices.framework */,
 				0EDF5FDF1B7A8B590023F4DF /* MobileCoreServices.framework */,
 				0E4283201A50682700A0CC1F /* libPods-HackerFeed.a */,
@@ -798,6 +799,7 @@
 				0EC81421197C828A009F0D99 /* HFPostViewController.m in Sources */,
 				0EE791CB1950318D00925E4F /* HFAppDelegate.m in Sources */,
 				0EC331201992986400E1531A /* HFLabel.m in Sources */,
+				0EC113ED1DCE9D4A00AE9463 /* HFRoundedButton.m in Sources */,
 				0E511CA3198C0B3300F94E9F /* HFTextFieldTableViewCell.m in Sources */,
 				0E3653A91A54D1F5002FB22A /* HFSettingsViewController.m in Sources */,
 				0EE6CAE119845B37005AE100 /* HFCommentActionsView.m in Sources */,
@@ -1007,9 +1009,6 @@
 					"\"QuartzCore\"",
 					"-framework",
 					"\"UIKit\"",
-					"-lz",
-					"-framework",
-					Reveal,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nealonyoung.hackerfeed;
 				PRODUCT_NAME = HackerFeed;

@@ -22,67 +22,49 @@
     return self;
 }
 
-- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
-    UIColor *selectedBackgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.08f];
+//- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
+//    [self setSelected:highlighted animated:animated];
+//}
+//
+//- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+//    UIColor *selectedBackgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.08f];
+//    
+//    if (animated) {
+//        [UIView animateWithDuration:0.3f animations:^{
+//            if (selected && self.selectionStyle != UITableViewCellSelectionStyleNone) {
+//                self.textLabel.backgroundColor = selectedBackgroundColor;
+//                self.backgroundColor = selectedBackgroundColor;
+//                self.contentView.backgroundColor = selectedBackgroundColor;
+//            } else {
+//                self.textLabel.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
+//                self.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
+//                self.contentView.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
+//            }
+//        } completion:^(BOOL finished) {
+//            NSLog(@"COMPLETED");
+//        }];
+//    } else {
+//        if (selected && self.selectionStyle != UITableViewCellSelectionStyleNone) {
+//            self.textLabel.backgroundColor = selectedBackgroundColor;
+//            self.backgroundColor = selectedBackgroundColor;
+//            self.contentView.backgroundColor = selectedBackgroundColor;
+//        } else {
+//            self.textLabel.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
+//            self.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
+//            self.contentView.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
+//        }
+//    }
+//}
 
-    if (animated) {
-        [UIView animateWithDuration:0.3f animations:^{
-            if (highlighted && self.selectionStyle != UITableViewCellSelectionStyleNone) {
-                self.textLabel.backgroundColor = selectedBackgroundColor;
-                self.backgroundColor = selectedBackgroundColor;
-                self.contentView.backgroundColor = selectedBackgroundColor;
-            } else {
-                self.textLabel.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
-                self.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
-                self.contentView.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
-            }
-        }];
-    } else {
-        if (highlighted && self.selectionStyle != UITableViewCellSelectionStyleNone) {
-            self.textLabel.backgroundColor = selectedBackgroundColor;
-            self.backgroundColor = selectedBackgroundColor;
-            self.contentView.backgroundColor = selectedBackgroundColor;
-        } else {
-            self.textLabel.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
-            self.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
-            self.contentView.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
-        }
-    }
-}
+- (void)selectionAnimationFinished {
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    UIColor *selectedBackgroundColor = [[HFInterfaceTheme activeTheme].backgroundColor hf_colorDarkenedByFactor:0.08f];
-    
-    if (animated) {
-        [UIView animateWithDuration:0.3f animations:^{
-            if (selected && self.selectionStyle != UITableViewCellSelectionStyleNone) {
-                self.textLabel.backgroundColor = selectedBackgroundColor;
-                self.backgroundColor = selectedBackgroundColor;
-                self.contentView.backgroundColor = selectedBackgroundColor;
-            } else {
-                self.textLabel.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
-                self.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
-                self.contentView.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
-            }
-        }];
-    } else {
-        if (selected && self.selectionStyle != UITableViewCellSelectionStyleNone) {
-            self.textLabel.backgroundColor = selectedBackgroundColor;
-            self.backgroundColor = selectedBackgroundColor;
-            self.contentView.backgroundColor = selectedBackgroundColor;
-        } else {
-            self.textLabel.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
-            self.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
-            self.contentView.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
-        }
-    }
 }
 
 - (void)applyTheme {
     self.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
     self.contentView.backgroundColor = [HFInterfaceTheme activeTheme].backgroundColor;
         
-    self.textLabel.font = [UIFont preferredApplicationFontForTextStyle:UIFontTextStyleSubheadline];
+    self.textLabel.font = [UIFont preferredApplicationFontForTextStyle:UIFontTextStyleHeadline];
     self.textLabel.textColor = [HFInterfaceTheme activeTheme].textColor;
 
     self.detailTextLabel.font = [UIFont preferredApplicationFontForTextStyle:UIFontTextStyleSubheadline];

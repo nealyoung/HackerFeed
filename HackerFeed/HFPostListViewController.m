@@ -1,5 +1,6 @@
 #import "HFPostListViewController.h"
 
+#import <FCUtilities/FCOpenInSafariActivity.h>
 #import <SafariServices/SafariServices.h>
 #import "DMScaleTransition.h"
 #import "HFAlertViewController.h"
@@ -10,6 +11,7 @@
 #import "HFPostTableViewCell.h"
 #import "HFPostViewController.h"
 #import "HFPullToRefreshContentView.h"
+#import "HFRoundedButton.h"
 #import "HFSettingsViewController.h"
 #import "HFToolbar.h"
 #import "HNPost+HFAdditions.h"
@@ -104,10 +106,6 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
     }];
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-}
-
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
@@ -117,6 +115,15 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
     
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+}
+
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(nonnull id<UIViewControllerTransitionCoordinator>)coordinator {
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+
+    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+        [self.tableView beginUpdates];
+        [self.tableView endUpdates];
+    } completion:nil];
 }
 
 - (void)dealloc {
@@ -285,7 +292,7 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
 //    }
 //}
 
-- (void)commentsButtonPressed:(HFCommentsButton *)sender {
+- (void)commentsButtonPressed:(UIButton *)sender {
     UINavigationController *postNavigationController;
     HFPostViewController *postViewController;
     
@@ -302,8 +309,7 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
         postNavigationController.viewControllers = @[postViewController];
     }
     
-    HFCommentsButton *commentsButton = (HFCommentsButton *)sender;
-    HNPost *post = self.dataSource.posts[commentsButton.tag];
+    HNPost *post = self.dataSource.posts[sender.tag];
     postViewController.post = post;
     
     [post markAsViewed];
@@ -313,6 +319,15 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
     [self configureCell:cell forPost:post];
     
     [self showDetailViewController:postNavigationController sender:self];
+}
+
+- (void)moreButtonPressed:(UIButton *)sender {
+    HNPost *post = self.dataSource.posts[sender.tag];
+    NSArray *activityItems = @[[NSURL URLWithString:post.UrlString]];
+
+    UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:@[[FCOpenInSafariActivity new]]];
+
+    [self presentViewController:activityViewController animated:TRUE completion:nil];
 }
 
 - (void)newPostButtonPressed {
@@ -390,29 +405,39 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
         cell.titleLabel.textColor = [HFInterfaceTheme activeTheme].textColor;
     }
     
-    cell.domainLabel.text = post.UrlDomain;
     cell.commentsButton.tag = [self.dataSource.posts indexOfObject:post];
-    
+    cell.moreButton.tag = [self.dataSource.posts indexOfObject:post];
+
     if (post.Type == PostTypeJobs) {
+        cell.upvoteButton.enabled = NO;
         cell.commentsButton.enabled = NO;
-        cell.upvotesLabel.hidden = YES;
-        cell.upvotesLabel.text = nil;
+
+        [cell.upvoteButton setTitle:@"-" forState:UIControlStateNormal];
+        [cell.commentsButton setTitle:@"-" forState:UIControlStateNormal];
+
         cell.infoLabel.text = nil;
-        [cell.commentsButton setTitle:@"" forState:UIControlStateNormal];
     } else {
         cell.commentsButton.enabled = YES;
-        cell.upvotesLabel.hidden = NO;
-        
+//        cell.upvotesLabel.hidden = NO;
+
         if ([[HNManager sharedManager] hasVotedOnObject:post]) {
-            cell.upvotesLabel.backgroundHighlighted = YES;
+//            cell.upvotesLabel.backgroundHighlighted = YES;
         } else {
-            cell.upvotesLabel.backgroundHighlighted = NO;
+//            cell.upvotesLabel.backgroundHighlighted = NO;
         }
         
-        cell.upvotesLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%d", nil), post.Points];
-        cell.infoLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%@ · %@", nil), [post.Username lowercaseString], post.TimeCreatedString];
+        [cell.upvoteButton setTitle:[NSString stringWithFormat:NSLocalizedString(@"%d", nil), post.Points] forState:UIControlStateNormal];
+
+        // Don't show the 'news.ycombinator.com' domain for Ask HN or Job posts
+        if (post.Type == PostTypeDefault) {
+            cell.infoLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%@ · %@ · %@", nil), [post.Username lowercaseString], post.shortCreatedAtString, post.UrlDomain];
+        } else {
+            cell.infoLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%@ · %@", nil), [post.Username lowercaseString], post.shortCreatedAtString];
+        }
+
         [cell.commentsButton addTarget:self action:@selector(commentsButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-        
+        [cell.moreButton addTarget:self action:@selector(moreButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+
         if (post.CommentCount >= 1000) {
             [cell.commentsButton setTitle:@"1k+" forState:UIControlStateNormal];
         } else {

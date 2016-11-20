@@ -79,8 +79,6 @@ static const CGFloat kDefaultVerticalInset = 12.0f;
         self.presentingViewController.view.transform = CGAffineTransformIdentity;
     }
                                            completion:nil];
-    
-    [[UIApplication sharedApplication] setStatusBarHidden:NO];
 }
 
 - (void)containerViewWillLayoutSubviews {
