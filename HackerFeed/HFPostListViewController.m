@@ -8,8 +8,8 @@
 #import "HFModalPresentationManager.h"
 #import "HFNavigationBar.h"
 #import "HFNewPostViewController.h"
+#import "HFPostDetailViewController.h"
 #import "HFPostTableViewCell.h"
-#import "HFPostViewController.h"
 #import "HFPullToRefreshContentView.h"
 #import "HFRoundedButton.h"
 #import "HFSettingsViewController.h"
@@ -294,14 +294,14 @@ static NSString * const kPostTableViewCellIdentifier = @"PostTableViewCell";
 
 - (void)commentsButtonPressed:(UIButton *)sender {
     UINavigationController *postNavigationController;
-    HFPostViewController *postViewController;
+    HFPostDetailViewController *postViewController;
     
     // If the split view controller is displaying the post list VC and the post VC, we can access the visible post VC through the viewControllers property of UISplitViewcontroller. Otherwise, we need to instantiate and display a new post VC to show comments
     if ([self.splitViewController.viewControllers count] == 2) {
         postNavigationController = [self.splitViewController.viewControllers lastObject];
         postViewController = [postNavigationController.viewControllers firstObject];
     } else {
-        postViewController = [[HFPostViewController alloc] initWithNibName:nil bundle:nil];
+        postViewController = [[HFPostDetailViewController alloc] initWithNibName:nil bundle:nil];
         self.splitViewController.delegate = postViewController;
         
         postNavigationController = [[UINavigationController alloc] initWithNavigationBarClass:[HFNavigationBar class]

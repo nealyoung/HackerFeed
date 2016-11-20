@@ -68,7 +68,7 @@
                                                                                  metrics:nil
                                                                                    views:NSDictionaryOfVariableBindings(_moreButton)]];
 
-        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[_infoLabel]-2-[_titleLabel]-8-[_upvoteButton]-|"
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[_infoLabel]-2-[_titleLabel]-6-[_upvoteButton]-|"
                                                                                  options:0
                                                                                  metrics:nil
                                                                                    views:NSDictionaryOfVariableBindings(_infoLabel, _titleLabel, _upvoteButton)]];

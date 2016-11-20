@@ -6,7 +6,7 @@ PODS:
   - NYAlertViewController (1.3.0)
   - NYSegmentedControl (1.0.7)
   - PBWebViewController (0.5.0)
-  - Reveal-iOS-SDK (1.6.2)
+  - Reveal-SDK (4)
   - SSPullToRefresh (1.2.4)
   - SVProgressHUD (2.0.3)
   - SVPullToRefresh (0.4.1)
@@ -21,7 +21,7 @@ DEPENDENCIES:
   - NYAlertViewController
   - NYSegmentedControl
   - PBWebViewController
-  - Reveal-iOS-SDK
+  - Reveal-SDK
   - SSPullToRefresh
   - SVProgressHUD (from `https://github.com/SVProgressHUD/SVProgressHUD.git`)
   - SVPullToRefresh (from `https://github.com/samvermette/SVPullToRefresh.git`)
@@ -60,13 +60,13 @@ SPEC CHECKSUMS:
   NYAlertViewController: b93f82e2c1fc6d5e9485512ddbe7b481f463a074
   NYSegmentedControl: 55b4f9eb652767cae9799623ec3e49e50029ef47
   PBWebViewController: 6537990155ca850fb8d0563efbc12becebc953ef
-  Reveal-iOS-SDK: e2250b3c155bcfac53ae223ddc1f76d08f206c33
+  Reveal-SDK: 178c927f1a3230648d3a92b96f6e730a35b2750a
   SSPullToRefresh: 369e862c1d6528c7a354fc85cd4763d4e670e9af
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
   SVPullToRefresh: ba2e718695a43253d8bea6852d2960097dc15d8c
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
   ZFDragableModalTransition: 0d294eaaba6edfcb9839595de765f9ca06a4b524
 
-PODFILE CHECKSUM: 90bb8d6cfd6c4c89d7c025fa566cb25e19ff5d3e
+PODFILE CHECKSUM: 453c2d8ec94563cdbc9f97e2cb7eca2e29c243ca
 
 COCOAPODS: 1.1.1

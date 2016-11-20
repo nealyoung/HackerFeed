@@ -3,7 +3,7 @@
 #import "HFInterfaceTheme.h"
 
 static CGFloat const kHFDropdownMenuArrowWidth = 24.0f;
-static CGFloat const kHFDropdownMenuArrowHeight = 16.0f;
+static CGFloat const kHFDropdownMenuArrowHeight = 12.0f;
 static CGFloat const kHFDropdownMenuButtonHeight = 40.0f;
 static CGFloat const kHFDropdownMenuCornerRadius = 12.0f;
 

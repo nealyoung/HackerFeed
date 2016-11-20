@@ -1,12 +1,4 @@
-//
-//  HFPostViewController.m
-//  HackerFeed
-//
-//  Created by Nealon Young on 7/20/14.
-//  Copyright (c) 2014 Nealon Young. All rights reserved.
-//
-
-#import "HFPostViewController.h"
+#import "HFPostDetailViewController.h"
 
 #import <SafariServices/SafariServices.h>
 #import "DMScaleTransition.h"
@@ -22,7 +14,7 @@
 #import "SVProgressHUD.h"
 #import "UIScrollView+SVPullToRefresh.h"
 
-@interface HFPostViewController () <HFCommentTableViewCellDelegate, SSPullToRefreshViewDelegate, TTTAttributedLabelDelegate, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate>
+@interface HFPostDetailViewController () <HFCommentTableViewCellDelegate, SSPullToRefreshViewDelegate, TTTAttributedLabelDelegate, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate>
 
 // Store the default frame of the view so we can restore it after the keyboard is hidden
 @property CGRect originalViewFrame;
@@ -65,7 +57,7 @@ static NSString * const kCommentTableViewCellIdentifier = @"CommentTableViewCell
 static NSString * const kUsernameTableViewCellIdentifier = @"UsernameTableViewCell";
 static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCell";
 
-@implementation HFPostViewController
+@implementation HFPostDetailViewController
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -571,31 +563,6 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
         UIImageView *userIconImageView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"UserIcon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
         userIconImageView.tintColor = [UIColor whiteColor];
 
-//        [cell setSwipeGestureWithView:upvoteIconImageView
-//                                color:[HFInterfaceTheme activeTheme].accentColor
-//                                 mode:MCSwipeTableViewCellModeSwitch
-//                                state:MCSwipeTableViewCellState1
-//                      completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
-//                          [self upvoteCommentGestureActivatedForCell:cell];
-//                      }];
-//        
-//        [cell setSwipeGestureWithView:replyIconImageView
-//                                color:[[HFInterfaceTheme activeTheme].accentColor hf_colorLightenedByFactor:0.08f]
-//                                 mode:MCSwipeTableViewCellModeSwitch
-//                                state:MCSwipeTableViewCellState3
-//                      completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
-//                          [self replyToCommentGestureActivatedForCell:cell];
-//                      }];
-//        
-//        [cell setSwipeGestureWithView:userIconImageView
-//                                color:[[HFInterfaceTheme activeTheme].accentColor hf_colorLightenedByFactor:0.16f]
-//                                 mode:MCSwipeTableViewCellModeSwitch
-//                                state:MCSwipeTableViewCellState4
-//                      completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
-//                          [self viewUserGestureActivatedForCell:cell];
-//                      }];
-        
-
         return cell;
     }
     
@@ -605,7 +572,7 @@ static NSString * const kPostInfoTableViewCellIdentifier = @"PostInfoTableViewCe
 #pragma mark - UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    return UITableViewAutomaticDimension;
+    return UITableViewAutomaticDimension;
     
     if (indexPath.section == kPostInformationSection) {
         if (indexPath.row == 0) {

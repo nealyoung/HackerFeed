@@ -4,8 +4,8 @@
 #import "HFDropdownMenuNavigationController.h"
 #import "HFFilterPostDataSource.h"
 #import "HFNavigationBar.h"
+#import "HFPostDetailViewController.h"
 #import "HFPostListViewController.h"
-#import "HFPostViewController.h"
 #import "HFSettingsViewController.h"
 #import "HFToolbar.h"
 #import "SVProgressHUD.h"
@@ -47,7 +47,7 @@
 //    [self customizeAppearance];
     [HFInterfaceTheme setupAppearanceForActiveTheme];
     
-    HFPostViewController *postViewController = [[HFPostViewController alloc] initWithNibName:nil bundle:nil];
+    HFPostDetailViewController *postViewController = [[HFPostDetailViewController alloc] initWithNibName:nil bundle:nil];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithNavigationBarClass:[HFNavigationBar class]
                                                                                                  toolbarClass:nil];
     navigationController.viewControllers = @[postViewController];
