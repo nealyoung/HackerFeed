@@ -4,11 +4,11 @@ PODS:
   - libHN (4.1.0)
   - MCSwipeTableViewCell (2.1.4)
   - NYAlertViewController (1.3.0)
-  - NYSegmentedControl (1.0.7)
+  - NYSegmentedControl (1.1.0)
   - PBWebViewController (0.5.0)
-  - Reveal-SDK (4)
-  - SSPullToRefresh (1.2.4)
-  - SVProgressHUD (2.0.3)
+  - Reveal-SDK (14)
+  - SSPullToRefresh (1.3.0)
+  - SVProgressHUD (2.2.5)
   - SVPullToRefresh (0.4.1)
   - TTTAttributedLabel (2.0.0)
   - ZFDragableModalTransition (0.6)
@@ -28,6 +28,18 @@ DEPENDENCIES:
   - TTTAttributedLabel
   - ZFDragableModalTransition
 
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - DACircularProgress
+    - MCSwipeTableViewCell
+    - NYAlertViewController
+    - NYSegmentedControl
+    - PBWebViewController
+    - Reveal-SDK
+    - SSPullToRefresh
+    - TTTAttributedLabel
+    - ZFDragableModalTransition
+
 EXTERNAL SOURCES:
   FCUtilities:
     :git: https://github.com/marcoarment/FCUtilities.git
@@ -40,13 +52,13 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   FCUtilities:
-    :commit: 3db663875d8ba4cfefd598485bbfc371abe3d33a
+    :commit: 23397e6767dbea897c3acb7577c3db17c941103c
     :git: https://github.com/marcoarment/FCUtilities.git
   libHN:
     :commit: 5d21719f9156686757de37462a6c819705314ca5
     :git: https://github.com/nealyoung/libHN.git
   SVProgressHUD:
-    :commit: 1871e8e12740f5fc672cb03f314737ab4ff319bc
+    :commit: 7f676d51905ede045ca5dcaf82d4ba0d9f96addf
     :git: https://github.com/SVProgressHUD/SVProgressHUD.git
   SVPullToRefresh:
     :commit: a5f9dfee86a27c4e994d7edf93d0768c881d58bb
@@ -58,15 +70,15 @@ SPEC CHECKSUMS:
   libHN: fe671e9d39466235239b793f1f0181baadb327b2
   MCSwipeTableViewCell: 1b303e16c3a26b1982f3a68386e9b8c5fc8344c3
   NYAlertViewController: b93f82e2c1fc6d5e9485512ddbe7b481f463a074
-  NYSegmentedControl: 55b4f9eb652767cae9799623ec3e49e50029ef47
+  NYSegmentedControl: a92726c9e459919549f94328389ffcdaecefebfe
   PBWebViewController: 6537990155ca850fb8d0563efbc12becebc953ef
-  Reveal-SDK: 178c927f1a3230648d3a92b96f6e730a35b2750a
-  SSPullToRefresh: 369e862c1d6528c7a354fc85cd4763d4e670e9af
-  SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
+  Reveal-SDK: 55b5c5545233b680c2f8da734f202acc15d422b7
+  SSPullToRefresh: 3a47e116692b60e7da5a8c60418488133bcc9550
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SVPullToRefresh: ba2e718695a43253d8bea6852d2960097dc15d8c
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
   ZFDragableModalTransition: 0d294eaaba6edfcb9839595de765f9ca06a4b524
 
-PODFILE CHECKSUM: 453c2d8ec94563cdbc9f97e2cb7eca2e29c243ca
+PODFILE CHECKSUM: 595f6808f8ddb28764fc5507b9ba544575c0f8fc
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.5.0

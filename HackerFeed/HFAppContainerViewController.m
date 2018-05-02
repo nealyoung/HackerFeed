@@ -17,7 +17,12 @@
 }
 
 - (void)layoutSubviews {
-    self.childView.frame = CGRectMake(0.0f, 20.0f, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds) - 20.0f);
+    CGFloat topInset = fmax(20.0f, self.safeAreaInsets.top);
+    self.childView.frame = CGRectMake(0.0f, topInset, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds) - topInset);
+}
+
+- (void)safeAreaInsetsDidChange {
+    [self setNeedsLayout];
 }
 
 @end

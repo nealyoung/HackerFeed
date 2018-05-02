@@ -1,7 +1,7 @@
-platform :ios, "8.0"
+platform :ios, '11.0'
 
-target "HackerFeed" do
-  pod "DACircularProgress"
+target 'HackerFeed' do
+  pod 'DACircularProgress'
   pod 'FCUtilities', :git => 'https://github.com/marcoarment/FCUtilities.git'
   pod 'libHN', :git => 'https://github.com/nealyoung/libHN.git'
   pod 'MCSwipeTableViewCell', inhibit_warnings: true
@@ -16,7 +16,7 @@ target "HackerFeed" do
   pod 'ZFDragableModalTransition'
 end
 
-target "HackerFeedTests" do
+target 'HackerFeedTests' do
 
 end
 
